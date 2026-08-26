@@ -1,0 +1,44 @@
+{
+  "README.md": {
+    "mtime": 1787760103.6420636,
+    "seen": 1787760294.785073,
+    "ast_hash": "8fc56b80e3a1a4c617d978cdaa285a29",
+    "semantic_hash": "8fc56b80e3a1a4c617d978cdaa285a29"
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1787760095.546606,
+    "seen": 1787760294.785073,
+    "ast_hash": "648ba0ab03f95d746c03ead1549f5399",
+    "semantic_hash": "648ba0ab03f95d746c03ead1549f5399"
+  },
+  "docs/DECISIONS.md": {
+    "mtime": 1787760095.546606,
+    "seen": 1787760294.785073,
+    "ast_hash": "64d421a7976915cdf6668bd37d9d88ac",
+    "semantic_hash": "64d421a7976915cdf6668bd37d9d88ac"
+  },
+  "docs/PROJECT_CONTEXT.md": {
+    "mtime": 1787760095.5475872,
+    "seen": 1787760294.785073,
+    "ast_hash": "86e5fc1e2f130ff334b1e317a920b345",
+    "semantic_hash": "86e5fc1e2f130ff334b1e317a920b345"
+  },
+  "docs/RESEARCH_GAP.md": {
+    "mtime": 1787760095.5479262,
+    "seen": 1787760294.785073,
+    "ast_hash": "e970519adfde484f1d49a0163b76d2d4",
+    "semantic_hash": "e970519adfde484f1d49a0163b76d2d4"
+  },
+  "docs/TECH_STACK.md": {
+    "mtime": 1787760095.5479262,
+    "seen": 1787760294.785073,
+    "ast_hash": "6037b47bcb637319a9ed28c9081a7b87",
+    "semantic_hash": "6037b47bcb637319a9ed28c9081a7b87"
+  },
+  "docs/TODO.md": {
+    "mtime": 1787760095.5479262,
+    "seen": 1787760294.785073,
+    "ast_hash": "585e54974d0bcd9327b3662353ee7475",
+    "semantic_hash": "585e54974d0bcd9327b3662353ee7475"
+  }
+}

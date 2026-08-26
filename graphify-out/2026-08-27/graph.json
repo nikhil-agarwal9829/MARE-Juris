@@ -1,0 +1,264 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": "ADR-001",
+      "label": "Initial Repository Structure ADR",
+      "community": 0,
+      "community_name": "Core System Architecture",
+      "file_type": "concept",
+      "norm_label": "initial repository structure adr",
+      "source_file": "docs/DECISIONS.md",
+      "source_location": "docs/DECISIONS.md:5",
+      "type": "Decision"
+    },
+    {
+      "id": "DataIngestionTask",
+      "label": "Ingest Legal Domain Datasets",
+      "community": 0,
+      "community_name": "Core System Architecture",
+      "file_type": "concept",
+      "norm_label": "ingest legal domain datasets",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:5",
+      "type": "Task"
+    },
+    {
+      "id": "DataPipeline",
+      "label": "Data Ingestion & Indexing Pipeline",
+      "community": 0,
+      "community_name": "Core System Architecture",
+      "file_type": "concept",
+      "norm_label": "data ingestion & indexing pipeline",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:9",
+      "type": "Component"
+    },
+    {
+      "id": "MARE-Juris",
+      "label": "MARE-Juris Legal AI System",
+      "community": 0,
+      "community_name": "Core System Architecture",
+      "file_type": "concept",
+      "norm_label": "mare-juris legal ai system",
+      "source_file": "README.md",
+      "source_location": "README.md:1",
+      "type": "System"
+    },
+    {
+      "id": "Backend",
+      "label": "Backend Server & API",
+      "community": 1,
+      "community_name": "Backend Infrastructure",
+      "file_type": "concept",
+      "norm_label": "backend server & api",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:7",
+      "type": "Component"
+    },
+    {
+      "id": "BackendScaffoldTask",
+      "label": "Define Backend Stack & Setup Server",
+      "community": 1,
+      "community_name": "Backend Infrastructure",
+      "file_type": "concept",
+      "norm_label": "define backend stack & setup server",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:3",
+      "type": "Task"
+    },
+    {
+      "id": "TechStackDoc",
+      "label": "Technology Stack Specification",
+      "community": 1,
+      "community_name": "Backend Infrastructure",
+      "file_type": "concept",
+      "norm_label": "technology stack specification",
+      "source_file": "docs/TECH_STACK.md",
+      "source_location": "docs/TECH_STACK.md:1",
+      "type": "Document"
+    },
+    {
+      "id": "EvalSuiteTask",
+      "label": "Build Evaluation Benchmark Suite",
+      "community": 2,
+      "community_name": "Evaluation & Benchmarks",
+      "file_type": "concept",
+      "norm_label": "build evaluation benchmark suite",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:6",
+      "type": "Task"
+    },
+    {
+      "id": "EvaluationModule",
+      "label": "Benchmark Test Harness & Metrics",
+      "community": 2,
+      "community_name": "Evaluation & Benchmarks",
+      "file_type": "concept",
+      "norm_label": "benchmark test harness & metrics",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:10",
+      "type": "Component"
+    },
+    {
+      "id": "Frontend",
+      "label": "Web Client UI",
+      "community": 3,
+      "community_name": "Frontend Interface",
+      "file_type": "concept",
+      "norm_label": "web client ui",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:8",
+      "type": "Component"
+    },
+    {
+      "id": "FrontendScaffoldTask",
+      "label": "Setup Frontend Application Scaffold",
+      "community": 3,
+      "community_name": "Frontend Interface",
+      "file_type": "concept",
+      "norm_label": "setup frontend application scaffold",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:4",
+      "type": "Task"
+    },
+    {
+      "id": "ProjectContextDoc",
+      "label": "Project Context & Objectives",
+      "community": 4,
+      "community_name": "Project Objectives & Context",
+      "file_type": "concept",
+      "norm_label": "project context & objectives",
+      "source_file": "docs/PROJECT_CONTEXT.md",
+      "source_location": "docs/PROJECT_CONTEXT.md:1",
+      "type": "Document"
+    },
+    {
+      "id": "ResearchGapDoc",
+      "label": "Research & Technical Gaps",
+      "community": 5,
+      "community_name": "Research & Technical Gaps",
+      "file_type": "concept",
+      "norm_label": "research & technical gaps",
+      "source_file": "docs/RESEARCH_GAP.md",
+      "source_location": "docs/RESEARCH_GAP.md:1",
+      "type": "Document"
+    }
+  ],
+  "links": [
+    {
+      "source": "MARE-Juris",
+      "target": "EvaluationModule",
+      "relation": "CONTAINS",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relationship_type": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:10"
+    },
+    {
+      "source": "MARE-Juris",
+      "target": "Backend",
+      "relation": "CONTAINS",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relationship_type": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:7"
+    },
+    {
+      "source": "MARE-Juris",
+      "target": "Frontend",
+      "relation": "CONTAINS",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relationship_type": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:8"
+    },
+    {
+      "source": "MARE-Juris",
+      "target": "DataPipeline",
+      "relation": "CONTAINS",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relationship_type": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "docs/ARCHITECTURE.md:9"
+    },
+    {
+      "source": "ADR-001",
+      "target": "MARE-Juris",
+      "relation": "DEFINES_STRUCTURE",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relationship_type": "EXTRACTED",
+      "source_file": "docs/DECISIONS.md",
+      "source_location": "docs/DECISIONS.md:8"
+    },
+    {
+      "source": "TechStackDoc",
+      "target": "Frontend",
+      "relation": "DESCRIBES",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TECH_STACK.md",
+      "source_location": "docs/TECH_STACK.md:3"
+    },
+    {
+      "source": "TechStackDoc",
+      "target": "Backend",
+      "relation": "DESCRIBES",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TECH_STACK.md",
+      "source_location": "docs/TECH_STACK.md:7"
+    },
+    {
+      "source": "BackendScaffoldTask",
+      "target": "Backend",
+      "relation": "TARGETS",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:3"
+    },
+    {
+      "source": "DataIngestionTask",
+      "target": "DataPipeline",
+      "relation": "TARGETS",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:5"
+    },
+    {
+      "source": "EvalSuiteTask",
+      "target": "EvaluationModule",
+      "relation": "TARGETS",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:6"
+    },
+    {
+      "source": "FrontendScaffoldTask",
+      "target": "Frontend",
+      "relation": "TARGETS",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "relationship_type": "INFERRED",
+      "source_file": "docs/TODO.md",
+      "source_location": "docs/TODO.md:4"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "185c71c4e6dff71d2fae2ad6a608d541f8c756b6"
+}
