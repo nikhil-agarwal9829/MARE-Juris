@@ -1,39 +1,48 @@
-import resend
+import httpx
 from app.core.config import settings
 
 
 class EmailService:
     """
-    Reusable Resend Transactional Email Service.
-    Handles application-level notifications (document completion, compliance updates, alerts).
-    Note: Auth emails (signup verification, password reset, OTP) are dispatched directly
-    by Supabase Auth via custom SMTP.
+    Reusable Brevo Transactional Email Service.
+    Handles application-level notifications (document completion, compliance updates, alerts)
+    via Brevo REST API v3.
+    Note: Supabase Auth emails (signup verification, password reset, OTP) are dispatched directly
+    by Supabase Auth via Brevo Custom SMTP.
     """
 
     def __init__(self):
-        if settings.RESEND_API_KEY:
-            resend.api_key = settings.RESEND_API_KEY
-        self.from_address = f"{settings.RESEND_FROM_NAME} <{settings.RESEND_FROM_EMAIL}>"
+        self.api_url = "https://api.brevo.com/v3/smtp/email"
+        self.headers = {
+            "accept": "application/json",
+            "api-key": settings.BREVO_API_KEY,
+            "content-type": "application/json"
+        }
 
     def send_email(self, to_email: str, subject: str, html_content: str, text_content: str | None = None) -> dict:
         """
-        Sends a transactional application email using Resend API.
+        Sends a transactional application email using Brevo REST API v3.
         """
-        if not settings.RESEND_API_KEY:
-            raise ValueError("RESEND_API_KEY is not configured in environment.")
+        if not settings.BREVO_API_KEY:
+            raise ValueError("BREVO_API_KEY is not configured in environment.")
 
-        params = {
-            "from": self.from_address,
-            "to": [to_email],
+        payload = {
+            "sender": {
+                "name": settings.BREVO_FROM_NAME,
+                "email": settings.BREVO_FROM_EMAIL
+            },
+            "to": [{"email": to_email}],
             "subject": subject,
-            "html": html_content,
+            "htmlContent": html_content
         }
 
         if text_content:
-            params["text"] = text_content
+            payload["textContent"] = text_content
 
-        response = resend.Emails.send(params)
-        return response
+        with httpx.Client(timeout=10.0) as client:
+            response = client.post(self.api_url, json=payload, headers=self.headers)
+            response.raise_for_status()
+            return response.json()
 
     def send_document_analysis_completed_notification(self, user_email: str, document_title: str) -> dict:
         """
