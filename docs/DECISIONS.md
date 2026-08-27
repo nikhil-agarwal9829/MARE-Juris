@@ -6,11 +6,11 @@
 - **Context**: MARE-Juris requires robust PostgreSQL storage, user session management, document storage, and row-level security.
 - **Decision**: Adopt Supabase for PostgreSQL Database, Supabase Auth for identity/sessions, and Supabase Storage for private user document uploads.
 
-## ADR-002: Resend for Transactional Email Delivery
+## ADR-002: Brevo for Transactional Email Delivery via Custom SMTP
 - **Date**: 2026-08-27
 - **Status**: Accepted
-- **Context**: Transactional authentication emails (signup verification, OTP, password resets) and application notifications must be reliably delivered.
-- **Decision**: Configure Supabase Auth to use Resend via custom SMTP (`smtp.resend.com`). Build a backend `EmailService` using Resend REST API for application-level email notifications.
+- **Context**: Transactional authentication emails (signup verification, OTP, password resets) must be reliably delivered via Supabase Auth.
+- **Decision**: Configure Supabase Auth to use Brevo via custom SMTP (`smtp-relay.brevo.com:587`). Replace previous Mailjet integration completely.
 
 ## ADR-003: Strict Row Level Security (RLS) & Storage Path Isolation
 - **Date**: 2026-08-27

@@ -13,13 +13,14 @@ class Settings(BaseSettings):
     SUPABASE_SERVICE_ROLE_KEY: str = ""
     SUPABASE_DB_URL: Optional[str] = None
 
-    # Mailjet Email Configuration
-    MAILJET_API_KEY: str = ""
-    MAILJET_SECRET_KEY: str = ""
-    MAILJET_SMTP_HOST: str = "in-v3.mailjet.com"
-    MAILJET_SMTP_PORT: int = 587
-    MAILJET_FROM_EMAIL: str = "nikhilsinghal9785@gmail.com"
-    MAILJET_FROM_NAME: str = "MARE-Juris Legal"
+    # Brevo Email Configuration
+    BREVO_SMTP_HOST: str = "smtp-relay.brevo.com"
+    BREVO_SMTP_PORT: int = 587
+    BREVO_SMTP_USERNAME: str = ""
+    BREVO_SMTP_PASSWORD: str = ""
+    BREVO_API_KEY: str = ""
+    BREVO_FROM_EMAIL: str = "nikhilsinghal9785@gmail.com"
+    BREVO_FROM_NAME: str = "MARE-Juris Legal"
 
     # Resend Email Configuration (Optional)
     RESEND_API_KEY: str = ""

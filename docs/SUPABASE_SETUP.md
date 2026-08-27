@@ -1,12 +1,12 @@
-# Supabase & Mailjet Infrastructure Setup for MARE-Juris
+# Supabase & Brevo Infrastructure Setup for MARE-Juris
 
-This document outlines the architecture, database schema, security rules (Row Level Security), storage policies, and Mailjet SMTP email integration for the **MARE-Juris** platform.
+This document outlines the architecture, database schema, security rules (Row Level Security), storage policies, and Brevo SMTP email integration for the **MARE-Juris** platform.
 
 ---
 
 ## Architecture Overview
 
-MARE-Juris relies on Supabase as its primary backend data platform and Mailjet for transactional email delivery via custom SMTP.
+MARE-Juris relies on Supabase as its primary backend data platform and Brevo for transactional email delivery via custom SMTP.
 
 ```
                       +-------------------+
@@ -32,7 +32,7 @@ MARE-Juris relies on Supabase as its primary backend data platform and Mailjet f
                                  |
                                  v
                        +-------------------+
-                       | Mailjet Custom    |
+                       | Brevo Custom      |
                        | SMTP (Port 587)   |
                        | - Auth Emails     |
                        | - App Emails      |
@@ -51,36 +51,37 @@ Store all environment variables in local `.env` (never commit real credentials).
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public / Frontend & Backend | Safe public API key for browser client |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-Only / Backend & Admin | Privileged service key (Bypasses RLS). **NEVER expose to frontend!** |
 | `SUPABASE_DB_URL` | Server-Only | Direct or Pooler PostgreSQL connection string |
-| `MAILJET_API_KEY` | Server-Only / Backend | Mailjet API Key (SMTP Username) |
-| `MAILJET_SECRET_KEY` | Server-Only / Backend | Mailjet Secret Key (SMTP Password) |
-| `MAILJET_SMTP_HOST` | Server-Only / Backend | `in-v3.mailjet.com` |
-| `MAILJET_SMTP_PORT` | Server-Only / Backend | `587` (TLS) |
-| `MAILJET_FROM_EMAIL` | Server-Only / Backend | Verified sender email address |
-| `MAILJET_FROM_NAME` | Server-Only / Backend | Transactional sender display name |
+| `BREVO_SMTP_HOST` | Server-Only / Backend | `smtp-relay.brevo.com` |
+| `BREVO_SMTP_PORT` | Server-Only / Backend | `587` (TLS) |
+| `BREVO_SMTP_USERNAME` | Server-Only / Backend | Brevo SMTP Login (Account email / SMTP login) |
+| `BREVO_SMTP_PASSWORD` | Server-Only / Backend | Brevo SMTP Key (`xsmtpsib-...`) |
+| `BREVO_API_KEY` | Server-Only / Backend | Brevo API Key (`xkeysib-...`) |
+| `BREVO_FROM_EMAIL` | Server-Only / Backend | Verified sender email address |
+| `BREVO_FROM_NAME` | Server-Only / Backend | Transactional sender display name (`MARE-Juris Legal`) |
 | `GEMINI_API_KEY` | Server-Only / Backend | Gemini API key for future agent reasoning |
 
 ---
 
-## 2. Authentication & Mailjet Custom SMTP Setup
+## 2. Authentication & Brevo Custom SMTP Setup
 
-Supabase Auth handles user identity, credentials, OTP generation, verification, and sessions, while Mailjet is responsible for transactional email delivery.
+Supabase Auth handles user identity, credentials, OTP generation, verification, and sessions, while Brevo is responsible for transactional email delivery.
 
 ### Required Auth Flows Supported
-1. **Email / Password Signup**: Requires email confirmation link delivered via Mailjet SMTP.
+1. **Email / Password Signup**: Requires email confirmation link delivered via Brevo SMTP.
 2. **Email / Password Login**: Authenticates credentials and returns JWT session tokens (`access_token` and `refresh_token`).
-3. **Email Verification**: Supabase Auth verification link sent via Mailjet SMTP.
+3. **Email Verification**: Supabase Auth verification link sent via Brevo SMTP.
 4. **Email OTP**: One-Time Passcode login/verification via Supabase Auth OTP API.
-5. **Password Reset**: Password recovery email link sent via Mailjet SMTP.
+5. **Password Reset**: Password recovery email link sent via Brevo SMTP.
 6. **Session Persistence**: Managed via secure cookies in Next.js (`@supabase/ssr`) and Bearer tokens in FastAPI.
 7. **Protected Routes**: Enforced via Next.js Middleware (`frontend/src/middleware.ts`) and FastAPI Auth Dependency (`backend/app/auth/deps.py`).
 
-### Mailjet Custom SMTP Settings for Supabase Dashboard
+### Brevo Custom SMTP Settings for Supabase Dashboard
 In your Supabase Dashboard under **Project Settings -> Authentication -> Email Settings**:
 - **Enable Custom SMTP**: `ON`
-- **SMTP Host**: `in-v3.mailjet.com`
+- **SMTP Host**: `smtp-relay.brevo.com`
 - **Port**: `587` (TLS)
-- **SMTP Username**: Mailjet API Key
-- **SMTP Password**: Mailjet Secret Key
+- **SMTP Username**: Your Brevo SMTP Login email (e.g. `nikhilsinghal9785@gmail.com`)
+- **SMTP Password**: Your Brevo SMTP Key (`xsmtpsib-...`)
 - **Sender Email**: `nikhilsinghal9785@gmail.com` (or your verified domain email)
 - **Sender Name**: `MARE-Juris Legal`
 
@@ -154,7 +155,7 @@ Supabase Storage is configured for user document uploads.
 
 ## 6. Security Audit Checklist
 
-- [x] Mailjet API/Secret keys are restricted to server-side `.env`.
+- [x] Brevo SMTP credentials and API keys are restricted to server-side `.env`.
 - [x] `SUPABASE_SERVICE_ROLE_KEY` is restricted to server-side code and backend `.env`.
 - [x] `NEXT_PUBLIC_*` prefix is used ONLY for `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
 - [x] All 15 PostgreSQL tables have Row Level Security (`ENABLE ROW LEVEL SECURITY`) turned on.
