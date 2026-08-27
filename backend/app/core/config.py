@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     BREVO_SMTP_USERNAME: str = ""
     BREVO_SMTP_PASSWORD: str = ""
     BREVO_API_KEY: str = ""
-    BREVO_FROM_EMAIL: str = "nikhilsinghal9785@gmail.com"
+    BREVO_FROM_EMAIL: str = "nikhil.agrawal2023@vitstudent.ac.in"
     BREVO_FROM_NAME: str = "MARE-Juris Legal"
 
     # Resend Email Configuration (Optional)

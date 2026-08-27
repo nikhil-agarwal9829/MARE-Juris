@@ -80,9 +80,9 @@ In your Supabase Dashboard under **Project Settings -> Authentication -> Email S
 - **Enable Custom SMTP**: `ON`
 - **SMTP Host**: `smtp-relay.brevo.com`
 - **Port**: `587` (TLS)
-- **SMTP Username**: Your Brevo SMTP Login email (e.g. `nikhilsinghal9785@gmail.com`)
+- **SMTP Username**: Your Brevo SMTP Login email (e.g. `nikhil.agrawal2023@vitstudent.ac.in`)
 - **SMTP Password**: Your Brevo SMTP Key (`xsmtpsib-...`)
-- **Sender Email**: `nikhilsinghal9785@gmail.com` (or your verified domain email)
+- **Sender Email**: `nikhil.agrawal2023@vitstudent.ac.in` (or your verified domain email)
 - **Sender Name**: `MARE-Juris Legal`
 
 ---
