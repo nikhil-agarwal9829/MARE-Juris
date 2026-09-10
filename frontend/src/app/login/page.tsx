@@ -1,18 +1,27 @@
 import React from 'react';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { NewsRail } from '@/components/news/NewsRail';
+import { Navbar } from '@/components/navigation/Navbar';
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-navy-950 p-4 md:p-8 flex flex-col justify-between">
-      <div className="flex-1 flex items-center justify-center">
-        <LoginForm />
-      </div>
+    <div className="min-h-screen bg-navy-950 flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
+      <Navbar mode="auth" />
 
-      {/* Bottom Horizontal News Pulse Ticker */}
-      <div className="max-w-6xl w-full mx-auto mt-8 border-t border-slate-800/80 pt-6">
-        <NewsRail compact />
-      </div>
-    </main>
+      <main className="pt-24 pb-12 px-4 flex-1 flex flex-col items-center justify-center space-y-12 max-w-7xl mx-auto w-full">
+        <div className="w-full flex items-center justify-center">
+          <LoginForm />
+        </div>
+
+        {/* Subtle Legal & Business Pulse */}
+        <div className="w-full border-t border-slate-800/80 pt-8">
+          <NewsRail compact />
+        </div>
+      </main>
+
+      <footer className="border-t border-slate-800/80 py-4 px-4 text-center text-xs text-slate-500">
+        <p>© 2026 MARE-Juris Legal Intelligence Platform</p>
+      </footer>
+    </div>
   );
 }

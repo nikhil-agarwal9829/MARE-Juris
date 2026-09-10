@@ -1,0 +1,22 @@
+{
+  "0": "MARE-Juris Legal AI System",
+  "1": "20260827000000_initial_schema.sql",
+  "2": "Supabase & Resend Infrastructure Setup for MARE-Juris",
+  "3": "get_supabase_client",
+  "4": "Project Context & Objectives",
+  "5": "Research & Technical Gaps",
+  "6": "dependencies",
+  "7": "EmailService",
+  "8": "package.json",
+  "9": "devDependencies",
+  "10": "Settings",
+  "11": "root",
+  "12": "middleware.ts",
+  "13": "rules/graphify.md",
+  "14": "workflows/graphify.md",
+  "15": "admin.ts",
+  "16": "client.ts",
+  "17": "server.ts",
+  "18": "__init__.py",
+  "19": "switch.md"
+}

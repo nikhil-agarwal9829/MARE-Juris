@@ -17,32 +17,6 @@
       "source_location": "L6"
     },
     {
-      "id": "frontend_src_app_verify_email_page_verificationstate",
-      "label": "VerificationState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "verificationstate",
-      "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L10"
-    },
-    {
-      "id": "frontend_src_components_assistant_floatingassistant_chatmessage",
-      "label": "ChatMessage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chatmessage",
-      "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "frontend_src_components_home_homecontent_homecontentprops",
       "label": "HomeContentProps",
       "_callable": true,
@@ -53,72 +27,7 @@
       "file_type": "code",
       "norm_label": "homecontentprops",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L33"
-    },
-    {
-      "id": "frontend_src_components_navigation_navbar_navbarprops",
-      "label": "NavbarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "navbarprops",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "frontend_src_components_chat_chatinterface_chatinterfaceprops",
-      "label": "ChatInterfaceProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chatinterfaceprops",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L48"
-    },
-    {
-      "id": "frontend_src_components_chat_chatinterface_citation",
-      "label": "Citation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "citation",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L26"
-    },
-    {
-      "id": "frontend_src_components_chat_chatinterface_conversation",
-      "label": "Conversation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "conversation",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L42"
-    },
-    {
-      "id": "frontend_src_components_chat_chatinterface_message",
-      "label": "Message",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "message",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L34"
+      "source_location": "L28"
     },
     {
       "id": "frontend_src_app_api_news_route_newsarticle",
@@ -147,32 +56,6 @@
       "source_location": "L6"
     },
     {
-      "id": "backend_app_api_v1_chat_chatmessagerequest",
-      "label": "ChatMessageRequest",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "chatmessagerequest",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12"
-    },
-    {
-      "id": "backend_app_api_v1_chat_chatmessageresponse",
-      "label": "ChatMessageResponse",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "chatmessageresponse",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17"
-    },
-    {
       "id": "backend_app_services_email_service_emailservice",
       "label": "EmailService",
       "_callable": true,
@@ -186,19 +69,6 @@
       "source_location": "L5"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice",
-      "label": "LegalRAGService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "legalragservice",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_app_main_root",
       "label": "root()",
       "_callable": true,
@@ -208,7 +78,7 @@
       "file_type": "code",
       "norm_label": "root()",
       "source_file": "backend/app/main.py",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "frontend_src_middleware_middleware",
@@ -256,7 +126,7 @@
       "file_type": "code",
       "norm_label": "loginpage()",
       "source_file": "frontend/src/app/login/page.tsx",
-      "source_location": "L6"
+      "source_location": "L5"
     },
     {
       "id": "frontend_src_app_otp_page_otppage",
@@ -292,7 +162,7 @@
       "file_type": "code",
       "norm_label": "signuppage()",
       "source_file": "frontend/src/app/signup/page.tsx",
-      "source_location": "L9"
+      "source_location": "L8"
     },
     {
       "id": "frontend_src_app_verify_email_page_verifyemailcontent",
@@ -304,7 +174,7 @@
       "file_type": "code",
       "norm_label": "verifyemailcontent()",
       "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L12"
+      "source_location": "L9"
     },
     {
       "id": "frontend_src_app_verify_email_page_verifyemailpage",
@@ -316,19 +186,7 @@
       "file_type": "code",
       "norm_label": "verifyemailpage()",
       "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L321"
-    },
-    {
-      "id": "frontend_src_components_assistant_floatingassistant_floatingassistant",
-      "label": "FloatingAssistant()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "floatingassistant()",
-      "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L12"
+      "source_location": "L254"
     },
     {
       "id": "frontend_src_components_auth_loginform_loginform",
@@ -343,16 +201,16 @@
       "source_location": "L10"
     },
     {
-      "id": "frontend_src_components_navigation_navbar_navbar",
-      "label": "Navbar()",
+      "id": "frontend_src_components_home_homecontent_homecontent",
+      "label": "HomeContent()",
       "_callable": true,
       "_origin": "ast",
       "community": 16,
       "community_name": "createClient",
       "file_type": "code",
-      "norm_label": "navbar()",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L15"
+      "norm_label": "homecontent()",
+      "source_file": "frontend/src/components/home/HomeContent.tsx",
+      "source_location": "L33"
     },
     {
       "id": "frontend_src_components_news_newsrail_newsrail",
@@ -403,52 +261,16 @@
       "source_location": "L8"
     },
     {
-      "id": "frontend_src_app_api_assistant_route_generatelegalanalysis",
-      "label": "generateLegalAnalysis()",
+      "id": "frontend_src_app_auth_callback_route_get",
+      "label": "GET()",
       "_callable": true,
       "_origin": "ast",
       "community": 17,
       "community_name": "createClient",
       "file_type": "code",
-      "norm_label": "generatelegalanalysis()",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L125"
-    },
-    {
-      "id": "frontend_src_app_api_assistant_route_getfallbackcitations",
-      "label": "getFallbackCitations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "getfallbackcitations()",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L73"
-    },
-    {
-      "id": "frontend_src_app_api_assistant_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
+      "norm_label": "get()",
+      "source_file": "frontend/src/app/auth/callback/route.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "frontend_src_app_chat_page_chatpage",
-      "label": "ChatPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chatpage()",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L7"
     },
     {
       "id": "frontend_src_app_home_page_homepage",
@@ -475,30 +297,6 @@
       "source_location": "L4"
     },
     {
-      "id": "frontend_src_components_chat_chatinterface_chatinterface",
-      "label": "ChatInterface()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chatinterface()",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L54"
-    },
-    {
-      "id": "frontend_src_components_home_homecontent_homecontent",
-      "label": "HomeContent()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "homecontent()",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L38"
-    },
-    {
       "id": "frontend_src_lib_supabase_server_createclient",
       "label": "createClient()",
       "_callable": true,
@@ -520,7 +318,7 @@
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "frontend/src/app/api/news/route.ts",
-      "source_location": "L17"
+      "source_location": "L15"
     },
     {
       "id": "frontend_src_components_news_newscard_newscard",
@@ -559,18 +357,6 @@
       "source_location": "L11"
     },
     {
-      "id": "frontend_src_app_auth_callback_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 22,
-      "community_name": "callback/route.ts",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "frontend/src/app/auth/callback/route.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "frontend_src_app_layout_rootlayout",
       "label": "RootLayout()",
       "_callable": true,
@@ -588,59 +374,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "health_check()",
       "source_file": "backend/app/api/health.py",
       "source_location": "L9"
-    },
-    {
-      "id": "backend_app_api_v1_chat_delete_conversation",
-      "label": "delete_conversation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "delete_conversation()",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L122"
-    },
-    {
-      "id": "backend_app_api_v1_chat_get_conversation_messages",
-      "label": "get_conversation_messages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_conversation_messages()",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L78"
-    },
-    {
-      "id": "backend_app_api_v1_chat_get_user_conversations",
-      "label": "get_user_conversations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_user_conversations()",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L56"
-    },
-    {
-      "id": "backend_app_api_v1_chat_send_chat_message",
-      "label": "send_chat_message()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "send_chat_message()",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26"
     },
     {
       "id": "backend_app_auth_deps_get_current_user",
@@ -648,7 +386,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "get_current_user()",
       "source_file": "backend/app/auth/deps.py",
@@ -660,7 +398,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "get_current_user_token()",
       "source_file": "backend/app/auth/deps.py",
@@ -672,7 +410,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "get_supabase_admin_client()",
       "source_file": "backend/app/db/supabase.py",
@@ -684,7 +422,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "get_supabase_client()",
       "source_file": "backend/app/db/supabase.py",
@@ -737,66 +475,6 @@
       "norm_label": ".send_email()",
       "source_file": "backend/app/services/email_service.py",
       "source_location": "L22"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_fallback_citations",
-      "label": "._fallback_citations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "._fallback_citations()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L143"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "label": "._generate_rule_based_response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "._generate_rule_based_response()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L193"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "label": "._get_system_prompt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "._get_system_prompt()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L26"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_init",
-      "label": ".__init__()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L16"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_process_query",
-      "label": ".process_query()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": ".process_query()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L47"
     },
     {
       "id": "auth_users",
@@ -1251,17 +929,6 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_components_assistant_floatingassistant",
-      "label": "FloatingAssistant.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "floatingassistant.tsx",
-      "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "frontend_src_components_auth_loginform",
       "label": "LoginForm.tsx",
       "_origin": "ast",
@@ -1281,17 +948,6 @@
       "file_type": "code",
       "norm_label": "homecontent.tsx",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_components_navigation_navbar",
-      "label": "Navbar.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "navbar.tsx",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
       "source_location": "L1"
     },
     {
@@ -1328,25 +984,14 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_app_api_assistant_route",
-      "label": "assistant/route.ts",
+      "id": "frontend_src_app_auth_callback_route",
+      "label": "callback/route.ts",
       "_origin": "ast",
       "community": 17,
       "community_name": "createClient",
       "file_type": "code",
-      "norm_label": "assistant/route.ts",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_app_chat_page",
-      "label": "chat/page.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chat/page.tsx",
-      "source_file": "frontend/src/app/chat/page.tsx",
+      "norm_label": "callback/route.ts",
+      "source_file": "frontend/src/app/auth/callback/route.ts",
       "source_location": "L1"
     },
     {
@@ -1369,17 +1014,6 @@
       "file_type": "code",
       "norm_label": "app/page.tsx",
       "source_file": "frontend/src/app/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_components_chat_chatinterface",
-      "label": "ChatInterface.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "chatinterface.tsx",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
       "source_location": "L1"
     },
     {
@@ -1573,17 +1207,6 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_tsconfig",
-      "label": "tsconfig.json",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "tsconfig.json",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L1"
-    },
-    {
       "id": "frontend_tsconfig_compileroptions",
       "label": "compilerOptions",
       "_origin": "ast",
@@ -1760,28 +1383,6 @@
       "source_location": "L3"
     },
     {
-      "id": "frontend_tsconfig_exclude",
-      "label": "exclude",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "exclude",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "frontend_tsconfig_include",
-      "label": "include",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "include",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L25"
-    },
-    {
       "id": "ref_dom",
       "label": "dom",
       "_origin": "ast",
@@ -1813,61 +1414,6 @@
       "norm_label": "esnext",
       "source_file": "frontend/tsconfig.json",
       "source_location": "L4"
-    },
-    {
-      "id": "ref_next_env_d_ts",
-      "label": "next-env.d.ts",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "concept",
-      "norm_label": "next-env.d.ts",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "ref_next_types_ts",
-      "label": ".next/types/**/*.ts",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "concept",
-      "norm_label": ".next/types/**/*.ts",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "ref_node_modules",
-      "label": "node_modules",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "concept",
-      "norm_label": "node_modules",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "ref_ts",
-      "label": "**/*.ts",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "concept",
-      "norm_label": "**/*.ts",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "ref_tsx",
-      "label": "**/*.tsx",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "compilerOptions",
-      "file_type": "concept",
-      "norm_label": "**/*.tsx",
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L25"
     },
     {
       "id": "frontend_src_app_api_news_route",
@@ -1925,15 +1471,92 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_app_auth_callback_route",
-      "label": "callback/route.ts",
+      "id": "frontend_tsconfig",
+      "label": "tsconfig.json",
       "_origin": "ast",
       "community": 22,
-      "community_name": "callback/route.ts",
+      "community_name": "include",
       "file_type": "code",
-      "norm_label": "callback/route.ts",
-      "source_file": "frontend/src/app/auth/callback/route.ts",
+      "norm_label": "tsconfig.json",
+      "source_file": "frontend/tsconfig.json",
       "source_location": "L1"
+    },
+    {
+      "id": "frontend_tsconfig_exclude",
+      "label": "exclude",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "code",
+      "norm_label": "exclude",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "frontend_tsconfig_include",
+      "label": "include",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "code",
+      "norm_label": "include",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "ref_next_env_d_ts",
+      "label": "next-env.d.ts",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "concept",
+      "norm_label": "next-env.d.ts",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "ref_next_types_ts",
+      "label": ".next/types/**/*.ts",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "concept",
+      "norm_label": ".next/types/**/*.ts",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "ref_node_modules",
+      "label": "node_modules",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "concept",
+      "norm_label": "node_modules",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "ref_ts",
+      "label": "**/*.ts",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "concept",
+      "norm_label": "**/*.ts",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "ref_tsx",
+      "label": "**/*.tsx",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "include",
+      "file_type": "concept",
+      "norm_label": "**/*.tsx",
+      "source_file": "frontend/tsconfig.json",
+      "source_location": "L25"
     },
     {
       "id": "frontend_eslintrc",
@@ -2061,7 +1684,7 @@
       "label": "health.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "health.py",
       "source_file": "backend/app/api/health.py",
@@ -2072,29 +1695,7 @@
       "label": "get",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_app_api_v1_chat",
-      "label": "chat.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "chat.py",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_api_v1_chat_py_get",
-      "label": "get",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "get",
       "source_file": "",
@@ -2105,7 +1706,7 @@
       "label": "deps.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "deps.py",
       "source_file": "backend/app/auth/deps.py",
@@ -2116,53 +1717,20 @@
       "label": "supabase.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "supabase.py",
       "source_file": "backend/app/db/supabase.py",
       "source_location": "L1"
     },
     {
-      "id": "backend_app_services_rag_service",
-      "label": "rag_service.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "rag_service.py",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "basemodel",
-      "label": "BaseModel",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "basemodel",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "client",
       "label": "Client",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "client",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "delete",
-      "label": "delete",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "delete",
       "source_file": "",
       "source_location": ""
     },
@@ -2171,20 +1739,9 @@
       "label": "HTTPAuthorizationCredentials",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "code",
       "norm_label": "httpauthorizationcredentials",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "post",
-      "label": "post",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "post",
       "source_file": "",
       "source_location": ""
     },
@@ -2193,62 +1750,18 @@
       "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
       "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
       "source_file": "backend/app/api/health.py",
       "source_location": "L10"
     },
     {
-      "id": "backend_app_api_v1_chat_rationale_126",
-      "label": "Deletes a conversation thread and associated messages.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "deletes a conversation thread and associated messages.",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L126"
-    },
-    {
-      "id": "backend_app_api_v1_chat_rationale_30",
-      "label": "Processes a legal query through the MARE-Juris Evidence-Grounded RAG Engine.\u2026",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "processes a legal query through the mare-juris evidence-grounded rag engine....",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L30"
-    },
-    {
-      "id": "backend_app_api_v1_chat_rationale_57",
-      "label": "Retrieves all conversation threads initiated by the authenticated user.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "retrieves all conversation threads initiated by the authenticated user.",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L57"
-    },
-    {
-      "id": "backend_app_api_v1_chat_rationale_82",
-      "label": "Retrieves message history transcript for a specific conversation.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "retrieves message history transcript for a specific conversation.",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L82"
-    },
-    {
       "id": "backend_app_auth_deps_rationale_11",
       "label": "Extracts Bearer Token from HTTP Authorization Header.",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
       "norm_label": "extracts bearer token from http authorization header.",
       "source_file": "backend/app/auth/deps.py",
@@ -2259,7 +1772,7 @@
       "label": "Validates Supabase JWT token and retrieves authenticated user object.",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
       "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
       "source_file": "backend/app/auth/deps.py",
@@ -2270,7 +1783,7 @@
       "label": "Returns a privileged Supabase client using SUPABASE_SERVICE_ROLE_KEY. Bypasses\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
       "norm_label": "returns a privileged supabase client using supabase_service_role_key. bypasses...",
       "source_file": "backend/app/db/supabase.py",
@@ -2281,22 +1794,11 @@
       "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "get_supabase_admin_client",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
       "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
       "source_file": "backend/app/db/supabase.py",
       "source_location": "L6"
-    },
-    {
-      "id": "frontend_package",
-      "label": "package.json",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "package.json",
-      "source_file": "frontend/package.json",
-      "source_location": "L1"
     },
     {
       "id": "frontend_package_dependencies",
@@ -2396,94 +1898,6 @@
       "norm_label": "tailwind-merge",
       "source_file": "frontend/package.json",
       "source_location": "L19"
-    },
-    {
-      "id": "frontend_package_name",
-      "label": "name",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "name",
-      "source_file": "frontend/package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "frontend_package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "frontend/package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "frontend_package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "frontend/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "frontend_package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "frontend/package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "frontend_package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "frontend/package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "frontend_package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "frontend/package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "frontend_package_scripts_start",
-      "label": "start",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "start",
-      "source_file": "frontend/package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "frontend_package_version",
-      "label": "version",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "version",
-      "source_file": "frontend/package.json",
-      "source_location": "L3"
     },
     {
       "id": "clsx",
@@ -2629,37 +2043,103 @@
       "source_location": "L64"
     },
     {
-      "id": "any",
-      "label": "Any",
+      "id": "frontend_package",
+      "label": "package.json",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "package.json",
       "file_type": "code",
-      "norm_label": "any",
-      "source_file": "",
-      "source_location": ""
+      "norm_label": "package.json",
+      "source_file": "frontend/package.json",
+      "source_location": "L1"
     },
     {
-      "id": "backend_app_services_rag_service_rationale_11",
-      "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
+      "id": "frontend_package_name",
+      "label": "name",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "rationale",
-      "norm_label": "evidence-grounded rag engine for mare-juris legal intelligence platform....",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L11"
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "frontend/package.json",
+      "source_location": "L2"
     },
     {
-      "id": "backend_app_services_rag_service_rationale_53",
-      "label": "Processes a legal query through the RAG pipeline, generating grounded analysis\u2026",
+      "id": "frontend_package_private",
+      "label": "private",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "rationale",
-      "norm_label": "processes a legal query through the rag pipeline, generating grounded analysis...",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L53"
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "frontend/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "frontend/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "frontend_package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "frontend/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "frontend/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "frontend_package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "frontend/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "frontend_package_scripts_start",
+      "label": "start",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "start",
+      "source_file": "frontend/package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "frontend_package_version",
+      "label": "version",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "version",
+      "source_file": "frontend/package.json",
+      "source_location": "L3"
     },
     {
       "id": "frontend_package_devdependencies",
@@ -3041,42 +2521,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_delete_conversation",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L130",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_get_conversation_messages",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L86",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_get_user_conversations",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L61",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_auth_deps_get_current_user",
       "target": "backend_app_db_supabase_get_supabase_client",
       "relation": "calls",
@@ -3113,99 +2557,15 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L65",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_fallback_citations",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L76",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L81",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L89",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route_post",
-      "target": "frontend_src_app_api_assistant_route_getfallbackcitations",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route_post",
-      "target": "frontend_src_app_api_assistant_route_generatelegalanalysis",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L56",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route_post",
+      "source": "frontend_src_app_auth_callback_route_get",
       "target": "frontend_src_lib_supabase_server_createclient",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page_chatpage",
-      "target": "frontend_src_lib_supabase_server_createclient",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L12",
+      "source_file": "frontend/src/app/auth/callback/route.ts",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -3277,7 +2637,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/app/signup/page.tsx",
-      "source_location": "L36",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -3289,7 +2649,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L28",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -3305,27 +2665,15 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_chat_chatinterface_chatinterface",
+      "source": "frontend_src_components_home_homecontent_homecontent",
       "target": "frontend_src_lib_supabase_client_createclient",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L168",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_navigation_navbar_navbar",
-      "target": "frontend_src_lib_supabase_client_createclient",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L21",
+      "source_file": "frontend/src/components/home/HomeContent.tsx",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -3341,54 +2689,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_delete_conversation",
-      "target": "delete",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "decorator",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L121",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_get_conversation_messages",
-      "target": "backend_app_api_v1_chat_py_get",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "decorator",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L77",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_get_user_conversations",
-      "target": "backend_app_api_v1_chat_py_get",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "decorator",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_send_chat_message",
-      "target": "post",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "decorator",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_main_root",
       "target": "backend_app_main_py_get",
       "relation": "references",
@@ -3397,7 +2697,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/main.py",
-      "source_location": "L29",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -3410,30 +2710,6 @@
       "context": "generic_arg",
       "source_file": "backend/app/auth/deps.py",
       "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_fallback_citations",
-      "target": "any",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L143",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "any",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -3557,30 +2833,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_auth_deps_get_current_user",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_auth_deps",
       "target": "backend_app_db_supabase_get_supabase_client",
       "relation": "imports",
@@ -3590,18 +2842,6 @@
       "context": "import",
       "source_file": "backend/app/auth/deps.py",
       "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -3809,39 +3049,15 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_api_assistant_route",
+      "source": "frontend_src_app_auth_callback_route",
       "target": "frontend_src_lib_supabase_server_createclient",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
+      "source_file": "frontend/src/app/auth/callback/route.ts",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_lib_supabase_server_createclient",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_components_chat_chatinterface_chatinterface",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3905,18 +3121,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_login_page",
-      "target": "frontend_src_components_navigation_navbar_navbar",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/login/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_otp_page",
       "target": "frontend_src_lib_supabase_client_createclient",
       "relation": "imports",
@@ -3965,18 +3169,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_signup_page",
-      "target": "frontend_src_components_navigation_navbar_navbar",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/signup/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_verify_email_page",
       "target": "frontend_src_lib_supabase_client_createclient",
       "relation": "imports",
@@ -3986,18 +3178,6 @@
       "context": "import",
       "source_file": "frontend/src/app/verify-email/page.tsx",
       "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_verify_email_page",
-      "target": "frontend_src_components_navigation_navbar_navbar",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -4022,18 +3202,6 @@
       "context": "import",
       "source_file": "frontend/src/components/auth/LoginForm.tsx",
       "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_lib_supabase_client_createclient",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4045,7 +3213,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L27",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -4057,7 +3225,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L28",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -4069,43 +3237,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L29",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
       "source": "frontend_src_components_home_homecontent",
-      "target": "frontend_src_components_navigation_navbar_navbar",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L30",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_home_homecontent",
-      "target": "frontend_src_components_assistant_floatingassistant_floatingassistant",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_navigation_navbar",
       "target": "frontend_src_lib_supabase_client_createclient",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L7",
+      "source_file": "frontend/src/components/home/HomeContent.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -4181,39 +3325,15 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_api_assistant_route",
+      "source": "frontend_src_app_auth_callback_route",
       "target": "frontend_src_lib_supabase_server",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
+      "source_file": "frontend/src/app/auth/callback/route.ts",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_lib_supabase_server",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_components_chat_chatinterface",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -4277,18 +3397,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_login_page",
-      "target": "frontend_src_components_navigation_navbar",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/login/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_otp_page",
       "target": "frontend_src_lib_supabase_client",
       "relation": "imports_from",
@@ -4337,18 +3445,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_signup_page",
-      "target": "frontend_src_components_navigation_navbar",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/signup/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_verify_email_page",
       "target": "frontend_src_lib_supabase_client",
       "relation": "imports_from",
@@ -4358,18 +3454,6 @@
       "context": "import",
       "source_file": "frontend/src/app/verify-email/page.tsx",
       "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_verify_email_page",
-      "target": "frontend_src_components_navigation_navbar",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -4394,18 +3478,6 @@
       "context": "import",
       "source_file": "frontend/src/components/auth/LoginForm.tsx",
       "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_lib_supabase_client",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4417,7 +3489,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L27",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -4429,7 +3501,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L28",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -4441,43 +3513,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L29",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
       "source": "frontend_src_components_home_homecontent",
-      "target": "frontend_src_components_navigation_navbar",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L30",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_home_homecontent",
-      "target": "frontend_src_components_assistant_floatingassistant",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_navigation_navbar",
       "target": "frontend_src_lib_supabase_client",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L7",
+      "source_file": "frontend/src/components/home/HomeContent.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -4541,18 +3589,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_send_chat_message",
-      "target": "backend_app_api_v1_chat_chatmessagerequest",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_db_supabase_get_supabase_admin_client",
       "target": "client",
       "relation": "references",
@@ -4607,72 +3643,6 @@
       "confidence_score": 1.0,
       "source_file": "backend/app/api/health.py",
       "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_chatmessagerequest",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_delete_conversation",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L122",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_chatmessageresponse",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_send_chat_message",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_get_user_conversations",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L56",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_get_conversation_messages",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -4738,7 +3708,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/main.py",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -4750,17 +3720,6 @@
       "confidence_score": 1.0,
       "source_file": "backend/app/services/email_service.py",
       "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service",
-      "target": "backend_app_services_rag_service_legalragservice",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -5215,39 +4174,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_api_assistant_route",
-      "target": "frontend_src_app_api_assistant_route_generatelegalanalysis",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L125",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route",
-      "target": "frontend_src_app_api_assistant_route_post",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route",
-      "target": "frontend_src_app_api_assistant_route_getfallbackcitations",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L73",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_api_news_route",
       "target": "frontend_src_app_api_news_route_get",
       "relation": "contains",
@@ -5255,7 +4181,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/api/news/route.ts",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -5277,18 +4203,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/auth/callback/route.ts",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_app_chat_page_chatpage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L7",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -5343,7 +4258,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/login/page.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -5387,29 +4302,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/signup/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_verify_email_page",
-      "target": "frontend_src_app_verify_email_page_verificationstate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_verify_email_page",
-      "target": "frontend_src_app_verify_email_page_verifyemailcontent",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L12",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5420,29 +4313,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/verify-email/page.tsx",
-      "source_location": "L321",
+      "source_location": "L254",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_assistant_floatingassistant",
-      "target": "frontend_src_components_assistant_floatingassistant_floatingassistant",
+      "source": "frontend_src_app_verify_email_page",
+      "target": "frontend_src_app_verify_email_page_verifyemailcontent",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_assistant_floatingassistant",
-      "target": "frontend_src_components_assistant_floatingassistant_chatmessage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L6",
+      "source_file": "frontend/src/app/verify-email/page.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -5457,61 +4339,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_components_chat_chatinterface_citation",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_components_chat_chatinterface_message",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_components_chat_chatinterface_conversation",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_components_chat_chatinterface_chatinterfaceprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L48",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_chat_chatinterface",
-      "target": "frontend_src_components_chat_chatinterface_chatinterface",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L54",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_components_home_homecontent",
       "target": "frontend_src_components_home_homecontent_homecontentprops",
       "relation": "contains",
@@ -5519,7 +4346,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L33",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5530,29 +4357,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L38",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_navigation_navbar",
-      "target": "frontend_src_components_navigation_navbar_navbar",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_navigation_navbar",
-      "target": "frontend_src_components_navigation_navbar_navbarprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/navigation/Navbar.tsx",
-      "source_location": "L9",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -6106,28 +4911,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_chatmessagerequest",
-      "target": "basemodel",
-      "relation": "inherits",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_chatmessageresponse",
-      "target": "basemodel",
-      "relation": "inherits",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_core_config_settings",
       "target": "basesettings",
       "relation": "inherits",
@@ -6183,61 +4966,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_fallback_citations",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L143",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_init",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L16",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L193",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_process_query",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_api_health_rationale_10",
       "target": "backend_app_api_health_health_check",
       "relation": "rationale_for",
@@ -6246,50 +4974,6 @@
       "confidence_score": 1.0,
       "source_file": "backend/app/api/health.py",
       "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_rationale_126",
-      "target": "backend_app_api_v1_chat_delete_conversation",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L126",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_rationale_30",
-      "target": "backend_app_api_v1_chat_send_chat_message",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L30",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_rationale_57",
-      "target": "backend_app_api_v1_chat_get_user_conversations",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L57",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_rationale_82",
-      "target": "backend_app_api_v1_chat_get_conversation_messages",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -6378,28 +5062,6 @@
       "confidence_score": 1.0,
       "source_file": "backend/app/services/email_service.py",
       "source_location": "L64",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_rationale_11",
-      "target": "backend_app_services_rag_service_legalragservice",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_rationale_53",
-      "target": "backend_app_services_rag_service_legalragservice_process_query",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L53",
       "weight": 1.0
     },
     {
