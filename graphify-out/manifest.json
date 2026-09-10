@@ -143,12 +143,6 @@
     "ast_hash": "589730904e14b543a5c140d5dca4a4d9",
     "semantic_hash": ""
   },
-  "switch.md": {
-    "mtime": 1787931626.1108313,
-    "seen": 1789062804.814135,
-    "ast_hash": "c45aaa149c8b7cf0971be73cbde22f9c",
-    "semantic_hash": ""
-  },
   "frontend/.eslintrc.json": {
     "mtime": 1787850291.1565409,
     "seen": 1787856815.5691733,
@@ -234,9 +228,9 @@
     "semantic_hash": ""
   },
   "frontend/src/components/auth/LoginForm.tsx": {
-    "mtime": 1787850558.0226903,
-    "seen": 1787856815.5691733,
-    "ast_hash": "2f0d0cdf9db1ea0209989a3d944a91d2",
+    "mtime": 1789063178.8181815,
+    "seen": 1789064380.5807295,
+    "ast_hash": "a7560af35af38aee4922b37f8082aa7a",
     "semantic_hash": ""
   },
   "frontend/src/components/home/HomeContent.tsx": {
@@ -333,6 +327,12 @@
     "mtime": 1787858079.3502755,
     "seen": 1789062804.8130233,
     "ast_hash": "ae9b9c0f9a57109f7a53be2f507714a9",
+    "semantic_hash": ""
+  },
+  "frontend/vercel.json": {
+    "mtime": 1789064360.476094,
+    "seen": 1789064380.5807295,
+    "ast_hash": "358e55e820425d6f214526c6a92d1d14",
     "semantic_hash": ""
   }
 }

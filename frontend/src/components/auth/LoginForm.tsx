@@ -37,7 +37,11 @@ export const LoginForm: React.FC = () => {
         router.refresh();
       }
     } catch (err: any) {
-      setErrorMsg('An unexpected error occurred during sign in.');
+      if (err.message?.includes('fetch') || err.message?.includes('network')) {
+        setErrorMsg('Cannot connect to Supabase server. If your Supabase free project is paused, please unpause it in your Supabase Dashboard.');
+      } else {
+        setErrorMsg('An unexpected error occurred during sign in.');
+      }
       setLoading(false);
     }
   };

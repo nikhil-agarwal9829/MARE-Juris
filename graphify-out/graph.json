@@ -173,6 +173,19 @@
       "source_location": "L17"
     },
     {
+      "id": "backend_app_services_rag_service_legalragservice",
+      "label": "LegalRAGService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": "legalragservice",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L10"
+    },
+    {
       "id": "backend_app_services_email_service_emailservice",
       "label": "EmailService",
       "_callable": true,
@@ -184,19 +197,6 @@
       "norm_label": "emailservice",
       "source_file": "backend/app/services/email_service.py",
       "source_location": "L5"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice",
-      "label": "LegalRAGService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "legalragservice",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L10"
     },
     {
       "id": "backend_app_main_root",
@@ -583,18 +583,6 @@
       "source_location": "L19"
     },
     {
-      "id": "backend_app_api_health_health_check",
-      "label": "health_check()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "health_check()",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L9"
-    },
-    {
       "id": "backend_app_api_v1_chat_delete_conversation",
       "label": "delete_conversation()",
       "_callable": true,
@@ -643,30 +631,6 @@
       "source_location": "L26"
     },
     {
-      "id": "backend_app_auth_deps_get_current_user",
-      "label": "get_current_user()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L23"
-    },
-    {
-      "id": "backend_app_auth_deps_get_current_user_token",
-      "label": "get_current_user_token()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user_token()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_app_db_supabase_get_supabase_admin_client",
       "label": "get_supabase_admin_client()",
       "_callable": true,
@@ -679,16 +643,64 @@
       "source_location": "L21"
     },
     {
-      "id": "backend_app_db_supabase_get_supabase_client",
-      "label": "get_supabase_client()",
+      "id": "backend_app_services_rag_service_legalragservice_fallback_citations",
+      "label": "._fallback_citations()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "get_supabase_client()",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L5"
+      "norm_label": "._fallback_citations()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L143"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
+      "label": "._generate_rule_based_response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": "._generate_rule_based_response()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L193"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
+      "label": "._get_system_prompt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": "._get_system_prompt()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L26"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L16"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_process_query",
+      "label": ".process_query()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": ".process_query()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L47"
     },
     {
       "id": "backend_app_services_email_service_emailservice_init",
@@ -739,64 +751,52 @@
       "source_location": "L22"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_fallback_citations",
-      "label": "._fallback_citations()",
+      "id": "backend_app_api_health_health_check",
+      "label": "health_check()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._fallback_citations()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L143"
+      "norm_label": "health_check()",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L9"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "label": "._generate_rule_based_response()",
+      "id": "backend_app_auth_deps_get_current_user",
+      "label": "get_current_user()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._generate_rule_based_response()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L193"
+      "norm_label": "get_current_user()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L23"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "label": "._get_system_prompt()",
+      "id": "backend_app_auth_deps_get_current_user_token",
+      "label": "get_current_user_token()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._get_system_prompt()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L26"
+      "norm_label": "get_current_user_token()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L10"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_init",
-      "label": ".__init__()",
+      "id": "backend_app_db_supabase_get_supabase_client",
+      "label": "get_supabase_client()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L16"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_process_query",
-      "label": ".process_query()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": ".process_query()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L47"
+      "norm_label": "get_supabase_client()",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L5"
     },
     {
       "id": "auth_users",
@@ -1405,16 +1405,48 @@
       "source_location": "L1"
     },
     {
-      "id": "switch",
-      "label": "switch.md",
+      "id": "frontend_vercel",
+      "label": "vercel.json",
       "_origin": "ast",
       "community": 19,
-      "community_name": "switch.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "switch.md",
-      "source_file": "switch.md",
+      "community_name": "vercel.json",
+      "file_type": "code",
+      "norm_label": "vercel.json",
+      "source_file": "frontend/vercel.json",
       "source_location": "L1"
+    },
+    {
+      "id": "frontend_vercel_buildcommand",
+      "label": "buildCommand",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vercel.json",
+      "file_type": "code",
+      "norm_label": "buildcommand",
+      "source_file": "frontend/vercel.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "frontend_vercel_framework",
+      "label": "framework",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vercel.json",
+      "file_type": "code",
+      "norm_label": "framework",
+      "source_file": "frontend/vercel.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "frontend_vercel_outputdirectory",
+      "label": "outputDirectory",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vercel.json",
+      "file_type": "code",
+      "norm_label": "outputdirectory",
+      "source_file": "frontend/vercel.json",
+      "source_location": "L4"
     },
     {
       "id": "docs_supabase_setup",
@@ -2057,24 +2089,13 @@
       "source_file": "tailwindcss"
     },
     {
-      "id": "backend_app_api_health",
-      "label": "health.py",
+      "id": "any",
+      "label": "Any",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "health.py",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_api_health_py_get",
-      "label": "get",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get",
+      "norm_label": "any",
       "source_file": "",
       "source_location": ""
     },
@@ -2101,28 +2122,6 @@
       "source_location": ""
     },
     {
-      "id": "backend_app_auth_deps",
-      "label": "deps.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "deps.py",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_db_supabase",
-      "label": "supabase.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "supabase.py",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_app_services_rag_service",
       "label": "rag_service.py",
       "_origin": "ast",
@@ -2145,17 +2144,6 @@
       "source_location": ""
     },
     {
-      "id": "client",
-      "label": "Client",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "client",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "delete",
       "label": "delete",
       "_origin": "ast",
@@ -2163,17 +2151,6 @@
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
       "norm_label": "delete",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "httpauthorizationcredentials",
-      "label": "HTTPAuthorizationCredentials",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "httpauthorizationcredentials",
       "source_file": "",
       "source_location": ""
     },
@@ -2187,17 +2164,6 @@
       "norm_label": "post",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "backend_app_api_health_rationale_10",
-      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L10"
     },
     {
       "id": "backend_app_api_v1_chat_rationale_126",
@@ -2244,28 +2210,6 @@
       "source_location": "L82"
     },
     {
-      "id": "backend_app_auth_deps_rationale_11",
-      "label": "Extracts Bearer Token from HTTP Authorization Header.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "extracts bearer token from http authorization header.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L11"
-    },
-    {
-      "id": "backend_app_auth_deps_rationale_24",
-      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L24"
-    },
-    {
       "id": "backend_app_db_supabase_rationale_22",
       "label": "Returns a privileged Supabase client using SUPABASE_SERVICE_ROLE_KEY. Bypasses\u2026",
       "_origin": "ast",
@@ -2277,15 +2221,26 @@
       "source_location": "L22"
     },
     {
-      "id": "backend_app_db_supabase_rationale_6",
-      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
+      "id": "backend_app_services_rag_service_rationale_11",
+      "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L6"
+      "norm_label": "evidence-grounded rag engine for mare-juris legal intelligence platform....",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_app_services_rag_service_rationale_53",
+      "label": "Processes a legal query through the RAG pipeline, generating grounded analysis\u2026",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "rationale",
+      "norm_label": "processes a legal query through the rag pipeline, generating grounded analysis...",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L53"
     },
     {
       "id": "frontend_package",
@@ -2629,37 +2584,114 @@
       "source_location": "L64"
     },
     {
-      "id": "any",
-      "label": "Any",
+      "id": "backend_app_api_health",
+      "label": "health.py",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "any",
+      "norm_label": "health.py",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_api_health_py_get",
+      "label": "get",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "backend_app_services_rag_service_rationale_11",
-      "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
+      "id": "backend_app_auth_deps",
+      "label": "deps.py",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "deps.py",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_db_supabase",
+      "label": "supabase.py",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "supabase.py",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "client",
+      "label": "Client",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "client",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "httpauthorizationcredentials",
+      "label": "HTTPAuthorizationCredentials",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "httpauthorizationcredentials",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_app_api_health_rationale_10",
+      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
-      "norm_label": "evidence-grounded rag engine for mare-juris legal intelligence platform....",
-      "source_file": "backend/app/services/rag_service.py",
+      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L10"
+    },
+    {
+      "id": "backend_app_auth_deps_rationale_11",
+      "label": "Extracts Bearer Token from HTTP Authorization Header.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "extracts bearer token from http authorization header.",
+      "source_file": "backend/app/auth/deps.py",
       "source_location": "L11"
     },
     {
-      "id": "backend_app_services_rag_service_rationale_53",
-      "label": "Processes a legal query through the RAG pipeline, generating grounded analysis\u2026",
+      "id": "backend_app_auth_deps_rationale_24",
+      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "rationale",
-      "norm_label": "processes a legal query through the rag pipeline, generating grounded analysis...",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L53"
+      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_app_db_supabase_rationale_6",
+      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L6"
     },
     {
       "id": "frontend_package_devdependencies",
@@ -5886,6 +5918,39 @@
       "weight": 1.0
     },
     {
+      "source": "frontend_vercel",
+      "target": "frontend_vercel_framework",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/vercel.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_vercel",
+      "target": "frontend_vercel_buildcommand",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/vercel.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_vercel",
+      "target": "frontend_vercel_outputdirectory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/vercel.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "supabase_migrations_20260827000000_initial_schema",
       "target": "supabase_migrations_20260827000000_initial_schema_public_uploaded_documents",
       "relation": "contains",
@@ -6822,5 +6887,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9fe73661392ad7dcd77e1891408806fba6eb1780"
+  "built_at_commit": "792fa987d695234b93a4c73b6cb797124406b495"
 }
