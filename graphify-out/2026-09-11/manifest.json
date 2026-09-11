@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "frontend/package.json": {
-    "mtime": 1789066657.9993296,
-    "seen": 1789146400.3648314,
-    "ast_hash": "97291802d4866f9942e99128cff8daf4",
+    "mtime": 1787850303.9375918,
+    "seen": 1787856815.5691733,
+    "ast_hash": "73ae409bacfab59320677086f1bac295",
     "semantic_hash": ""
   },
   "frontend/src/lib/supabase/admin.ts": {
@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "backend/app/services/rag_service.py": {
-    "mtime": 1789066703.3543746,
-    "seen": 1789146400.3648314,
-    "ast_hash": "f0ecf391c70fe948b767540b34716c98",
+    "mtime": 1789062501.448296,
+    "seen": 1789062804.8130233,
+    "ast_hash": "3028afe383ba968368be42b3be1de8fa",
     "semantic_hash": ""
   },
   "frontend/src/app/api/assistant/route.ts": {
@@ -306,21 +306,21 @@
     "semantic_hash": ""
   },
   "frontend/src/app/chat/page.tsx": {
-    "mtime": 1789066726.6857526,
-    "seen": 1789146400.3648314,
-    "ast_hash": "acd95e8912b13f8e83874bdba3eb8837",
+    "mtime": 1789062542.4257185,
+    "seen": 1789062804.8130233,
+    "ast_hash": "12ad99dc863722e098c1bd74e30626a5",
     "semantic_hash": ""
   },
   "frontend/src/components/assistant/FloatingAssistant.tsx": {
-    "mtime": 1789066720.1995554,
-    "seen": 1789146400.3648314,
-    "ast_hash": "3c6b932756266c614dc8592b24ba827f",
+    "mtime": 1787858142.976019,
+    "seen": 1789062804.8130233,
+    "ast_hash": "0bb3dfe1cc01f219ad783f31cc2325e2",
     "semantic_hash": ""
   },
   "frontend/src/components/chat/ChatInterface.tsx": {
-    "mtime": 1789066744.3710427,
-    "seen": 1789146400.3648314,
-    "ast_hash": "215839bfd6d5b4b84e2d65c3503c2b13",
+    "mtime": 1789062742.1840618,
+    "seen": 1789062804.8130233,
+    "ast_hash": "a69ed2196c3962044f692927bfada8e2",
     "semantic_hash": ""
   },
   "frontend/src/components/navigation/Navbar.tsx": {
@@ -333,24 +333,6 @@
     "mtime": 1789064360.476094,
     "seen": 1789064380.5807295,
     "ast_hash": "358e55e820425d6f214526c6a92d1d14",
-    "semantic_hash": ""
-  },
-  "backend/app/services/legal_classifier.py": {
-    "mtime": 1789066692.3657188,
-    "seen": 1789146400.3648314,
-    "ast_hash": "5b3c19f77a394aea303a255a5e4930b2",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/api/website-assistant/route.ts": {
-    "mtime": 1789066712.0389836,
-    "seen": 1789146400.3648314,
-    "ast_hash": "bc764a5206dfaad4819d72602431bbf3",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/ask-juris/page.tsx": {
-    "mtime": 1789066735.3371828,
-    "seen": 1789146400.3648314,
-    "ast_hash": "f34b14d7d7bf8b7f8f2765dd69e47a9f",
     "semantic_hash": ""
   }
 }

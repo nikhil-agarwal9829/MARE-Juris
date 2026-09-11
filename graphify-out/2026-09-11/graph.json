@@ -40,7 +40,7 @@
       "file_type": "code",
       "norm_label": "chatmessage",
       "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L7"
+      "source_location": "L6"
     },
     {
       "id": "frontend_src_components_home_homecontent_homecontentprops",
@@ -79,7 +79,7 @@
       "file_type": "code",
       "norm_label": "chatinterfaceprops",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L49"
+      "source_location": "L48"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_citation",
@@ -92,7 +92,7 @@
       "file_type": "code",
       "norm_label": "citation",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L27"
+      "source_location": "L26"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_conversation",
@@ -105,7 +105,7 @@
       "file_type": "code",
       "norm_label": "conversation",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L43"
+      "source_location": "L42"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_message",
@@ -118,7 +118,7 @@
       "file_type": "code",
       "norm_label": "message",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L35"
+      "source_location": "L34"
     },
     {
       "id": "frontend_src_app_api_news_route_newsarticle",
@@ -173,17 +173,17 @@
       "source_location": "L17"
     },
     {
-      "id": "backend_app_services_legal_classifier_legalqueryclassifier",
-      "label": "LegalQueryClassifier",
+      "id": "backend_app_services_rag_service_legalragservice",
+      "label": "LegalRAGService",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 30,
-      "community_name": "LegalQueryClassifier",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "legalqueryclassifier",
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L5"
+      "norm_label": "legalragservice",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L10"
     },
     {
       "id": "backend_app_services_email_service_emailservice",
@@ -197,19 +197,6 @@
       "norm_label": "emailservice",
       "source_file": "backend/app/services/email_service.py",
       "source_location": "L5"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice",
-      "label": "LegalRAGService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "legalragservice",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L16"
     },
     {
       "id": "backend_app_main_root",
@@ -341,7 +328,7 @@
       "file_type": "code",
       "norm_label": "floatingassistant()",
       "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L16"
+      "source_location": "L12"
     },
     {
       "id": "frontend_src_components_auth_loginform_loginform",
@@ -452,15 +439,15 @@
       "source_location": "L4"
     },
     {
-      "id": "frontend_src_app_ask_juris_page_askjurispage",
-      "label": "AskJurisPage()",
+      "id": "frontend_src_app_chat_page_chatpage",
+      "label": "ChatPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 17,
       "community_name": "createClient",
       "file_type": "code",
-      "norm_label": "askjurispage()",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "norm_label": "chatpage()",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L7"
     },
     {
@@ -497,7 +484,7 @@
       "file_type": "code",
       "norm_label": "chatinterface()",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L56"
+      "source_location": "L54"
     },
     {
       "id": "frontend_src_components_home_homecontent_homecontent",
@@ -596,18 +583,6 @@
       "source_location": "L19"
     },
     {
-      "id": "backend_app_api_health_health_check",
-      "label": "health_check()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "health_check()",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L9"
-    },
-    {
       "id": "backend_app_api_v1_chat_delete_conversation",
       "label": "delete_conversation()",
       "_callable": true,
@@ -656,30 +631,6 @@
       "source_location": "L26"
     },
     {
-      "id": "backend_app_auth_deps_get_current_user",
-      "label": "get_current_user()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L23"
-    },
-    {
-      "id": "backend_app_auth_deps_get_current_user_token",
-      "label": "get_current_user_token()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user_token()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_app_db_supabase_get_supabase_admin_client",
       "label": "get_supabase_admin_client()",
       "_callable": true,
@@ -692,52 +643,64 @@
       "source_location": "L21"
     },
     {
-      "id": "backend_app_db_supabase_get_supabase_client",
-      "label": "get_supabase_client()",
+      "id": "backend_app_services_rag_service_legalragservice_fallback_citations",
+      "label": "._fallback_citations()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "get_supabase_client()",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L5"
+      "norm_label": "._fallback_citations()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L143"
     },
     {
-      "id": "backend_app_services_legal_classifier_legalqueryclassifier_classify",
-      "label": ".classify()",
+      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
+      "label": "._generate_rule_based_response()",
       "_callable": true,
       "_origin": "ast",
-      "community": 30,
-      "community_name": "LegalQueryClassifier",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": ".classify()",
-      "source_file": "backend/app/services/legal_classifier.py",
+      "norm_label": "._generate_rule_based_response()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L193"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
+      "label": "._get_system_prompt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": "._get_system_prompt()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L26"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L16"
+    },
+    {
+      "id": "backend_app_services_rag_service_legalragservice_process_query",
+      "label": ".process_query()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": ".process_query()",
+      "source_file": "backend/app/services/rag_service.py",
       "source_location": "L47"
-    },
-    {
-      "id": "frontend_src_app_api_website_assistant_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "website-assistant/route.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "frontend_src_app_chat_page_chatredirectpage",
-      "label": "ChatRedirectPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "chat/page.tsx",
-      "file_type": "code",
-      "norm_label": "chatredirectpage()",
-      "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L3"
     },
     {
       "id": "backend_app_services_email_service_emailservice_init",
@@ -788,76 +751,52 @@
       "source_location": "L22"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "label": "._generate_rule_based_response()",
+      "id": "backend_app_api_health_health_check",
+      "label": "health_check()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._generate_rule_based_response()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L258"
+      "norm_label": "health_check()",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L9"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "label": "._get_system_prompt()",
+      "id": "backend_app_auth_deps_get_current_user",
+      "label": "get_current_user()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._get_system_prompt()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L33"
+      "norm_label": "get_current_user()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L23"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_init",
-      "label": ".__init__()",
+      "id": "backend_app_auth_deps_get_current_user_token",
+      "label": "get_current_user_token()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L22"
+      "norm_label": "get_current_user_token()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L10"
     },
     {
-      "id": "backend_app_services_rag_service_legalragservice_persist_messages_and_audit",
-      "label": "._persist_messages_and_audit()",
+      "id": "backend_app_db_supabase_get_supabase_client",
+      "label": "get_supabase_client()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "._persist_messages_and_audit()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_process_query",
-      "label": ".process_query()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": ".process_query()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L57"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_retrieve_evidence_citations",
-      "label": "._retrieve_evidence_citations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "code",
-      "norm_label": "._retrieve_evidence_citations()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198"
+      "norm_label": "get_supabase_client()",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L5"
     },
     {
       "id": "auth_users",
@@ -1400,14 +1339,14 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_app_ask_juris_page",
-      "label": "ask-juris/page.tsx",
+      "id": "frontend_src_app_chat_page",
+      "label": "chat/page.tsx",
       "_origin": "ast",
       "community": 17,
       "community_name": "createClient",
       "file_type": "code",
-      "norm_label": "ask-juris/page.tsx",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "norm_label": "chat/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L1"
     },
     {
@@ -2150,24 +2089,13 @@
       "source_file": "tailwindcss"
     },
     {
-      "id": "backend_app_api_health",
-      "label": "health.py",
+      "id": "any",
+      "label": "Any",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "health.py",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_api_health_py_get",
-      "label": "get",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get",
+      "norm_label": "any",
       "source_file": "",
       "source_location": ""
     },
@@ -2194,28 +2122,6 @@
       "source_location": ""
     },
     {
-      "id": "backend_app_auth_deps",
-      "label": "deps.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "deps.py",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_db_supabase",
-      "label": "supabase.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "supabase.py",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_app_services_rag_service",
       "label": "rag_service.py",
       "_origin": "ast",
@@ -2238,17 +2144,6 @@
       "source_location": ""
     },
     {
-      "id": "client",
-      "label": "Client",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "client",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "delete",
       "label": "delete",
       "_origin": "ast",
@@ -2256,17 +2151,6 @@
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
       "norm_label": "delete",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "httpauthorizationcredentials",
-      "label": "HTTPAuthorizationCredentials",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "httpauthorizationcredentials",
       "source_file": "",
       "source_location": ""
     },
@@ -2280,17 +2164,6 @@
       "norm_label": "post",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "backend_app_api_health_rationale_10",
-      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L10"
     },
     {
       "id": "backend_app_api_v1_chat_rationale_126",
@@ -2337,28 +2210,6 @@
       "source_location": "L82"
     },
     {
-      "id": "backend_app_auth_deps_rationale_11",
-      "label": "Extracts Bearer Token from HTTP Authorization Header.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "extracts bearer token from http authorization header.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L11"
-    },
-    {
-      "id": "backend_app_auth_deps_rationale_24",
-      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L24"
-    },
-    {
       "id": "backend_app_db_supabase_rationale_22",
       "label": "Returns a privileged Supabase client using SUPABASE_SERVICE_ROLE_KEY. Bypasses\u2026",
       "_origin": "ast",
@@ -2370,91 +2221,36 @@
       "source_location": "L22"
     },
     {
-      "id": "backend_app_db_supabase_rationale_6",
-      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
+      "id": "backend_app_services_rag_service_rationale_11",
+      "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L6"
+      "norm_label": "evidence-grounded rag engine for mare-juris legal intelligence platform....",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L11"
     },
     {
-      "id": "backend_app_services_legal_classifier",
-      "label": "legal_classifier.py",
+      "id": "backend_app_services_rag_service_rationale_53",
+      "label": "Processes a legal query through the RAG pipeline, generating grounded analysis\u2026",
       "_origin": "ast",
-      "community": 30,
-      "community_name": "LegalQueryClassifier",
-      "file_type": "code",
-      "norm_label": "legal_classifier.py",
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_services_legal_classifier_py_any",
-      "label": "Any",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "LegalQueryClassifier",
-      "file_type": "code",
-      "norm_label": "any",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_app_services_legal_classifier_rationale_6",
-      "label": "Semantic Legal Query Relevance Classifier for MARE-Juris. Evaluates intent\u2026",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "LegalQueryClassifier",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "semantic legal query relevance classifier for mare-juris. evaluates intent...",
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L6"
+      "norm_label": "processes a legal query through the rag pipeline, generating grounded analysis...",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L53"
     },
     {
-      "id": "frontend_src_app_api_website_assistant_route",
-      "label": "website-assistant/route.ts",
+      "id": "frontend_package",
+      "label": "package.json",
       "_origin": "ast",
-      "community": 31,
-      "community_name": "website-assistant/route.ts",
+      "community": 6,
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "website-assistant/route.ts",
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_app_api_website_assistant_route_legal_query_triggers",
-      "label": "LEGAL_QUERY_TRIGGERS",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "website-assistant/route.ts",
-      "file_type": "code",
-      "norm_label": "legal_query_triggers",
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "frontend_src_app_api_website_assistant_route_website_help_knowledge",
-      "label": "WEBSITE_HELP_KNOWLEDGE",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "website-assistant/route.ts",
-      "file_type": "code",
-      "norm_label": "website_help_knowledge",
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "frontend_src_app_chat_page",
-      "label": "chat/page.tsx",
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "chat/page.tsx",
-      "file_type": "code",
-      "norm_label": "chat/page.tsx",
-      "source_file": "frontend/src/app/chat/page.tsx",
+      "norm_label": "package.json",
+      "source_file": "frontend/package.json",
       "source_location": "L1"
     },
     {
@@ -2524,28 +2320,6 @@
       "source_location": "L18"
     },
     {
-      "id": "frontend_package_dependencies_react_markdown",
-      "label": "react-markdown",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react-markdown",
-      "source_file": "frontend/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "frontend_package_dependencies_remark_gfm",
-      "label": "remark-gfm",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "remark-gfm",
-      "source_file": "frontend/package.json",
-      "source_location": "L20"
-    },
-    {
       "id": "frontend_package_dependencies_supabase_ssr",
       "label": "@supabase/ssr",
       "_origin": "ast",
@@ -2576,7 +2350,95 @@
       "file_type": "code",
       "norm_label": "tailwind-merge",
       "source_file": "frontend/package.json",
-      "source_location": "L21"
+      "source_location": "L19"
+    },
+    {
+      "id": "frontend_package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "frontend/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "frontend_package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "frontend/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "frontend/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "frontend_package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "frontend/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "frontend/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "frontend_package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "frontend/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "frontend_package_scripts_start",
+      "label": "start",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "start",
+      "source_file": "frontend/package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "frontend_package_version",
+      "label": "version",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "version",
+      "source_file": "frontend/package.json",
+      "source_location": "L3"
     },
     {
       "id": "clsx",
@@ -2634,28 +2496,6 @@
       "source_location": "L18"
     },
     {
-      "id": "react_markdown",
-      "label": "react-markdown",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "react-markdown",
-      "source_file": "frontend/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "remark_gfm",
-      "label": "remark-gfm",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "remark-gfm",
-      "source_file": "frontend/package.json",
-      "source_location": "L20"
-    },
-    {
       "id": "supabase_ssr",
       "label": "@supabase/ssr",
       "_origin": "ast",
@@ -2686,7 +2526,7 @@
       "file_type": "concept",
       "norm_label": "tailwind-merge",
       "source_file": "frontend/package.json",
-      "source_location": "L21"
+      "source_location": "L19"
     },
     {
       "id": "backend_app_services_email_service",
@@ -2744,48 +2584,114 @@
       "source_location": "L64"
     },
     {
-      "id": "backend_app_services_rag_service_py_any",
-      "label": "Any",
+      "id": "backend_app_api_health",
+      "label": "health.py",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "any",
+      "norm_label": "health.py",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_api_health_py_get",
+      "label": "get",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "backend_app_services_rag_service_rationale_17",
-      "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
+      "id": "backend_app_auth_deps",
+      "label": "deps.py",
       "_origin": "ast",
       "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "rationale",
-      "norm_label": "evidence-grounded rag engine for mare-juris legal intelligence platform....",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L17"
-    },
-    {
-      "id": "backend_app_services_rag_service_rationale_63",
-      "label": "Main Ask MARE-Juris Legal Chat Pipeline. Pipeline: INPUT VALIDATION -> LEGAL\u2026",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "LegalRAGService",
-      "file_type": "rationale",
-      "norm_label": "main ask mare-juris legal chat pipeline. pipeline: input validation -> legal...",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L63"
-    },
-    {
-      "id": "frontend_package",
-      "label": "package.json",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
+      "community_name": "get_supabase_client",
       "file_type": "code",
-      "norm_label": "package.json",
-      "source_file": "frontend/package.json",
+      "norm_label": "deps.py",
+      "source_file": "backend/app/auth/deps.py",
       "source_location": "L1"
+    },
+    {
+      "id": "backend_app_db_supabase",
+      "label": "supabase.py",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "supabase.py",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "client",
+      "label": "Client",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "client",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "httpauthorizationcredentials",
+      "label": "HTTPAuthorizationCredentials",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "httpauthorizationcredentials",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_app_api_health_rationale_10",
+      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L10"
+    },
+    {
+      "id": "backend_app_auth_deps_rationale_11",
+      "label": "Extracts Bearer Token from HTTP Authorization Header.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "extracts bearer token from http authorization header.",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_app_auth_deps_rationale_24",
+      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_app_db_supabase_rationale_6",
+      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L6"
     },
     {
       "id": "frontend_package_devdependencies",
@@ -2796,7 +2702,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "frontend/package.json",
-      "source_location": "L23"
+      "source_location": "L21"
     },
     {
       "id": "frontend_package_devdependencies_autoprefixer",
@@ -2807,7 +2713,7 @@
       "file_type": "code",
       "norm_label": "autoprefixer",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L25"
     },
     {
       "id": "frontend_package_devdependencies_eslint",
@@ -2818,7 +2724,7 @@
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
+      "source_location": "L26"
     },
     {
       "id": "frontend_package_devdependencies_eslint_config_next",
@@ -2829,7 +2735,7 @@
       "file_type": "code",
       "norm_label": "eslint-config-next",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L27"
     },
     {
       "id": "frontend_package_devdependencies_postcss",
@@ -2840,7 +2746,7 @@
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "frontend_package_devdependencies_tailwindcss",
@@ -2851,7 +2757,7 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L29"
     },
     {
       "id": "frontend_package_devdependencies_types_node",
@@ -2862,7 +2768,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "frontend/package.json",
-      "source_location": "L24"
+      "source_location": "L22"
     },
     {
       "id": "frontend_package_devdependencies_types_react",
@@ -2873,7 +2779,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "frontend/package.json",
-      "source_location": "L25"
+      "source_location": "L23"
     },
     {
       "id": "frontend_package_devdependencies_types_react_dom",
@@ -2884,7 +2790,7 @@
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
+      "source_location": "L24"
     },
     {
       "id": "frontend_package_devdependencies_typescript",
@@ -2895,95 +2801,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "frontend_package_name",
-      "label": "name",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "name",
-      "source_file": "frontend/package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "frontend_package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "frontend/package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "frontend_package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "frontend/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "frontend_package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "frontend/package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "frontend_package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "frontend/package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "frontend_package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "frontend/package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "frontend_package_scripts_start",
-      "label": "start",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "start",
-      "source_file": "frontend/package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "frontend_package_version",
-      "label": "version",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "version",
-      "source_file": "frontend/package.json",
-      "source_location": "L3"
+      "source_location": "L30"
     },
     {
       "id": "autoprefixer",
@@ -2994,7 +2812,7 @@
       "file_type": "concept",
       "norm_label": "autoprefixer",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L25"
     },
     {
       "id": "eslint",
@@ -3005,7 +2823,7 @@
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
+      "source_location": "L26"
     },
     {
       "id": "eslint_config_next",
@@ -3016,7 +2834,7 @@
       "file_type": "concept",
       "norm_label": "eslint-config-next",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L27"
     },
     {
       "id": "frontend_package_json_tailwindcss",
@@ -3027,7 +2845,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L29"
     },
     {
       "id": "postcss",
@@ -3038,7 +2856,7 @@
       "file_type": "concept",
       "norm_label": "postcss",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "types_node",
@@ -3049,7 +2867,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "frontend/package.json",
-      "source_location": "L24"
+      "source_location": "L22"
     },
     {
       "id": "types_react",
@@ -3060,7 +2878,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "frontend/package.json",
-      "source_location": "L25"
+      "source_location": "L23"
     },
     {
       "id": "types_react_dom",
@@ -3071,7 +2889,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
+      "source_location": "L24"
     },
     {
       "id": "typescript",
@@ -3082,7 +2900,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "ADR-001",
@@ -3327,30 +3145,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_rag_service_legalragservice_persist_messages_and_audit",
-      "target": "backend_app_db_supabase_get_supabase_admin_client",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L326",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_retrieve_evidence_citations",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L116",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_services_rag_service_legalragservice_process_query",
       "target": "backend_app_services_rag_service_legalragservice_get_system_prompt",
       "relation": "calls",
@@ -3359,7 +3153,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L152",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_rag_service_legalragservice_process_query",
+      "target": "backend_app_services_rag_service_legalragservice_fallback_citations",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -3371,19 +3177,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L174",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
       "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_persist_messages_and_audit",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L85",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -3423,14 +3229,14 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_ask_juris_page_askjurispage",
+      "source": "frontend_src_app_chat_page_chatpage",
       "target": "frontend_src_lib_supabase_server_createclient",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L12",
       "weight": 1.0
     },
@@ -3539,7 +3345,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L86",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -3639,51 +3445,27 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_legal_classifier_legalqueryclassifier_classify",
-      "target": "backend_app_services_legal_classifier_py_any",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_persist_messages_and_audit",
-      "target": "backend_app_services_rag_service_py_any",
+      "source": "backend_app_services_rag_service_legalragservice_fallback_citations",
+      "target": "any",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
       "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_py_any",
+      "target": "any",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L57",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_retrieve_evidence_citations",
-      "target": "backend_app_services_rag_service_py_any",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -3851,7 +3633,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -3915,30 +3697,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_package_dependencies_react_markdown",
-      "target": "react_markdown",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/package.json",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_dependencies_remark_gfm",
-      "target": "remark_gfm",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/package.json",
-      "source_location": "L20",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_package_dependencies_supabase_ssr",
       "target": "supabase_ssr",
       "relation": "imports",
@@ -3971,7 +3729,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -3983,7 +3741,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -3995,7 +3753,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -4007,7 +3765,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -4019,7 +3777,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -4031,7 +3789,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4043,7 +3801,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -4055,7 +3813,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -4067,7 +3825,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -4079,7 +3837,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -4095,26 +3853,26 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_ask_juris_page",
+      "source": "frontend_src_app_chat_page",
       "target": "frontend_src_lib_supabase_server_createclient",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_ask_juris_page",
+      "source": "frontend_src_app_chat_page",
       "target": "frontend_src_components_chat_chatinterface_chatinterface",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L4",
       "weight": 1.0
     },
@@ -4307,7 +4065,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L8",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4467,26 +4225,26 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_ask_juris_page",
+      "source": "frontend_src_app_chat_page",
       "target": "frontend_src_lib_supabase_server",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_ask_juris_page",
+      "source": "frontend_src_app_chat_page",
       "target": "frontend_src_components_chat_chatinterface",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
+      "source_file": "frontend/src/app/chat/page.tsx",
       "source_location": "L4",
       "weight": 1.0
     },
@@ -4679,7 +4437,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L8",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -5027,17 +4785,6 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_legal_classifier",
-      "target": "backend_app_services_legal_classifier_legalqueryclassifier",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_services_rag_service",
       "target": "backend_app_services_rag_service_legalragservice",
       "relation": "contains",
@@ -5045,7 +4792,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L16",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -5232,7 +4979,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -5347,35 +5094,13 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react_markdown",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_remark_gfm",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
-      "source_location": "L20",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_dependencies",
       "target": "frontend_package_dependencies_tailwind_merge",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -5386,7 +5111,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -5397,7 +5122,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5408,7 +5133,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -5419,7 +5144,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -5430,7 +5155,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -5441,7 +5166,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -5452,7 +5177,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5463,7 +5188,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -5474,7 +5199,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -5577,50 +5302,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_api_website_assistant_route",
-      "target": "frontend_src_app_api_website_assistant_route_legal_query_triggers",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_website_assistant_route",
-      "target": "frontend_src_app_api_website_assistant_route_website_help_knowledge",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_website_assistant_route",
-      "target": "frontend_src_app_api_website_assistant_route_post",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/website-assistant/route.ts",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_ask_juris_page",
-      "target": "frontend_src_app_ask_juris_page_askjurispage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/app/ask-juris/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_auth_callback_route",
       "target": "frontend_src_app_auth_callback_route_get",
       "relation": "contains",
@@ -5633,13 +5314,13 @@
     },
     {
       "source": "frontend_src_app_chat_page",
-      "target": "frontend_src_app_chat_page_chatredirectpage",
+      "target": "frontend_src_app_chat_page_chatpage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/chat/page.tsx",
-      "source_location": "L3",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -5782,7 +5463,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L16",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -5793,7 +5474,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/assistant/FloatingAssistant.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -5815,7 +5496,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L27",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -5826,7 +5507,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L35",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -5837,7 +5518,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L43",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -5848,7 +5529,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L49",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -5859,7 +5540,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L56",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -6567,25 +6248,14 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_legal_classifier_legalqueryclassifier",
-      "target": "backend_app_services_legal_classifier_legalqueryclassifier_classify",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
       "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_retrieve_evidence_citations",
+      "target": "backend_app_services_rag_service_legalragservice_fallback_citations",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -6596,7 +6266,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L22",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -6607,18 +6277,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L258",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_persist_messages_and_audit",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -6629,7 +6288,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L33",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -6640,7 +6299,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L57",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -6787,36 +6446,25 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_legal_classifier_rationale_6",
-      "target": "backend_app_services_legal_classifier_legalqueryclassifier",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/legal_classifier.py",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_rationale_17",
+      "source": "backend_app_services_rag_service_rationale_11",
       "target": "backend_app_services_rag_service_legalragservice",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L17",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_rag_service_rationale_63",
+      "source": "backend_app_services_rag_service_rationale_53",
       "target": "backend_app_services_rag_service_legalragservice_process_query",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L63",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -7239,5 +6887,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2ea201b0aaddcd54991021e2979240e38e1c53b1"
+  "built_at_commit": "792fa987d695234b93a4c73b6cb797124406b495"
 }

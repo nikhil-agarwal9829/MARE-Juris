@@ -2,14 +2,15 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { createClient } from '@/lib/supabase/client';
 import {
   Scale,
   Send,
   Plus,
   Trash2,
-  BookOpen,
   ShieldCheck,
   ArrowLeft,
   LogOut,
@@ -18,9 +19,9 @@ import {
   User,
   ChevronDown,
   ChevronUp,
-  FileText,
   Copy,
   Check,
+  AlertTriangle,
 } from 'lucide-react';
 
 interface Citation {
@@ -49,15 +50,17 @@ interface ChatInterfaceProps {
   userName: string;
   userEmail: string;
   initialQuery?: string;
+  initialChatId?: string | null;
 }
 
 export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   userName,
   userEmail,
   initialQuery = '',
+  initialChatId = null,
 }) => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
-  const [activeConvId, setActiveConvId] = useState<string | null>(null);
+  const [activeConvId, setActiveConvId] = useState<string | null>(initialChatId);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState(initialQuery);
   const [loading, setLoading] = useState(false);
@@ -65,6 +68,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const [expandedCitations, setExpandedCitations] = useState<Record<string, boolean>>({});
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const initialMounted = useRef(false);
   const router = useRouter();
 
   const scrollToBottom = () => {
@@ -75,8 +79,67 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
     scrollToBottom();
   }, [messages, loading]);
 
-  const initialMounted = useRef(false);
+  // Load User Conversation Threads (User Isolated)
+  useEffect(() => {
+    const fetchThreads = async () => {
+      try {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
 
+        const { data, error } = await supabase
+          .from('conversations')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('updated_at', { ascending: false });
+
+        if (!error && data) {
+          setConversations(data);
+        }
+      } catch (err) {
+        // Telemetry fallback
+      }
+    };
+
+    fetchThreads();
+  }, []);
+
+  // Load Message History when Active Conversation Changes
+  useEffect(() => {
+    if (!activeConvId) return;
+
+    const fetchMessages = async () => {
+      try {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { data, error } = await supabase
+          .from('messages')
+          .select('*')
+          .eq('conversation_id', activeConvId)
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: true });
+
+        if (!error && data) {
+          const loadedMsgs: Message[] = data.map((m) => ({
+            id: m.id,
+            role: m.role as 'user' | 'assistant',
+            content: m.content,
+            citations: m.metadata?.citations || [],
+            createdAt: m.created_at,
+          }));
+          setMessages(loadedMsgs);
+        }
+      } catch (err) {
+        // Fallback
+      }
+    };
+
+    fetchMessages();
+  }, [activeConvId]);
+
+  // Initial Query Trigger
   useEffect(() => {
     if (initialQuery && !initialMounted.current) {
       initialMounted.current = true;
@@ -123,6 +186,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           updated_at: new Date().toISOString(),
         };
         setConversations((prev) => [newConv, ...prev]);
+        window.history.replaceState(null, '', `/ask-juris?chat=${data.conversation_id}`);
       }
 
       const assistantMessage: Message = {
@@ -152,6 +216,29 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
     setActiveConvId(null);
     setMessages([]);
     setInput('');
+    window.history.replaceState(null, '', '/ask-juris');
+  };
+
+  const selectConversation = (id: string) => {
+    setActiveConvId(id);
+    window.history.replaceState(null, '', `/ask-juris?chat=${id}`);
+  };
+
+  const deleteConversation = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        await supabase.from('conversations').delete().eq('id', id).eq('user_id', user.id);
+      }
+      setConversations((prev) => prev.filter((c) => c.id !== id));
+      if (activeConvId === id) {
+        startNewChat();
+      }
+    } catch (err) {
+      // Fallback
+    }
   };
 
   const toggleCitations = (msgId: string) => {
@@ -189,7 +276,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               <Scale className="w-5 h-5" />
             </div>
             <span className="font-serif font-bold text-lg tracking-wide gold-gradient-text">
-              MARE-Juris AI Assistant
+              Ask MARE-Juris
             </span>
           </div>
         </div>
@@ -212,7 +299,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       {/* Main Workspace Body */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar - Conversations */}
+        {/* Left Sidebar - Conversations (User Isolated) */}
         <aside className="w-72 bg-navy-900/60 border-r border-gold-500/15 flex flex-col p-4 shrink-0 hidden md:flex">
           <button
             onClick={startNewChat}
@@ -223,7 +310,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           </button>
 
           <div className="text-[11px] font-semibold uppercase tracking-wider text-gold-400/80 mb-2 px-2">
-            Consultation Threads
+            Consultation History
           </div>
 
           <div className="flex-1 overflow-y-auto space-y-1 pr-1 scrollbar-none">
@@ -235,20 +322,18 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               conversations.map((conv) => (
                 <div
                   key={conv.id}
-                  onClick={() => setActiveConvId(conv.id)}
+                  onClick={() => selectConversation(conv.id)}
                   className={`p-3 rounded-xl cursor-pointer text-xs transition-all flex items-center justify-between group ${
                     activeConvId === conv.id
-                      ? 'bg-gold-500/15 border border-gold-500/40 text-gold-300'
+                      ? 'bg-gold-500/15 border border-gold-500/40 text-gold-300 font-semibold'
                       : 'hover:bg-navy-900/80 text-slate-300'
                   }`}
                 >
                   <span className="truncate pr-2">{conv.title}</span>
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setConversations((prev) => prev.filter((c) => c.id !== conv.id));
-                    }}
+                    onClick={(e) => deleteConversation(conv.id, e)}
                     className="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-rose-400 transition-opacity"
+                    title="Delete Thread"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -262,13 +347,13 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         <main className="flex-1 flex flex-col bg-navy-950 relative overflow-hidden">
           <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
             {messages.length === 0 ? (
-              <div className="max-w-2xl mx-auto my-12 text-center space-y-6">
+              <div className="max-w-2xl mx-auto my-8 text-center space-y-6">
                 <div className="p-4 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400 w-fit mx-auto">
                   <Sparkles className="w-10 h-10" />
                 </div>
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-100">
-                    Welcome to MARE-Juris AI
+                    Ask MARE-Juris Legal Assistant
                   </h2>
                   <p className="text-sm text-slate-400 mt-2">
                     Evidence-grounded statutory reasoning for Indian legal procedures, statutes, and case precedents.
@@ -276,7 +361,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 </div>
 
                 {/* Suggested Starters */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl mx-auto pt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl mx-auto pt-2">
                   {[
                     { label: 'Tenant Rights', query: 'What are my rights as a tenant against unlawful landlord eviction under Indian law?' },
                     { label: 'Company Incorporation', query: 'What documents are mandatory to incorporate a Private Limited Company under Companies Act 2013?' },
@@ -313,16 +398,25 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                       className={`p-4 rounded-2xl text-sm leading-relaxed ${
                         msg.role === 'user'
                           ? 'bg-gold-500 text-navy-950 font-medium rounded-tr-none shadow-md'
-                          : 'legal-card rounded-tl-none border border-gold-500/20 text-slate-100 whitespace-pre-line'
+                          : 'legal-card rounded-tl-none border border-gold-500/20 text-slate-100'
                       }`}
                     >
-                      {msg.content}
+                      {/* Formatted Markdown Rendering (Part 16 & 17) */}
+                      {msg.role === 'assistant' ? (
+                        <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-gold-300 prose-headings:font-bold prose-h1:text-lg prose-h2:text-base prose-h3:text-sm prose-strong:text-gold-400 prose-li:my-1">
+                          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {msg.content}
+                          </ReactMarkdown>
+                        </div>
+                      ) : (
+                        <span>{msg.content}</span>
+                      )}
 
                       {msg.role === 'assistant' && (
                         <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
                           <button
                             onClick={() => copyContent(msg.id, msg.content)}
-                            className="hover:text-gold-300 transition-colors flex items-center gap-1"
+                            className="hover:text-gold-300 transition-colors flex items-center gap-1 cursor-pointer"
                           >
                             {copiedId === msg.id ? (
                               <>
@@ -340,7 +434,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                       )}
                     </div>
 
-                    {/* Evidence Grounding Collapsible Panel */}
+                    {/* Evidence Grounding Collapsible Panel (Part 19) */}
                     {msg.role === 'assistant' && msg.citations && msg.citations.length > 0 && (
                       <div className="legal-card rounded-xl p-3 border border-gold-500/25">
                         <div

@@ -1,12 +1,16 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, AlertCircle, RefreshCw, Sparkles, ShieldAlert } from 'lucide-react';
+import Link from 'next/link';
+import { MessageSquare, X, Send, Bot, User, AlertCircle, RefreshCw, Sparkles, ArrowRight, HelpCircle } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
   role: 'user' | 'assistant';
   content: string;
+  isLegalRedirect?: boolean;
+  targetUrl?: string;
+  buttonText?: string;
 }
 
 export const FloatingAssistant: React.FC = () => {
@@ -15,7 +19,7 @@ export const FloatingAssistant: React.FC = () => {
     {
       id: 'welcome-msg',
       role: 'assistant',
-      content: 'Hello! I am MARE Assistant, your general AI assistant. How can I help you today?',
+      content: 'Hello! I am the MARE-Juris Product & Website Assistant. How can I help you navigate the platform today?',
     },
   ]);
   const [input, setInput] = useState('');
@@ -55,29 +59,29 @@ export const FloatingAssistant: React.FC = () => {
     setErrorMsg(null);
 
     try {
-      const res = await fetch('/api/assistant', {
+      const res = await fetch('/api/website-assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: trimmed,
-          conversationHistory: messages.map((m) => ({ role: m.role, content: m.content })),
-        }),
+        body: JSON.stringify({ message: trimmed }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        setErrorMsg(data.error || 'The assistant is temporarily unavailable.');
+        setErrorMsg(data.error || 'The website assistant is temporarily unavailable.');
       } else if (data.response) {
         const assistantMessage: ChatMessage = {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
           content: data.response,
+          isLegalRedirect: data.isLegalRedirect,
+          targetUrl: data.targetUrl,
+          buttonText: data.buttonText,
         };
         setMessages((prev) => [...prev, assistantMessage]);
       }
     } catch {
-      setErrorMsg('The assistant is temporarily unavailable.');
+      setErrorMsg('The website assistant is temporarily unavailable.');
     } finally {
       setLoading(false);
     }
@@ -97,26 +101,26 @@ export const FloatingAssistant: React.FC = () => {
         <button
           ref={buttonRef}
           onClick={() => setIsOpen(true)}
-          aria-label="Open AI assistant"
-          className="p-4 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 shadow-2xl shadow-gold-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 font-semibold text-xs border-2 border-navy-900 group"
+          aria-label="Open website help assistant"
+          className="p-3.5 md:p-4 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 shadow-2xl shadow-gold-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 font-semibold text-xs border-2 border-navy-900 group"
         >
-          <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-          <span className="hidden sm:inline font-serif font-bold">MARE Assistant</span>
+          <HelpCircle className="w-5 h-5 group-hover:rotate-12 transition-transform text-navy-950" />
+          <span className="hidden sm:inline font-serif font-bold">Platform Guide</span>
         </button>
       )}
 
       {/* Floating Chat Panel */}
       {isOpen && (
-        <div className="w-[calc(100vw-2rem)] sm:w-96 h-[520px] max-h-[80vh] legal-card rounded-3xl border border-gold-500/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up bg-navy-950 selection:bg-gold-500 selection:text-navy-950">
+        <div className="w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] legal-card rounded-3xl border border-gold-500/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up bg-navy-950 selection:bg-gold-500 selection:text-navy-950">
           {/* Panel Header */}
           <div className="p-4 bg-navy-900/90 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-xl bg-gold-500/10 border border-gold-500/30 text-gold-400">
-                <Bot className="w-5 h-5" />
+                <HelpCircle className="w-5 h-5 text-gold-400" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-slate-100 text-sm">MARE Assistant</h3>
-                <span className="text-[10px] text-slate-400 block font-medium">General AI assistant</span>
+                <h3 className="font-serif font-bold text-slate-100 text-sm">Website Assistant</h3>
+                <span className="text-[10px] text-slate-400 block font-medium">Platform & Navigation Guide</span>
               </div>
             </div>
 
@@ -127,14 +131,6 @@ export const FloatingAssistant: React.FC = () => {
             >
               <X className="w-4 h-4" />
             </button>
-          </div>
-
-          {/* Legal Disclaimer Banner */}
-          <div className="px-4 py-2 bg-navy-900/40 border-b border-slate-800/80 flex items-start gap-2 text-[11px] text-slate-400">
-            <ShieldAlert className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-            <p className="leading-tight">
-              For general information only. This assistant is not a substitute for professional legal advice.
-            </p>
           </div>
 
           {/* Chat Messages Body */}
@@ -150,14 +146,30 @@ export const FloatingAssistant: React.FC = () => {
                   </div>
                 )}
 
-                <div
-                  className={`max-w-[82%] p-3 rounded-2xl text-xs leading-relaxed ${
-                    msg.role === 'user'
-                      ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-medium rounded-br-xs shadow-md'
-                      : 'bg-navy-900/90 border border-slate-800 text-slate-200 rounded-bl-xs'
-                  }`}
-                >
-                  {msg.content}
+                <div className="space-y-2 max-w-[85%]">
+                  <div
+                    className={`p-3 rounded-2xl text-xs leading-relaxed ${
+                      msg.role === 'user'
+                        ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-medium rounded-br-xs shadow-md'
+                        : 'bg-navy-900/90 border border-slate-800 text-slate-200 rounded-bl-xs'
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
+
+                  {/* Direct Action Link to Ask MARE-Juris if user asked a legal question */}
+                  {msg.isLegalRedirect && msg.targetUrl && (
+                    <div className="pt-1">
+                      <Link
+                        href={msg.targetUrl}
+                        onClick={() => setIsOpen(false)}
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 text-xs font-bold shadow-md hover:from-gold-400 hover:to-gold-300 transition-all"
+                      >
+                        <span>{msg.buttonText || 'Open Ask MARE-Juris →'}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
                 {msg.role === 'user' && (
@@ -172,7 +184,7 @@ export const FloatingAssistant: React.FC = () => {
             {loading && (
               <div className="flex items-center gap-2 text-xs text-slate-400 bg-navy-900/60 p-3 rounded-2xl border border-slate-800 w-fit">
                 <RefreshCw className="w-3.5 h-3.5 animate-spin text-gold-400" />
-                <span>Thinking...</span>
+                <span>Checking guide...</span>
               </div>
             )}
 
@@ -196,7 +208,7 @@ export const FloatingAssistant: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask anything..."
+                placeholder="Ask about website, features, or navigation..."
                 disabled={loading}
                 className="w-full pl-3 pr-10 py-2.5 bg-navy-950 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 text-xs resize-none disabled:opacity-50"
               />
