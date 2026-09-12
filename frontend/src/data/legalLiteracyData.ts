@@ -19,6 +19,12 @@ export interface Right {
   whatToCheck: string[];
   source: LegalSource;
   relatedRights?: string[];
+  quiz?: {
+    question: string;
+    options: string[];
+    correctAnswerIndex: number;
+    explanation: string;
+  };
 }
 
 export const rightsData: Right[] = [
@@ -45,7 +51,18 @@ export const rightsData: Right[] = [
       sourceType: 'Official Government Source',
       verifiedAt: '2026-09-12'
     },
-    relatedRights: ['tenant-security-deposit', 'tenant-essential-services']
+    relatedRights: ['tenant-security-deposit', 'tenant-essential-services'],
+    quiz: {
+      question: "Which document should you check first when a landlord asks you to vacate immediately?",
+      options: [
+        "A random WhatsApp message",
+        "The rental agreement",
+        "A social media post",
+        "The landlord's verbal statement"
+      ],
+      correctAnswerIndex: 1,
+      explanation: "The rental agreement is the primary legal contract governing your tenancy and outlines the specific notice period required by both parties."
+    }
   },
   {
     id: 'tenant-security-deposit',

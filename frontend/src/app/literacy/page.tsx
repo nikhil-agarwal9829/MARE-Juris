@@ -7,11 +7,13 @@ import { RightCard } from '@/components/literacy/RightCard';
 import { RightDetailPanel } from '@/components/literacy/RightDetailPanel';
 import { getCategories, Right } from '@/data/legalLiteracyData';
 import { rightsData } from '@/data/legalLiteracyData';
+import { Moon, Sun } from 'lucide-react';
 
 export default function LiteracyPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All Rights');
   const [selectedRight, setSelectedRight] = useState<Right | null>(null);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   const categories = getCategories();
 
@@ -32,8 +34,17 @@ export default function LiteracyPage() {
   }, [searchQuery, activeCategory]);
 
   return (
-    <div className="min-h-screen transition-colors duration-500 literacy-dark-theme bg-[var(--background)]">
+    <div className={`min-h-screen transition-colors duration-500 ${isLightMode ? 'literacy-light-theme' : 'literacy-dark-theme'} bg-[var(--background)]`}>
       <Navbar mode="home" />
+
+      {/* Theme Toggle Button (Fixed on bottom right) */}
+      <button
+        onClick={() => setIsLightMode(!isLightMode)}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] shadow-lg hover:border-[var(--gold)]/50 transition-all group"
+        title={isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      >
+        {isLightMode ? <Moon className="w-5 h-5 group-hover:text-[var(--gold)]" /> : <Sun className="w-5 h-5 group-hover:text-[var(--gold)]" />}
+      </button>
 
       <main className="flex-grow flex flex-col relative z-10">
         <RightsHero 

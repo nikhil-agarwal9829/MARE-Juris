@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Right } from '@/data/legalLiteracyData';
-import { X, ShieldCheck, ExternalLink, CheckCircle2, AlertTriangle, Scale, BookOpen } from 'lucide-react';
+import { X, ShieldCheck, ExternalLink, CheckCircle2, AlertTriangle, Scale, BookOpen, HelpCircle } from 'lucide-react';
 
 interface RightDetailPanelProps {
   right: Right | null;
@@ -8,10 +8,13 @@ interface RightDetailPanelProps {
 }
 
 export const RightDetailPanel: React.FC<RightDetailPanelProps> = ({ right, onClose }) => {
-  // Prevent body scroll when panel is open
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+
+  // Prevent body scroll when panel is open and reset quiz state
   useEffect(() => {
     if (right) {
       document.body.style.overflow = 'hidden';
+      setSelectedAnswer(null);
     } else {
       document.body.style.overflow = 'auto';
     }
@@ -143,6 +146,59 @@ export const RightDetailPanel: React.FC<RightDetailPanelProps> = ({ right, onClo
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {/* Optional Learning Quiz */}
+          {right.quiz && (
+            <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-2xl p-5 md:p-6 mt-6">
+              <h3 className="text-xs font-bold text-[var(--gold)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                <HelpCircle className="w-4 h-4" />
+                Test Your Understanding
+              </h3>
+              <p className="text-[var(--text-primary)] font-medium mb-4">{right.quiz.question}</p>
+              
+              <div className="space-y-2">
+                {right.quiz.options.map((option, idx) => {
+                  const isSelected = selectedAnswer === idx;
+                  const isCorrect = idx === right.quiz!.correctAnswerIndex;
+                  const showResult = selectedAnswer !== null;
+                  
+                  let buttonClass = "w-full text-left p-3 rounded-xl border transition-all text-sm ";
+                  
+                  if (!showResult) {
+                    buttonClass += "border-[var(--border)] bg-[var(--surface)] hover:border-[var(--gold)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]";
+                  } else {
+                    if (isCorrect) {
+                      buttonClass += "border-[var(--success)] bg-[var(--success)]/10 text-[var(--success)] font-semibold";
+                    } else if (isSelected && !isCorrect) {
+                      buttonClass += "border-[var(--danger)] bg-[var(--danger)]/10 text-[var(--danger)] opacity-70";
+                    } else {
+                      buttonClass += "border-[var(--border)] bg-[var(--surface)] text-[var(--text-muted)] opacity-50";
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={idx}
+                      disabled={showResult}
+                      onClick={() => setSelectedAnswer(idx)}
+                      className={buttonClass}
+                    >
+                      {option}
+                      {showResult && isCorrect && <CheckCircle2 className="inline-block w-4 h-4 ml-2" />}
+                      {showResult && isSelected && !isCorrect && <X className="inline-block w-4 h-4 ml-2" />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedAnswer !== null && (
+                <div className="mt-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] animate-fade-in-up">
+                  <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest block mb-1">Why?</span>
+                  <p className="text-sm text-[var(--text-secondary)]">{right.quiz.explanation}</p>
+                </div>
+              )}
             </div>
           )}
 
