@@ -186,7 +186,7 @@ export const ComplianceInterface: React.FC = () => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `MARE-Juris-Compliance-${complianceMatrix.businessProfile?.city || 'India'}.html`;
+      a.download = `MARE-Juris-Compliance-${complianceMatrix.businessProfile?.city || 'India'}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();

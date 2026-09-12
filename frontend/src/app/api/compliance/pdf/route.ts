@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-
+import puppeteer from 'puppeteer';
 export async function POST(req: NextRequest) {
   try {
     const { matrix } = await req.json();
@@ -332,13 +332,20 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
-    return new NextResponse(htmlContent, {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+    await browser.close();
+
+    return new NextResponse(pdfBuffer, {
       headers: {
-        'Content-Type': 'text/html',
-        'Content-Disposition': 'attachment; filename="compliance_report.html"',
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment; filename="compliance_report.pdf"',
       },
     });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to generate HTML report' }, { status: 500 });
+    console.error(error);
+    return NextResponse.json({ error: 'Failed to generate PDF report' }, { status: 500 });
   }
 }
