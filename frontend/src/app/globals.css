@@ -59,6 +59,65 @@ body {
   box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
 }
 
+/* Legal Literacy Semantic Tokens */
+.literacy-dark-theme {
+  --background: #020617;
+  --surface: #0f172a;
+  --surface-elevated: #1e293b;
+  --surface-muted: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --border-hover: #475569;
+  --gold: #d4af37;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+.literacy-light-theme {
+  --background: #fafaf9;
+  --surface: #ffffff;
+  --surface-elevated: #f5f5f4;
+  --surface-muted: #e7e5e4;
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --text-muted: #78716c;
+  --border: #d6d3d1;
+  --border-hover: #a8a29e;
+  --gold: #b48608;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+/* Hide Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *,

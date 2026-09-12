@@ -7,7 +7,7 @@
   "5": "Research & Technical Gaps",
   "6": "dependencies",
   "7": "EmailService",
-  "8": "literacy/page.tsx",
+  "8": "LegalRAGService",
   "9": "devDependencies",
   "10": "Settings",
   "11": "root",
@@ -31,10 +31,5 @@
   "29": "tailwindcss",
   "30": "LegalQueryClassifier",
   "31": "website-assistant/route.ts",
-  "32": "chat/page.tsx",
-  "33": "compliance.py",
-  "34": "ComplianceAgentService",
-  "35": "compliance_assessments",
-  "36": "implementation.md",
-  "37": "pdf/route.ts"
+  "32": "chat/page.tsx"
 }

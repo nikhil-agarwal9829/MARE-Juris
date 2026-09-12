@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.health import router as health_router
 from app.api.v1.chat import router as chat_router
+from app.api.v1.compliance import router as compliance_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -24,6 +25,7 @@ app.add_middleware(
 # Include routers
 app.include_router(health_router, prefix=settings.API_V1_STR, tags=["Infrastructure"])
 app.include_router(chat_router, prefix=settings.API_V1_STR)
+app.include_router(compliance_router, prefix=f"{settings.API_V1_STR}/compliance", tags=["Compliance Agent"])
 
 
 @app.get("/")

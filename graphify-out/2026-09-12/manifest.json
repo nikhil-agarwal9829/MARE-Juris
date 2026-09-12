@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "backend/app/main.py": {
-    "mtime": 1789148274.9240441,
-    "seen": 1789195413.2030084,
-    "ast_hash": "d5cba9f13a44a0efaf48abab523e7261",
+    "mtime": 1789062470.564431,
+    "seen": 1789062804.8130233,
+    "ast_hash": "8f3b89e361af3080fb654675f91b6c40",
     "semantic_hash": ""
   },
   "backend/app/services/email_service.py": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "frontend/package.json": {
-    "mtime": 1789191517.7920637,
-    "seen": 1789195413.2030084,
-    "ast_hash": "89a7cb3638139de4cbe5639ae1a708ff",
+    "mtime": 1789066657.9993296,
+    "seen": 1789146400.3648314,
+    "ast_hash": "97291802d4866f9942e99128cff8daf4",
     "semantic_hash": ""
   },
   "frontend/src/lib/supabase/admin.ts": {
@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "frontend/src/components/home/HomeContent.tsx": {
-    "mtime": 1789148341.9157398,
-    "seen": 1789195413.2030084,
-    "ast_hash": "dbc272a30546d874110b24a6719ce382",
+    "mtime": 1789062636.661422,
+    "seen": 1789062804.8130233,
+    "ast_hash": "461464c161f55e8140ff97b260b8e149",
     "semantic_hash": ""
   },
   "frontend/src/components/news/NewsCard.tsx": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "frontend/src/components/navigation/Navbar.tsx": {
-    "mtime": 1789194596.1897116,
-    "seen": 1789195413.2030084,
-    "ast_hash": "cd6bcd2c076a3be611bc8cf7db32f91a",
+    "mtime": 1787858079.3502755,
+    "seen": 1789062804.8130233,
+    "ast_hash": "ae9b9c0f9a57109f7a53be2f507714a9",
     "semantic_hash": ""
   },
   "frontend/vercel.json": {
@@ -351,84 +351,6 @@
     "mtime": 1789066735.3371828,
     "seen": 1789146400.3648314,
     "ast_hash": "f34b14d7d7bf8b7f8f2765dd69e47a9f",
-    "semantic_hash": ""
-  },
-  "backend/app/api/v1/compliance.py": {
-    "mtime": 1789148264.5238936,
-    "seen": 1789195413.2030084,
-    "ast_hash": "f9bc180c0f5941c66fa45f77924a1a7b",
-    "semantic_hash": ""
-  },
-  "backend/app/services/compliance_service.py": {
-    "mtime": 1789148257.8366165,
-    "seen": 1789195413.2030084,
-    "ast_hash": "c43204f7a5e61f670fd2920872f481d5",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/api/compliance/pdf/route.ts": {
-    "mtime": 1789194568.4587636,
-    "seen": 1789195413.2030084,
-    "ast_hash": "4a60adb2e5b71519f0a25c287c0c9585",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/api/compliance/route.ts": {
-    "mtime": 1789194420.4144044,
-    "seen": 1789195413.2030084,
-    "ast_hash": "718c02a4f9bf7e36f50c9d9204111d96",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/compliance/page.tsx": {
-    "mtime": 1789148312.1333492,
-    "seen": 1789195413.2030084,
-    "ast_hash": "8acf9d6f73ce15252a7ea18234ed4cd8",
-    "semantic_hash": ""
-  },
-  "frontend/src/app/literacy/page.tsx": {
-    "mtime": 1789194341.0621178,
-    "seen": 1789195413.2030084,
-    "ast_hash": "42015b5e76075f6fc0c14da9729619a8",
-    "semantic_hash": ""
-  },
-  "frontend/src/components/compliance/ComplianceInterface.tsx": {
-    "mtime": 1789194519.3240187,
-    "seen": 1789195413.2030084,
-    "ast_hash": "8ca7016847537a19cbfbdb554d91568b",
-    "semantic_hash": ""
-  },
-  "frontend/src/components/literacy/InteractiveScenarioCard.tsx": {
-    "mtime": 1789194305.1811714,
-    "seen": 1789195413.2030084,
-    "ast_hash": "0f9e4a1267f70ca1a2cb58b49ff62205",
-    "semantic_hash": ""
-  },
-  "frontend/src/components/literacy/LiteracyScene3D.tsx": {
-    "mtime": 1789194274.393383,
-    "seen": 1789195413.2030084,
-    "ast_hash": "cf66e6923a5fed77526749ec6a919b68",
-    "semantic_hash": ""
-  },
-  "frontend/src/components/literacy/LiteracyTimeline.tsx": {
-    "mtime": 1789194234.0924883,
-    "seen": 1789195413.2030084,
-    "ast_hash": "79083ad294cae624949bbbe0e924002d",
-    "semantic_hash": ""
-  },
-  "frontend/src/data/legalLiteracyData.ts": {
-    "mtime": 1789191809.5834706,
-    "seen": 1789195413.2030084,
-    "ast_hash": "5a4648da3bce1a4f75b21c4a9c0895b3",
-    "semantic_hash": ""
-  },
-  "supabase/migrations/20240101000000_compliance_assessments.sql": {
-    "mtime": 1789194438.2029166,
-    "seen": 1789195413.2030084,
-    "ast_hash": "fa53152b74172e6bdb1553869d9a711e",
-    "semantic_hash": ""
-  },
-  "docs/implementation.md": {
-    "mtime": 1789191494.2918434,
-    "seen": 1789195413.2030084,
-    "ast_hash": "8b787261046612615c24312a4527613d",
     "semantic_hash": ""
   }
 }

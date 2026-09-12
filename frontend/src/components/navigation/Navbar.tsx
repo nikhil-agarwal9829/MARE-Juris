@@ -7,8 +7,8 @@ import { Scale, LogOut, Menu, X, ArrowRight, User } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 interface NavbarProps {
-  userName?: string;
-  userEmail?: string;
+  userName?: string | null;
+  userEmail?: string | null;
   mode?: 'auth' | 'home';
 }
 
@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ userName, mode = 'home' }) => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy-950/85 backdrop-blur-md border-b border-gold-500/15 px-4 md:px-8 py-3.5 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: Brand Logo & Title */}
-        <Link href={userName ? '/home' : '/login'} className="flex items-center gap-3 group">
+        <Link href={userName ? '/' : '/login'} className="flex items-center gap-3 group">
           <div className="p-2 rounded-xl bg-navy-900 border border-gold-500/40 text-gold-400 group-hover:border-gold-500 transition-colors">
             <Scale className="w-5 h-5" />
           </div>
@@ -53,36 +53,30 @@ export const Navbar: React.FC<NavbarProps> = ({ userName, mode = 'home' }) => {
         {/* Center: Desktop Navigation Links (Home Mode) */}
         {mode === 'home' && (
           <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
-            <button
-              onClick={() => scrollToSection('top')}
-              className="hover:text-gold-300 transition-colors cursor-pointer"
+            <Link
+              href="/"
+              className={`hover:text-gold-300 transition-colors ${pathname === '/' ? 'text-gold-400 font-bold' : ''}`}
             >
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection('legal-intelligence-section')}
-              className="hover:text-gold-300 transition-colors cursor-pointer"
-            >
-              Legal Information
-            </button>
-            <button
-              onClick={() => scrollToSection('ask-mare-section')}
-              className="hover:text-gold-300 transition-colors cursor-pointer"
+            </Link>
+            <Link
+              href="/ask-juris"
+              className={`hover:text-gold-300 transition-colors ${pathname === '/ask-juris' ? 'text-gold-400 font-bold' : ''}`}
             >
               Ask MARE-Juris
-            </button>
-            <button
-              onClick={() => scrollToSection('compliance-section')}
-              className="hover:text-gold-300 transition-colors cursor-pointer"
+            </Link>
+            <Link
+              href="/literacy"
+              className={`hover:text-gold-300 transition-colors ${pathname === '/literacy' ? 'text-gold-400 font-bold' : ''}`}
             >
-              Compliance
-            </button>
-            <button
-              onClick={() => scrollToSection('news-section')}
-              className="hover:text-gold-300 transition-colors cursor-pointer"
+              Legal Literacy
+            </Link>
+            <Link
+              href="/compliance"
+              className={`hover:text-gold-300 transition-colors ${pathname === '/compliance' ? 'text-gold-400 font-bold' : ''}`}
             >
-              News & Updates
-            </button>
+              Compliance Agent
+            </Link>
           </nav>
         )}
 
@@ -141,36 +135,34 @@ export const Navbar: React.FC<NavbarProps> = ({ userName, mode = 'home' }) => {
         <div className="md:hidden mt-3 pt-3 border-t border-slate-800/80 space-y-2 pb-2">
           {mode === 'home' ? (
             <>
-              <button
-                onClick={() => scrollToSection('top')}
-                className="block w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:text-gold-300"
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block w-full text-left px-3 py-2 text-xs font-semibold ${pathname === '/' ? 'text-gold-400 font-bold' : 'text-slate-300 hover:text-gold-300'}`}
               >
                 Home
-              </button>
-              <button
-                onClick={() => scrollToSection('legal-intelligence-section')}
-                className="block w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:text-gold-300"
-              >
-                Legal Information
-              </button>
-              <button
-                onClick={() => scrollToSection('ask-mare-section')}
-                className="block w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:text-gold-300"
+              </Link>
+              <Link
+                href="/ask-juris"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block w-full text-left px-3 py-2 text-xs font-semibold ${pathname === '/ask-juris' ? 'text-gold-400 font-bold' : 'text-slate-300 hover:text-gold-300'}`}
               >
                 Ask MARE-Juris
-              </button>
-              <button
-                onClick={() => scrollToSection('compliance-section')}
-                className="block w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:text-gold-300"
+              </Link>
+              <Link
+                href="/literacy"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block w-full text-left px-3 py-2 text-xs font-semibold ${pathname === '/literacy' ? 'text-gold-400 font-bold' : 'text-slate-300 hover:text-gold-300'}`}
               >
-                Compliance
-              </button>
-              <button
-                onClick={() => scrollToSection('news-section')}
-                className="block w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:text-gold-300"
+                Legal Literacy
+              </Link>
+              <Link
+                href="/compliance"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block w-full text-left px-3 py-2 text-xs font-semibold ${pathname === '/compliance' ? 'text-gold-400 font-bold' : 'text-slate-300 hover:text-gold-300'}`}
               >
-                News & Updates
-              </button>
+                Compliance Agent
+              </Link>
               {userName && (
                 <div className="pt-2 border-t border-slate-800 flex items-center justify-between px-3">
                   <span className="text-xs text-gold-400 font-semibold">{userName}</span>

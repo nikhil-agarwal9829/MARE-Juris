@@ -31,7 +31,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 import { FloatingAssistant } from '@/components/assistant/FloatingAssistant';
 
 interface HomeContentProps {
-  userName: string;
+  userName: string | null;
   userEmail: string;
 }
 
@@ -68,7 +68,7 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bold font-serif text-slate-100 leading-tight">
-              Hello, <span className="gold-gradient-text">{userName}</span>
+              Hello, <span className="gold-gradient-text">{userName || 'Guest'}</span>
             </h1>
 
             <p className="text-lg md:text-xl font-medium text-slate-300 font-serif">
@@ -99,7 +99,7 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
               </p>
             </div>
             <button
-              onClick={() => chatRef.current?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => router.push('/ask-juris')}
               className="mt-6 inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-navy-900 border border-gold-500/30 text-gold-400 text-xs font-semibold hover:bg-gold-500 hover:text-navy-950 transition-all cursor-pointer"
             >
               <span>Start a conversation</span>
@@ -107,7 +107,27 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
             </button>
           </div>
 
-          {/* Card 2: Analyze Document */}
+          {/* Card 2: Legal Literacy */}
+          <div className="legal-card rounded-2xl p-6 border border-gold-500/20 flex flex-col justify-between group hover:border-gold-500/50 transition-all">
+            <div>
+              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 w-fit mb-4 group-hover:scale-110 transition-transform">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold font-serif text-slate-100 text-lg">Know Your Rights</h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Interactive real-world scenarios covering statutory rights under Indian law.
+              </p>
+            </div>
+            <button
+              onClick={() => router.push('/literacy')}
+              className="mt-6 inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-navy-900 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-gold-500 hover:text-gold-300 transition-all cursor-pointer"
+            >
+              <span>Explore Legal Literacy</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Card 3: Analyze Document */}
           <div className="legal-card rounded-2xl p-6 border border-gold-500/20 flex flex-col justify-between group hover:border-gold-500/50 transition-all">
             <div>
               <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 w-fit mb-4 group-hover:scale-110 transition-transform">
@@ -120,33 +140,11 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
             </div>
             <button
               onClick={() =>
-                setModalMessage('Document Parsing & Extraction Pipeline is under development for the next phase.')
+                setModalMessage('Document Parsing & Risk Extraction Pipeline is scheduled for the upcoming release.')
               }
               className="mt-6 inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-navy-900 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-gold-500 hover:text-gold-300 transition-all cursor-pointer"
             >
               <span>Analyze document</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Card 3: Legal Information */}
-          <div className="legal-card rounded-2xl p-6 border border-gold-500/20 flex flex-col justify-between group hover:border-gold-500/50 transition-all">
-            <div>
-              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 w-fit mb-4 group-hover:scale-110 transition-transform">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold font-serif text-slate-100 text-lg">Find Legal Info</h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Explore statutes, rules, regulations and judgments.
-              </p>
-            </div>
-            <button
-              onClick={() =>
-                document.getElementById('legal-intelligence-section')?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className="mt-6 inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-navy-900 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-gold-500 hover:text-gold-300 transition-all cursor-pointer"
-            >
-              <span>Explore sources</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -159,16 +157,14 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
               </div>
               <h3 className="font-bold font-serif text-slate-100 text-lg">Business Compliance</h3>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Understand business obligations and organize compliance tasks.
+                Describe a business idea and generate your statutory compliance roadmap.
               </p>
             </div>
             <button
-              onClick={() =>
-                document.getElementById('compliance-section')?.scrollIntoView({ behavior: 'smooth' })
-              }
+              onClick={() => router.push('/compliance')}
               className="mt-6 inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-navy-900 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-gold-500 hover:text-gold-300 transition-all cursor-pointer"
             >
-              <span>Check compliance</span>
+              <span>Start Assessment</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -266,9 +262,7 @@ export const HomeContent: React.FC<HomeContentProps> = ({ userName }) => {
               <div
                 key={idx}
                 className="legal-card rounded-2xl p-6 border border-slate-800 hover:border-gold-500/30 transition-all cursor-pointer group space-y-3"
-                onClick={() =>
-                  setModalMessage(`Educational summary for ${topic.title} is coming in the legal knowledge base release.`)
-                }
+                onClick={() => router.push(`/literacy?category=${encodeURIComponent(topic.title)}`)}
               >
                 <div className="flex items-center justify-between">
                   <span className="px-2.5 py-1 rounded-full bg-navy-900 border border-gold-500/20 text-[10px] font-semibold text-gold-400 uppercase tracking-wider">

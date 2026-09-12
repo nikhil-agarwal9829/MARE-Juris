@@ -41,7 +41,6 @@ export async function middleware(request: NextRequest) {
 
   // Protected routes matcher
   const isProtectedRoute =
-    request.nextUrl.pathname.startsWith('/home') ||
     request.nextUrl.pathname.startsWith('/dashboard') ||
     request.nextUrl.pathname.startsWith('/conversations') ||
     request.nextUrl.pathname.startsWith('/documents') ||
@@ -60,7 +59,7 @@ export async function middleware(request: NextRequest) {
 
   if (isAuthRoute && user) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = '/home';
+    redirectUrl.pathname = '/';
     return NextResponse.redirect(redirectUrl);
   }
 
