@@ -75,11 +75,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "chatinterfaceprops",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L49"
+      "source_location": "L84"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_citation",
@@ -88,7 +88,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "citation",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
@@ -101,11 +101,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "conversation",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L43"
+      "source_location": "L78"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_message",
@@ -114,11 +114,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "message",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L35"
+      "source_location": "L62"
+    },
+    {
+      "id": "frontend_src_components_chat_chatinterface_ragwebdata",
+      "label": "RagWebData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "ChatInterface.tsx",
+      "file_type": "code",
+      "norm_label": "ragwebdata",
+      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
+      "source_location": "L53"
+    },
+    {
+      "id": "frontend_src_components_chat_chatinterface_verification",
+      "label": "Verification",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "ChatInterface.tsx",
+      "file_type": "code",
+      "norm_label": "verification",
+      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
+      "source_location": "L48"
     },
     {
       "id": "frontend_src_app_api_news_route_newsarticle",
@@ -157,7 +183,7 @@
       "file_type": "code",
       "norm_label": "chatmessagerequest",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12"
+      "source_location": "L18"
     },
     {
       "id": "backend_app_api_v1_chat_chatmessageresponse",
@@ -170,7 +196,20 @@
       "file_type": "code",
       "norm_label": "chatmessageresponse",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17"
+      "source_location": "L23"
+    },
+    {
+      "id": "backend_app_api_v1_chat_comparerequest",
+      "label": "CompareRequest",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "get_supabase_admin_client",
+      "file_type": "code",
+      "norm_label": "comparerequest",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L138"
     },
     {
       "id": "backend_app_services_rag_service_legalragservice",
@@ -264,6 +303,19 @@
       "source_location": "L15"
     },
     {
+      "id": "backend_app_services_web_research_service_webresearchservice",
+      "label": "WebResearchService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "webresearchservice",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L11"
+    },
+    {
       "id": "backend_app_services_email_service_emailservice",
       "label": "EmailService",
       "_callable": true,
@@ -277,82 +329,69 @@
       "source_location": "L5"
     },
     {
-      "id": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocardprops",
-      "label": "InteractiveScenarioCardProps",
+      "id": "frontend_src_components_literacy_rightcard_rightcardprops",
+      "label": "RightCardProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "interactivescenariocardprops",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L29"
+      "norm_label": "rightcardprops",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L5"
     },
     {
-      "id": "frontend_src_components_literacy_literacyscene3d_literacyscene3dprops",
-      "label": "LiteracyScene3DProps",
+      "id": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanelprops",
+      "label": "RightDetailPanelProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacyscene3dprops",
-      "source_file": "frontend/src/components/literacy/LiteracyScene3D.tsx",
-      "source_location": "L6"
+      "norm_label": "rightdetailpanelprops",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L5"
     },
     {
-      "id": "frontend_src_components_literacy_literacytimeline_literacytimelineprops",
-      "label": "LiteracyTimelineProps",
+      "id": "frontend_src_components_literacy_rightshero_rightsheroprops",
+      "label": "RightsHeroProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacytimelineprops",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L7"
+      "norm_label": "rightsheroprops",
+      "source_file": "frontend/src/components/literacy/RightsHero.tsx",
+      "source_location": "L4"
     },
     {
-      "id": "frontend_src_data_legalliteracydata_literacyscenario",
-      "label": "LiteracyScenario",
+      "id": "frontend_src_data_legalliteracydata_legalsource",
+      "label": "LegalSource",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacyscenario",
-      "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "frontend_src_data_legalliteracydata_scenariooption",
-      "label": "ScenarioOption",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "literacy/page.tsx",
-      "file_type": "code",
-      "norm_label": "scenariooption",
+      "norm_label": "legalsource",
       "source_file": "frontend/src/data/legalLiteracyData.ts",
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_data_legalliteracydata_timelinestep",
-      "label": "TimelineStep",
+      "id": "frontend_src_data_legalliteracydata_right",
+      "label": "Right",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "timelinestep",
+      "norm_label": "right",
       "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L15"
+      "source_location": "L12"
     },
     {
       "id": "backend_app_main_root",
@@ -520,19 +559,7 @@
       "file_type": "code",
       "norm_label": "complianceinterface()",
       "source_file": "frontend/src/components/compliance/ComplianceInterface.tsx",
-      "source_location": "L28"
-    },
-    {
-      "id": "frontend_src_components_home_homecontent_homecontent",
-      "label": "HomeContent()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "homecontent()",
-      "source_file": "frontend/src/components/home/HomeContent.tsx",
-      "source_location": "L38"
+      "source_location": "L30"
     },
     {
       "id": "frontend_src_components_navigation_navbar_navbar",
@@ -595,28 +622,16 @@
       "source_location": "L8"
     },
     {
-      "id": "frontend_src_app_api_assistant_route_generatelegalanalysis",
-      "label": "generateLegalAnalysis()",
+      "id": "frontend_src_app_api_assistant_route_generatedualresponse",
+      "label": "generateDualResponse()",
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
-      "norm_label": "generatelegalanalysis()",
+      "norm_label": "generatedualresponse()",
       "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L125"
-    },
-    {
-      "id": "frontend_src_app_api_assistant_route_getfallbackcitations",
-      "label": "getFallbackCitations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "getfallbackcitations()",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L73"
+      "source_location": "L79"
     },
     {
       "id": "frontend_src_app_api_assistant_route_post",
@@ -624,7 +639,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "frontend/src/app/api/assistant/route.ts",
@@ -636,7 +651,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "frontend/src/app/api/compliance/route.ts",
@@ -648,35 +663,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "askjurispage()",
       "source_file": "frontend/src/app/ask-juris/page.tsx",
       "source_location": "L7"
     },
     {
-      "id": "frontend_src_app_home_page_homepage",
+      "id": "frontend_src_app_page_homepage",
       "label": "HomePage()",
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "homepage()",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "frontend_src_app_page_indexpage",
-      "label": "IndexPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "indexpage()",
       "source_file": "frontend/src/app/page.tsx",
-      "source_location": "L4"
+      "source_location": "L5"
     },
     {
       "id": "frontend_src_components_chat_chatinterface_chatinterface",
@@ -684,11 +687,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "chatinterface()",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L56"
+      "source_location": "L91"
+    },
+    {
+      "id": "frontend_src_components_home_homecontent_homecontent",
+      "label": "HomeContent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "ChatInterface.tsx",
+      "file_type": "code",
+      "norm_label": "homecontent()",
+      "source_file": "frontend/src/components/home/HomeContent.tsx",
+      "source_location": "L38"
     },
     {
       "id": "frontend_src_lib_supabase_server_createclient",
@@ -696,7 +711,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "createclient()",
       "source_file": "frontend/src/lib/supabase/server.ts",
@@ -775,16 +790,16 @@
       "source_location": "L19"
     },
     {
-      "id": "backend_app_api_health_health_check",
-      "label": "health_check()",
+      "id": "backend_app_api_v1_chat_compare_sources",
+      "label": "compare_sources()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "code",
-      "norm_label": "health_check()",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L9"
+      "norm_label": "compare_sources()",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L144"
     },
     {
       "id": "backend_app_api_v1_chat_delete_conversation",
@@ -796,7 +811,7 @@
       "file_type": "code",
       "norm_label": "delete_conversation()",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L122"
+      "source_location": "L230"
     },
     {
       "id": "backend_app_api_v1_chat_get_conversation_messages",
@@ -808,7 +823,7 @@
       "file_type": "code",
       "norm_label": "get_conversation_messages()",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L78"
+      "source_location": "L186"
     },
     {
       "id": "backend_app_api_v1_chat_get_user_conversations",
@@ -820,7 +835,7 @@
       "file_type": "code",
       "norm_label": "get_user_conversations()",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L56"
+      "source_location": "L164"
     },
     {
       "id": "backend_app_api_v1_chat_send_chat_message",
@@ -832,31 +847,7 @@
       "file_type": "code",
       "norm_label": "send_chat_message()",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26"
-    },
-    {
-      "id": "backend_app_auth_deps_get_current_user",
-      "label": "get_current_user()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L23"
-    },
-    {
-      "id": "backend_app_auth_deps_get_current_user_token",
-      "label": "get_current_user_token()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_current_user_token()",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L10"
+      "source_location": "L34"
     },
     {
       "id": "backend_app_db_supabase_get_supabase_admin_client",
@@ -869,30 +860,6 @@
       "norm_label": "get_supabase_admin_client()",
       "source_file": "backend/app/db/supabase.py",
       "source_location": "L21"
-    },
-    {
-      "id": "backend_app_db_supabase_get_supabase_client",
-      "label": "get_supabase_client()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get_supabase_client()",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L5"
-    },
-    {
-      "id": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "label": "._generate_rule_based_response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "._generate_rule_based_response()",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L258"
     },
     {
       "id": "backend_app_services_rag_service_legalragservice_get_system_prompt",
@@ -928,7 +895,7 @@
       "file_type": "code",
       "norm_label": "._persist_messages_and_audit()",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315"
+      "source_location": "L407"
     },
     {
       "id": "backend_app_services_rag_service_legalragservice_process_query",
@@ -952,7 +919,7 @@
       "file_type": "code",
       "norm_label": "._retrieve_evidence_citations()",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198"
+      "source_location": "L214"
     },
     {
       "id": "backend_app_services_legal_classifier_legalqueryclassifier_classify",
@@ -1036,7 +1003,7 @@
       "file_type": "code",
       "norm_label": "get_history()",
       "source_file": "backend/app/api/v1/compliance.py",
-      "source_location": "L80"
+      "source_location": "L81"
     },
     {
       "id": "backend_app_api_v1_compliance_save_assessment",
@@ -1111,6 +1078,186 @@
       "source_location": "L3"
     },
     {
+      "id": "backend_app_api_health_health_check",
+      "label": "health_check()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "health_check()",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L9"
+    },
+    {
+      "id": "backend_app_auth_deps_get_current_user",
+      "label": "get_current_user()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get_current_user()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L23"
+    },
+    {
+      "id": "backend_app_auth_deps_get_current_user_token",
+      "label": "get_current_user_token()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get_current_user_token()",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L10"
+    },
+    {
+      "id": "backend_app_db_supabase_get_supabase_client",
+      "label": "get_supabase_client()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get_supabase_client()",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L5"
+    },
+    {
+      "id": "scripts_corpus_status_check_status",
+      "label": "check_status()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "check_status()",
+      "source_file": "scripts/corpus_status.py",
+      "source_location": "L30"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_compare_sources",
+      "label": ".compare_sources()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": ".compare_sources()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L193"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_fallback_web_response",
+      "label": "._fallback_web_response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "._fallback_web_response()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L186"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_get_system_prompt",
+      "label": "._get_system_prompt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "._get_system_prompt()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L27"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L16"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "label": ".process_query()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": ".process_query()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L52"
+    },
+    {
+      "id": "backend_app_services_web_research_service_webresearchservice_simulate_live_web_search",
+      "label": "._simulate_live_web_search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "._simulate_live_web_search()",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L121"
+    },
+    {
+      "id": "scripts_ingest_legal_documents_get_embedding",
+      "label": "get_embedding()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "ingest_legal_documents.py",
+      "file_type": "code",
+      "norm_label": "get_embedding()",
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L22"
+    },
+    {
+      "id": "scripts_ingest_legal_documents_process_and_ingest",
+      "label": "process_and_ingest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "ingest_legal_documents.py",
+      "file_type": "code",
+      "norm_label": "process_and_ingest()",
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L27"
+    },
+    {
+      "id": "frontend_src_app_api_assistant_compare_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "compare/route.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "frontend/src/app/api/assistant/compare/route.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "frontend_src_app_home_page_homealiaspage",
+      "label": "HomeAliasPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "home/page.tsx",
+      "file_type": "code",
+      "norm_label": "homealiaspage()",
+      "source_file": "frontend/src/app/home/page.tsx",
+      "source_location": "L3"
+    },
+    {
       "id": "backend_app_services_email_service_emailservice_init",
       "label": ".__init__()",
       "_callable": true,
@@ -1159,64 +1306,64 @@
       "source_location": "L22"
     },
     {
-      "id": "frontend_src_app_literacy_page_legalliteracypage",
-      "label": "LegalLiteracyPage()",
+      "id": "frontend_src_app_literacy_page_literacypage",
+      "label": "LiteracyPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "legalliteracypage()",
+      "norm_label": "literacypage()",
       "source_file": "frontend/src/app/literacy/page.tsx",
-      "source_location": "L24"
+      "source_location": "L12"
     },
     {
-      "id": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocard",
-      "label": "InteractiveScenarioCard()",
+      "id": "frontend_src_components_literacy_rightcard_rightcard",
+      "label": "RightCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "interactivescenariocard()",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L34"
+      "norm_label": "rightcard()",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L10"
     },
     {
-      "id": "frontend_src_components_literacy_literacyscene3d_literacyscene3d",
-      "label": "LiteracyScene3D()",
+      "id": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanel",
+      "label": "RightDetailPanel()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacyscene3d()",
-      "source_file": "frontend/src/components/literacy/LiteracyScene3D.tsx",
-      "source_location": "L11"
+      "norm_label": "rightdetailpanel()",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L10"
     },
     {
-      "id": "frontend_src_components_literacy_literacytimeline_geticon",
-      "label": "getIcon()",
+      "id": "frontend_src_components_literacy_rightshero_rightshero",
+      "label": "RightsHero()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "geticon()",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L11"
+      "norm_label": "rightshero()",
+      "source_file": "frontend/src/components/literacy/RightsHero.tsx",
+      "source_location": "L12"
     },
     {
-      "id": "frontend_src_components_literacy_literacytimeline_literacytimeline",
-      "label": "LiteracyTimeline()",
+      "id": "frontend_src_data_legalliteracydata_getcategories",
+      "label": "getCategories()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacytimeline()",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L23"
+      "norm_label": "getcategories()",
+      "source_file": "frontend/src/data/legalLiteracyData.ts",
+      "source_location": "L164"
     },
     {
       "id": "public_handle_new_user",
@@ -1774,7 +1921,7 @@
       "label": "assistant/route.ts",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "assistant/route.ts",
       "source_file": "frontend/src/app/api/assistant/route.ts",
@@ -1785,7 +1932,7 @@
       "label": "compliance/route.ts",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "compliance/route.ts",
       "source_file": "frontend/src/app/api/compliance/route.ts",
@@ -1796,21 +1943,10 @@
       "label": "ask-juris/page.tsx",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "ask-juris/page.tsx",
       "source_file": "frontend/src/app/ask-juris/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_app_home_page",
-      "label": "home/page.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "createClient",
-      "file_type": "code",
-      "norm_label": "home/page.tsx",
-      "source_file": "frontend/src/app/home/page.tsx",
       "source_location": "L1"
     },
     {
@@ -1818,7 +1954,7 @@
       "label": "app/page.tsx",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "app/page.tsx",
       "source_file": "frontend/src/app/page.tsx",
@@ -1829,7 +1965,7 @@
       "label": "ChatInterface.tsx",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "chatinterface.tsx",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
@@ -1840,7 +1976,7 @@
       "label": "server.ts",
       "_origin": "ast",
       "community": 17,
-      "community_name": "createClient",
+      "community_name": "ChatInterface.tsx",
       "file_type": "code",
       "norm_label": "server.ts",
       "source_file": "frontend/src/lib/supabase/server.ts",
@@ -2542,28 +2678,6 @@
       "source_file": "tailwindcss"
     },
     {
-      "id": "backend_app_api_health",
-      "label": "health.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "health.py",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_api_health_py_get",
-      "label": "get",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "get",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "backend_app_api_v1_chat",
       "label": "chat.py",
       "_origin": "ast",
@@ -2608,28 +2722,6 @@
       "source_location": ""
     },
     {
-      "id": "backend_app_auth_deps",
-      "label": "deps.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "deps.py",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_app_db_supabase",
-      "label": "supabase.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "supabase.py",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_app_services_rag_service",
       "label": "rag_service.py",
       "_origin": "ast",
@@ -2652,17 +2744,6 @@
       "source_location": ""
     },
     {
-      "id": "client",
-      "label": "Client",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "client",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "delete",
       "label": "delete",
       "_origin": "ast",
@@ -2674,51 +2755,18 @@
       "source_location": ""
     },
     {
-      "id": "httpauthorizationcredentials",
-      "label": "HTTPAuthorizationCredentials",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "code",
-      "norm_label": "httpauthorizationcredentials",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_app_api_health_rationale_10",
-      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
+      "id": "backend_app_api_v1_chat_rationale_148",
+      "label": "Compares RAG corpus output against live official web sources.",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
-      "source_file": "backend/app/api/health.py",
-      "source_location": "L10"
-    },
-    {
-      "id": "backend_app_api_v1_chat_rationale_126",
-      "label": "Deletes a conversation thread and associated messages.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "deletes a conversation thread and associated messages.",
+      "norm_label": "compares rag corpus output against live official web sources.",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L126"
+      "source_location": "L148"
     },
     {
-      "id": "backend_app_api_v1_chat_rationale_30",
-      "label": "Processes a legal query through the MARE-Juris Evidence-Grounded RAG Engine.\u2026",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "processes a legal query through the mare-juris evidence-grounded rag engine....",
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L30"
-    },
-    {
-      "id": "backend_app_api_v1_chat_rationale_57",
+      "id": "backend_app_api_v1_chat_rationale_165",
       "label": "Retrieves all conversation threads initiated by the authenticated user.",
       "_origin": "ast",
       "community": 3,
@@ -2726,10 +2774,10 @@
       "file_type": "rationale",
       "norm_label": "retrieves all conversation threads initiated by the authenticated user.",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L57"
+      "source_location": "L165"
     },
     {
-      "id": "backend_app_api_v1_chat_rationale_82",
+      "id": "backend_app_api_v1_chat_rationale_190",
       "label": "Retrieves message history transcript for a specific conversation.",
       "_origin": "ast",
       "community": 3,
@@ -2737,29 +2785,29 @@
       "file_type": "rationale",
       "norm_label": "retrieves message history transcript for a specific conversation.",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L82"
+      "source_location": "L190"
     },
     {
-      "id": "backend_app_auth_deps_rationale_11",
-      "label": "Extracts Bearer Token from HTTP Authorization Header.",
+      "id": "backend_app_api_v1_chat_rationale_234",
+      "label": "Deletes a conversation thread and associated messages.",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "extracts bearer token from http authorization header.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L11"
+      "norm_label": "deletes a conversation thread and associated messages.",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L234"
     },
     {
-      "id": "backend_app_auth_deps_rationale_24",
-      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
+      "id": "backend_app_api_v1_chat_rationale_38",
+      "label": "Processes a legal query through the Dual-Source Architecture: 1. MARE-Juris\u2026",
       "_origin": "ast",
       "community": 3,
       "community_name": "get_supabase_admin_client",
       "file_type": "rationale",
-      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
-      "source_file": "backend/app/auth/deps.py",
-      "source_location": "L24"
+      "norm_label": "processes a legal query through the dual-source architecture: 1. mare-juris...",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L38"
     },
     {
       "id": "backend_app_db_supabase_rationale_22",
@@ -2773,17 +2821,6 @@
       "source_location": "L22"
     },
     {
-      "id": "backend_app_db_supabase_rationale_6",
-      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "get_supabase_admin_client",
-      "file_type": "rationale",
-      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
-      "source_file": "backend/app/db/supabase.py",
-      "source_location": "L6"
-    },
-    {
       "id": "backend_app_services_rag_service_rationale_17",
       "label": "Evidence-Grounded RAG Engine for MARE-Juris Legal Intelligence Platform.\u2026",
       "_origin": "ast",
@@ -2795,7 +2832,7 @@
       "source_location": "L17"
     },
     {
-      "id": "backend_app_services_rag_service_rationale_63",
+      "id": "backend_app_services_rag_service_rationale_64",
       "label": "Main Ask MARE-Juris Legal Chat Pipeline. Pipeline: INPUT VALIDATION -> LEGAL\u2026",
       "_origin": "ast",
       "community": 3,
@@ -2803,7 +2840,7 @@
       "file_type": "rationale",
       "norm_label": "main ask mare-juris legal chat pipeline. pipeline: input validation -> legal...",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L63"
+      "source_location": "L64"
     },
     {
       "id": "backend_app_services_legal_classifier",
@@ -3027,18 +3064,6 @@
       "source_location": "L1"
     },
     {
-      "id": "docs_implementation_heading",
-      "label": "Heading",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "implementation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "heading",
-      "source_file": "docs/implementation.md",
-      "source_location": "L1409"
-    },
-    {
       "id": "frontend_src_app_api_compliance_pdf_route",
       "label": "pdf/route.ts",
       "_origin": "ast",
@@ -3050,6 +3075,447 @@
       "source_location": "L1"
     },
     {
+      "id": "backend_app_api_health",
+      "label": "health.py",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "health.py",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_api_health_py_get",
+      "label": "get",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "get",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_app_auth_deps",
+      "label": "deps.py",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "deps.py",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_db_supabase",
+      "label": "supabase.py",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "supabase.py",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "client",
+      "label": "Client",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "client",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "httpauthorizationcredentials",
+      "label": "HTTPAuthorizationCredentials",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "httpauthorizationcredentials",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "scripts_corpus_status",
+      "label": "corpus_status.py",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "code",
+      "norm_label": "corpus_status.py",
+      "source_file": "scripts/corpus_status.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_api_health_rationale_10",
+      "label": "Infrastructure Health Check Endpoint. Verifies FastAPI server running state,\u2026",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "infrastructure health check endpoint. verifies fastapi server running state,...",
+      "source_file": "backend/app/api/health.py",
+      "source_location": "L10"
+    },
+    {
+      "id": "backend_app_auth_deps_rationale_11",
+      "label": "Extracts Bearer Token from HTTP Authorization Header.",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "extracts bearer token from http authorization header.",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_app_auth_deps_rationale_24",
+      "label": "Validates Supabase JWT token and retrieves authenticated user object.",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "validates supabase jwt token and retrieves authenticated user object.",
+      "source_file": "backend/app/auth/deps.py",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_app_db_supabase_rationale_6",
+      "label": "Returns a Supabase client scoped to an authenticated user's JWT token (or anon\u2026",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "get_supabase_client",
+      "file_type": "rationale",
+      "norm_label": "returns a supabase client scoped to an authenticated user's jwt token (or anon...",
+      "source_file": "backend/app/db/supabase.py",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_app_services_web_research_service",
+      "label": "web_research_service.py",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "web_research_service.py",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_app_services_web_research_service_py_any",
+      "label": "Any",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "code",
+      "norm_label": "any",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_app_services_web_research_service_rationale_12",
+      "label": "Live Official Web Research Engine for MARE-Juris. Simulates fetching current\u2026",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "rationale",
+      "norm_label": "live official web research engine for mare-juris. simulates fetching current...",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L12"
+    },
+    {
+      "id": "backend_app_services_web_research_service_rationale_194",
+      "label": "Compares the MARE-Juris RAG output with the Live Web Research output and\u2026",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "rationale",
+      "norm_label": "compares the mare-juris rag output with the live web research output and...",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L194"
+    },
+    {
+      "id": "backend_app_services_web_research_service_rationale_53",
+      "label": "Executes Live Official Web Research pipeline. Currently uses a high-fidelity\u2026",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "WebResearchService",
+      "file_type": "rationale",
+      "norm_label": "executes live official web research pipeline. currently uses a high-fidelity...",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L53"
+    },
+    {
+      "id": "docs_mare_juris_rag",
+      "label": "MARE_JURIS_RAG.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "mare_juris_rag.md",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_mare_juris_rag_1_document_corpus_management",
+      "label": "1. Document Corpus Management",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. document corpus management",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "docs_mare_juris_rag_2_supabase_integration",
+      "label": "2. Supabase Integration",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. supabase integration",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L8"
+    },
+    {
+      "id": "docs_mare_juris_rag_3_two_answer_dual_pipeline",
+      "label": "3. Two-Answer Dual Pipeline",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. two-answer dual pipeline",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L17"
+    },
+    {
+      "id": "docs_mare_juris_rag_4_source_comparison",
+      "label": "4. Source Comparison",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. source comparison",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L24"
+    },
+    {
+      "id": "docs_mare_juris_rag_5_security_verification",
+      "label": "5. Security & Verification",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. security & verification",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L28"
+    },
+    {
+      "id": "docs_mare_juris_rag_architecture_flow",
+      "label": "Architecture Flow",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "architecture flow",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "label": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "MARE-Juris RAG Pipeline & Two-Answer System",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "mare-juris rag pipeline & two-answer system",
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "public",
+      "label": "public",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "public",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "supabase_migrations_20260913_legal_corpus",
+      "label": "20260913_legal_corpus.sql",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "20260913_legal_corpus.sql",
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": null
+    },
+    {
+      "id": "supabase_migrations_20260913_legal_corpus_for",
+      "label": "for()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "for()",
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L59"
+    },
+    {
+      "id": "supabase_migrations_20260913_legal_corpus_match_legal_chunks",
+      "label": "match_legal_chunks()",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "match_legal_chunks()",
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L60"
+    },
+    {
+      "id": "supabase_migrations_20260913_legal_corpus_public_legal_chunks",
+      "label": "public.legal_chunks",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "public.legal_chunks",
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L29"
+    },
+    {
+      "id": "supabase_migrations_20260913_legal_corpus_public_legal_documents",
+      "label": "public.legal_documents",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "20260913_legal_corpus.sql",
+      "file_type": "code",
+      "norm_label": "public.legal_documents",
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L5"
+    },
+    {
+      "id": "legal_documents_readme",
+      "label": "README.md",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "MARE-Juris Initial Legal Corpus",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "readme.md",
+      "source_file": "legal-documents/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "legal_documents_readme_how_to_source_these_files",
+      "label": "How to source these files:",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "MARE-Juris Initial Legal Corpus",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how to source these files:",
+      "source_file": "legal-documents/README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "legal_documents_readme_mare_juris_initial_legal_corpus",
+      "label": "MARE-Juris Initial Legal Corpus",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "MARE-Juris Initial Legal Corpus",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "mare-juris initial legal corpus",
+      "source_file": "legal-documents/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_ingest_legal_documents",
+      "label": "ingest_legal_documents.py",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "ingest_legal_documents.py",
+      "file_type": "code",
+      "norm_label": "ingest_legal_documents.py",
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_app_api_assistant_compare_route",
+      "label": "compare/route.ts",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "compare/route.ts",
+      "file_type": "code",
+      "norm_label": "compare/route.ts",
+      "source_file": "frontend/src/app/api/assistant/compare/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_app_home_page",
+      "label": "home/page.tsx",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "home/page.tsx",
+      "file_type": "code",
+      "norm_label": "home/page.tsx",
+      "source_file": "frontend/src/app/home/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_ragimplementation",
+      "label": "ragimplementation.md",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ragimplementation.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "ragimplementation.md",
+      "source_file": "docs/ragimplementation.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_apply_migration",
+      "label": "apply_migration.py",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "apply_migration.py",
+      "file_type": "code",
+      "norm_label": "apply_migration.py",
+      "source_file": "scripts/apply_migration.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_reload_schema",
+      "label": "reload_schema.py",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "reload_schema.py",
+      "file_type": "code",
+      "norm_label": "reload_schema.py",
+      "source_file": "scripts/reload_schema.py",
+      "source_location": "L1"
+    },
+    {
       "id": "frontend_package_dependencies",
       "label": "dependencies",
       "_origin": "ast",
@@ -3058,7 +3524,7 @@
       "file_type": "code",
       "norm_label": "dependencies",
       "source_file": "frontend/package.json",
-      "source_location": "L11"
+      "source_location": "L13"
     },
     {
       "id": "frontend_package_dependencies_clsx",
@@ -3069,7 +3535,7 @@
       "file_type": "code",
       "norm_label": "clsx",
       "source_file": "frontend/package.json",
-      "source_location": "L15"
+      "source_location": "L17"
     },
     {
       "id": "frontend_package_dependencies_lucide_react",
@@ -3080,7 +3546,7 @@
       "file_type": "code",
       "norm_label": "lucide-react",
       "source_file": "frontend/package.json",
-      "source_location": "L16"
+      "source_location": "L18"
     },
     {
       "id": "frontend_package_dependencies_next",
@@ -3091,7 +3557,18 @@
       "file_type": "code",
       "norm_label": "next",
       "source_file": "frontend/package.json",
-      "source_location": "L17"
+      "source_location": "L19"
+    },
+    {
+      "id": "frontend_package_dependencies_puppeteer",
+      "label": "puppeteer",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "puppeteer",
+      "source_file": "frontend/package.json",
+      "source_location": "L20"
     },
     {
       "id": "frontend_package_dependencies_react",
@@ -3102,7 +3579,7 @@
       "file_type": "code",
       "norm_label": "react",
       "source_file": "frontend/package.json",
-      "source_location": "L18"
+      "source_location": "L21"
     },
     {
       "id": "frontend_package_dependencies_react_dom",
@@ -3113,7 +3590,7 @@
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L19"
+      "source_location": "L22"
     },
     {
       "id": "frontend_package_dependencies_react_markdown",
@@ -3124,7 +3601,7 @@
       "file_type": "code",
       "norm_label": "react-markdown",
       "source_file": "frontend/package.json",
-      "source_location": "L20"
+      "source_location": "L23"
     },
     {
       "id": "frontend_package_dependencies_remark_gfm",
@@ -3135,7 +3612,7 @@
       "file_type": "code",
       "norm_label": "remark-gfm",
       "source_file": "frontend/package.json",
-      "source_location": "L21"
+      "source_location": "L24"
     },
     {
       "id": "frontend_package_dependencies_supabase_ssr",
@@ -3146,7 +3623,7 @@
       "file_type": "code",
       "norm_label": "@supabase/ssr",
       "source_file": "frontend/package.json",
-      "source_location": "L12"
+      "source_location": "L14"
     },
     {
       "id": "frontend_package_dependencies_supabase_supabase_js",
@@ -3157,7 +3634,7 @@
       "file_type": "code",
       "norm_label": "@supabase/supabase-js",
       "source_file": "frontend/package.json",
-      "source_location": "L13"
+      "source_location": "L15"
     },
     {
       "id": "frontend_package_dependencies_tailwind_merge",
@@ -3168,7 +3645,7 @@
       "file_type": "code",
       "norm_label": "tailwind-merge",
       "source_file": "frontend/package.json",
-      "source_location": "L22"
+      "source_location": "L25"
     },
     {
       "id": "frontend_package_dependencies_three",
@@ -3179,7 +3656,7 @@
       "file_type": "code",
       "norm_label": "three",
       "source_file": "frontend/package.json",
-      "source_location": "L23"
+      "source_location": "L26"
     },
     {
       "id": "frontend_package_dependencies_types_three",
@@ -3190,7 +3667,7 @@
       "file_type": "code",
       "norm_label": "@types/three",
       "source_file": "frontend/package.json",
-      "source_location": "L14"
+      "source_location": "L16"
     },
     {
       "id": "clsx",
@@ -3201,7 +3678,7 @@
       "file_type": "concept",
       "norm_label": "clsx",
       "source_file": "frontend/package.json",
-      "source_location": "L15"
+      "source_location": "L17"
     },
     {
       "id": "frontend_package_json_next",
@@ -3212,7 +3689,7 @@
       "file_type": "concept",
       "norm_label": "next",
       "source_file": "frontend/package.json",
-      "source_location": "L17"
+      "source_location": "L19"
     },
     {
       "id": "lucide_react",
@@ -3223,7 +3700,18 @@
       "file_type": "concept",
       "norm_label": "lucide-react",
       "source_file": "frontend/package.json",
-      "source_location": "L16"
+      "source_location": "L18"
+    },
+    {
+      "id": "puppeteer",
+      "label": "puppeteer",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "puppeteer",
+      "source_file": "frontend/package.json",
+      "source_location": "L20"
     },
     {
       "id": "react",
@@ -3234,7 +3722,7 @@
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "frontend/package.json",
-      "source_location": "L18"
+      "source_location": "L21"
     },
     {
       "id": "react_dom",
@@ -3245,7 +3733,7 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L19"
+      "source_location": "L22"
     },
     {
       "id": "react_markdown",
@@ -3256,7 +3744,7 @@
       "file_type": "concept",
       "norm_label": "react-markdown",
       "source_file": "frontend/package.json",
-      "source_location": "L20"
+      "source_location": "L23"
     },
     {
       "id": "remark_gfm",
@@ -3267,7 +3755,7 @@
       "file_type": "concept",
       "norm_label": "remark-gfm",
       "source_file": "frontend/package.json",
-      "source_location": "L21"
+      "source_location": "L24"
     },
     {
       "id": "supabase_ssr",
@@ -3278,7 +3766,7 @@
       "file_type": "concept",
       "norm_label": "@supabase/ssr",
       "source_file": "frontend/package.json",
-      "source_location": "L12"
+      "source_location": "L14"
     },
     {
       "id": "supabase_supabase_js",
@@ -3289,7 +3777,7 @@
       "file_type": "concept",
       "norm_label": "@supabase/supabase-js",
       "source_file": "frontend/package.json",
-      "source_location": "L13"
+      "source_location": "L15"
     },
     {
       "id": "tailwind_merge",
@@ -3300,7 +3788,7 @@
       "file_type": "concept",
       "norm_label": "tailwind-merge",
       "source_file": "frontend/package.json",
-      "source_location": "L22"
+      "source_location": "L25"
     },
     {
       "id": "three",
@@ -3311,7 +3799,7 @@
       "file_type": "concept",
       "norm_label": "three",
       "source_file": "frontend/package.json",
-      "source_location": "L23"
+      "source_location": "L26"
     },
     {
       "id": "types_three",
@@ -3322,7 +3810,7 @@
       "file_type": "concept",
       "norm_label": "@types/three",
       "source_file": "frontend/package.json",
-      "source_location": "L14"
+      "source_location": "L16"
     },
     {
       "id": "backend_app_services_email_service",
@@ -3391,47 +3879,36 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_components_literacy_interactivescenariocard",
-      "label": "InteractiveScenarioCard.tsx",
+      "id": "frontend_src_components_literacy_rightcard",
+      "label": "RightCard.tsx",
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "interactivescenariocard.tsx",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
+      "norm_label": "rightcard.tsx",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_components_literacy_interactivescenariocard_literacyscene3d",
-      "label": "LiteracyScene3D",
+      "id": "frontend_src_components_literacy_rightdetailpanel",
+      "label": "RightDetailPanel.tsx",
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacyscene3d",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "frontend_src_components_literacy_literacyscene3d",
-      "label": "LiteracyScene3D.tsx",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "literacy/page.tsx",
-      "file_type": "code",
-      "norm_label": "literacyscene3d.tsx",
-      "source_file": "frontend/src/components/literacy/LiteracyScene3D.tsx",
+      "norm_label": "rightdetailpanel.tsx",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_components_literacy_literacytimeline",
-      "label": "LiteracyTimeline.tsx",
+      "id": "frontend_src_components_literacy_rightshero",
+      "label": "RightsHero.tsx",
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "literacytimeline.tsx",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
+      "norm_label": "rightshero.tsx",
+      "source_file": "frontend/src/components/literacy/RightsHero.tsx",
       "source_location": "L1"
     },
     {
@@ -3446,15 +3923,15 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_data_legalliteracydata_legal_literacy_scenarios",
-      "label": "LEGAL_LITERACY_SCENARIOS",
+      "id": "frontend_src_data_legalliteracydata_rightsdata",
+      "label": "rightsData",
       "_origin": "ast",
       "community": 8,
       "community_name": "literacy/page.tsx",
       "file_type": "code",
-      "norm_label": "legal_literacy_scenarios",
+      "norm_label": "rightsdata",
       "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L41"
+      "source_location": "L30"
     },
     {
       "id": "frontend_package",
@@ -3476,7 +3953,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "frontend/package.json",
-      "source_location": "L25"
+      "source_location": "L28"
     },
     {
       "id": "frontend_package_devdependencies_autoprefixer",
@@ -3487,7 +3964,7 @@
       "file_type": "code",
       "norm_label": "autoprefixer",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L32"
     },
     {
       "id": "frontend_package_devdependencies_eslint",
@@ -3498,7 +3975,7 @@
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
+      "source_location": "L33"
     },
     {
       "id": "frontend_package_devdependencies_eslint_config_next",
@@ -3509,7 +3986,7 @@
       "file_type": "code",
       "norm_label": "eslint-config-next",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L34"
     },
     {
       "id": "frontend_package_devdependencies_postcss",
@@ -3520,7 +3997,7 @@
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
+      "source_location": "L35"
     },
     {
       "id": "frontend_package_devdependencies_tailwindcss",
@@ -3531,7 +4008,7 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "frontend/package.json",
-      "source_location": "L33"
+      "source_location": "L36"
     },
     {
       "id": "frontend_package_devdependencies_types_node",
@@ -3542,7 +4019,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
+      "source_location": "L29"
     },
     {
       "id": "frontend_package_devdependencies_types_react",
@@ -3553,7 +4030,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L30"
     },
     {
       "id": "frontend_package_devdependencies_types_react_dom",
@@ -3564,7 +4041,7 @@
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
+      "source_location": "L31"
     },
     {
       "id": "frontend_package_devdependencies_typescript",
@@ -3575,7 +4052,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L34"
+      "source_location": "L37"
     },
     {
       "id": "frontend_package_name",
@@ -3622,6 +4099,17 @@
       "source_location": "L7"
     },
     {
+      "id": "frontend_package_scripts_corpus_status",
+      "label": "corpus:status",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "corpus:status",
+      "source_file": "frontend/package.json",
+      "source_location": "L11"
+    },
+    {
       "id": "frontend_package_scripts_dev",
       "label": "dev",
       "_origin": "ast",
@@ -3631,6 +4119,17 @@
       "norm_label": "dev",
       "source_file": "frontend/package.json",
       "source_location": "L6"
+    },
+    {
+      "id": "frontend_package_scripts_ingest_legal",
+      "label": "ingest:legal",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "ingest:legal",
+      "source_file": "frontend/package.json",
+      "source_location": "L10"
     },
     {
       "id": "frontend_package_scripts_lint",
@@ -3674,7 +4173,7 @@
       "file_type": "concept",
       "norm_label": "autoprefixer",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L32"
     },
     {
       "id": "eslint",
@@ -3685,7 +4184,7 @@
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
+      "source_location": "L33"
     },
     {
       "id": "eslint_config_next",
@@ -3696,7 +4195,7 @@
       "file_type": "concept",
       "norm_label": "eslint-config-next",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L34"
     },
     {
       "id": "frontend_package_json_tailwindcss",
@@ -3707,7 +4206,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "frontend/package.json",
-      "source_location": "L33"
+      "source_location": "L36"
     },
     {
       "id": "postcss",
@@ -3718,7 +4217,7 @@
       "file_type": "concept",
       "norm_label": "postcss",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
+      "source_location": "L35"
     },
     {
       "id": "types_node",
@@ -3729,7 +4228,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
+      "source_location": "L29"
     },
     {
       "id": "types_react",
@@ -3740,7 +4239,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L30"
     },
     {
       "id": "types_react_dom",
@@ -3751,7 +4250,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
+      "source_location": "L31"
     },
     {
       "id": "typescript",
@@ -3762,7 +4261,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L34"
+      "source_location": "L37"
     },
     {
       "id": "ADR-001",
@@ -3943,7 +4442,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L130",
+      "source_location": "L238",
       "weight": 1.0
     },
     {
@@ -3955,7 +4454,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L86",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -3967,7 +4466,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L61",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat_send_chat_message",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_compliance_get_history",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/api/v1/compliance.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_compliance_save_assessment",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/api/v1/compliance.py",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -4015,7 +4550,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L326",
+      "source_location": "L418",
       "weight": 1.0
     },
     {
@@ -4027,7 +4562,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L116",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -4039,19 +4574,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L152",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice_process_query",
-      "target": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L174",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -4063,31 +4586,67 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L85",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_rag_service_legalragservice_retrieve_evidence_citations",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/services/rag_service.py",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "target": "backend_app_services_web_research_service_webresearchservice_fallback_web_response",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "target": "backend_app_services_web_research_service_webresearchservice_simulate_live_web_search",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "target": "backend_app_services_web_research_service_webresearchservice_get_system_prompt",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
       "source": "frontend_src_app_api_assistant_route_post",
-      "target": "frontend_src_app_api_assistant_route_getfallbackcitations",
+      "target": "frontend_src_app_api_assistant_route_generatedualresponse",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_api_assistant_route_post",
-      "target": "frontend_src_app_api_assistant_route_generatelegalanalysis",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L56",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -4139,15 +4698,15 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_home_page_homepage",
-      "target": "frontend_src_lib_supabase_server_createclient",
+      "source": "frontend_src_app_literacy_page_literacypage",
+      "target": "frontend_src_data_legalliteracydata_getcategories",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L7",
+      "source_file": "frontend/src/app/literacy/page.tsx",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4163,7 +4722,7 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_page_indexpage",
+      "source": "frontend_src_app_page_homepage",
       "target": "frontend_src_lib_supabase_server_createclient",
       "relation": "calls",
       "_origin": "ast",
@@ -4171,7 +4730,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/app/page.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4231,19 +4790,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L86",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_literacytimeline_literacytimeline",
-      "target": "frontend_src_components_literacy_literacytimeline_geticon",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L59",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -4259,6 +4806,18 @@
       "weight": 1.0
     },
     {
+      "source": "scripts_ingest_legal_documents_process_and_ingest",
+      "target": "scripts_ingest_legal_documents_get_embedding",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
       "source": "backend_app_api_health_health_check",
       "target": "backend_app_api_health_py_get",
       "relation": "references",
@@ -4271,6 +4830,18 @@
       "weight": 1.0
     },
     {
+      "source": "backend_app_api_v1_chat_compare_sources",
+      "target": "backend_app_api_v1_chat_py_post",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "decorator",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
       "source": "backend_app_api_v1_chat_delete_conversation",
       "target": "delete",
       "relation": "references",
@@ -4279,7 +4850,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L121",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -4291,7 +4862,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L77",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -4303,7 +4874,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L55",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -4315,7 +4886,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L25",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4363,7 +4934,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "backend/app/api/v1/compliance.py",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -4391,27 +4962,27 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocardprops",
-      "target": "frontend_src_data_legalliteracydata_literacyscenario",
+      "source": "frontend_src_components_literacy_rightcard_rightcardprops",
+      "target": "frontend_src_data_legalliteracydata_right",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L30",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_literacytimeline_literacytimelineprops",
-      "target": "frontend_src_data_legalliteracydata_timelinestep",
+      "source": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanelprops",
+      "target": "frontend_src_data_legalliteracydata_right",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L8",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4483,7 +5054,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -4507,20 +5078,55 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard_literacyscene3d",
-      "target": "frontend_src_components_literacy_literacyscene3d",
-      "relation": "imports_from",
+      "source": "backend_app_services_web_research_service_webresearchservice_compare_sources",
+      "target": "backend_app_services_web_research_service_py_any",
+      "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "context": "import",
-      "deferred": true,
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L9",
+      "context": "generic_arg",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_fallback_web_response",
+      "target": "backend_app_services_web_research_service_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "target": "backend_app_services_web_research_service_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice_simulate_live_web_search",
+      "target": "backend_app_services_web_research_service_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -4652,7 +5258,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4664,7 +5270,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -4689,6 +5295,18 @@
       "context": "import",
       "source_file": "backend/app/api/v1/compliance.py",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_compliance",
+      "target": "backend_app_db_supabase_get_supabase_admin_client",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/app/api/v1/compliance.py",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4724,7 +5342,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -4736,7 +5354,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4748,7 +5366,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L17",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies_puppeteer",
+      "target": "puppeteer",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/package.json",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -4760,7 +5390,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L18",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -4772,7 +5402,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L19",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -4784,7 +5414,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -4796,7 +5426,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -4808,7 +5438,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -4820,7 +5450,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -4832,7 +5462,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -4844,7 +5474,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -4856,7 +5486,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -4868,7 +5498,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -4880,7 +5510,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4892,7 +5522,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -4904,7 +5534,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4916,7 +5546,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4928,7 +5558,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4940,7 +5570,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -4952,7 +5582,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -4964,7 +5594,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -5064,30 +5694,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_home_page",
-      "target": "frontend_src_lib_supabase_server_createclient",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_home_page",
-      "target": "frontend_src_components_home_homecontent_homecontent",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_literacy_page",
       "target": "frontend_src_components_navigation_navbar_navbar",
       "relation": "imports",
@@ -5101,7 +5707,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_components_assistant_floatingassistant_floatingassistant",
+      "target": "frontend_src_components_literacy_rightshero_rightshero",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5113,7 +5719,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_data_legalliteracydata_legal_literacy_scenarios",
+      "target": "frontend_src_components_literacy_rightcard_rightcard",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5125,19 +5731,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_data_legalliteracydata_literacyscenario",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/literacy/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocard",
+      "target": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanel",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5145,6 +5739,42 @@
       "context": "import",
       "source_file": "frontend/src/app/literacy/page.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_literacy_page",
+      "target": "frontend_src_data_legalliteracydata_getcategories",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/literacy/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_literacy_page",
+      "target": "frontend_src_data_legalliteracydata_right",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/literacy/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_literacy_page",
+      "target": "frontend_src_data_legalliteracydata_rightsdata",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/literacy/page.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -5205,6 +5835,18 @@
       "context": "import",
       "source_file": "frontend/src/app/page.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_page",
+      "target": "frontend_src_components_home_homecontent_homecontent",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/page.tsx",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -5312,7 +5954,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/compliance/ComplianceInterface.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5376,51 +6018,27 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_data_legalliteracydata_literacyscenario",
+      "source": "frontend_src_components_literacy_rightcard",
+      "target": "frontend_src_data_legalliteracydata_right",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L5",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_data_legalliteracydata_scenariooption",
+      "source": "frontend_src_components_literacy_rightdetailpanel",
+      "target": "frontend_src_data_legalliteracydata_right",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_literacytimeline_literacytimeline",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_literacytimeline",
-      "target": "frontend_src_data_legalliteracydata_timelinestep",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L4",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -5604,30 +6222,6 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_home_page",
-      "target": "frontend_src_lib_supabase_server",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_app_home_page",
-      "target": "frontend_src_components_home_homecontent",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
       "source": "frontend_src_app_literacy_page",
       "target": "frontend_src_components_navigation_navbar",
       "relation": "imports_from",
@@ -5641,7 +6235,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_components_assistant_floatingassistant",
+      "target": "frontend_src_components_literacy_rightshero",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5653,7 +6247,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_data_legalliteracydata",
+      "target": "frontend_src_components_literacy_rightcard",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5665,7 +6259,7 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_components_literacy_interactivescenariocard",
+      "target": "frontend_src_components_literacy_rightdetailpanel",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5673,6 +6267,18 @@
       "context": "import",
       "source_file": "frontend/src/app/literacy/page.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_literacy_page",
+      "target": "frontend_src_data_legalliteracydata",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/literacy/page.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -5733,6 +6339,18 @@
       "context": "import",
       "source_file": "frontend/src/app/page.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_page",
+      "target": "frontend_src_components_home_homecontent",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/app/page.tsx",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -5840,7 +6458,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/compliance/ComplianceInterface.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5904,39 +6522,27 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
+      "source": "frontend_src_components_literacy_rightcard",
       "target": "frontend_src_data_legalliteracydata",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L5",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_literacytimeline",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_literacytimeline",
+      "source": "frontend_src_components_literacy_rightdetailpanel",
       "target": "frontend_src_data_legalliteracydata",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L4",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -6012,6 +6618,30 @@
       "weight": 1.0
     },
     {
+      "source": "scripts_corpus_status",
+      "target": "backend_app_db_supabase",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/corpus_status.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat_compare_sources",
+      "target": "backend_app_api_v1_chat_comparerequest",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
       "source": "backend_app_api_v1_chat_send_chat_message",
       "target": "backend_app_api_v1_chat_chatmessagerequest",
       "relation": "references",
@@ -6020,7 +6650,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -6130,46 +6760,24 @@
     },
     {
       "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_chatmessagerequest",
+      "target": "backend_app_api_v1_chat_comparerequest",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
       "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_delete_conversation",
+      "target": "backend_app_api_v1_chat_compare_sources",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L122",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_chatmessageresponse",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat",
-      "target": "backend_app_api_v1_chat_send_chat_message",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L26",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -6180,7 +6788,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L56",
+      "source_location": "L164",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat",
+      "target": "backend_app_api_v1_chat_chatmessagerequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6191,7 +6810,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L78",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat",
+      "target": "backend_app_api_v1_chat_chatmessageresponse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat",
+      "target": "backend_app_api_v1_chat_delete_conversation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat",
+      "target": "backend_app_api_v1_chat_send_chat_message",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -6290,7 +6942,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/compliance.py",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -6404,14 +7056,91 @@
       "weight": 1.0
     },
     {
-      "source": "docs_implementation",
-      "target": "docs_implementation_heading",
+      "source": "backend_app_services_web_research_service",
+      "target": "backend_app_services_web_research_service_webresearchservice",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/implementation.md",
-      "source_location": "L1409",
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag",
+      "target": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_3_two_answer_dual_pipeline",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_4_source_comparison",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_5_security_verification",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_1_document_corpus_management",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_architecture_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_mare_juris_rag_mare_juris_rag_pipeline_two_answer_system",
+      "target": "docs_mare_juris_rag_2_supabase_integration",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MARE_JURIS_RAG.md",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6576,7 +7305,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -6598,7 +7327,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -6642,7 +7371,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -6653,7 +7382,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -6664,7 +7393,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -6675,7 +7404,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -6686,7 +7415,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6697,34 +7426,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react_dom",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
       "source_location": "L19",
       "weight": 1.0
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react_markdown",
+      "target": "frontend_package_dependencies_puppeteer",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6735,7 +7442,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_remark_gfm",
+      "target": "frontend_package_dependencies_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6746,7 +7453,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_tailwind_merge",
+      "target": "frontend_package_dependencies_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6757,7 +7464,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_three",
+      "target": "frontend_package_dependencies_react_markdown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6767,8 +7474,30 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_node",
+      "source": "frontend_package_dependencies",
+      "target": "frontend_package_dependencies_remark_gfm",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies",
+      "target": "frontend_package_dependencies_tailwind_merge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies",
+      "target": "frontend_package_dependencies_three",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6779,29 +7508,7 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_react",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_react_dom",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/package.json",
-      "source_location": "L28",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_autoprefixer",
+      "target": "frontend_package_devdependencies_types_node",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6812,7 +7519,7 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_eslint",
+      "target": "frontend_package_devdependencies_types_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6823,7 +7530,7 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_eslint_config_next",
+      "target": "frontend_package_devdependencies_types_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6834,7 +7541,7 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_postcss",
+      "target": "frontend_package_devdependencies_autoprefixer",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6845,7 +7552,7 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_tailwindcss",
+      "target": "frontend_package_devdependencies_eslint",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6856,13 +7563,68 @@
     },
     {
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_typescript",
+      "target": "frontend_package_devdependencies_eslint_config_next",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
       "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_devdependencies",
+      "target": "frontend_package_devdependencies_postcss",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_devdependencies",
+      "target": "frontend_package_devdependencies_tailwindcss",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_devdependencies",
+      "target": "frontend_package_devdependencies_typescript",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_scripts",
+      "target": "frontend_package_scripts_ingest_legal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_scripts",
+      "target": "frontend_package_scripts_corpus_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -6910,14 +7672,14 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_app_api_assistant_route",
-      "target": "frontend_src_app_api_assistant_route_generatelegalanalysis",
+      "source": "frontend_src_app_api_assistant_compare_route",
+      "target": "frontend_src_app_api_assistant_compare_route_post",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L125",
+      "source_file": "frontend/src/app/api/assistant/compare/route.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -6933,13 +7695,13 @@
     },
     {
       "source": "frontend_src_app_api_assistant_route",
-      "target": "frontend_src_app_api_assistant_route_getfallbackcitations",
+      "target": "frontend_src_app_api_assistant_route_generatedualresponse",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/api/assistant/route.ts",
-      "source_location": "L73",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -7076,13 +7838,13 @@
     },
     {
       "source": "frontend_src_app_home_page",
-      "target": "frontend_src_app_home_page_homepage",
+      "target": "frontend_src_app_home_page_homealiaspage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/home/page.tsx",
-      "source_location": "L6",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -7109,13 +7871,13 @@
     },
     {
       "source": "frontend_src_app_literacy_page",
-      "target": "frontend_src_app_literacy_page_legalliteracypage",
+      "target": "frontend_src_app_literacy_page_literacypage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/literacy/page.tsx",
-      "source_location": "L24",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -7142,13 +7904,13 @@
     },
     {
       "source": "frontend_src_app_page",
-      "target": "frontend_src_app_page_indexpage",
+      "target": "frontend_src_app_page_homepage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/app/page.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -7252,13 +8014,35 @@
     },
     {
       "source": "frontend_src_components_chat_chatinterface",
+      "target": "frontend_src_components_chat_chatinterface_verification",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_chat_chatinterface",
+      "target": "frontend_src_components_chat_chatinterface_ragwebdata",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/chat/ChatInterface.tsx",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_chat_chatinterface",
       "target": "frontend_src_components_chat_chatinterface_message",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L35",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -7269,7 +8053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L43",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -7280,7 +8064,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L49",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -7291,7 +8075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/chat/ChatInterface.tsx",
-      "source_location": "L56",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -7302,7 +8086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/compliance/ComplianceInterface.tsx",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -7328,91 +8112,69 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocardprops",
+      "source": "frontend_src_components_literacy_rightcard",
+      "target": "frontend_src_components_literacy_rightcard_rightcard",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L29",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_interactivescenariocard_interactivescenariocard",
+      "source": "frontend_src_components_literacy_rightcard",
+      "target": "frontend_src_components_literacy_rightcard_rightcardprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L34",
+      "source_file": "frontend/src/components/literacy/RightCard.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_interactivescenariocard_literacyscene3d",
+      "source": "frontend_src_components_literacy_rightdetailpanel",
+      "target": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx",
-      "source_location": "L8",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_literacyscene3d",
-      "target": "frontend_src_components_literacy_literacyscene3d_literacyscene3d",
+      "source": "frontend_src_components_literacy_rightdetailpanel",
+      "target": "frontend_src_components_literacy_rightdetailpanel_rightdetailpanelprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/LiteracyScene3D.tsx",
-      "source_location": "L11",
+      "source_file": "frontend/src/components/literacy/RightDetailPanel.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_literacyscene3d",
-      "target": "frontend_src_components_literacy_literacyscene3d_literacyscene3dprops",
+      "source": "frontend_src_components_literacy_rightshero",
+      "target": "frontend_src_components_literacy_rightshero_rightshero",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/LiteracyScene3D.tsx",
-      "source_location": "L6",
+      "source_file": "frontend/src/components/literacy/RightsHero.tsx",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_literacytimeline",
-      "target": "frontend_src_components_literacy_literacytimeline_geticon",
+      "source": "frontend_src_components_literacy_rightshero",
+      "target": "frontend_src_components_literacy_rightshero_rightsheroprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_literacytimeline",
-      "target": "frontend_src_components_literacy_literacytimeline_literacytimeline",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_components_literacy_literacytimeline",
-      "target": "frontend_src_components_literacy_literacytimeline_literacytimelineprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/LiteracyTimeline.tsx",
-      "source_location": "L7",
+      "source_file": "frontend/src/components/literacy/RightsHero.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -7516,7 +8278,7 @@
     },
     {
       "source": "frontend_src_data_legalliteracydata",
-      "target": "frontend_src_data_legalliteracydata_scenariooption",
+      "target": "frontend_src_data_legalliteracydata_legalsource",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7527,35 +8289,35 @@
     },
     {
       "source": "frontend_src_data_legalliteracydata",
-      "target": "frontend_src_data_legalliteracydata_timelinestep",
+      "target": "frontend_src_data_legalliteracydata_right",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L15",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
       "source": "frontend_src_data_legalliteracydata",
-      "target": "frontend_src_data_legalliteracydata_literacyscenario",
+      "target": "frontend_src_data_legalliteracydata_getcategories",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L24",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
       "source": "frontend_src_data_legalliteracydata",
-      "target": "frontend_src_data_legalliteracydata_legal_literacy_scenarios",
+      "target": "frontend_src_data_legalliteracydata_rightsdata",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/data/legalLiteracyData.ts",
-      "source_location": "L41",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -7845,6 +8607,61 @@
       "weight": 1.0
     },
     {
+      "source": "legal_documents_readme",
+      "target": "legal_documents_readme_mare_juris_initial_legal_corpus",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "legal-documents/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "legal_documents_readme_mare_juris_initial_legal_corpus",
+      "target": "legal_documents_readme_how_to_source_these_files",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "legal-documents/README.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_corpus_status",
+      "target": "scripts_corpus_status_check_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/corpus_status.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_ingest_legal_documents",
+      "target": "scripts_ingest_legal_documents_get_embedding",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_ingest_legal_documents",
+      "target": "scripts_ingest_legal_documents_process_and_ingest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/ingest_legal_documents.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
       "source": "supabase_migrations_20240101000000_compliance_assessments",
       "target": "supabase_migrations_20240101000000_compliance_assessments_compliance_assessments",
       "relation": "contains",
@@ -8076,13 +8893,48 @@
       "weight": 1.0
     },
     {
-      "source": "frontend_src_components_literacy_interactivescenariocard",
-      "target": "frontend_src_components_literacy_literacyscene3d",
-      "relation": "dynamic_import",
+      "source": "supabase_migrations_20260913_legal_corpus",
+      "target": "supabase_migrations_20260913_legal_corpus_public_legal_chunks",
+      "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/src/components/literacy/InteractiveScenarioCard.tsx"
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_migrations_20260913_legal_corpus",
+      "target": "supabase_migrations_20260913_legal_corpus_public_legal_documents",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_migrations_20260913_legal_corpus",
+      "target": "supabase_migrations_20260913_legal_corpus_for",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_migrations_20260913_legal_corpus",
+      "target": "supabase_migrations_20260913_legal_corpus_match_legal_chunks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L60",
+      "weight": 1.0
     },
     {
       "source": "backend_app_api_v1_chat_chatmessagerequest",
@@ -8092,7 +8944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L12",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -8103,7 +8955,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L17",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat_comparerequest",
+      "target": "backend_app_api_v1_chat_py_basemodel",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -8268,7 +9131,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L198",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -8284,13 +9147,13 @@
     },
     {
       "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_generate_rule_based_response",
+      "target": "backend_app_services_rag_service_legalragservice_get_system_prompt",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L258",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -8301,18 +9164,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L315",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_services_rag_service_legalragservice",
-      "target": "backend_app_services_rag_service_legalragservice_get_system_prompt",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L33",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -8327,6 +9179,72 @@
       "weight": 1.0
     },
     {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_simulate_live_web_search",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_init",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_fallback_web_response",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_compare_sources",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_get_system_prompt",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_webresearchservice",
+      "target": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
       "source": "backend_app_api_health_rationale_10",
       "target": "backend_app_api_health_health_check",
       "relation": "rationale_for",
@@ -8338,47 +9256,58 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_rationale_126",
-      "target": "backend_app_api_v1_chat_delete_conversation",
+      "source": "backend_app_api_v1_chat_rationale_148",
+      "target": "backend_app_api_v1_chat_compare_sources",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L126",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_rationale_30",
-      "target": "backend_app_api_v1_chat_send_chat_message",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L30",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_app_api_v1_chat_rationale_57",
+      "source": "backend_app_api_v1_chat_rationale_165",
       "target": "backend_app_api_v1_chat_get_user_conversations",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L57",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
-      "source": "backend_app_api_v1_chat_rationale_82",
+      "source": "backend_app_api_v1_chat_rationale_190",
       "target": "backend_app_api_v1_chat_get_conversation_messages",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/api/v1/chat.py",
-      "source_location": "L82",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat_rationale_234",
+      "target": "backend_app_api_v1_chat_delete_conversation",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L234",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_api_v1_chat_rationale_38",
+      "target": "backend_app_api_v1_chat_send_chat_message",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/api/v1/chat.py",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -8525,14 +9454,47 @@
       "weight": 1.0
     },
     {
-      "source": "backend_app_services_rag_service_rationale_63",
+      "source": "backend_app_services_rag_service_rationale_64",
       "target": "backend_app_services_rag_service_legalragservice_process_query",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/services/rag_service.py",
-      "source_location": "L63",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_rationale_12",
+      "target": "backend_app_services_web_research_service_webresearchservice",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_rationale_194",
+      "target": "backend_app_services_web_research_service_webresearchservice_compare_sources",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_app_services_web_research_service_rationale_53",
+      "target": "backend_app_services_web_research_service_webresearchservice_process_query",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/services/web_research_service.py",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -8833,6 +9795,28 @@
       "weight": 1.0
     },
     {
+      "source": "supabase_migrations_20260913_legal_corpus_public_legal_chunks",
+      "target": "public",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_migrations_20260913_legal_corpus_public_legal_chunks",
+      "target": "supabase_migrations_20260913_legal_corpus_public_legal_documents",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/migrations/20260913_legal_corpus.sql",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
       "source": "supabase_migrations_20260827000000_initial_schema_on_auth_user_created",
       "target": "public_handle_new_user",
       "relation": "triggers",
@@ -8966,5 +9950,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9984566416f16a26b92c6133956a45dce0e6f5da"
+  "built_at_commit": "561b11f06835116aff5d457e1db6449284289d85"
 }

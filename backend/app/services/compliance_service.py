@@ -14,7 +14,7 @@ if GEMINI_API_KEY:
 
 class ComplianceAgentService:
     def __init__(self):
-        self.model_name = "gemini-1.5-flash"
+        self.model_name = "gemini-3.6-flash"
 
     def extract_business_intent(self, user_prompt: str) -> Dict[str, Any]:
         """Extract structured business intent from natural language input."""

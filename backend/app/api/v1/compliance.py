@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from typing import Dict, Any, List, Optional
 from app.services.compliance_service import ComplianceAgentService
 from app.auth.deps import get_current_user
-from app.db.client import supabase
+from app.db.supabase import get_supabase_admin_client
 
 router = APIRouter()
 compliance_service = ComplianceAgentService()
@@ -63,6 +63,7 @@ async def save_assessment(req: SaveAssessmentRequest, current_user=Depends(get_c
         raise HTTPException(status_code=401, detail="Authentication required to save compliance assessments.")
 
     try:
+        supabase = get_supabase_admin_client()
         res = supabase.table("compliance_assessments").insert({
             "user_id": user_id,
             "title": req.title,
@@ -83,6 +84,7 @@ async def get_history(current_user=Depends(get_current_user)):
         raise HTTPException(status_code=401, detail="Authentication required.")
 
     try:
+        supabase = get_supabase_admin_client()
         res = supabase.table("compliance_assessments").select("*").eq("user_id", user_id).order("created_at", desc=True).execute()
         return {"status": "success", "assessments": res.data or []}
     except Exception as e:

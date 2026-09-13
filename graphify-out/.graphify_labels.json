@@ -16,7 +16,7 @@
   "14": "workflows/graphify.md",
   "15": "admin.ts",
   "16": "createClient",
-  "17": "createClient",
+  "17": "ChatInterface.tsx",
   "18": "__init__.py",
   "19": "vercel.json",
   "20": "compilerOptions",
@@ -36,5 +36,16 @@
   "34": "ComplianceAgentService",
   "35": "compliance_assessments",
   "36": "implementation.md",
-  "37": "pdf/route.ts"
+  "37": "pdf/route.ts",
+  "38": "get_supabase_client",
+  "39": "WebResearchService",
+  "40": "MARE-Juris RAG Pipeline & Two-Answer System",
+  "41": "20260913_legal_corpus.sql",
+  "42": "MARE-Juris Initial Legal Corpus",
+  "43": "ingest_legal_documents.py",
+  "44": "compare/route.ts",
+  "45": "home/page.tsx",
+  "46": "ragimplementation.md",
+  "47": "apply_migration.py",
+  "48": "reload_schema.py"
 }

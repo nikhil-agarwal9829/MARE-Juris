@@ -25,19 +25,54 @@ import {
 } from 'lucide-react';
 
 interface Citation {
-  statute: string;
-  section: string;
-  authority: string;
-  snippet: string;
-  confidence: string;
+  citation_id?: string;
+  document_title?: string;
+  title?: string;
+  act?: string;
+  section?: string;
+  subsection?: string;
+  page?: string;
+  authority?: string;
+  jurisdiction?: string;
+  evidence_text?: string;
+  source_url?: string;
+  source_type?: string;
+  retrieved_at?: string;
+  // Legacy
+  statute?: string;
+  snippet?: string;
+  confidence?: string;
+  url?: string;
+}
+
+interface Verification {
+  verified: boolean;
+  issues: string[];
+}
+
+interface RagWebData {
+  status: string;
+  answer: string;
+  citations: Citation[];
+  evidence: any[];
+  sources: string[];
+  verification: Verification;
 }
 
 interface Message {
   id: string;
   role: 'user' | 'assistant';
-  content: string;
-  citations?: Citation[];
+  content?: string;
+  rag?: RagWebData;
+  web?: RagWebData;
+  isFiltered?: boolean;
   createdAt: string;
+  // Legacy
+  ragContent?: string;
+  ragCitations?: Citation[];
+  webContent?: string;
+  webCitations?: Citation[];
+  citations?: Citation[];
 }
 
 interface Conversation {
@@ -66,6 +101,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const [loading, setLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [expandedCitations, setExpandedCitations] = useState<Record<string, boolean>>({});
+  const [comparisonData, setComparisonData] = useState<Record<string, any>>({});
+  const [isComparing, setIsComparing] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const initialMounted = useRef(false);
@@ -126,9 +163,19 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             id: m.id,
             role: m.role as 'user' | 'assistant',
             content: m.content,
-            citations: m.metadata?.citations || [],
+            rag: m.metadata?.rag,
+            web: m.metadata?.web,
+            isFiltered: m.metadata?.is_filtered,
             createdAt: m.created_at,
+            // Legacy fallbacks
+            ragContent: m.metadata?.rag_content,
+            ragCitations: m.metadata?.rag_citations || [],
+            webContent: m.metadata?.web_content,
+            webCitations: m.metadata?.web_citations || [],
+            citations: m.metadata?.citations || [],
           }));
+          
+          // Deduplicate messages safely in case of rapid re-renders
           setMessages(loadedMsgs);
         }
       } catch (err) {
@@ -192,12 +239,20 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       const assistantMessage: Message = {
         id: data.message_id || crypto.randomUUID(),
         role: 'assistant',
-        content: data.content,
-        citations: data.citations || [],
+        content: data.rag?.answer || data.content || data.rag_content,
+        rag: data.rag,
+        web: data.web,
+        isFiltered: data.is_filtered || false,
         createdAt: new Date().toISOString(),
+        ragContent: data.rag_content,
+        webContent: data.web_content,
       };
 
-      setMessages((prev) => [...prev, assistantMessage]);
+      setMessages((prev) => {
+        // Prevent duplicate appending if the active Conv ID effect already caught it
+        if (prev.find(m => m.id === assistantMessage.id)) return prev;
+        return [...prev, assistantMessage];
+      });
     } catch (err) {
       const errorMessage: Message = {
         id: crypto.randomUUID(),
@@ -209,6 +264,41 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCompareSources = async (msg: Message) => {
+    const ragAns = msg.rag?.answer || msg.ragContent || msg.content || '';
+    const webAns = msg.web?.answer || msg.webContent || '';
+    if (!ragAns || !webAns) return;
+    setIsComparing(msg.id);
+    try {
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      const userQuery = messages.find(m => m.id === msg.id)?.content || 
+                        messages.filter(m => m.role === 'user' && m.createdAt < msg.createdAt).pop()?.content || '';
+
+      const res = await fetch('/api/assistant/compare', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {})
+        },
+        body: JSON.stringify({
+          query: userQuery,
+          rag_content: ragAns,
+          web_content: webAns
+        })
+      });
+
+      if (!res.ok) throw new Error('Comparison failed');
+      const data = await res.json();
+      setComparisonData(prev => ({ ...prev, [msg.id]: data }));
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsComparing(null);
     }
   };
 
@@ -393,84 +483,176 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                     </div>
                   )}
 
-                  <div className="space-y-3 max-w-2xl">
-                    <div
-                      className={`p-4 rounded-2xl text-sm leading-relaxed ${
-                        msg.role === 'user'
-                          ? 'bg-gold-500 text-navy-950 font-medium rounded-tr-none shadow-md'
-                          : 'legal-card rounded-tl-none border border-gold-500/20 text-slate-100'
-                      }`}
-                    >
-                      {/* Formatted Markdown Rendering (Part 16 & 17) */}
-                      {msg.role === 'assistant' ? (
-                        <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-gold-300 prose-headings:font-bold prose-h1:text-lg prose-h2:text-base prose-h3:text-sm prose-strong:text-gold-400 prose-li:my-1">
-                          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {msg.content}
-                          </ReactMarkdown>
-                        </div>
-                      ) : (
-                        <span>{msg.content}</span>
-                      )}
-
-                      {msg.role === 'assistant' && (
-                        <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                          <button
-                            onClick={() => copyContent(msg.id, msg.content)}
-                            className="hover:text-gold-300 transition-colors flex items-center gap-1 cursor-pointer"
-                          >
-                            {copiedId === msg.id ? (
-                              <>
-                                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                <span className="text-emerald-400">Copied</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-3.5 h-3.5" />
-                                <span>Copy Text</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Evidence Grounding Collapsible Panel (Part 19) */}
-                    {msg.role === 'assistant' && msg.citations && msg.citations.length > 0 && (
-                      <div className="legal-card rounded-xl p-3 border border-gold-500/25">
-                        <div
-                          onClick={() => toggleCitations(msg.id)}
-                          className="flex items-center justify-between cursor-pointer text-xs font-semibold text-gold-400"
-                        >
-                          <div className="flex items-center gap-2">
-                            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                            <span>
-                              Verified Legal Evidence ({msg.citations.length} Statutory References)
-                            </span>
+                  <div className="space-y-4 w-full">
+                    {msg.role === 'assistant' ? (
+                      <div className="flex flex-col xl:flex-row gap-4 w-full">
+                        {/* RAG PANEL */}
+                        <div className="flex-1 min-w-[300px]">
+                          <div className="flex items-center gap-2 mb-2 px-1">
+                            <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-navy-900 border border-gold-500/40 text-gold-400">
+                              MARE-JURIS RAG
+                            </div>
+                            <span className="text-[10px] text-slate-500 uppercase">Controlled Corpus</span>
                           </div>
-                          {expandedCitations[msg.id] ? (
-                            <ChevronUp className="w-4 h-4" />
-                          ) : (
-                            <ChevronDown className="w-4 h-4" />
+                          <div className="legal-card rounded-2xl border border-gold-500/20 bg-navy-900 p-4 space-y-4">
+                            <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-gold-300 prose-headings:font-bold prose-strong:text-gold-400">
+                              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {msg.rag?.answer || msg.ragContent || msg.content || ''}
+                              </ReactMarkdown>
+                            </div>
+                            
+                            {/* Evidence Used Panel */}
+                            {(msg.rag?.citations || msg.ragCitations || []).length > 0 && (
+                              <div className="border border-gold-500/25 rounded-xl p-3 bg-navy-950/50 mt-4">
+                                <div onClick={() => toggleCitations(`${msg.id}-rag`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-gold-400 mb-2">
+                                  <div className="flex items-center gap-2">
+                                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                                    <span>Verified Legal Evidence ({(msg.rag?.citations || msg.ragCitations || []).length})</span>
+                                  </div>
+                                  {expandedCitations[`${msg.id}-rag`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                                </div>
+                                {expandedCitations[`${msg.id}-rag`] && (
+                                  <div className="space-y-2 mt-2 pt-2 border-t border-gold-500/15">
+                                    {(msg.rag?.citations || msg.ragCitations || []).map((cit, idx) => (
+                                      <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
+                                        <div className="font-bold text-slate-300 mb-1">{cit.document_title || cit.statute}</div>
+                                        <div className="text-slate-400 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
+                                        <p className="text-slate-400/80 italic border-l-2 border-gold-500/40 pl-2 py-0.5">"{cit.evidence_text || cit.snippet}"</p>
+                                        <div className="mt-2 flex justify-between items-center text-[10px]">
+                                          <span className="text-slate-500">Authority: {cit.authority}</span>
+                                          {(cit.source_url || cit.url) && (
+                                            <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:underline">
+                                              View Official Source ↗
+                                            </a>
+                                          )}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* WEB PANEL */}
+                        {(msg.web || msg.webContent) && !msg.isFiltered && (
+                          <div className="flex-1 min-w-[300px]">
+                            <div className="flex items-center gap-2 mb-2 px-1">
+                              <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-navy-900 border border-emerald-500/40 text-emerald-400">
+                                LIVE OFFICIAL RESEARCH
+                              </div>
+                              <span className="text-[10px] text-slate-500 uppercase">Live APIs</span>
+                            </div>
+                            <div className="legal-card rounded-2xl border border-emerald-500/20 bg-navy-900 p-4 space-y-4">
+                              <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-emerald-300 prose-headings:font-bold prose-strong:text-emerald-400">
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                  {msg.web?.answer || msg.webContent || ''}
+                                </ReactMarkdown>
+                              </div>
+                              
+                              {/* Evidence Used Panel */}
+                              {(msg.web?.citations || msg.webCitations || []).length > 0 && (
+                                <div className="border border-emerald-500/25 rounded-xl p-3 bg-navy-950/50 mt-4">
+                                  <div onClick={() => toggleCitations(`${msg.id}-web`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-emerald-400 mb-2">
+                                    <div className="flex items-center gap-2">
+                                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                                      <span>Official Web Sources ({(msg.web?.citations || msg.webCitations || []).length})</span>
+                                    </div>
+                                    {expandedCitations[`${msg.id}-web`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                                  </div>
+                                  {expandedCitations[`${msg.id}-web`] && (
+                                    <div className="space-y-2 mt-2 pt-2 border-t border-emerald-500/15">
+                                      {(msg.web?.citations || msg.webCitations || []).map((cit, idx) => (
+                                        <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
+                                          <div className="font-bold text-slate-300 mb-1">{cit.title || cit.document_title || cit.statute}</div>
+                                          <div className="text-slate-400 mb-1">{cit.section}</div>
+                                          <p className="text-slate-400/80 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">"{cit.evidence_text || cit.snippet}"</p>
+                                          <div className="mt-2 flex justify-between items-center text-[10px]">
+                                            <span className="text-slate-500">Authority: {cit.authority}</span>
+                                            {(cit.source_url || cit.url) && (
+                                              <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">
+                                                View Official Source ↗
+                                              </a>
+                                            )}
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="p-4 rounded-2xl text-sm leading-relaxed bg-gold-500 text-navy-950 font-medium rounded-tr-none shadow-md w-fit ml-auto">
+                        <span>{msg.content}</span>
+                      </div>
+                    )}
+
+                    {/* Common Footer Actions */}
+                    {msg.role === 'assistant' && (
+                      <div className="flex flex-col gap-2 mt-2">
+                        <div className="pt-2 flex items-center justify-between text-xs text-slate-400 max-w-3xl">
+                          <button onClick={() => copyContent(msg.id, msg.rag?.answer || msg.ragContent || msg.content || '')} className="hover:text-gold-300 transition-colors flex items-center gap-1">
+                            {copiedId === msg.id ? <><Check className="w-3.5 h-3.5 text-emerald-400" /><span className="text-emerald-400">Copied</span></> : <><Copy className="w-3.5 h-3.5" /><span>Copy RAG</span></>}
+                          </button>
+                          
+                          {(msg.rag?.answer || msg.ragContent || msg.content) && (msg.web?.answer || msg.webContent) && !msg.isFiltered && (
+                            <button onClick={() => handleCompareSources(msg)} disabled={isComparing === msg.id} className="hover:text-gold-300 transition-colors flex items-center gap-1 disabled:opacity-50 border border-gold-500/40 px-3 py-1.5 rounded-lg bg-navy-900">
+                              {isComparing === msg.id ? <><div className="w-3 h-3 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" /><span>Comparing...</span></> : <><Scale className="w-3.5 h-3.5" /><span>Run Source Comparison</span></>}
+                            </button>
                           )}
                         </div>
 
-                        {expandedCitations[msg.id] && (
-                          <div className="mt-3 pt-3 border-t border-slate-800 space-y-2 text-xs">
-                            {msg.citations.map((c, i) => (
-                              <div
-                                key={i}
-                                className="p-2.5 rounded-lg bg-navy-950/80 border border-slate-800 space-y-1"
-                              >
-                                <div className="flex items-center justify-between text-gold-300 font-bold">
-                                  <span>{c.statute}</span>
-                                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                                    {c.confidence}
-                                  </span>
+                        {/* Comparison Panel */}
+                        {comparisonData[msg.id] && (
+                          <div className="legal-card rounded-xl p-4 border border-indigo-500/30 bg-indigo-950/20 mt-2 space-y-3 w-full max-w-4xl">
+                            <div className="flex items-center gap-2 text-indigo-400 font-bold border-b border-indigo-500/20 pb-2">
+                              <Scale className="w-4 h-4" />
+                              Source Comparison Analysis
+                            </div>
+                            <p className="text-sm text-slate-300">{comparisonData[msg.id].summary}</p>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                              {comparisonData[msg.id].agreements?.length > 0 && (
+                                <div className="p-3 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 text-xs">
+                                  <div className="font-bold mb-1.5">Agreements</div>
+                                  <ul className="list-disc pl-4 space-y-1">
+                                    {comparisonData[msg.id].agreements.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                                  </ul>
                                 </div>
-                                <div className="text-slate-300 font-semibold">{c.section}</div>
-                                <p className="text-slate-400 text-[11px] italic">&quot;{c.snippet}&quot;</p>
+                              )}
+                              
+                              {comparisonData[msg.id].differences?.length > 0 && (
+                                <div className="p-3 rounded-lg bg-indigo-950/20 border border-indigo-500/20 text-indigo-200 text-xs">
+                                  <div className="font-bold mb-1.5">Differences</div>
+                                  <ul className="list-disc pl-4 space-y-1">
+                                    {comparisonData[msg.id].differences.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                                  </ul>
+                                </div>
+                              )}
+                            </div>
+
+                            {comparisonData[msg.id].freshness_flags?.length > 0 && (
+                              <div className="p-3 rounded-lg bg-amber-950/40 border border-amber-500/40 text-amber-200 text-xs mt-2">
+                                <div className="flex items-center gap-1.5 font-bold mb-1.5"><AlertTriangle className="w-4 h-4" /> Corpus Freshness Warning</div>
+                                <ul className="list-disc pl-4 space-y-1">
+                                  {comparisonData[msg.id].freshness_flags.map((flag: string, i: number) => <li key={i}>{flag}</li>)}
+                                </ul>
                               </div>
-                            ))}
+                            )}
+                            
+                            {comparisonData[msg.id].potential_conflicts?.length > 0 && (
+                              <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-500/40 text-rose-200 text-xs mt-2">
+                                <div className="flex items-center gap-1.5 font-bold mb-1.5"><AlertTriangle className="w-4 h-4" /> Source Conflicts Detected</div>
+                                <ul className="list-disc pl-4 space-y-1">
+                                  {comparisonData[msg.id].potential_conflicts.map((conflict: string, i: number) => <li key={i}>{conflict}</li>)}
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>

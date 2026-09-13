@@ -29,6 +29,7 @@ async def get_current_user(token: str = Depends(get_current_user_token)) -> dict
         user_response = supabase.auth.get_user(token)
         
         if not user_response or not user_response.user:
+            print("[AUTH ERROR] Invalid token or session expired.")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid authentication token or user session expired",
@@ -41,6 +42,7 @@ async def get_current_user(token: str = Depends(get_current_user_token)) -> dict
             "token": token
         }
     except Exception as e:
+        print(f"[AUTH EXCEPTION] Failed to validate user: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=f"Authentication failed: {str(e)}",

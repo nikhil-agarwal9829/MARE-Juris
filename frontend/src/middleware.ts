@@ -44,7 +44,8 @@ export async function middleware(request: NextRequest) {
     request.nextUrl.pathname.startsWith('/dashboard') ||
     request.nextUrl.pathname.startsWith('/conversations') ||
     request.nextUrl.pathname.startsWith('/documents') ||
-    request.nextUrl.pathname.startsWith('/compliance');
+    request.nextUrl.pathname.startsWith('/compliance') ||
+    request.nextUrl.pathname.startsWith('/ask-juris');
 
   const isAuthRoute =
     request.nextUrl.pathname === '/login' ||
