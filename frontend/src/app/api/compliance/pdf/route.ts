@@ -334,11 +334,11 @@ export async function POST(req: NextRequest) {
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    await page.setContent(htmlContent, { waitUntil: 'load' });
     const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
     await browser.close();
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(Buffer.from(pdfBuffer), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="compliance_report.pdf"',

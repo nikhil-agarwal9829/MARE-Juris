@@ -517,7 +517,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                                       <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
                                         <div className="font-bold text-slate-300 mb-1">{cit.document_title || cit.statute}</div>
                                         <div className="text-slate-400 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
-                                        <p className="text-slate-400/80 italic border-l-2 border-gold-500/40 pl-2 py-0.5">"{cit.evidence_text || cit.snippet}"</p>
+                                        <p className="text-slate-400/80 italic border-l-2 border-gold-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
                                         <div className="mt-2 flex justify-between items-center text-[10px]">
                                           <span className="text-slate-500">Authority: {cit.authority}</span>
                                           {(cit.source_url || cit.url) && (
@@ -567,7 +567,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                                         <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
                                           <div className="font-bold text-slate-300 mb-1">{cit.title || cit.document_title || cit.statute}</div>
                                           <div className="text-slate-400 mb-1">{cit.section}</div>
-                                          <p className="text-slate-400/80 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">"{cit.evidence_text || cit.snippet}"</p>
+                                          <p className="text-slate-400/80 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
                                           <div className="mt-2 flex justify-between items-center text-[10px]">
                                             <span className="text-slate-500">Authority: {cit.authority}</span>
                                             {(cit.source_url || cit.url) && (
