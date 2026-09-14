@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Scale, Mail, KeyRound, ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { Navbar } from '@/components/navigation/Navbar';
 
 export default function OtpPage() {
   const [step, setStep] = useState<'request' | 'verify'>('request');
@@ -132,133 +133,141 @@ export default function OtpPage() {
   };
 
   return (
-    <main className="min-h-screen bg-navy-950 p-4 md:p-8 flex items-center justify-center">
-      <div className="max-w-md w-full legal-card rounded-3xl p-8 md:p-10 border border-gold-500/20">
-        {/* Logo Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2.5 rounded-xl bg-navy-900 border border-gold-500/40 text-gold-400">
-            <Scale className="w-6 h-6" />
-          </div>
-          <span className="font-serif font-bold text-xl tracking-wide gold-gradient-text">
-            MARE-Juris
-          </span>
-        </div>
+    <div className="min-h-screen bg-white flex flex-col justify-between selection:bg-blue-100 selection:text-primary">
+      <Navbar mode="auth" />
 
-        {errorMsg && (
-          <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm">
-            {errorMsg}
-          </div>
-        )}
-
-        {step === 'request' ? (
-          <form onSubmit={handleRequestOtp} className="space-y-5">
-            <div>
-              <h1 className="text-2xl font-bold text-slate-100">Sign in with OTP</h1>
-              <p className="text-sm text-slate-400 mt-1">
-                Enter your email to receive a 6-digit passcode.
-              </p>
+      <main className="pt-24 pb-12 px-4 flex-1 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-xl shadow-slate-200/50">
+          {/* Logo Header */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-primary shadow-sm">
+              <Scale className="w-6 h-6" />
             </div>
+            <span className="font-serif font-bold text-xl tracking-wide text-primary">
+              MARE-Juris
+            </span>
+          </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Email Address
-              </label>
-              <div className="relative">
-                <Mail className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="lawyer@firm.com"
-                  className="w-full pl-11 pr-4 py-3 bg-navy-950/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 text-sm"
-                />
+          {errorMsg && (
+            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
+              {errorMsg}
+            </div>
+          )}
+
+          {step === 'request' ? (
+            <form onSubmit={handleRequestOtp} className="space-y-5">
+              <div>
+                <h1 className="text-2xl font-bold text-slate-900">Sign in with OTP</h1>
+                <p className="text-sm text-slate-500 mt-1">
+                  Enter your email to receive a 6-digit passcode.
+                </p>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-semibold text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
-            >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-navy-950 border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <>
-                  <span>Send Passcode</span>
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </form>
-        ) : (
-          <form onSubmit={handleVerifyOtp} className="space-y-6">
-            <div>
-              <h1 className="text-2xl font-bold text-slate-100">Enter Passcode</h1>
-              <p className="text-sm text-slate-400 mt-1">
-                We sent a 6-digit OTP code to <strong className="text-gold-300">{email}</strong>.
-              </p>
-            </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <Mail className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="lawyer@firm.com"
+                    className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-50 text-sm transition-all shadow-sm"
+                  />
+                </div>
+              </div>
 
-            {/* 6 Digit Input Group */}
-            <div className="flex justify-between gap-2 my-6">
-              {otp.map((digit, index) => (
-                <input
-                  key={index}
-                  ref={(el) => {
-                    inputRefs.current[index] = el;
-                  }}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={6}
-                  value={digit}
-                  onChange={(e) => handleOtpChange(index, e.target.value)}
-                  onKeyDown={(e) => handleKeyDown(index, e)}
-                  className="w-12 h-14 text-center text-xl font-bold bg-navy-950/90 border border-slate-700/80 rounded-xl text-gold-300 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
-                />
-              ))}
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading || otp.join('').length < 6}
-              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-semibold text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
-            >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-navy-950 border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <>
-                  <span>Verify Passcode & Sign In</span>
-                  <CheckCircle2 className="w-4 h-4" />
-                </>
-              )}
-            </button>
-
-            <div className="text-center pt-2">
               <button
-                type="button"
-                onClick={handleRequestOtp}
-                disabled={cooldown > 0}
-                className="text-xs text-gold-400 hover:text-gold-300 transition-colors disabled:opacity-50 inline-flex items-center gap-1.5 cursor-pointer"
+                type="submit"
+                disabled={loading}
+                className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
               >
-                <RefreshCw className="w-3.5 h-3.5" />
-                <span>
-                  {cooldown > 0 ? `Resend code in ${cooldown}s` : 'Resend Code'}
-                </span>
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <span>Send Passcode</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
-            </div>
-          </form>
-        )}
+            </form>
+          ) : (
+            <form onSubmit={handleVerifyOtp} className="space-y-6">
+              <div>
+                <h1 className="text-2xl font-bold text-slate-900">Enter Passcode</h1>
+                <p className="text-sm text-slate-500 mt-1">
+                  We sent a 6-digit OTP code to <strong className="text-primary">{email}</strong>.
+                </p>
+              </div>
 
-        <div className="mt-6 pt-6 border-t border-slate-800 text-center">
-          <Link
-            href="/login"
-            className="text-xs text-slate-400 hover:text-gold-400 transition-colors"
-          >
-            Back to Password Login
-          </Link>
+              {/* 6 Digit Input Group */}
+              <div className="flex justify-between gap-2 my-6">
+                {otp.map((digit, index) => (
+                  <input
+                    key={index}
+                    ref={(el) => {
+                      inputRefs.current[index] = el;
+                    }}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={6}
+                    value={digit}
+                    onChange={(e) => handleOtpChange(index, e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(index, e)}
+                    className="w-12 h-14 text-center text-xl font-bold bg-slate-50 border border-slate-300 rounded-xl text-primary focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-50 transition-all shadow-sm"
+                  />
+                ))}
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading || otp.join('').length < 6}
+                className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <span>Verify Passcode & Sign In</span>
+                    <CheckCircle2 className="w-4 h-4" />
+                  </>
+                )}
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={handleRequestOtp}
+                  disabled={cooldown > 0}
+                  className="text-xs text-primary hover:text-primary-hover transition-colors disabled:opacity-50 inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>
+                    {cooldown > 0 ? `Resend code in ${cooldown}s` : 'Resend Code'}
+                  </span>
+                </button>
+              </div>
+            </form>
+          )}
+
+          <div className="mt-6 pt-6 border-t border-slate-200 text-center">
+            <Link
+              href="/login"
+              className="text-xs text-slate-500 hover:text-primary transition-colors font-medium"
+            >
+              Back to Password Login
+            </Link>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+      <footer className="border-t border-slate-200 py-4 px-4 text-center text-xs text-slate-500">
+        <p>© 2026 MARE-Juris Legal Intelligence Platform</p>
+      </footer>
+    </div>
   );
 }

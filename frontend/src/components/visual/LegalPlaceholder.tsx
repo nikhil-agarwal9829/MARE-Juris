@@ -16,21 +16,21 @@ export const LegalPlaceholder: React.FC<LegalPlaceholderProps> = ({
 
   return (
     <div
-      className={`relative w-full h-full bg-gradient-to-br from-navy-900 via-navy-850 to-navy-800 flex flex-col items-center justify-center p-4 border border-gold-500/20 overflow-hidden ${className}`}
+      className={`relative w-full h-full bg-gradient-to-br from-slate-100 via-slate-50 to-white flex flex-col items-center justify-center p-4 border border-slate-200 overflow-hidden ${className}`}
     >
       {/* Background Graphic Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px] opacity-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(#94A3B8_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.05]" />
 
       {/* Center Legal Symbol */}
-      <div className="relative z-10 p-3 rounded-full bg-navy-950/80 border border-gold-500/30 text-gold-400 mb-2 shadow-lg">
+      <div className="relative z-10 p-3 rounded-full bg-white/80 border border-slate-200 text-primary mb-2 shadow-sm">
         {isBusiness ? (
-          <ShieldCheck className="w-8 h-8 text-emerald-400" />
+          <ShieldCheck className="w-8 h-8 text-emerald-600" />
         ) : (
-          <Scale className="w-8 h-8 text-gold-400" />
+          <Scale className="w-8 h-8 text-primary" />
         )}
       </div>
 
-      <span className="relative z-10 text-xs font-semibold uppercase tracking-wider text-gold-300/80">
+      <span className="relative z-10 text-xs font-semibold uppercase tracking-wider text-slate-500">
         MARE-Juris Legal Intelligence
       </span>
     </div>

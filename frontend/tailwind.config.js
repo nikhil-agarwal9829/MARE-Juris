@@ -9,6 +9,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: 'var(--background)',
+        surface: 'var(--surface)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-hover)',
+        },
         navy: {
           950: '#060A12',
           900: '#0A0F1D',
@@ -22,11 +28,6 @@ module.exports = {
           300: '#E5C158',
           600: '#A6823B',
         },
-        ivory: {
-          50: '#FAF9F5',
-          100: '#F4F1EA',
-          200: '#EAE5D9',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

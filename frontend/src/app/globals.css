@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #0A0F1D;
-  --foreground: #F8FAFC;
-  --accent-gold: #C5A059;
-  --accent-gold-hover: #D4AF37;
-  --card-bg: rgba(15, 23, 42, 0.75);
-  --border-subtle: rgba(197, 160, 89, 0.2);
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  --primary: #1E3A5F;
+  --primary-hover: #16304F;
+  --secondary: #FFFFFF;
+  --accent: #0F766E;
+  --foreground: #0F172A;
+  --muted-foreground: #64748B;
+  --border: #E2E8F0;
+  --success: #15803D;
+  --warning: #B45309;
+  --error: #B91C1C;
+  --info: #0369A1;
 }
 
 body {
@@ -24,72 +32,28 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0F1D;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #CBD5E1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A059;
+  background: #94A3B8;
 }
 
-/* Glass & Card Token Utilities */
+/* Base structural tokens */
 .legal-card {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(197, 160, 89, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .legal-card:hover {
-  border-color: rgba(197, 160, 89, 0.4);
+  border-color: #CBD5E1;
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px 0 rgba(197, 160, 89, 0.12);
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #F5E6C8 0%, #C5A059 50%, #D4AF37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gold-border-glow {
-  box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
-}
-
-/* Legal Literacy Semantic Tokens */
-.literacy-dark-theme {
-  --background: #020617;
-  --surface: #0f172a;
-  --surface-elevated: #1e293b;
-  --surface-muted: #334155;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --border: #334155;
-  --border-hover: #475569;
-  --gold: #d4af37;
-  --success: #34d399;
-  --warning: #fbbf24;
-  --danger: #f87171;
-}
-
-.literacy-light-theme {
-  --background: #fafaf9;
-  --surface: #ffffff;
-  --surface-elevated: #f5f5f4;
-  --surface-muted: #e7e5e4;
-  --text-primary: #1c1917;
-  --text-secondary: #44403c;
-  --text-muted: #78716c;
-  --border: #d6d3d1;
-  --border-hover: #a8a29e;
-  --gold: #b48608;
-  --success: #059669;
-  --warning: #d97706;
-  --danger: #dc2626;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Hide Scrollbar */

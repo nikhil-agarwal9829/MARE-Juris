@@ -349,37 +349,37 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   };
 
   return (
-    <div className="h-screen bg-navy-950 text-slate-100 flex flex-col overflow-hidden select-none">
+    <div className="h-screen bg-background text-foreground flex flex-col overflow-hidden select-none">
       {/* Top Header Bar */}
-      <header className="h-16 bg-navy-950/90 backdrop-blur-md border-b border-gold-500/15 px-4 md:px-6 flex items-center justify-between shrink-0 z-20">
+      <header className="h-16 bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 md:px-6 flex items-center justify-between shrink-0 z-20 shadow-sm">
         <div className="flex items-center gap-4">
           <Link
             href="/home"
-            className="p-2 rounded-xl bg-navy-900 border border-slate-800 text-slate-400 hover:text-gold-400 hover:border-gold-500/30 transition-all flex items-center gap-1.5 text-xs font-semibold"
+            className="p-2 rounded-xl bg-white border border-slate-200 text-slate-500 hover:text-primary hover:border-blue-200 transition-all flex items-center gap-1.5 text-xs font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Back to Dashboard</span>
           </Link>
 
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-navy-900 border border-gold-500/40 text-gold-400">
+            <div className="p-2 rounded-xl bg-blue-50 border border-blue-200 text-primary">
               <Scale className="w-5 h-5" />
             </div>
-            <span className="font-serif font-bold text-lg tracking-wide gold-gradient-text">
+            <span className="font-serif font-bold text-lg tracking-wide text-primary">
               Ask MARE-Juris
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy-900 border border-slate-800 text-xs">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span className="text-slate-300">{userName}</span>
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span className="text-slate-700 font-medium">{userName}</span>
           </div>
 
           <button
             onClick={handleSignOut}
-            className="p-2 rounded-xl bg-navy-900 border border-slate-800 text-slate-400 hover:text-rose-400 transition-all"
+            className="p-2 rounded-xl bg-white border border-slate-200 text-slate-500 hover:text-red-600 hover:bg-red-50 transition-all"
             title="Sign Out"
           >
             <LogOut className="w-4 h-4" />
@@ -390,16 +390,16 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       {/* Main Workspace Body */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left Sidebar - Conversations (User Isolated) */}
-        <aside className="w-72 bg-navy-900/60 border-r border-gold-500/15 flex flex-col p-4 shrink-0 hidden md:flex">
+        <aside className="w-72 bg-slate-50 border-r border-slate-200 flex flex-col p-4 shrink-0 hidden md:flex">
           <button
             onClick={startNewChat}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-semibold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer mb-4"
+            className="w-full py-3 px-4 rounded-xl bg-primary text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer hover:bg-primary-hover mb-4"
           >
             <Plus className="w-4 h-4" />
             <span>New Legal Consultation</span>
           </button>
 
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-gold-400/80 mb-2 px-2">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 px-2">
             Consultation History
           </div>
 
@@ -415,14 +415,14 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   onClick={() => selectConversation(conv.id)}
                   className={`p-3 rounded-xl cursor-pointer text-xs transition-all flex items-center justify-between group ${
                     activeConvId === conv.id
-                      ? 'bg-gold-500/15 border border-gold-500/40 text-gold-300 font-semibold'
-                      : 'hover:bg-navy-900/80 text-slate-300'
+                      ? 'bg-blue-50 border border-blue-200 text-primary font-semibold'
+                      : 'hover:bg-slate-200/50 text-slate-600'
                   }`}
                 >
                   <span className="truncate pr-2">{conv.title}</span>
                   <button
                     onClick={(e) => deleteConversation(conv.id, e)}
-                    className="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-rose-400 transition-opacity"
+                    className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-500 transition-opacity"
                     title="Delete Thread"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -434,18 +434,18 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </aside>
 
         {/* Center Chat Viewport */}
-        <main className="flex-1 flex flex-col bg-navy-950 relative overflow-hidden">
+        <main className="flex-1 flex flex-col bg-background relative overflow-hidden">
           <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
             {messages.length === 0 ? (
               <div className="max-w-2xl mx-auto my-8 text-center space-y-6">
-                <div className="p-4 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400 w-fit mx-auto">
+                <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-primary w-fit mx-auto">
                   <Sparkles className="w-10 h-10" />
                 </div>
                 <div>
-                  <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-100">
+                  <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900">
                     Ask MARE-Juris Legal Assistant
                   </h2>
-                  <p className="text-sm text-slate-400 mt-2">
+                  <p className="text-sm text-slate-500 mt-2">
                     Evidence-grounded statutory reasoning for Indian legal procedures, statutes, and case precedents.
                   </p>
                 </div>
@@ -461,10 +461,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                     <div
                       key={idx}
                       onClick={() => handleSend(item.query)}
-                      className="p-3.5 rounded-xl legal-card cursor-pointer hover:border-gold-500/40 transition-all space-y-1"
+                      className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm cursor-pointer hover:border-blue-300 hover:shadow-md transition-all space-y-1"
                     >
-                      <span className="text-xs font-bold text-gold-400">{item.label}</span>
-                      <p className="text-[11px] text-slate-300 line-clamp-2">{item.query}</p>
+                      <span className="text-xs font-bold text-primary">{item.label}</span>
+                      <p className="text-[11px] text-slate-500 line-clamp-2">{item.query}</p>
                     </div>
                   ))}
                 </div>
@@ -478,7 +478,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   }`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className="w-8 h-8 rounded-xl bg-navy-900 border border-gold-500/40 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                    <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200 text-primary flex items-center justify-center shrink-0 mt-1">
                       <Bot className="w-4 h-4" />
                     </div>
                   )}
@@ -489,13 +489,13 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                         {/* RAG PANEL */}
                         <div className="flex-1 min-w-[300px]">
                           <div className="flex items-center gap-2 mb-2 px-1">
-                            <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-navy-900 border border-gold-500/40 text-gold-400">
+                            <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-blue-50 border border-blue-200 text-blue-700">
                               MARE-JURIS RAG
                             </div>
                             <span className="text-[10px] text-slate-500 uppercase">Controlled Corpus</span>
                           </div>
-                          <div className="legal-card rounded-2xl border border-gold-500/20 bg-navy-900 p-4 space-y-4">
-                            <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-gold-300 prose-headings:font-bold prose-strong:text-gold-400">
+                          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-4">
+                            <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-primary prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-blue-600">
                               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                 {msg.rag?.answer || msg.ragContent || msg.content || ''}
                               </ReactMarkdown>
@@ -503,25 +503,25 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                             
                             {/* Evidence Used Panel */}
                             {(msg.rag?.citations || msg.ragCitations || []).length > 0 && (
-                              <div className="border border-gold-500/25 rounded-xl p-3 bg-navy-950/50 mt-4">
-                                <div onClick={() => toggleCitations(`${msg.id}-rag`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-gold-400 mb-2">
+                              <div className="border border-slate-200 rounded-xl p-3 bg-slate-50 mt-4">
+                                <div onClick={() => toggleCitations(`${msg.id}-rag`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-primary transition-colors">
                                   <div className="flex items-center gap-2">
-                                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
                                     <span>Verified Legal Evidence ({(msg.rag?.citations || msg.ragCitations || []).length})</span>
                                   </div>
                                   {expandedCitations[`${msg.id}-rag`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                 </div>
                                 {expandedCitations[`${msg.id}-rag`] && (
-                                  <div className="space-y-2 mt-2 pt-2 border-t border-gold-500/15">
+                                  <div className="space-y-2 mt-2 pt-2 border-t border-slate-200">
                                     {(msg.rag?.citations || msg.ragCitations || []).map((cit, idx) => (
-                                      <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
-                                        <div className="font-bold text-slate-300 mb-1">{cit.document_title || cit.statute}</div>
-                                        <div className="text-slate-400 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
-                                        <p className="text-slate-400/80 italic border-l-2 border-gold-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
+                                      <div key={idx} className="p-3 rounded-lg bg-white border border-slate-200 shadow-sm text-xs">
+                                        <div className="font-bold text-slate-800 mb-1">{cit.document_title || cit.statute}</div>
+                                        <div className="text-slate-600 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
+                                        <p className="text-slate-600 italic border-l-2 border-primary/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
                                         <div className="mt-2 flex justify-between items-center text-[10px]">
                                           <span className="text-slate-500">Authority: {cit.authority}</span>
                                           {(cit.source_url || cit.url) && (
-                                            <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:underline">
+                                            <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                               View Official Source ↗
                                             </a>
                                           )}
@@ -539,13 +539,13 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                         {(msg.web || msg.webContent) && !msg.isFiltered && (
                           <div className="flex-1 min-w-[300px]">
                             <div className="flex items-center gap-2 mb-2 px-1">
-                              <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-navy-900 border border-emerald-500/40 text-emerald-400">
+                              <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">
                                 LIVE OFFICIAL RESEARCH
                               </div>
                               <span className="text-[10px] text-slate-500 uppercase">Live APIs</span>
                             </div>
-                            <div className="legal-card rounded-2xl border border-emerald-500/20 bg-navy-900 p-4 space-y-4">
-                              <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-headings:font-serif prose-headings:text-emerald-300 prose-headings:font-bold prose-strong:text-emerald-400">
+                            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-4">
+                              <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-emerald-700 prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-emerald-600">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                   {msg.web?.answer || msg.webContent || ''}
                                 </ReactMarkdown>
@@ -553,25 +553,25 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                               
                               {/* Evidence Used Panel */}
                               {(msg.web?.citations || msg.webCitations || []).length > 0 && (
-                                <div className="border border-emerald-500/25 rounded-xl p-3 bg-navy-950/50 mt-4">
-                                  <div onClick={() => toggleCitations(`${msg.id}-web`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-emerald-400 mb-2">
+                                <div className="border border-slate-200 rounded-xl p-3 bg-slate-50 mt-4">
+                                  <div onClick={() => toggleCitations(`${msg.id}-web`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-emerald-700 transition-colors">
                                     <div className="flex items-center gap-2">
-                                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
                                       <span>Official Web Sources ({(msg.web?.citations || msg.webCitations || []).length})</span>
                                     </div>
                                     {expandedCitations[`${msg.id}-web`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                   </div>
                                   {expandedCitations[`${msg.id}-web`] && (
-                                    <div className="space-y-2 mt-2 pt-2 border-t border-emerald-500/15">
+                                    <div className="space-y-2 mt-2 pt-2 border-t border-slate-200">
                                       {(msg.web?.citations || msg.webCitations || []).map((cit, idx) => (
-                                        <div key={idx} className="p-3 rounded-lg bg-navy-900 border border-slate-800 text-xs">
-                                          <div className="font-bold text-slate-300 mb-1">{cit.title || cit.document_title || cit.statute}</div>
-                                          <div className="text-slate-400 mb-1">{cit.section}</div>
-                                          <p className="text-slate-400/80 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
+                                        <div key={idx} className="p-3 rounded-lg bg-white border border-slate-200 shadow-sm text-xs">
+                                          <div className="font-bold text-slate-800 mb-1">{cit.title || cit.document_title || cit.statute}</div>
+                                          <div className="text-slate-600 mb-1">{cit.section}</div>
+                                          <p className="text-slate-600 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
                                           <div className="mt-2 flex justify-between items-center text-[10px]">
                                             <span className="text-slate-500">Authority: {cit.authority}</span>
                                             {(cit.source_url || cit.url) && (
-                                              <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">
+                                              <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">
                                                 View Official Source ↗
                                               </a>
                                             )}
@@ -587,7 +587,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                         )}
                       </div>
                     ) : (
-                      <div className="p-4 rounded-2xl text-sm leading-relaxed bg-gold-500 text-navy-950 font-medium rounded-tr-none shadow-md w-fit ml-auto">
+                      <div className="p-4 rounded-2xl text-sm leading-relaxed bg-primary text-white font-medium rounded-tr-none shadow-md w-fit ml-auto">
                         <span>{msg.content}</span>
                       </div>
                     )}
@@ -595,30 +595,30 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                     {/* Common Footer Actions */}
                     {msg.role === 'assistant' && (
                       <div className="flex flex-col gap-2 mt-2">
-                        <div className="pt-2 flex items-center justify-between text-xs text-slate-400 max-w-3xl">
-                          <button onClick={() => copyContent(msg.id, msg.rag?.answer || msg.ragContent || msg.content || '')} className="hover:text-gold-300 transition-colors flex items-center gap-1">
-                            {copiedId === msg.id ? <><Check className="w-3.5 h-3.5 text-emerald-400" /><span className="text-emerald-400">Copied</span></> : <><Copy className="w-3.5 h-3.5" /><span>Copy RAG</span></>}
+                        <div className="pt-2 flex items-center justify-between text-xs text-slate-500 max-w-3xl">
+                          <button onClick={() => copyContent(msg.id, msg.rag?.answer || msg.ragContent || msg.content || '')} className="hover:text-primary transition-colors flex items-center gap-1">
+                            {copiedId === msg.id ? <><Check className="w-3.5 h-3.5 text-emerald-600" /><span className="text-emerald-600">Copied</span></> : <><Copy className="w-3.5 h-3.5" /><span>Copy RAG</span></>}
                           </button>
                           
                           {(msg.rag?.answer || msg.ragContent || msg.content) && (msg.web?.answer || msg.webContent) && !msg.isFiltered && (
-                            <button onClick={() => handleCompareSources(msg)} disabled={isComparing === msg.id} className="hover:text-gold-300 transition-colors flex items-center gap-1 disabled:opacity-50 border border-gold-500/40 px-3 py-1.5 rounded-lg bg-navy-900">
-                              {isComparing === msg.id ? <><div className="w-3 h-3 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" /><span>Comparing...</span></> : <><Scale className="w-3.5 h-3.5" /><span>Run Source Comparison</span></>}
+                            <button onClick={() => handleCompareSources(msg)} disabled={isComparing === msg.id} className="hover:bg-slate-100 text-slate-600 transition-colors flex items-center gap-1 disabled:opacity-50 border border-slate-300 px-3 py-1.5 rounded-lg bg-white shadow-sm">
+                              {isComparing === msg.id ? <><div className="w-3 h-3 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" /><span>Comparing...</span></> : <><Scale className="w-3.5 h-3.5 text-primary" /><span>Run Source Comparison</span></>}
                             </button>
                           )}
                         </div>
 
                         {/* Comparison Panel */}
                         {comparisonData[msg.id] && (
-                          <div className="legal-card rounded-xl p-4 border border-indigo-500/30 bg-indigo-950/20 mt-2 space-y-3 w-full max-w-4xl">
-                            <div className="flex items-center gap-2 text-indigo-400 font-bold border-b border-indigo-500/20 pb-2">
+                          <div className="bg-white rounded-xl p-4 border border-indigo-200 shadow-sm mt-2 space-y-3 w-full max-w-4xl">
+                            <div className="flex items-center gap-2 text-indigo-700 font-bold border-b border-indigo-100 pb-2">
                               <Scale className="w-4 h-4" />
                               Source Comparison Analysis
                             </div>
-                            <p className="text-sm text-slate-300">{comparisonData[msg.id].summary}</p>
+                            <p className="text-sm text-slate-700">{comparisonData[msg.id].summary}</p>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                               {comparisonData[msg.id].agreements?.length > 0 && (
-                                <div className="p-3 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 text-xs">
+                                <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
                                   <div className="font-bold mb-1.5">Agreements</div>
                                   <ul className="list-disc pl-4 space-y-1">
                                     {comparisonData[msg.id].agreements.map((item: string, i: number) => <li key={i}>{item}</li>)}
@@ -627,7 +627,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                               )}
                               
                               {comparisonData[msg.id].differences?.length > 0 && (
-                                <div className="p-3 rounded-lg bg-indigo-950/20 border border-indigo-500/20 text-indigo-200 text-xs">
+                                <div className="p-3 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs">
                                   <div className="font-bold mb-1.5">Differences</div>
                                   <ul className="list-disc pl-4 space-y-1">
                                     {comparisonData[msg.id].differences.map((item: string, i: number) => <li key={i}>{item}</li>)}
@@ -637,7 +637,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                             </div>
 
                             {comparisonData[msg.id].freshness_flags?.length > 0 && (
-                              <div className="p-3 rounded-lg bg-amber-950/40 border border-amber-500/40 text-amber-200 text-xs mt-2">
+                              <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs mt-2">
                                 <div className="flex items-center gap-1.5 font-bold mb-1.5"><AlertTriangle className="w-4 h-4" /> Corpus Freshness Warning</div>
                                 <ul className="list-disc pl-4 space-y-1">
                                   {comparisonData[msg.id].freshness_flags.map((flag: string, i: number) => <li key={i}>{flag}</li>)}
@@ -646,7 +646,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                             )}
                             
                             {comparisonData[msg.id].potential_conflicts?.length > 0 && (
-                              <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-500/40 text-rose-200 text-xs mt-2">
+                              <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs mt-2">
                                 <div className="flex items-center gap-1.5 font-bold mb-1.5"><AlertTriangle className="w-4 h-4" /> Source Conflicts Detected</div>
                                 <ul className="list-disc pl-4 space-y-1">
                                   {comparisonData[msg.id].potential_conflicts.map((conflict: string, i: number) => <li key={i}>{conflict}</li>)}
@@ -660,7 +660,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   </div>
 
                   {msg.role === 'user' && (
-                    <div className="w-8 h-8 rounded-xl bg-gold-500/20 border border-gold-500/40 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                    <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 mt-1">
                       <User className="w-4 h-4" />
                     </div>
                   )}
@@ -670,11 +670,11 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
             {loading && (
               <div className="max-w-3xl mx-auto flex gap-4">
-                <div className="w-8 h-8 rounded-xl bg-navy-900 border border-gold-500/40 text-gold-400 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200 text-primary flex items-center justify-center shrink-0">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="legal-card p-4 rounded-2xl rounded-tl-none border border-gold-500/20 flex items-center gap-3 text-xs text-gold-300">
-                  <div className="w-4 h-4 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" />
+                <div className="bg-white p-4 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm flex items-center gap-3 text-xs text-primary">
+                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                   <span>Analyzing statutory provisions & case precedents...</span>
                 </div>
               </div>
@@ -684,7 +684,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           </div>
 
           {/* Bottom Prompt Bar */}
-          <div className="p-4 bg-navy-950/90 border-t border-gold-500/15">
+          <div className="p-4 bg-white border-t border-slate-200 shadow-sm">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -697,12 +697,12 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask a legal query under Indian Law..."
-                className="w-full pl-4 pr-12 py-3.5 bg-navy-900 border border-slate-700 rounded-2xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 text-sm"
+                className="w-full pl-4 pr-12 py-3.5 bg-white border border-slate-300 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm shadow-sm"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 hover:from-gold-400 hover:to-gold-300 transition-all disabled:opacity-40 cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-all disabled:opacity-40 cursor-pointer shadow-sm"
               >
                 <Send className="w-4 h-4" />
               </button>

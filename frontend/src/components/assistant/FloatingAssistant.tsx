@@ -102,31 +102,31 @@ export const FloatingAssistant: React.FC = () => {
           ref={buttonRef}
           onClick={() => setIsOpen(true)}
           aria-label="Open website help assistant"
-          className="p-3.5 md:p-4 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 shadow-2xl shadow-gold-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 font-semibold text-xs border-2 border-navy-900 group"
+          className="p-3.5 md:p-4 rounded-full bg-slate-900 text-white shadow-xl hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 font-semibold text-xs border-2 border-white group"
         >
-          <HelpCircle className="w-5 h-5 group-hover:rotate-12 transition-transform text-navy-950" />
+          <HelpCircle className="w-5 h-5 group-hover:rotate-12 transition-transform text-white" />
           <span className="hidden sm:inline font-serif font-bold">Platform Guide</span>
         </button>
       )}
 
       {/* Floating Chat Panel */}
       {isOpen && (
-        <div className="w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] legal-card rounded-3xl border border-gold-500/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up bg-navy-950 selection:bg-gold-500 selection:text-navy-950">
+        <div className="w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] bg-white rounded-3xl border border-slate-200 shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up selection:bg-blue-100 selection:text-primary">
           {/* Panel Header */}
-          <div className="p-4 bg-navy-900/90 border-b border-slate-800 flex items-center justify-between">
+          <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-gold-500/10 border border-gold-500/30 text-gold-400">
-                <HelpCircle className="w-5 h-5 text-gold-400" />
+              <div className="p-2 rounded-xl bg-blue-50 border border-blue-200 text-primary">
+                <HelpCircle className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-slate-100 text-sm">Website Assistant</h3>
-                <span className="text-[10px] text-slate-400 block font-medium">Platform & Navigation Guide</span>
+                <h3 className="font-serif font-bold text-slate-900 text-sm">Website Assistant</h3>
+                <span className="text-[10px] text-slate-500 block font-medium">Platform & Navigation Guide</span>
               </div>
             </div>
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-lg bg-navy-950 text-slate-400 hover:text-slate-200 border border-slate-800 cursor-pointer"
+              className="p-1.5 rounded-lg bg-white text-slate-500 hover:text-slate-700 hover:bg-slate-50 border border-slate-200 cursor-pointer shadow-sm transition-colors"
               aria-label="Close assistant panel"
             >
               <X className="w-4 h-4" />
@@ -134,14 +134,14 @@ export const FloatingAssistant: React.FC = () => {
           </div>
 
           {/* Chat Messages Body */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 scrollbar-thin scrollbar-thumb-slate-800">
+          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 scrollbar-thin scrollbar-thumb-slate-300">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.role === 'assistant' && (
-                  <div className="p-1.5 rounded-lg bg-navy-900 border border-gold-500/20 text-gold-400 self-start flex-shrink-0">
+                  <div className="p-1.5 rounded-lg bg-white border border-slate-200 text-primary self-start flex-shrink-0 shadow-sm">
                     <Bot className="w-3.5 h-3.5" />
                   </div>
                 )}
@@ -150,8 +150,8 @@ export const FloatingAssistant: React.FC = () => {
                   <div
                     className={`p-3 rounded-2xl text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 font-medium rounded-br-xs shadow-md'
-                        : 'bg-navy-900/90 border border-slate-800 text-slate-200 rounded-bl-xs'
+                        ? 'bg-slate-900 text-white font-medium rounded-br-xs shadow-md'
+                        : 'bg-white border border-slate-200 text-slate-700 rounded-bl-xs shadow-sm'
                     }`}
                   >
                     {msg.content}
@@ -163,7 +163,7 @@ export const FloatingAssistant: React.FC = () => {
                       <Link
                         href={msg.targetUrl}
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 text-xs font-bold shadow-md hover:from-gold-400 hover:to-gold-300 transition-all"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-md hover:bg-slate-800 transition-all"
                       >
                         <span>{msg.buttonText || 'Open Ask MARE-Juris →'}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -173,7 +173,7 @@ export const FloatingAssistant: React.FC = () => {
                 </div>
 
                 {msg.role === 'user' && (
-                  <div className="p-1.5 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400 self-start flex-shrink-0">
+                  <div className="p-1.5 rounded-lg bg-blue-50 border border-blue-200 text-primary self-start flex-shrink-0">
                     <User className="w-3.5 h-3.5" />
                   </div>
                 )}
@@ -182,15 +182,15 @@ export const FloatingAssistant: React.FC = () => {
 
             {/* Loading Indicator */}
             {loading && (
-              <div className="flex items-center gap-2 text-xs text-slate-400 bg-navy-900/60 p-3 rounded-2xl border border-slate-800 w-fit">
-                <RefreshCw className="w-3.5 h-3.5 animate-spin text-gold-400" />
+              <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-50 p-3 rounded-2xl border border-slate-200 w-fit">
+                <RefreshCw className="w-3.5 h-3.5 animate-spin text-primary" />
                 <span>Checking guide...</span>
               </div>
             )}
 
             {/* Error Message */}
             {errorMsg && (
-              <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
                 <span>{errorMsg}</span>
               </div>
@@ -200,7 +200,7 @@ export const FloatingAssistant: React.FC = () => {
           </div>
 
           {/* Panel Input Area */}
-          <div className="p-3 bg-navy-900/90 border-t border-slate-800">
+          <div className="p-3 bg-slate-50 border-t border-slate-200">
             <div className="relative flex items-center">
               <textarea
                 ref={inputRef}
@@ -210,12 +210,12 @@ export const FloatingAssistant: React.FC = () => {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about website, features, or navigation..."
                 disabled={loading}
-                className="w-full pl-3 pr-10 py-2.5 bg-navy-950 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 text-xs resize-none disabled:opacity-50"
+                className="w-full pl-3 pr-10 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-50 text-xs resize-none disabled:opacity-50 transition-all shadow-sm"
               />
               <button
                 onClick={handleSend}
                 disabled={loading || !input.trim()}
-                className="absolute right-2 p-1.5 rounded-lg bg-gold-500 text-navy-950 hover:bg-gold-400 disabled:opacity-40 transition-all cursor-pointer"
+                className="absolute right-2 p-1.5 rounded-lg bg-primary text-white hover:bg-primary-hover disabled:opacity-40 transition-all cursor-pointer shadow-sm"
                 title="Send message"
               >
                 <Send className="w-3.5 h-3.5" />

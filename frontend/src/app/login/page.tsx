@@ -5,7 +5,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-navy-950 flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
+    <div className="min-h-screen bg-white flex flex-col justify-between selection:bg-blue-100 selection:text-primary">
       <Navbar mode="auth" />
 
       <main className="pt-24 pb-12 px-4 flex-1 flex flex-col items-center justify-center space-y-12 max-w-7xl mx-auto w-full">
@@ -14,12 +14,12 @@ export default function LoginPage() {
         </div>
 
         {/* Subtle Legal & Business Pulse */}
-        <div className="w-full border-t border-slate-800/80 pt-8">
+        <div className="w-full border-t border-slate-200 pt-8">
           <NewsRail compact />
         </div>
       </main>
 
-      <footer className="border-t border-slate-800/80 py-4 px-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 py-4 px-4 text-center text-xs text-slate-500">
         <p>© 2026 MARE-Juris Legal Intelligence Platform</p>
       </footer>
     </div>

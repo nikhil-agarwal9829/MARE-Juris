@@ -164,6 +164,17 @@ export async function POST(req: NextRequest) {
             font-size: 13px;
           }
           .authority-box strong { color: var(--gold-400); }
+          .official-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--blue-400);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+          }
+          .official-link:hover {
+            text-decoration: underline;
+          }
           
           .roadmap-step {
             display: flex;
@@ -226,7 +237,7 @@ export async function POST(req: NextRequest) {
             <div class="logo">MARE-Juris</div>
             <h1>Statutory Compliance Roadmap</h1>
             <div class="meta-info">
-              <span>Business: ${businessProfile.nameOrDesc}</span>
+               <span>Business: ${businessProfile.nameOrDesc}</span>
               <span>|</span>
               <span>Jurisdiction: ${businessProfile.jurisdictionSummary}</span>
             </div>
@@ -273,6 +284,7 @@ export async function POST(req: NextRequest) {
               <div class="req-desc">${req.purpose}</div>
               <div class="authority-box">
                 Statutory Authority: <strong>${req.authority}</strong>
+                ${req.applicationUrl ? `<br><a href="${req.applicationUrl}" target="_blank" class="official-link">Official Portal (${req.officialSource || 'Link'}) ➔</a>` : ''}
               </div>
             </div>
           `).join('') || '<p>No mandatory requirements.</p>'}
@@ -290,6 +302,7 @@ export async function POST(req: NextRequest) {
                 <div class="req-desc">${req.purpose}</div>
                 <div class="authority-box">
                   Statutory Authority: <strong>${req.authority}</strong>
+                  ${req.applicationUrl ? `<br><a href="${req.applicationUrl}" target="_blank" class="official-link">Official Portal (${req.officialSource || 'Link'}) ➔</a>` : ''}
                 </div>
               </div>
             `).join('')}
@@ -308,6 +321,7 @@ export async function POST(req: NextRequest) {
                 <div class="req-desc">${req.purpose}</div>
                 <div class="authority-box">
                   Statutory Authority: <strong>${req.authority}</strong>
+                  ${req.applicationUrl ? `<br><a href="${req.applicationUrl}" target="_blank" class="official-link">Official Portal (${req.officialSource || 'Link'}) ➔</a>` : ''}
                 </div>
               </div>
             `).join('')}

@@ -20,10 +20,10 @@ export const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
     : 'LEGAL PULSE';
 
   return (
-    <div className="w-80 md:w-96 flex-shrink-0 scroll-snap-align-start legal-card rounded-2xl overflow-hidden flex flex-col justify-between group border border-slate-800/80 hover:border-gold-500/50 transition-all duration-300 shadow-lg">
+    <div className="w-80 md:w-96 flex-shrink-0 scroll-snap-align-start bg-white rounded-2xl overflow-hidden flex flex-col justify-between group border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-md">
       <div>
         {/* Header Image or Fallback */}
-        <div className="relative w-full h-44 bg-navy-950 overflow-hidden">
+        <div className="relative w-full h-44 bg-slate-100 overflow-hidden">
           {article.imageUrl && !imgError ? (
             <Image
               src={article.imageUrl}
@@ -39,47 +39,47 @@ export const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
           )}
 
           {/* Category Tag Badge */}
-          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-navy-950/85 backdrop-blur-md border border-gold-500/30 text-[10px] font-bold uppercase tracking-wider text-gold-300 shadow-md">
+          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-primary shadow-sm">
             {categoryName}
           </div>
         </div>
 
         {/* Article Body */}
         <div className="p-5">
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-2.5 flex-wrap">
-            <span className="flex items-center gap-1 text-gold-400/90 font-semibold tracking-wide">
+          <div className="flex items-center gap-2 text-xs text-slate-500 mb-2.5 flex-wrap">
+            <span className="flex items-center gap-1 text-primary font-semibold tracking-wide">
               <Newspaper className="w-3.5 h-3.5" />
               {article.sourceName}
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1 text-slate-400">
-              <Calendar className="w-3.5 h-3.5 text-slate-500" />
+            <span className="flex items-center gap-1 text-slate-500">
+              <Calendar className="w-3.5 h-3.5 text-slate-400" />
               {formattedDate}
             </span>
           </div>
 
-          <h3 className="font-bold text-slate-100 text-sm md:text-base line-clamp-2 leading-snug group-hover:text-gold-300 transition-colors font-serif">
+          <h3 className="font-bold text-slate-900 text-sm md:text-base line-clamp-2 leading-snug group-hover:text-primary transition-colors font-serif">
             {article.title}
           </h3>
 
-          <p className="text-xs text-slate-400 mt-2.5 line-clamp-3 leading-relaxed">
+          <p className="text-xs text-slate-500 mt-2.5 line-clamp-3 leading-relaxed">
             {article.description}
           </p>
         </div>
       </div>
 
       {/* Card Action Link */}
-      <div className="p-4 border-t border-slate-800/80 bg-navy-950/50 flex items-center justify-between">
+      <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
         <a
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors group/link"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-hover transition-colors group/link"
         >
           <span>Read Full Article</span>
           <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
         </a>
-        <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-gold-400/70 transition-colors" />
+        <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-primary/70 transition-colors" />
       </div>
     </div>
   );

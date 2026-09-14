@@ -25,8 +25,8 @@ export default async function AskJurisPage({
   return (
     <Suspense
       fallback={
-        <div className="h-screen bg-navy-950 flex items-center justify-center text-slate-300 text-sm">
-          <RefreshCw className="w-6 h-6 animate-spin text-gold-400 mr-2" />
+        <div className="h-screen bg-white flex items-center justify-center text-slate-600 text-sm">
+          <RefreshCw className="w-6 h-6 animate-spin text-primary mr-2" />
           <span>Loading Ask MARE-Juris Legal Workspace...</span>
         </div>
       }
