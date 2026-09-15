@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 
 const getBackendUrl = (req: Request) => {
-  const host = req.headers.get('host') || process.env.VERCEL_URL;
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const fallbackUrl = host ? `${protocol}://${host}` : 'http://127.0.0.1:8000';
-  return process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || fallbackUrl;
+  if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
+  if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://127.0.0.1:8000';
 };
 
 export async function POST(req: Request) {

@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 
 const getBackendUrl = (req: NextRequest) => {
-  const host = req.headers.get('host') || process.env.VERCEL_URL;
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const fallbackUrl = host ? `${protocol}://${host}` : 'http://127.0.0.1:8000';
-  return process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || fallbackUrl;
+  if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
+  if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://127.0.0.1:8000';
 };
 
 export async function POST(req: NextRequest) {
@@ -96,6 +96,10 @@ export async function POST(req: NextRequest) {
           const data = await res.json();
           return NextResponse.json(data);
         }
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          return NextResponse.json({ error: 'Backend API returned an HTML response instead of JSON.' }, { status: res.status });
+        }
         const errorData = await res.text();
         console.error('[COMPLIANCE_API] Start analyze failed:', errorData);
         let detail = 'Backend failed to analyze query.';
@@ -124,6 +128,10 @@ export async function POST(req: NextRequest) {
           const data = await res.json();
           return NextResponse.json(data);
         }
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          return NextResponse.json({ error: 'Backend API returned an HTML response instead of JSON.' }, { status: res.status });
+        }
         const errorData = await res.text();
         console.error('[COMPLIANCE_API] Intent extraction failed on backend:', errorData);
         return NextResponse.json({ error: 'Backend failed to extract intent.' }, { status: res.status });
@@ -151,6 +159,10 @@ export async function POST(req: NextRequest) {
           const data = await res.json();
           return NextResponse.json(data);
         }
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          return NextResponse.json({ error: 'Backend API returned an HTML response instead of JSON.' }, { status: res.status });
+        }
         const errorData = await res.text();
         console.error('[COMPLIANCE_API] Question generation failed on backend:', errorData);
         return NextResponse.json({ error: 'Backend failed to generate questions.' }, { status: res.status });
@@ -176,6 +188,10 @@ export async function POST(req: NextRequest) {
         if (res.ok) {
           const data = await res.json();
           return NextResponse.json(data);
+        }
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          return NextResponse.json({ error: 'Backend API returned an HTML response instead of JSON.' }, { status: res.status });
         }
         const errorData = await res.text();
         console.error('[COMPLIANCE_API] Roadmap generation failed on backend:', errorData);

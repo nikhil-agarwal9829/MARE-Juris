@@ -23,11 +23,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Message payload cannot be empty.' }, { status: 400 });
     }
 
-    const host = request.headers.get('host') || process.env.VERCEL_URL;
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const fallbackUrl = host ? `${protocol}://${host}` : 'http://127.0.0.1:8000';
+    const getBackendUrl = (req: Request) => {
+      if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
+      if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
+      if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+      return 'http://127.0.0.1:8000';
+    };
     
-    const backendUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || fallbackUrl;
+    const backendUrl = getBackendUrl(request);
 
     const backendRes = await fetch(`${backendUrl}/api/v1/chat/message`, {
       method: 'POST',
@@ -40,6 +43,11 @@ export async function POST(request: Request) {
         conversation_id: conversation_id || null,
       }),
     });
+
+    const contentType = backendRes.headers.get('content-type') || '';
+    if (contentType.includes('text/html')) {
+      return NextResponse.json({ error: 'Backend API returned an HTML response instead of JSON.' }, { status: backendRes.status });
+    }
 
     const text = await backendRes.text();
     if (!backendRes.ok) {
