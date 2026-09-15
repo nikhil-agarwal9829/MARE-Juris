@@ -101,17 +101,33 @@ async def send_chat_message(
                 )
                 logger.info(f"[CHAT_ROUTER] Resolved follow-up query: {resolved_query}")
 
-        rag_result = rag_service.process_query(
-            user_id=user_id,
-            query_text=user_message,
-            conversation_id=payload.conversation_id,
-            persist=False,
-            history=history,
-            skip_followup=bool(resolved_query),
-            resolved_query=resolved_query,
-            bypass_classifier=bool(resolved_query),
-            conversation_state=conversation_state,
-        )
+        try:
+            rag_result = rag_service.process_query(
+                user_id=user_id,
+                query_text=user_message,
+                conversation_id=payload.conversation_id,
+                persist=False,
+                history=history,
+                skip_followup=bool(resolved_query),
+                resolved_query=resolved_query,
+                bypass_classifier=bool(resolved_query),
+                conversation_state=conversation_state,
+            )
+        except Exception as rag_err:
+            logger.error(f"[CHAT_ROUTER] RAG pipeline failed: {rag_err}")
+            rag_result = {
+                "status": "error",
+                "answer": "Controlled-corpus retrieval is currently unavailable.",
+                "citations": [],
+                "evidence": [],
+                "sources": [],
+                "verification": {"verified": False, "issues": [str(rag_err)]},
+                "follow_up": {"required": False, "question": None, "reason": None},
+                "is_filtered": False,
+                "effective_query": resolved_query or user_message,
+                "resolved_query": resolved_query,
+                "conversation_state": conversation_state,
+            }
 
         is_filtered = rag_result.get("is_filtered", False)
         follow_up = rag_result.get("follow_up") or {
@@ -134,7 +150,18 @@ async def send_chat_message(
             web_result = None
         else:
             effective = rag_result.get("effective_query") or resolved_query or user_message
-            web_result = await web_research_service.process_query(effective)
+            try:
+                web_result = await web_research_service.process_query(effective)
+            except Exception as web_err:
+                logger.error(f"[CHAT_ROUTER] Web pipeline failed: {web_err}")
+                web_result = {
+                    "status": "error",
+                    "answer": "LIVE OFFICIAL WEB RESEARCH is currently unavailable.",
+                    "citations": [],
+                    "evidence": [],
+                    "sources": [],
+                    "verification": {"verified": False, "issues": [str(web_err)]},
+                }
 
         conversation_id = rag_result.get("conversation_id", payload.conversation_id) or str(uuid.uuid4())
         message_id = str(uuid.uuid4())
