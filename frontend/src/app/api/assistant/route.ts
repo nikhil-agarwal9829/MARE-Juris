@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
@@ -7,8 +8,19 @@ export async function POST(request: Request) {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
+      const cookieStore = cookies();
+      const allCookies = cookieStore.getAll().map(c => c.name);
       return NextResponse.json(
-        { error: 'Unauthorized. Please sign in to consult MARE-Juris Legal Assistant.' },
+        { 
+          error: 'Unauthorized. Please sign in to consult MARE-Juris Legal Assistant.',
+          diagnostic: {
+            hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+            hasSupabaseKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            hasAuthCookie: allCookies.some(name => name.includes('sb-') && name.includes('-auth-token')),
+            allCookies,
+            userFound: !!user,
+          }
+        },
         { status: 401 }
       );
     }
@@ -24,6 +36,7 @@ export async function POST(request: Request) {
     }
 
     const getBackendUrl = (req: Request) => {
+      if (process.env.BACKEND_INTERNAL_URL) return process.env.BACKEND_INTERNAL_URL;
       if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
       if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
       if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;

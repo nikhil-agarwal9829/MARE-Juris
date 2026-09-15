@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 
 const getBackendUrl = (req: NextRequest) => {
+  if (process.env.BACKEND_INTERNAL_URL) return process.env.BACKEND_INTERNAL_URL;
   if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
   if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
@@ -30,7 +32,18 @@ export async function POST(req: NextRequest) {
 
     if (action === 'history') {
       if (!user) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const cookieStore = cookies();
+        const allCookies = cookieStore.getAll().map(c => c.name);
+        return NextResponse.json({ 
+          error: 'Unauthorized',
+          diagnostic: {
+            hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+            hasSupabaseKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            hasAuthCookie: allCookies.some(name => name.includes('sb-') && name.includes('-auth-token')),
+            allCookies,
+            userFound: !!user,
+          }
+        }, { status: 401 });
       }
 
       const { data, error } = await supabase

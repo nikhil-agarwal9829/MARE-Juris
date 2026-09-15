@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const getBackendUrl = (req: Request) => {
+  if (process.env.BACKEND_INTERNAL_URL) return process.env.BACKEND_INTERNAL_URL;
   if (process.env.BACKEND_API_URL) return process.env.BACKEND_API_URL;
   if (process.env.NEXT_PUBLIC_BACKEND_URL) return process.env.NEXT_PUBLIC_BACKEND_URL;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
