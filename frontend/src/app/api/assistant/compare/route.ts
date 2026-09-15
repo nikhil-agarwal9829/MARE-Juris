@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
 
-const API_URL = 'http://127.0.0.1:8000'; // FastAPI backend
+const API_URL = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8000'); // FastAPI backend
 
 export async function POST(req: Request) {
   try {
+    if (process.env.NODE_ENV === 'production' && !API_URL) {
+      return NextResponse.json({ error: 'BACKEND_API_URL is required in production.' }, { status: 500 });
+    }
+
     const authHeader = req.headers.get('authorization');
     const body = await req.json();
 

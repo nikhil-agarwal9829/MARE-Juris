@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://127.0.0.1:8000';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.BACKEND_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8000');
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,6 +19,10 @@ export async function POST(req: NextRequest) {
     } = body;
 
     const userQuery = query || prompt;
+
+    if (process.env.NODE_ENV === 'production' && !BACKEND_URL) {
+      return NextResponse.json({ error: 'BACKEND_API_URL or NEXT_PUBLIC_BACKEND_URL is required in production.' }, { status: 500 });
+    }
 
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();

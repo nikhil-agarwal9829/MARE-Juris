@@ -23,7 +23,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Message payload cannot be empty.' }, { status: 400 });
     }
 
-    const backendUrl = process.env.BACKEND_API_URL || 'http://127.0.0.1:8000';
+    const backendUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8000');
+
+    if (!backendUrl) {
+      return NextResponse.json({ error: 'BACKEND_API_URL or NEXT_PUBLIC_BACKEND_URL is required in production.' }, { status: 500 });
+    }
 
     const backendRes = await fetch(`${backendUrl}/api/v1/chat/message`, {
       method: 'POST',
