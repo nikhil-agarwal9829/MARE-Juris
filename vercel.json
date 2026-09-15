@@ -16,6 +16,10 @@
     {
       "source": "/api/v1/(.*)",
       "destination": "/backend/app/main.py"
+    },
+    {
+      "source": "/((?!backend/).*)",
+      "destination": "/frontend/$1"
     }
   ]
 }
