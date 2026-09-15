@@ -1,486 +1,922 @@
-CRITICAL FIX REQUIRED — DO NOT REPLACE THE EXISTING LEGAL ANSWER PIPELINE
+URGENT FIX — ASK MARE-JURIS RAG IS MARKING RELEVANT QUESTIONS AS "NOT SUPPORTED"
 
-The current MARE-Juris chat implementation is incorrect.
+IMPORTANT:
 
-The screenshot shows that the system is currently producing one generic response:
+This task is ONLY for ASK MARE-JURIS.
 
-"MARE-Juris Legal Intelligence Analysis..."
+DO NOT MODIFY THE COMPLIANCE AGENT.
 
-This is NOT what I need.
+The Compliance Agent and Ask MARE-Juris are separate systems.
 
-I need TWO completely independent legal answers for every valid legal query:
+============================================================
+CURRENT BUG
+============================================================
 
-==================================================
-PIPELINE A — MARE-JURIS RAG ANSWER
-==================================================
+The user asks:
 
-This answer MUST come only from our controlled legal corpus stored in Supabase.
+"what is right to information"
 
-Current corpus:
-1. Constitution of India, 1950
-2. Consumer Protection Act, 2019
-3. Digital Personal Data Protection Act, 2023
-4. Information Technology Act, 2000
-5. Transfer of Property Act, 1882
-6. Indian Contract Act, 1872
-7. Bharatiya Nyaya Sanhita, 2023
-8. Bharatiya Nagarik Suraksha Sanhita, 2023
-9. Protection of Women from Domestic Violence Act, 2005
-10. Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013
+The UI currently shows:
 
-RAG pipeline must remain:
-
-User Query
-→ Legal Query Filter
-→ Query Understanding
-→ Hybrid Retrieval
-→ Supabase pgvector
-→ BM25
-→ Hybrid Merge
-→ Reranking
-→ Evidence Normalization
-→ Claim Planning
-→ LLM Synthesis
-→ Citation/Grounding Verification
-→ Verified RAG Answer
-
-DO NOT allow the LLM to answer from general knowledge when RAG evidence is unavailable.
-
-If the retrieved corpus does not contain sufficient evidence, explicitly display:
-
-"Insufficient evidence in the MARE-Juris legal corpus to answer this part."
-
-Do not fabricate:
-- sections
-- acts
-- legal provisions
-- case citations
-- URLs
-- authorities
-- evidence
-
-==================================================
-PIPELINE B — LIVE OFFICIAL WEB/API RESEARCH
-==================================================
-
-This MUST be a completely separate pipeline.
-
-It must NOT use the retrieved RAG chunks as its evidence.
-
-Use the India Code API endpoints already provided in the project/API documentation.
-
-Relevant API endpoints include:
-
-GET /api/v1/acts
-GET /api/v1/acts/{act}
-GET /api/v1/{act}/section/{number}
-GET /api/v1/search
-GET /api/v1/judgments
-GET /api/v1/mappings
-GET /api/v1/instruments
-GET /api/v1/meta
-
-Also use current official Internet sources where necessary.
-
-Prioritize:
-1. India Code
-2. Supreme Court / High Court official websites
-3. Ministry / Department official websites
-4. Government portals
-5. Official regulators
-
-Do NOT treat random blogs, Reddit, Quora, or legal marketing websites as authoritative legal sources.
-
-The Live Web answer must be generated from the current retrieved official evidence.
-
-==================================================
-VERY IMPORTANT — DO NOT MERGE THE TWO ANSWERS
-==================================================
-
-Pipeline A and Pipeline B must execute independently.
-
-DO NOT do:
-
-RAG evidence + Web evidence
-→ one combined LLM answer
-
-Instead do:
-
-Query
-├── Pipeline A → RAG Answer
-│                 └── RAG citations/evidence
-│
-└── Pipeline B → Live Official Answer
-                  └── Web/API citations/evidence
-
-Only AFTER both answers are independently generated may we run an optional comparison step.
-
-==================================================
-CITATIONS ARE MANDATORY
-==================================================
-
-The current implementation lost the citations.
-
-Restore citation generation and rendering.
-
-Every important legal claim should have a claim-level citation.
-
-Each citation must contain:
-
-{
-  "citation_id": "RAG-1",
-  "document_title": "...",
-  "act": "...",
-  "section": "...",
-  "subsection": "...",
-  "page": "...",
-  "authority": "...",
-  "jurisdiction": "India",
-  "evidence_text": "...",
-  "source_url": "...",
-  "source_type": "RAG",
-  "retrieved_at": "..."
-}
-
-For Live Web:
-
-{
-  "citation_id": "WEB-1",
-  "title": "...",
-  "section": "...",
-  "authority": "...",
-  "jurisdiction": "India",
-  "evidence_text": "...",
-  "source_url": "...",
-  "source_type": "OFFICIAL_WEB",
-  "retrieved_at": "..."
-}
-
-Never create a citation unless the source actually exists.
-
-==================================================
-EVIDENCE USED PANEL
-==================================================
-
-Restore the Evidence Used UI.
-
-For RAG answer show:
-
-Evidence Used
-- Document
-- Section
-- Page
-- Chunk ID
-- Retrieved text
-- Relevance/reranker score if available
-- Official source URL
-
-For Live answer show:
-
-Official Sources Used
-- Source title
-- Authority
-- URL
-- Retrieved date/time
-- Relevant section/evidence
-
-==================================================
-SOURCE BUTTON
-==================================================
-
-Every source must have:
-
-"View Official Source ↗"
-
-This button must open the REAL source_url.
-
-Do not create fake URLs.
-
-For RAG documents, source_url must point to the official source associated with the corpus document.
-
-For web/API results, use the actual URL returned/discovered from the official source.
-
-==================================================
-CITATION VERIFICATION
-==================================================
-
-Restore the previous citation/legal-grounding verification behavior.
-
-The verification layer must check:
-
-1. Does the cited document exist?
-2. Does the cited section exist?
-3. Does the retrieved evidence support the claim?
-4. Does the answer preserve conditions/exceptions?
-5. Is the jurisdiction correct?
-6. Is the citation actually linked to the evidence?
-7. Is the official source URL valid?
-8. Is the corpus source potentially stale?
-
-If verification fails:
-
-- repair the answer using available evidence, OR
-- remove the unsupported claim, OR
-- explicitly abstain.
-
-NEVER silently fabricate a citation.
-
-==================================================
-UI REQUIREMENT
-==================================================
-
-The chat MUST clearly identify which answer is which.
-
-Use two clearly separated cards/tabs:
-
-[ MARE-JURIS RAG ]
-
-and
-
-[ LIVE OFFICIAL RESEARCH ]
-
-Default view can be MARE-Juris RAG, but both answers must remain visible/accessible.
-
-Example UI:
-
---------------------------------------------------
 MARE-JURIS RAG
-Controlled 10-document corpus
---------------------------------------------------
+RAG Coverage: Not supported
 
-Answer...
+"The current MARE-Juris legal corpus does not contain sufficient evidence to answer this question."
 
-[1] Transfer of Property Act, 1882 — Section ...
+"Relevant corpus sources: None directly relevant."
 
-Evidence Used
-> retrieved evidence...
+But the controlled corpus contains:
 
-View Official Source ↗
+Constitution of India
 
+and the query is a legal question that may have relevant constitutional material.
 
---------------------------------------------------
-LIVE OFFICIAL RESEARCH
-Current official Internet/API sources
---------------------------------------------------
+The current RAG retrieval/coverage detection is therefore too aggressive or incorrectly implemented.
 
-Answer...
+DO NOT simply change the UI label.
 
-[WEB-1] India Code — ...
+Find why relevant evidence is not being retrieved or why retrieved evidence is being classified as irrelevant.
 
-Evidence Used
-> current official evidence...
+============================================================
+1. INSPECT THE ACTUAL RAG RETRIEVAL
+============================================================
 
-View Official Source ↗
+For this exact query:
 
+"what is right to information"
 
---------------------------------------------------
-SOURCE COMPARISON
---------------------------------------------------
+run the actual RAG pipeline and inspect:
 
-Agreement:
-...
+- query understanding
+- query embedding
+- vector search
+- BM25 search
+- merged candidates
+- reranking
+- final evidence
+- relevance scores
+- coverage classification
 
-Differences:
-...
+Log in development:
 
-Freshness warning:
-...
+query
+expanded_queries
+vector_result_count
+bm25_result_count
+merged_result_count
+reranked_result_count
+final_evidence_count
+top_documents
+top_sections
+relevance_scores
+rag_coverage
 
-==================================================
-DO NOT SHOW GENERIC RESPONSE
-==================================================
+DO NOT log secrets.
 
-Remove/replace generic output such as:
+============================================================
+2. DO NOT USE EXACT KEYWORD MATCHING
+============================================================
 
-"MARE-Juris Legal Intelligence Analysis for query..."
+The RAG system must NOT require the exact phrase:
 
-"Statutory Framework Under Indian Law..."
+"right to information"
 
-"Legal Action Guidance..."
+to appear in a chunk.
 
-unless those sentences are actually generated from verified evidence.
+Legal documents use different terminology.
 
-The response must be evidence-grounded and source-linked.
+For example, the Constitution may discuss:
 
-==================================================
-BACKEND RESPONSE SCHEMA
-==================================================
+- freedom of speech and expression
+- Article 19(1)(a)
+- communication
+- access to information
+- freedom of expression
 
-The /chat endpoint or equivalent should return BOTH results.
+The retrieval system must use semantic similarity.
 
-Use a structure similar to:
+============================================================
+3. QUERY EXPANSION
+============================================================
 
-{
-  "query": "...",
+Before retrieval, use the query-understanding LLM to generate legal retrieval concepts.
 
-  "rag": {
-    "status": "verified",
-    "answer": "...",
-    "citations": [],
-    "evidence": [],
-    "sources": [],
-    "verification": {
-      "verified": true,
-      "issues": []
-    }
-  },
+For:
 
-  "web": {
-    "status": "verified",
-    "answer": "...",
-    "citations": [],
-    "evidence": [],
-    "sources": [],
-    "verification": {
-      "verified": true,
-      "issues": []
-    }
-  },
+"what is right to information"
 
-  "comparison": {
-    "available": true,
-    "agreements": [],
-    "differences": [],
-    "freshness_flags": [],
-    "conflicts": []
-  }
-}
+possible retrieval concepts include:
 
-==================================================
-FRONTEND STATE
-==================================================
+- right to information
+- access to information
+- freedom of speech and expression
+- Article 19(1)(a)
+- constitutional right to information
+- freedom of expression
+- citizen access to information
 
-Do NOT use one shared answer variable.
+These are retrieval concepts only.
 
-Maintain separate state:
+They are NOT answers.
 
-ragAnswer
-ragStatus
-ragCitations
-ragEvidence
-ragSources
-ragVerification
+Use them to improve retrieval.
 
-webAnswer
-webStatus
-webCitations
-webEvidence
-webSources
-webVerification
+============================================================
+4. HYBRID RETRIEVAL
+============================================================
 
-comparison
+For every query:
 
-The existing disappearing-first-response bug must also be fixed.
+Run:
 
-After the first query:
+A. Original query → vector search
 
-1. RAG answer must remain visible.
-2. Web answer must remain visible.
-3. Both must be persisted.
-4. Refreshing the page must restore both.
-5. Clicking conversation history must restore both.
-6. Switching tabs must never delete either answer.
-7. Streaming RAG must not overwrite Web state.
-8. Streaming Web must not overwrite RAG state.
+B. Expanded legal concepts → vector search
 
-==================================================
-COMPARISON ENDPOINT
-==================================================
+C. Original query → BM25
 
-The existing /api/v1/chat/compare endpoint may ONLY compare the two already-generated answers/evidence.
-
-It must NOT replace either answer.
-
-Flow:
-
-RAG generation
-+
-Live Web generation
-↓
-Comparison
-↓
-UI
-
-NOT:
-
-RAG + Web
-↓
-Comparison LLM
-↓
-one answer
-
-==================================================
-TEST THIS EXACT QUERY
-==================================================
-
-Use:
-
-"what are my rights as tenant"
-
-Expected result:
-
-TAB 1:
-MARE-JURIS RAG
-
-- answer from controlled 10-document corpus
-- citations
-- evidence
-- document/section information
-- official source link
-- verification status
-
-TAB 2:
-LIVE OFFICIAL RESEARCH
-
-- current official web/API answer
-- official sources
-- citations
-- evidence
-- source links
-- retrieval timestamp
-- verification status
+D. Expanded legal concepts → BM25
 
 Then:
 
-SOURCE COMPARISON
+merge
+↓
+deduplicate
+↓
+normalize scores
+↓
+rerank
+↓
+select final evidence
 
-- agreement
-- differences
-- corpus freshness
-- conflicts if any
+Do not rely on only one retrieval method.
 
-==================================================
-IMPORTANT IMPLEMENTATION RULE
-==================================================
+============================================================
+5. DOCUMENT-LEVEL + CHUNK-LEVEL RETRIEVAL
+============================================================
 
-Before changing anything:
+Do not immediately conclude:
 
-1. Inspect current chat.py
-2. Inspect rag_service.py
-3. Inspect ChatInterface.tsx
-4. Inspect citation components
-5. Inspect evidence/source components
-6. Inspect existing chat persistence/history code
-7. Inspect the previous implementation that generated citations and verification
-8. Identify exactly where the old verified legal answer was replaced.
+"No relevant corpus"
 
-Do NOT rewrite the entire system unnecessarily.
+based on one failed chunk search.
 
-Restore the old verified/citation answer behavior and ADD the new independent RAG answer beside it.
+First determine relevant documents.
 
-==================================================
-FINAL ACCEPTANCE TEST
-==================================================
+For example:
 
-The implementation is NOT complete unless one user query visibly produces:
+query:
 
-1. MARE-Juris RAG Answer
-2. Live Official Web Research Answer
-3. Citations for both
-4. Evidence Used for both
-5. Official source links
-6. Verification status
-7. Source comparison
-8. Both answers persist after refresh/history navigation
+"what is right to information"
 
-Do not report "complete" until this exact behavior is verified end-to-end.
+may identify:
+
+Constitution of India
+
+as a potentially relevant document.
+
+Then retrieve the most relevant chunks from that document.
+
+Use chunk-level evidence for the final answer.
+
+============================================================
+6. DO NOT USE DOCUMENT TITLE MATCHING AS THE MAIN RETRIEVAL METHOD
+============================================================
+
+Do NOT implement:
+
+if query contains "RTI":
+    search RTI document
+
+if no RTI document:
+    RAG unavailable
+
+This is WRONG.
+
+The user may ask:
+
+"right to information"
+
+without mentioning:
+
+"RTI Act"
+
+The system should still retrieve constitutional material if it is relevant.
+
+============================================================
+7. RAG COVERAGE MUST BE EVIDENCE-BASED
+============================================================
+
+Coverage must be determined AFTER retrieval.
+
+Use:
+
+FULLY_SUPPORTED
+PARTIALLY_SUPPORTED
+NOT_SUPPORTED
+
+Do NOT determine coverage before retrieval.
+
+============================================================
+FULLY_SUPPORTED
+============================================================
+
+Use when the retrieved chunks directly answer the user's question.
+
+Example:
+
+User:
+
+"What is Article 14?"
+
+If Constitution chunks contain Article 14:
+
+RAG:
+
+FULLY_SUPPORTED
+
+Then answer from those chunks.
+
+============================================================
+PARTIALLY_SUPPORTED
+============================================================
+
+Use when the corpus contains relevant information but does not cover the entire question.
+
+Example:
+
+User:
+
+"What are my rights as a tenant in Tamil Nadu?"
+
+Corpus may contain:
+
+Transfer of Property Act
+
+but not all Tamil Nadu-specific tenancy legislation.
+
+Then:
+
+RAG Coverage:
+PARTIALLY_SUPPORTED
+
+Answer only what the corpus supports.
+
+Clearly say:
+
+"The current corpus contains relevant central-law material, but it does not contain enough Tamil Nadu-specific material for a complete state-specific answer."
+
+Do NOT say:
+
+"No relevant information."
+
+============================================================
+NOT_SUPPORTED
+============================================================
+
+Use NOT_SUPPORTED only when:
+
+1. Retrieval was performed properly.
+2. Vector + BM25 produced no meaningful evidence.
+3. Reranking produced no relevant evidence.
+4. There is genuinely no useful material in the corpus.
+
+Then show:
+
+"The current MARE-Juris corpus does not contain sufficient evidence to answer this question."
+
+============================================================
+8. IMPORTANT — DO NOT CONFUSE ACT COVERAGE WITH CONCEPT COVERAGE
+============================================================
+
+The corpus does NOT contain every Indian Act.
+
+For example, if the Right to Information Act, 2005 is NOT part of the controlled 10-document corpus:
+
+Do NOT conclude:
+
+"Right to information is completely unavailable."
+
+Instead distinguish:
+
+A. Constitutional information available in corpus
+
+B. RTI Act-specific information unavailable in corpus
+
+Example:
+
+RAG:
+
+"RAG Coverage: Partial
+
+The current corpus contains constitutional material relevant to access to information, but the Right to Information Act, 2005 is not part of the controlled corpus."
+
+Only make this statement if the retrieved Constitution evidence actually supports the constitutional aspect.
+
+============================================================
+9. EXACT TEST — RIGHT TO INFORMATION
+============================================================
+
+Run:
+
+"what is right to information"
+
+Inspect the retrieved chunks.
+
+Expected behavior:
+
+The RAG pipeline should search the Constitution corpus and determine whether relevant evidence exists.
+
+If relevant evidence exists:
+
+Show it.
+
+For example:
+
+MARE-JURIS RAG
+
+Coverage:
+🟡 Partial
+
+Short Answer:
+
+[Simple explanation based ONLY on retrieved constitutional evidence.]
+
+Key Points:
+
+• Point
+• Point
+• Point
+
+Important limitation:
+
+"The current corpus does not contain the complete Right to Information Act, 2005."
+
+Sources:
+
+Constitution of India
+Article/section actually retrieved
+
+Evidence Used:
+
+Actual retrieved chunk.
+
+DO NOT invent an Article/section merely because you think it is relevant.
+
+============================================================
+10. LIVE OFFICIAL RESEARCH
+============================================================
+
+The Live Official Research pipeline is COMPLETELY INDEPENDENT.
+
+It must NOT use the RAG chunks as its evidence.
+
+For:
+
+"what is right to information"
+
+the Live pipeline should research current official sources.
+
+Prioritize:
+
+India Code
+Government of India
+official RTI portals
+official ministries/departments
+official judicial sources where appropriate
+
+The Web response may discuss the Right to Information Act, 2005 even though it is not in the controlled RAG corpus.
+
+That is exactly why we have two pipelines.
+
+============================================================
+11. SOURCE TYPE SEPARATION
+============================================================
+
+Every evidence item must have:
+
+source_type:
+
+RAG
+
+OR
+
+OFFICIAL_WEB
+
+Never mix them.
+
+RAG:
+
+{
+  "source_type": "RAG",
+  "document": "Constitution of India",
+  "section": "...",
+  "evidence": "...",
+  "source_url": "..."
+}
+
+WEB:
+
+{
+  "source_type": "OFFICIAL_WEB",
+  "title": "...",
+  "authority": "...",
+  "evidence": "...",
+  "source_url": "...",
+  "retrieved_at": "..."
+}
+
+============================================================
+12. WEB RESPONSE MUST NOT USE RAG SOURCES
+============================================================
+
+The Live Official Research answer shown in the screenshot must be checked.
+
+It currently shows:
+
+[WEB-2, WEB-5]
+
+and the UI also displays an India Code/eCourts-style source.
+
+Verify that these are genuinely from the Live Web/API pipeline.
+
+Do NOT allow:
+
+RAG evidence
+→ Web answer
+
+The Web pipeline must independently retrieve its sources.
+
+============================================================
+13. FOUR EXAMPLE QUESTIONS ON ASK MARE-JURIS
+============================================================
+
+The four questions displayed on the Ask MARE-Juris page must be REAL queries.
+
+They must NOT map to hardcoded answers.
+
+If the user clicks:
+
+"What are my rights as a tenant?"
+
+the UI should simply put that query into the chat.
+
+Then execute the normal pipeline:
+
+Query Understanding
+→ RAG retrieval
+→ Live Official Research
+→ two independent answers
+→ sources
+→ evidence
+→ optional comparison
+
+The same must happen if the user manually types exactly the same query.
+
+There must be NO:
+
+tenantAnswer()
+consumerAnswer()
+contractAnswer()
+
+or equivalent hardcoded answer function.
+
+============================================================
+14. TENANT QUERY
+============================================================
+
+Test:
+
+"What are my rights as a tenant?"
+
+The RAG system should recognize that:
+
+tenant ≈ lessee
+
+and:
+
+landlord ≈ lessor
+
+and:
+
+tenancy ≈ lease
+
+These are retrieval concepts.
+
+Search the Transfer of Property Act chunks.
+
+Do NOT require the document to contain the exact phrase:
+
+"rights as a tenant"
+
+If relevant evidence exists:
+
+show RAG answer.
+
+If only central-law evidence exists:
+
+show partial coverage if necessary.
+
+Live Web independently researches current official information.
+
+============================================================
+15. FOLLOW-UP STATE MUST STILL WORK
+============================================================
+
+If the chatbot asks:
+
+"Which state is the property located in?"
+
+and user answers:
+
+"Tamil Nadu"
+
+DO NOT send only:
+
+"Tamil Nadu"
+
+to the legal query filter.
+
+Resolve:
+
+"What are my rights as a tenant in Tamil Nadu?"
+
+Then run both pipelines.
+
+The previous question and the follow-up answer must be combined.
+
+============================================================
+16. SHORT ANSWERS MUST NOT BE REJECTED
+============================================================
+
+If:
+
+pendingFollowUp = true
+
+then the next user message is an answer to the pending clarification.
+
+Examples:
+
+"Tamil Nadu"
+"yes"
+"renewal"
+"company"
+"individual"
+"Chennai"
+
+These should NOT be rejected as:
+
+"not a legal question."
+
+They must be interpreted using conversation context.
+
+============================================================
+17. HUMAN-READABLE ANSWERS
+============================================================
+
+Both RAG and Web answers should use simple language.
+
+Preferred:
+
+### Short Answer
+
+1–3 sentences.
+
+### Key Points
+
+• Easy point
+• Easy point
+• Easy point
+
+### Important
+
+Conditions/exceptions.
+
+### Sources
+
+Actual sources.
+
+Avoid large legal paragraphs.
+
+Avoid unnecessarily complicated legal terminology.
+
+============================================================
+18. DO NOT CHANGE LEGAL ACCURACY
+============================================================
+
+Simple language must NOT remove legal conditions.
+
+Do not turn:
+
+"subject to conditions"
+
+into:
+
+"always."
+
+Preserve:
+
+- jurisdiction
+- conditions
+- exceptions
+- dates
+- applicability
+- amendments
+
+============================================================
+19. DEBUG THE ACTUAL SUPABASE SEARCH
+============================================================
+
+Verify that the production/local RAG search is actually querying the populated:
+
+legal_chunks
+
+table.
+
+Verify:
+
+- embeddings exist
+- embedding dimensions match
+- vector RPC works
+- document_id is correct
+- active documents are included
+- chunk content is not empty
+- metadata is available
+- BM25 index/search works
+- query embedding is generated using the same embedding model/dimension as stored vectors
+
+Run a real diagnostic query:
+
+"what is right to information"
+
+and print the top 10 retrieved candidates in development.
+
+For each:
+
+document
+section
+chunk ID
+similarity score
+content preview
+
+This is necessary to determine whether the problem is retrieval or coverage classification.
+
+============================================================
+20. CHECK EMBEDDING MODEL CONSISTENCY
+============================================================
+
+Verify:
+
+INGESTION EMBEDDING MODEL
+=
+QUERY EMBEDDING MODEL
+
+Verify dimensions are identical.
+
+If corpus embeddings were generated with one model and query embeddings with another incompatible model, fix this properly.
+
+Do NOT re-ingest unnecessarily if the models are already compatible.
+
+============================================================
+21. DO NOT JUST LOWER THE THRESHOLD
+============================================================
+
+Do NOT solve this by setting:
+
+MIN_RELEVANCE_SCORE = 0
+
+or another arbitrary low value.
+
+That will introduce irrelevant legal evidence.
+
+Instead:
+
+retrieve a reasonable candidate pool
+→ rerank
+→ evaluate evidence quality.
+
+If threshold tuning is required, make it configurable and test it using multiple known queries.
+
+============================================================
+22. TEST AGAINST THE ACTUAL CORPUS
+============================================================
+
+Run these queries:
+
+1.
+"What is Article 14?"
+
+Expected:
+Constitution retrieval.
+
+2.
+"What is Article 19?"
+
+Expected:
+Constitution retrieval.
+
+3.
+"What is the right to information?"
+
+Expected:
+Search Constitution and determine actual evidence.
+
+4.
+"What are my rights as a tenant?"
+
+Expected:
+Transfer of Property Act retrieval.
+
+5.
+"What obligations does a lessor have?"
+
+Expected:
+Transfer of Property Act retrieval.
+
+6.
+"What rights does a lessee have?"
+
+Expected:
+Transfer of Property Act retrieval.
+
+7.
+"What is a valid contract?"
+
+Expected:
+Indian Contract Act retrieval if evidence supports it.
+
+8.
+"What rights do consumers have?"
+
+Expected:
+Consumer Protection Act retrieval.
+
+9.
+"What rights do I have regarding my personal data?"
+
+Expected:
+DPDP Act retrieval.
+
+10.
+"What is cyber crime?"
+
+Expected:
+Search IT Act/BNS/other corpus evidence and determine actual coverage.
+
+============================================================
+23. IMPORTANT — DO NOT EXPECT ALL QUESTIONS TO BE IN THE CORPUS
+============================================================
+
+The corpus has 10 documents.
+
+It will NOT answer every Indian legal question.
+
+That is expected.
+
+The correct behavior is:
+
+Relevant evidence exists
+→ RAG answers.
+
+Partial evidence exists
+→ RAG gives partial answer + limitation.
+
+No evidence exists
+→ RAG explicitly says not supported.
+
+Live Official Research
+→ independently answers using current official sources.
+
+This is the purpose of the dual-answer architecture.
+
+============================================================
+24. FINAL UI
+============================================================
+
+For every query display:
+
+┌─────────────────────────────────────┐
+│ MARE-JURIS RAG                      │
+│ CONTROLLED CORPUS                   │
+├─────────────────────────────────────┤
+│ Coverage: Fully / Partial / None    │
+│                                     │
+│ Short Answer                        │
+│                                     │
+│ • Easy point                        │
+│ • Easy point                        │
+│ • Easy point                        │
+│                                     │
+│ Sources                             │
+│ [RAG-1] Constitution...             │
+│                                     │
+│ Evidence Used ▼                     │
+│                                     │
+│ View Official Source ↗              │
+└─────────────────────────────────────┘
+
+
+┌─────────────────────────────────────┐
+│ LIVE OFFICIAL RESEARCH              │
+│ CURRENT OFFICIAL SOURCES            │
+├─────────────────────────────────────┤
+│ Short Answer                        │
+│                                     │
+│ • Easy point                        │
+│ • Easy point                        │
+│ • Easy point                        │
+│                                     │
+│ Sources                             │
+│ [WEB-1] Official source             │
+│                                     │
+│ Evidence Used ▼                     │
+│                                     │
+│ View Official Source ↗              │
+└─────────────────────────────────────┘
+
+============================================================
+25. FINAL ACCEPTANCE CRITERIA
+============================================================
+
+The fix is NOT complete until:
+
+✓ "what is right to information" no longer automatically becomes RAG NOT_SUPPORTED
+
+✓ Actual Supabase chunks are inspected
+
+✓ Vector retrieval works
+
+✓ BM25 retrieval works
+
+✓ Semantic query expansion works
+
+✓ Legal terminology variations are handled
+
+✓ Reranking works
+
+✓ Coverage is decided AFTER retrieval
+
+✓ Full/partial/not-supported states work correctly
+
+✓ RAG only uses RAG evidence
+
+✓ Live Web only uses live official evidence
+
+✓ Web does not reuse RAG evidence
+
+✓ Tenant query retrieves lease/lessee evidence
+
+✓ Exact example queries work through the real pipeline
+
+✓ No hardcoded legal answer controls the result
+
+✓ Follow-up answers are combined with the original query
+
+✓ "Tamil Nadu" is not rejected after a pending clarification
+
+✓ No fixed number of follow-up questions is introduced
+
+✓ Answers are simple and human-readable
+
+✓ Citations are displayed
+
+✓ Evidence Used is displayed
+
+✓ Official source links are displayed
+
+✓ Conversation history persists both answers
+
+✓ npm run build succeeds
+
+============================================================
+DO NOT MODIFY COMPLIANCE AGENT
+============================================================
+
+Again:
+
+ASK MARE-JURIS ≠ COMPLIANCE AGENT.
+
+Do not change the Compliance Agent as part of this fix.
+
+============================================================
+FINAL TEST
+============================================================
+
+Test:
+
+"what is right to information"
+
+Then:
+
+"What are my rights as a tenant?"
+
+Then:
+
+"Can my landlord evict me?"
+
+For each query inspect the ACTUAL retrieved RAG chunks.
+
+Do not declare success based only on the UI label.
+
+The RAG answer must be traceable to actual Supabase evidence.
+The Web answer must be traceable to actual official live evidence.

@@ -28,14 +28,18 @@ import {
 import { ComplianceScene3D } from '@/components/visual/ComplianceScene3D';
 
 export const ComplianceInterface: React.FC = () => {
-  const [step, setStep] = useState<'input' | 'questions' | 'result'>('input');
+  const [step, setStep] = useState<'input' | 'questions' | 'profile' | 'result'>('input');
   const [prompt, setPrompt] = useState('');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   const [intent, setIntent] = useState<any>(null);
   const [questions, setQuestions] = useState<any[]>([]);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [finalProfile, setFinalProfile] = useState<any>(null);
+  const [askedCount, setAskedCount] = useState(0);
+  const [fallbackMode, setFallbackMode] = useState(false);
 
   const [complianceMatrix, setComplianceMatrix] = useState<any>(null);
   const [checkedDocs, setCheckedDocs] = useState<Record<string, boolean>>({});
@@ -78,7 +82,8 @@ export const ComplianceInterface: React.FC = () => {
         body: JSON.stringify({ 
           action: 'save',
           intent,
-          matrix: complianceMatrix
+          matrix: complianceMatrix,
+          profile: finalProfile,
         }),
       });
       
@@ -110,34 +115,44 @@ export const ComplianceInterface: React.FC = () => {
     if (!prompt.trim()) return;
 
     setIsLoading(true);
+    setErrorMsg(null);
+    setAnswers({});
+    setQuestions([]);
+    setFinalProfile(null);
+    setAskedCount(0);
+    setFallbackMode(false);
+
     try {
-      // 1. Extract intent
-      const resIntent = await fetch('/api/compliance', {
+      const res = await fetch('/api/compliance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'intent', prompt }),
+        body: JSON.stringify({ action: 'start', query: prompt.trim() }),
       });
-      const dataIntent = await resIntent.json();
-      const extractedIntent = dataIntent.intent || { business_type: 'restaurant', city: 'Chennai', state: 'Tamil Nadu' };
+      const data = await res.json();
+      if (data.error) {
+        setErrorMsg(data.error);
+        return;
+      }
+
+      const extractedIntent = data.intent;
       setIntent(extractedIntent);
 
-      // 2. Fetch adaptive questions
-      const resQ = await fetch('/api/compliance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'questions', intent: extractedIntent }),
-      });
-      const dataQ = await resQ.json();
-      const fetchedQuestions = dataQ.questions || [];
+      const fetchedQuestions = data.questions || [];
       setQuestions(fetchedQuestions);
+      setAskedCount(data.asked_count ?? fetchedQuestions.length);
+      setFallbackMode(Boolean(data.fallback_mode));
 
-      if (fetchedQuestions.length > 0) {
+      if (data.complete && data.profile) {
+        setFinalProfile(data.profile);
+        setStep('profile');
+      } else if (fetchedQuestions.length > 0) {
         setStep('questions');
       } else {
-        await handleRunAnalysis(extractedIntent, {});
+        setStep('profile');
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error(err);
+      setErrorMsg(err instanceof Error ? err.message : 'An error occurred.');
     } finally {
       setIsLoading(false);
     }
@@ -148,21 +163,103 @@ export const ComplianceInterface: React.FC = () => {
     setAnswers((prev) => ({ ...prev, [qId]: value }));
   };
 
-  // Step 3: Run Full Compliance Matrix Analysis
-  const handleRunAnalysis = async (curIntent = intent, curAnswers = answers) => {
+  const handleTextAnswer = (qId: string, value: string) => {
+    setAnswers((prev) => ({ ...prev, [qId]: value }));
+  };
+
+  const requiredQuestionsAnswered = () =>
+    questions.every((q) => {
+      if (q.required === false) return true;
+      const val = answers[q.id];
+      return typeof val === 'string' && val.trim().length > 0;
+    });
+
+  const handleContinueQuestions = async () => {
+    if (!requiredQuestionsAnswered()) return;
+
     setIsLoading(true);
+    setErrorMsg(null);
+    try {
+      const askedIds = questions.map((q) => q.id);
+      const res = await fetch('/api/compliance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'questions',
+          query: prompt.trim(),
+          intent,
+          answers,
+          asked_question_ids: askedIds,
+          asked_count: questions.length,
+        }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setErrorMsg(data.error);
+        return;
+      }
+
+      if (data.profile) {
+        setFinalProfile(data.profile);
+      }
+      setAskedCount(data.asked_count ?? askedCount);
+
+      const followUps = data.questions || [];
+      if (data.complete || followUps.length === 0 || askedCount >= 10) {
+        setStep('profile');
+        return;
+      }
+
+      setQuestions((prev) => {
+        const seen = new Set(prev.map((q) => q.id));
+        const merged = [...prev];
+        followUps.forEach((q: { id: string }) => {
+          if (!seen.has(q.id)) {
+            merged.push(q);
+            seen.add(q.id);
+          }
+        });
+        return merged;
+      });
+      setAskedCount((prev) => Math.min(10, prev + followUps.length));
+    } catch (err: unknown) {
+      console.error(err);
+      setErrorMsg(err instanceof Error ? err.message : 'An error occurred.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Step 4: Run Full Compliance Roadmap
+  const handleRunAnalysis = async (curIntent = intent, curAnswers = answers, curProfile = finalProfile) => {
+    setIsLoading(true);
+    setErrorMsg(null);
     try {
       const res = await fetch('/api/compliance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'analyze', intent: curIntent, answers: curAnswers }),
+        body: JSON.stringify({
+          action: 'roadmap',
+          query: prompt.trim(),
+          intent: curIntent,
+          answers: curAnswers,
+          profile: curProfile,
+        }),
       });
       const data = await res.json();
+      if (data.error) {
+        setErrorMsg(data.error);
+        return;
+      }
+      if (data.profile) {
+        setFinalProfile(data.profile);
+      }
       setComplianceMatrix(data.complianceMatrix);
       setStep('result');
       setSaveStatus('idle');
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      setErrorMsg(err.message || 'An error occurred.');
     } finally {
       setIsLoading(false);
     }
@@ -202,6 +299,9 @@ export const ComplianceInterface: React.FC = () => {
     setIntent(null);
     setQuestions([]);
     setAnswers({});
+    setFinalProfile(null);
+    setAskedCount(0);
+    setFallbackMode(false);
     setComplianceMatrix(null);
     setCheckedDocs({});
     setSaveStatus('idle');
@@ -215,16 +315,16 @@ export const ComplianceInterface: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Adaptive Business Compliance Agent</span>
+              <span>Query-Driven Compliance Agent</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 leading-tight">
-              Describe Your Business Idea. <br />
+              Tell Us What You Want to Do. <br />
               <span className="text-primary">Build Your Compliance Roadmap.</span>
             </h1>
 
             <p className="text-xs md:text-sm text-slate-600 font-serif leading-relaxed">
-              Describe your commercial venture naturally (e.g. city, state, scale, operations). MARE-Juris extracts statutory requirements across Central, State, and Municipal authorities under Indian Law.
+              Describe what you want to start, register, apply for, or comply with in plain language. MARE-Juris adapts questions and research to your actual request—not a fixed business template.
             </p>
 
             <form onSubmit={handleStartAssessment} className="space-y-4 pt-2">
@@ -233,18 +333,36 @@ export const ComplianceInterface: React.FC = () => {
                   rows={3}
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="e.g. 'I want to open a non-veg restaurant in Chennai with outdoor dining.'"
+                  placeholder="Describe what you want to start, register, apply for, or comply with..."
                   className="w-full p-4 pr-12 bg-white border border-slate-300 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-xs md:text-sm resize-none shadow-sm"
                 />
               </div>
+
+              {errorMsg && (
+                <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
+              {fallbackMode && !errorMsg && (
+                <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                  <span>
+                    AI quota is limited right now — showing template questions matched to your query. Roadmap generation may still use Gemini when you continue.
+                  </span>
+                </div>
+              )}
 
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap gap-2 text-slate-500 text-xs">
                   <span className="text-[11px] uppercase tracking-wider font-semibold text-slate-500">Examples:</span>
                   {[
                     'I want to open a restaurant in Chennai',
-                    'Starting a software SaaS startup in Bengaluru',
-                    'Opening a retail clothing store in Mumbai',
+                    'I want to start a SaaS company',
+                    'I need to apply for a passport',
+                    'I want to register a company in Hyderabad',
+                    'I want to obtain a driving licence',
                   ].map((ex, idx) => (
                     <button
                       key={idx}
@@ -294,7 +412,9 @@ export const ComplianceInterface: React.FC = () => {
                     {history.map((item) => (
                       <div key={item.id} className="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-300 transition-colors flex items-center justify-between group shadow-sm">
                         <div className="space-y-1">
-                          <h4 className="font-semibold text-sm text-slate-800 capitalize">{item.intent?.business_type?.replace('_', ' ')} in {item.intent?.city}</h4>
+                          <h4 className="font-semibold text-sm text-slate-800 capitalize">
+                            {item.intent?.final_profile?.subject || item.intent?.subject || item.business_desc || 'Assessment'}
+                          </h4>
                           <p className="text-xs text-slate-500 truncate max-w-sm">{item.business_desc}</p>
                         </div>
                         <button 
@@ -323,14 +443,17 @@ export const ComplianceInterface: React.FC = () => {
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
               <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">
-                Step 2: Adaptive Questionnaire
+                Step 2: Dynamic Questions
               </span>
               <h2 className="text-xl md:text-2xl font-bold font-serif text-slate-900 mt-1">
-                Refine Your Business Parameters
+                To build your roadmap, I need a few details.
               </h2>
+              <p className="text-xs text-slate-500 mt-1">
+                Questions 1–{questions.length} of up to 10
+              </p>
             </div>
             <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-mono">
-              {intent?.city || 'India'} Jurisdiction
+              {intent?.jurisdiction || intent?.city || 'India'}
             </span>
           </div>
 
@@ -341,30 +464,47 @@ export const ComplianceInterface: React.FC = () => {
                   <span className="w-6 h-6 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-serif font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
-                  <h4 className="font-serif font-semibold text-slate-900 text-sm md:text-base">
-                    {q.questionText}
-                  </h4>
+                  <div>
+                    <h4 className="font-serif font-semibold text-slate-900 text-sm md:text-base">
+                      {q.questionText}
+                    </h4>
+                    {q.reason && (
+                      <p className="text-[11px] text-slate-500 mt-1">{q.reason}</p>
+                    )}
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 pl-9">
-                  {q.options.map((opt: any) => {
-                    const isChecked = answers[q.id] === opt.value;
-                    return (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => handleOptionSelect(q.id, opt.value)}
-                        className={`p-3.5 rounded-xl text-left text-xs transition-all border cursor-pointer ${
-                          isChecked
-                            ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold shadow-sm transform scale-[1.02]'
-                            : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
+                {q.type === 'text' || !q.options?.length ? (
+                  <div className="pl-9 pt-1">
+                    <input
+                      type="text"
+                      value={answers[q.id] || ''}
+                      onChange={(e) => handleTextAnswer(q.id, e.target.value)}
+                      className="w-full p-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
+                      placeholder="Your answer"
+                    />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 pl-9">
+                    {q.options.map((opt: { label: string; value: string }) => {
+                      const isChecked = answers[q.id] === opt.value;
+                      return (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          onClick={() => handleOptionSelect(q.id, opt.value)}
+                          className={`p-3.5 rounded-xl text-left text-xs transition-all border cursor-pointer ${
+                            isChecked
+                              ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold shadow-sm transform scale-[1.02]'
+                              : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -379,8 +519,89 @@ export const ComplianceInterface: React.FC = () => {
             </button>
 
             <button
+              onClick={handleContinueQuestions}
+              disabled={isLoading || !requiredQuestionsAnswered()}
+              className="px-6 py-3 rounded-xl bg-primary text-white font-bold text-xs md:text-sm shadow-sm hover:bg-primary-hover hover:-translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:hover:translate-y-0"
+            >
+              {isLoading ? (
+                <>
+                  <Sparkles className="w-4 h-4 animate-spin" />
+                  <span>Checking details...</span>
+                </>
+              ) : (
+                <>
+                  <span>Continue</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 3: Review Profile */}
+      {step === 'profile' && (
+        <div className="max-w-3xl mx-auto legal-card rounded-3xl p-6 md:p-10 border border-slate-200 space-y-6 shadow-sm bg-white animate-fadeIn">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div>
+              <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">
+                Step 3: Review Profile
+              </span>
+              <h2 className="text-xl md:text-2xl font-bold font-serif text-slate-900 mt-1">
+                Confirm Your Details
+              </h2>
+            </div>
+          </div>
+          
+          <div className="space-y-4 text-sm text-slate-700">
+             {errorMsg && (
+                <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>{errorMsg}</span>
+                </div>
+             )}
+             <p><strong>Request:</strong> {finalProfile?.request || prompt || 'Unknown'}</p>
+             <p><strong>Intent:</strong> {finalProfile?.intent || intent?.intent || 'Unknown'}</p>
+             <p><strong>Subject:</strong> {finalProfile?.subject || intent?.subject || 'Unknown'}</p>
+             <p><strong>Entity:</strong> {finalProfile?.entity_type || intent?.entity_type || 'Unknown'}</p>
+             <p><strong>Location:</strong> {finalProfile?.location || intent?.jurisdiction || 'Unknown'}</p>
+             <p><strong>Jurisdiction:</strong> {finalProfile?.jurisdiction || intent?.jurisdiction || 'India'}</p>
+             {intent?.known_facts && intent.known_facts.length > 0 && (
+                <p><strong>Known details:</strong> {intent.known_facts.join(', ')}</p>
+             )}
+             {finalProfile?.assumptions && finalProfile.assumptions.length > 0 && (
+                <p><strong>Still unknown:</strong> {finalProfile.assumptions.join('; ')}</p>
+             )}
+             
+             {questions.length > 0 && (
+               <>
+                 <p className="font-semibold pt-4 border-t border-slate-100">Your Answers:</p>
+                 <ul className="list-disc pl-5 space-y-2">
+                   {Object.entries(answers).map(([qId, val]) => {
+                     const q = questions.find(q => q.id === qId);
+                     const opt = q?.options?.find((o: { value: string; label: string }) => o.value === val);
+                     return <li key={qId}>{q?.questionText}: <strong>{opt ? opt.label : val}</strong></li>
+                   })}
+                 </ul>
+               </>
+             )}
+          </div>
+
+          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+            <button
+              onClick={() => {
+                if (questions.length > 0) setStep('questions');
+                else setStep('input');
+              }}
+              className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 text-xs font-semibold hover:border-slate-300 hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Back</span>
+            </button>
+
+            <button
               onClick={() => handleRunAnalysis(intent, answers)}
-              disabled={isLoading || Object.keys(answers).length < questions.length}
+              disabled={isLoading}
               className="px-6 py-3 rounded-xl bg-primary text-white font-bold text-xs md:text-sm shadow-sm hover:bg-primary-hover hover:-translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:hover:translate-y-0"
             >
               {isLoading ? (
@@ -390,7 +611,7 @@ export const ComplianceInterface: React.FC = () => {
                 </>
               ) : (
                 <>
-                  <span>Generate Full Roadmap</span>
+                  <span>Generate Compliance Roadmap</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

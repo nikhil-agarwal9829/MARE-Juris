@@ -1,756 +1,798 @@
-GLOBAL LIGHT THEME REDESIGN — MARE-JURIS ENTIRE WEBSITE
+MAJOR COMPLIANCE AGENT REFACTOR — QUERY-DRIVEN ADAPTIVE QUESTION GENERATION
 
-IMPORTANT:
-Previously the light theme was implemented mainly for the Legal Literacy page.
+The current Compliance Agent is fundamentally too hard-coded.
 
-Now implement the light theme CONSISTENTLY across the ENTIRE MARE-Juris website.
+CURRENT PROBLEM:
 
-Do NOT redesign only Legal Literacy.
+The UI/page contains fixed compliance flows for examples such as:
 
-The entire application must use one coherent professional legal-tech light design system.
+- Opening a restaurant
+- Starting a SaaS business
+- Other predefined business types
 
-==================================================
-1. FIRST INSPECT THE ENTIRE FRONTEND
-==================================================
+When a user enters an unrelated query such as:
 
-Before modifying code, inspect:
+"I need to make/apply for a passport"
 
-- global CSS
-- Tailwind configuration
-- layout.tsx
-- navbar/header
-- footer
-- Home
-- Ask MARE-Juris / ChatInterface
-- Legal Literacy
-- Compliance Agent
-- Login
-- Signup/Create Account
-- authentication screens
-- dashboards
-- modals
-- drawers
-- cards
-- buttons
-- forms
-- inputs
-- dropdowns
-- tabs
-- alerts
-- loading states
-- error states
-- citation/evidence components
-- PDF/compliance UI
-- mobile navigation
+the system incorrectly asks restaurant-related questions.
 
-Find all places where dark-theme colors are hard-coded.
-
-Search for:
-
-bg-black
-bg-gray
-bg-slate-900
-bg-zinc-900
-bg-neutral-900
-text-white
-text-gray-*
-text-slate-*
-border-gray-*
-border-slate-*
-dark:
-black
-#000
-#0*
-rgba(...)
-
-Do not blindly replace every color.
-
-Understand the component first.
+This must be completely redesigned.
 
 ==================================================
-2. CREATE ONE GLOBAL DESIGN SYSTEM
+CORE REQUIREMENT
 ==================================================
 
-Do NOT create different color systems for different pages.
+The Compliance Agent must NOT decide questions from hard-coded page examples.
 
-Create centralized theme variables/tokens.
+The USER'S ACTUAL QUERY must be the primary input.
 
-Preferred CSS variables:
+Send the user's natural-language query to the LLM first.
 
---background
---surface
---surface-elevated
---primary
---primary-hover
---secondary
---accent
---foreground
---muted-foreground
---border
---success
---warning
---error
+The LLM must determine:
+
+- What the user wants to do
+- Whether this is a business compliance task, government service, personal/legal process, registration, licence, permit, etc.
+- Relevant domain
+- Jurisdiction
+- Entity/person involved
+- Important missing information
+- What questions are actually necessary
+
+Then dynamically generate questions specifically for that query.
 
 ==================================================
-3. APPROVED COLOR PALETTE
+NEW ARCHITECTURE
 ==================================================
 
-Use this professional legal-tech palette:
-
-Background:
-#F8FAFC
-
-Surface/Card:
-#FFFFFF
-
-Elevated Surface:
-#FFFFFF
-
-Primary Legal Navy:
-#1E3A5F
-
-Primary Hover:
-#16304F
-
-Action Blue:
-#2563EB
-
-Action Blue Hover:
-#1D4ED8
-
-Accent / Verified Teal:
-#0F766E
-
-Main Text:
-#0F172A
-
-Secondary Text:
-#475569
-
-Muted Text:
-#64748B
-
-Border:
-#E2E8F0
-
-Light Border:
-#F1F5F9
-
-Success:
-#15803D
-
-Warning:
-#B45309
-
-Error:
-#B91C1C
-
-Info:
-#0369A1
+USER QUERY
+    ↓
+LLM QUERY UNDERSTANDING
+    ↓
+Intent + Domain + Entity + Jurisdiction
+    ↓
+QUESTION PLANNER
+    ↓
+4–5 CORE QUESTIONS
+    ↓
+USER ANSWERS
+    ↓
+ADAPTIVE FOLLOW-UP QUESTIONS
+    ↓
+MAXIMUM 10 QUESTIONS TOTAL
+    ↓
+FINAL STRUCTURED PROFILE
+    ↓
+OFFICIAL-SOURCE RESEARCH
+    ↓
+REQUIREMENT EXTRACTION
+    ↓
+CONDITION / DOCUMENT / AUTHORITY MAPPING
+    ↓
+COMPLIANCE ROADMAP
+    ↓
+DASHBOARD + PDF
 
 ==================================================
-4. DESIGN PRINCIPLE
+1. USER QUERY MUST BE FREE-FORM
 ==================================================
 
-MARE-Juris is a legal research and compliance platform.
+Do NOT force users to select:
 
-The visual style should communicate:
+Restaurant
+SaaS
+Pharmacy
+Clinic
+etc.
 
-- trustworthy
-- professional
-- authoritative
-- modern
-- clean
-- accessible
-- calm
-- research-oriented
+Those can remain as example suggestions/cards on the landing page, but they MUST NOT control the actual compliance logic.
 
-Avoid:
+If the user writes:
 
-- excessive gradients
-- neon colors
-- excessive glassmorphism
-- very bright backgrounds
-- excessive shadows
-- cartoon styling
-- overly colorful cards
+"I want to get a passport"
 
-Use whitespace and hierarchy instead.
+the system must handle passport application.
+
+If the user writes:
+
+"I want to register a company"
+
+handle company registration.
+
+If the user writes:
+
+"I want to open a restaurant"
+
+handle restaurant compliance.
+
+If the user writes:
+
+"I want to start a SaaS platform"
+
+handle SaaS/business compliance.
+
+If the user writes:
+
+"I want to obtain a driving licence"
+
+handle that request.
+
+The system must be domain-agnostic.
 
 ==================================================
-5. GLOBAL BACKGROUND
+2. FIRST LLM CALL — QUERY UNDERSTANDING
 ==================================================
 
-Entire website should use:
-
-background: #F8FAFC
-
-NOT:
-
-black
-dark navy
-dark gray
-
-Cards/panels:
-
-background: #FFFFFF
-border: #E2E8F0
-
-Use subtle shadows only where needed.
+Create a structured LLM output.
 
 Example:
 
-shadow-sm
+{
+  "intent": "passport_application",
+  "request_type": "government_service",
+  "subject": "passport",
+  "entity_type": "individual",
+  "jurisdiction": "India",
+  "location_known": false,
+  "known_facts": [],
+  "unknown_critical_facts": [
+    "city_or_state",
+    "new_or_renewal",
+    "adult_or_minor",
+    "ordinary_or_tatkal"
+  ]
+}
 
-or equivalent subtle elevation.
+For SaaS:
 
-==================================================
-6. NAVBAR
-==================================================
+{
+  "intent": "start_saas_business",
+  "request_type": "business_compliance",
+  "subject": "SaaS business",
+  "entity_type": "business",
+  "jurisdiction": "India",
+  "known_facts": [
+    "SaaS",
+    "subscription payments",
+    "customer data"
+  ],
+  "unknown_critical_facts": [
+    "business_structure",
+    "registration_location",
+    "customer_geography",
+    "data_categories"
+  ]
+}
 
-Create a clean white navbar.
-
-Navbar:
-
-background:
-#FFFFFF
-
-border-bottom:
-#E2E8F0
-
-Primary text:
-#0F172A
-
-Logo/brand:
-#1E3A5F
-
-Active navigation:
-#1E3A5F
-
-Hover:
-#2563EB
-
-The navbar must remain visually consistent on:
-
-- Home
-- Ask MARE-Juris
-- Legal Literacy
-- Compliance Agent
-- Login
-- Signup
-
-Do not create separate navbar themes for individual pages.
+Do not fabricate facts.
 
 ==================================================
-7. HOME PAGE
+3. QUESTION GENERATION MUST ALSO BE DONE BY LLM
 ==================================================
 
-Convert the Home page completely to the new light theme.
+After understanding the query, ask the LLM to generate the minimum useful questions.
 
-Hero:
+Questions MUST depend on:
 
-background:
-#F8FAFC
+- user's query
+- detected intent
+- jurisdiction
+- known facts
+- previous answers
 
-Main heading:
-#0F172A
+DO NOT use a fixed question list.
 
-Highlighted legal-tech words:
-#1E3A5F or #2563EB
+The LLM should return structured questions:
 
-Description:
-#475569
-
-Primary CTA:
-#1E3A5F
-
-Primary CTA hover:
-#16304F
-
-Secondary CTA:
-white background
-#1E3A5F border/text
-
-Feature cards:
-white
-border #E2E8F0
+{
+  "questions": [
+    {
+      "id": "location",
+      "question": "Which city and state are you applying/operating from?",
+      "type": "text",
+      "required": true,
+      "reason": "The applicable authority/process may depend on location."
+    }
+  ]
+}
 
 ==================================================
-8. ASK MARE-JURIS
+4. QUESTION LIMIT
 ==================================================
 
-This page must use the same light system.
+Hard maximum:
 
-Chat background:
-#F8FAFC
+10 QUESTIONS TOTAL.
 
-User message:
-#1E3A5F background
-white text
+This is an absolute limit.
 
-Assistant message:
-#FFFFFF
-#E2E8F0 border
-#0F172A text
+Preferred:
 
-Input:
-white
-border #CBD5E1
+4–5 questions initially.
 
-Send button:
-#1E3A5F
+Then generate adaptive follow-ups only if genuinely necessary.
 
-Citations:
-#2563EB
+Typical flow:
 
-Verified:
-#0F766E
+Round 1:
+4–5 questions
 
-Evidence panels:
-white
-subtle border
-light elevation
+Round 2:
+0–5 additional questions
 
-RAG and Live Web responses must remain visually distinct.
+TOTAL:
+Never exceed 10.
 
-For example:
-
-MARE-JURIS RAG:
-navy accent
-
-LIVE OFFICIAL RESEARCH:
-blue accent
-
-Verified evidence:
-teal accent
-
-DO NOT change the dual-answer functionality.
+Do NOT ask unnecessary questions just to reach 10.
 
 ==================================================
-9. LEGAL LITERACY
+5. ADAPTIVE QUESTIONING
 ==================================================
 
-Preserve the existing Legal Literacy design/content.
+After every user response, send the current structured profile back to the LLM.
 
-Adapt it to the global palette.
+Example:
 
-Do not create a separate theme just for this page.
-
-Use:
-
-Category:
-white cards
-
-Category selected:
-light navy/blue background
-
-Rights cards:
-white
-
-Headings:
-#0F172A
-
-Source labels:
-#475569
-
-Verified Source:
-#0F766E
-
-Official source links:
-#2563EB
-
-Drawer:
-white
-border #E2E8F0
-
-==================================================
-10. COMPLIANCE AGENT
-==================================================
-
-Completely convert Compliance Agent to the same light system.
-
-Business input:
-white card
+User:
+"I want to apply for a passport."
 
 Questions:
-white cards
 
-Selected options:
-light blue background
-blue border
+Q1:
+Are you applying for a new passport or renewing an existing passport?
 
-Progress:
-#1E3A5F
+User:
+"New passport."
 
-Completed:
-#15803D
+Now the next questions should be generated based on that answer.
 
-Pending:
-#B45309
+Do NOT repeat questions.
 
-Requirements dashboard:
-white cards
+Do NOT ask restaurant questions.
 
-Official source links:
-#2563EB
+Do NOT ask SaaS questions.
 
-Do NOT use the old dark background.
+Do NOT ask questions whose answers are already known.
 
 ==================================================
-11. AUTHENTICATION
+6. QUESTION QUALITY RULES
 ==================================================
 
-Login and Signup/Create Account pages must also use the same theme.
+Every question must have a reason.
 
-Background:
-#F8FAFC
+Ask only information that can change:
 
-Auth card:
-#FFFFFF
+- applicable requirement
+- authority
+- procedure
+- documents
+- eligibility
+- fees
+- timeline
+- renewal
+- jurisdiction
 
-Border:
-#E2E8F0
+Avoid unnecessary personal information.
 
-Heading:
-#0F172A
+Do not ask sensitive information unless genuinely required for the requested process.
+
+Never ask for:
+
+- passwords
+- OTPs
+- bank passwords
+- authentication secrets
+
+==================================================
+7. PASSPORT EXAMPLE
+==================================================
 
 Input:
-white
 
-Focus:
-#2563EB
+"I need to make a passport."
 
-Primary button:
-#1E3A5F
+The system should understand:
 
-Errors:
-#B91C1C
+intent:
+passport application
 
-Success:
-#15803D
+It should NOT ask:
 
-==================================================
-12. BUTTON SYSTEM
-==================================================
+"What type of restaurant?"
 
-Primary:
+"What type of food?"
 
-background #1E3A5F
-text white
+"Will you serve alcohol?"
 
-Hover:
+Instead generate relevant questions such as:
 
-#16304F
+1. Which city/state are you applying from?
+2. Is this your first passport or a renewal/reissue?
+3. Is the applicant an adult or minor?
+4. Do you need Ordinary or Tatkal processing?
+5. Is there any existing passport-related issue that affects the application?
 
-Secondary:
-
-background white
-border #CBD5E1
-text #1E3A5F
-
-Hover:
-
-#F1F5F9
-
-Link:
-
-#2563EB
-
-Success:
-
-#15803D
-
-Warning:
-
-#B45309
-
-Danger:
-
-#B91C1C
-
-Maintain consistent border radius throughout.
-
-Do not make every element excessively rounded.
+Only ask questions that are actually relevant after considering the current official process.
 
 ==================================================
-13. INPUTS
+8. RESTAURANT EXAMPLE
 ==================================================
 
-All inputs should be:
+Input:
 
-background: #FFFFFF
-border: #CBD5E1
-text: #0F172A
+"I want to open a restaurant in Chennai."
 
-Placeholder:
-#64748B
+Possible questions:
 
-Focus:
-blue border/ring
+1. What type of restaurant/food establishment?
+2. Where in Chennai will it operate?
+3. Will food be prepared on-site?
+4. Will alcohol be served?
+5. Will you provide dine-in, takeaway, delivery, or a combination?
 
-Disabled:
-#F1F5F9
+These questions must come from the query understanding layer.
 
-==================================================
-14. TYPOGRAPHY
-==================================================
-
-Use the existing project font if already configured.
-
-Maintain:
-
-strong page headings
-clear section headings
-comfortable body text
-good line height
-
-Main text:
-#0F172A
-
-Secondary:
-#475569
-
-Muted:
-#64748B
-
-Do not use pure black everywhere.
+They must NOT be hard-coded as the universal compliance questions.
 
 ==================================================
-15. DARK MODE
+9. SAAS EXAMPLE
 ==================================================
 
-The requirement is now:
+Input:
 
-LIGHT THEME FIRST / PRIMARY EXPERIENCE.
+"I want to start a SaaS business in India."
 
-Do not keep random dark components visible.
+Possible questions:
 
-If the application already has a theme toggle, make sure:
+1. Where will the business be registered?
+2. What business structure are you considering?
+3. Will customers be in India, outside India, or both?
+4. What categories of personal data will the SaaS process?
+5. Will you collect recurring online payments?
 
-LIGHT = coherent complete theme
-
-If dark mode is retained as an optional future mode, do not allow dark styles to leak into the light theme.
-
-The default application appearance should be light.
-
-==================================================
-16. REMOVE DARK THEME LEAKS
-==================================================
-
-After implementation, search the frontend again for:
-
-bg-black
-bg-gray-900
-bg-slate-900
-bg-zinc-900
-bg-neutral-900
-text-white
-dark:bg-
-dark:text-
-dark:border-
-
-Some text-white may be valid on dark primary buttons.
-
-Do NOT blindly remove legitimate white text.
-
-Remove dark backgrounds that appear unintentionally in the light UI.
+Again, these are generated dynamically.
 
 ==================================================
-17. MODALS / DRAWERS / DROPDOWNS
+10. FINAL PROFILE
 ==================================================
 
-Every modal/drawer/dropdown must use:
+After questioning, create:
 
-background:
-#FFFFFF
+{
+  "request": "...",
+  "intent": "...",
+  "domain": "...",
+  "entity_type": "...",
+  "jurisdiction": "...",
+  "location": "...",
+  "facts": {},
+  "answers": {},
+  "assumptions": [],
+  "questions_asked": 5
+}
 
-border:
-#E2E8F0
+Do not invent missing information.
 
-text:
-#0F172A
+If something critical remains unknown, mark it as:
 
-Backdrop:
-rgba(15, 23, 42, 0.35)
+"unknown"
 
-Do not use opaque black backdrops.
-
-==================================================
-18. TABLES
-==================================================
-
-Tables:
-
-header:
-#F1F5F9
-
-body:
-#FFFFFF
-
-border:
-#E2E8F0
-
-hover:
-#F8FAFC
-
-Text:
-#0F172A
-
-Links:
-#2563EB
+rather than guessing.
 
 ==================================================
-19. STATUS COLORS
+11. COMPLIANCE RESEARCH
 ==================================================
 
-Use semantic colors consistently.
+ONLY AFTER collecting sufficient information should compliance research begin.
 
-VERIFIED:
-teal/green
+Research based on the FINAL USER PROFILE.
 
-SUCCESS:
-green
+Do NOT research based only on:
 
-WARNING:
-amber
+Restaurant
+SaaS
+or another hard-coded category.
 
-ERROR:
-red
+Research:
 
-INFO:
-blue
+final intent
++
+jurisdiction
++
+entity
++
+user answers
++
+known facts
 
-Do not use arbitrary colors.
+Prioritize official sources:
 
-==================================================
-20. ACCESSIBILITY
-==================================================
-
-Check contrast carefully.
-
-Do not use:
-
-light gray text on white
-light blue text on white
-very pale borders that disappear
-
-Interactive elements must have clear hover/focus states.
-
-Keyboard focus must remain visible.
+- India Code
+- Central Government portals
+- State Government portals
+- Ministries
+- Departments
+- Regulators
+- Official authority websites
 
 ==================================================
-21. RESPONSIVE DESIGN
+12. REQUIREMENT GENERATION
 ==================================================
 
-The light theme must work correctly on:
+Generate structured requirements:
 
-Desktop
-Laptop
-Tablet
-Mobile
+{
+  "requirement": "...",
+  "status": "required|conditional|not_applicable|unknown",
+  "reason": "...",
+  "condition": "...",
+  "authority": "...",
+  "documents": [],
+  "application_link": "...",
+  "renewal": "...",
+  "source": "...",
+  "retrievedAt": "..."
+}
 
-Do not introduce horizontal overflow.
+Every legal/compliance requirement must be supported by evidence.
 
-Check:
-
-navbar
-chat
-cards
-drawers
-tables
-forms
-compliance dashboard
-legal literacy cards
-
-==================================================
-22. IMPORTANT — PRESERVE FUNCTIONALITY
-==================================================
-
-This is a VISUAL/THEME change.
-
-Do NOT break:
-
-- authentication
-- routing
-- Legal Literacy
-- Ask MARE-Juris
-- RAG
-- Live Web Research
-- citations
-- evidence
-- source comparison
-- Compliance Agent
-- Supabase
-- PDF generation
-- chat persistence
-- history
-- API endpoints
-
-Do not rewrite business logic.
+Do NOT hallucinate requirements.
 
 ==================================================
-23. BUILD CHECK
+13. FULL ROADMAP
 ==================================================
 
-After implementation run:
+After research, generate a complete step-by-step roadmap.
+
+Example structure:
+
+# Compliance Roadmap
+
+## Step 1 — Before starting
+...
+
+## Step 2 — Registration/Application
+...
+
+## Step 3 — Documents
+...
+
+## Step 4 — Licences/Approvals
+...
+
+## Step 5 — Ongoing compliance
+...
+
+## Step 6 — Renewal/recurring obligations
+...
+
+For each item show:
+
+- What to do
+- Why it is needed
+- Who requires it
+- Documents
+- Authority
+- Application/process link
+- Conditions
+- Deadline/renewal where applicable
+- Official source
+
+==================================================
+14. NO HALLUCINATION
+==================================================
+
+The LLM must NOT invent:
+
+- licences
+- government schemes
+- fees
+- deadlines
+- documents
+- eligibility rules
+- authorities
+- URLs
+
+If official evidence is unavailable:
+
+"Unable to verify this requirement from the available official sources."
+
+==================================================
+15. FRONTEND CHANGES
+==================================================
+
+Redesign the Compliance Agent UI around:
+
+STEP 1
+"Tell us what you want to do"
+
+Large natural-language input.
+
+Example placeholder:
+
+"Describe what you want to start, register, apply for, or comply with..."
+
+Example suggestions can be displayed:
+
+Open a restaurant
+Start a SaaS business
+Apply for a passport
+Register a company
+Obtain a licence
+
+BUT these suggestions are merely examples.
+
+Clicking one should simply populate the query field.
+
+They must NOT activate a hard-coded questionnaire.
+
+==================================================
+STEP 2
+Dynamic Questions
+
+Show:
+
+"To build your roadmap, I need a few details."
+
+Then display LLM-generated questions.
+
+Show progress:
+
+Questions 1–5 of approximately 10
+
+Do not promise exactly 10.
+
+==================================================
+STEP 3
+Review Profile
+
+Show what the system understood:
+
+Request
+Location
+Entity
+Jurisdiction
+Known details
+
+Allow user to correct details before research.
+
+==================================================
+STEP 4
+Generate Roadmap
+
+Button:
+
+"Generate Compliance Roadmap"
+
+==================================================
+STEP 5
+Roadmap
+
+Display:
+
+Overview
+Required actions
+Conditional requirements
+Documents
+Authorities
+Official sources
+Timeline/order
+Renewals
+Warnings
+
+==================================================
+16. ISOLATION
+==================================================
+
+Every compliance session must be independent.
+
+A previous restaurant session MUST NOT influence a new passport query.
+
+A previous SaaS session MUST NOT influence a new restaurant query.
+
+Reset:
+
+- intent
+- domain
+- questions
+- answers
+- profile
+- requirements
+- roadmap
+
+when a new assessment starts.
+
+Persist each assessment separately.
+
+==================================================
+17. EXISTING EXAMPLE CARDS
+==================================================
+
+Keep the existing "Open Restaurant", "Start SaaS", etc. examples if useful.
+
+But convert them to:
+
+setQuery("I want to open a restaurant...")
+
+rather than:
+
+setComplianceType("restaurant")
+
+The LLM must then determine the appropriate flow.
+
+==================================================
+18. BACKEND API DESIGN
+==================================================
+
+Create/modify APIs so the process is stateful.
+
+Suggested:
+
+POST /api/v1/compliance/analyze
+
+Input:
+{
+  "query": "..."
+}
+
+Output:
+{
+  "intent": {...},
+  "questions": [...]
+}
+
+Then:
+
+POST /api/v1/compliance/questions
+
+Input:
+{
+  "query": "...",
+  "profile": {...},
+  "answers": {...}
+}
+
+Output:
+{
+  "questions": [...],
+  "complete": false
+}
+
+Finally:
+
+POST /api/v1/compliance/roadmap
+
+Input:
+{
+  "query": "...",
+  "profile": {...},
+  "answers": {...}
+}
+
+Output:
+
+{
+  "profile": {...},
+  "requirements": [...],
+  "roadmap": [...],
+  "sources": [...]
+}
+
+Use the project's existing API architecture if equivalent endpoints already exist. Do not create duplicate systems unnecessarily.
+
+==================================================
+19. IMPORTANT — LLM STRUCTURED OUTPUT
+==================================================
+
+Use structured JSON/schema validation for:
+
+- intent analysis
+- question generation
+- final profile
+- requirements
+- roadmap
+
+Do NOT parse arbitrary natural-language LLM responses using fragile string matching.
+
+Validate:
+
+maximum 10 questions
+unique question IDs
+no duplicate questions
+required fields
+valid status values
+
+==================================================
+20. FINAL ACCEPTANCE TESTS
+==================================================
+
+Test at least these queries independently:
+
+TEST 1:
+
+"I want to open a restaurant in Chennai."
+
+Expected:
+Restaurant-specific questions.
+
+TEST 2:
+
+"I want to start a SaaS company."
+
+Expected:
+SaaS/business-specific questions.
+
+TEST 3:
+
+"I need to apply for a passport."
+
+Expected:
+Passport/government-service-specific questions.
+
+It MUST NOT ask restaurant questions.
+
+TEST 4:
+
+"I want to register a company in Hyderabad."
+
+Expected:
+Company-registration-specific questions.
+
+TEST 5:
+
+"I want to obtain a driving licence."
+
+Expected:
+Driving-licence-specific questions.
+
+For every test:
+
+- Initial questions <= 5 preferred
+- Total questions <= 10
+- No irrelevant questions
+- No context leakage
+- Final roadmap matches the user's actual request
+- Requirements backed by official sources
+- No hallucinated compliance obligations
+
+==================================================
+21. BUILD
+==================================================
+
+Run:
 
 npm run build
 
-Fix any TypeScript/ESLint errors properly.
+Fix all TypeScript/ESLint errors properly.
 
-Do not disable ESLint or TypeScript checking.
+Do not disable ESLint.
 
-==================================================
-24. FINAL VISUAL AUDIT
-==================================================
+Do not break existing:
 
-Inspect every major route.
-
-Verify:
-
-/home
-/legal-literacy
-/ask-mare-juris
-/compliance
-/login
-/signup
-
-and any other existing application routes.
-
-The entire website must visually feel like ONE application.
-
-There should NOT be:
-
-dark Home
-light Legal Literacy
-dark Compliance
-different Login theme
-
-Everything must use the same design system.
+- authentication
+- RAG
+- Legal Literacy
+- Ask MARE-Juris
+- citations
+- evidence
+- chat history
+- PDF generation
 
 ==================================================
-FINAL RESULT
+FINAL GOAL
 ==================================================
 
-MARE-Juris should look like a professional modern Indian legal-tech platform:
+The Compliance Agent should behave like:
 
-Soft off-white background
-White cards
-Deep legal navy
-Professional blue actions
-Teal verification indicators
-Slate typography
-Subtle borders
-Minimal shadows
-Clean spacing
+USER:
+"I want to do X"
 
-The design should prioritize trust and readability over flashy visual effects.
+MARE-Juris:
+"Understood. I need these few details to determine the applicable requirements."
 
-After completing the implementation, report:
+USER:
+answers questions
 
-1. Files changed
-2. Global theme variables created
-3. Routes updated
-4. Dark-theme leaks removed
-5. npm run build result
-6. Any remaining visual inconsistencies
+MARE-Juris:
+"Based on your specific situation, here is your evidence-backed compliance roadmap."
+
+The system must be driven by the user's actual request, NOT by the four example businesses shown on the page.

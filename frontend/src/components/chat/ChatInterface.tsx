@@ -53,10 +53,24 @@ interface Verification {
 interface RagWebData {
   status: string;
   answer: string;
+  coverage_status?: string;
   citations: Citation[];
   evidence: any[];
   sources: string[];
   verification: Verification;
+}
+
+const ragCoverageLabel = (status?: string) => {
+  if (status === 'fully_supported') return { text: 'Fully supported', className: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
+  if (status === 'partially_supported' || status === 'partial') return { text: 'Partially supported', className: 'text-amber-700 bg-amber-50 border-amber-200' };
+  if (status === 'not_supported' || status === 'not_available') return { text: 'Not supported', className: 'text-slate-600 bg-slate-100 border-slate-200' };
+  return { text: 'Unknown', className: 'text-slate-600 bg-slate-100 border-slate-200' };
+};
+
+interface FollowUpInfo {
+  required?: boolean;
+  question?: string | null;
+  reason?: string | null;
 }
 
 interface Message {
@@ -65,6 +79,7 @@ interface Message {
   content?: string;
   rag?: RagWebData;
   web?: RagWebData;
+  followUp?: FollowUpInfo;
   isFiltered?: boolean;
   createdAt: string;
   // Legacy
@@ -165,6 +180,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             content: m.content,
             rag: m.metadata?.rag,
             web: m.metadata?.web,
+            followUp: m.metadata?.follow_up,
             isFiltered: m.metadata?.is_filtered,
             createdAt: m.created_at,
             // Legacy fallbacks
@@ -174,7 +190,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             webCitations: m.metadata?.web_citations || [],
             citations: m.metadata?.citations || [],
           }));
-          
+
           // Deduplicate messages safely in case of rapid re-renders
           setMessages(loadedMsgs);
         }
@@ -219,11 +235,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         }),
       });
 
-      if (!res.ok) {
-        throw new Error('Failed to fetch legal response');
-      }
-
       const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to fetch legal response');
+      }
 
       if (!activeConvId && data.conversation_id) {
         setActiveConvId(data.conversation_id);
@@ -236,12 +251,18 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         window.history.replaceState(null, '', `/ask-juris?chat=${data.conversation_id}`);
       }
 
+      const followUp = data.follow_up as FollowUpInfo | undefined;
+      const clarificationOnly = Boolean(followUp?.required);
+
       const assistantMessage: Message = {
         id: data.message_id || crypto.randomUUID(),
         role: 'assistant',
-        content: data.rag?.answer || data.content || data.rag_content,
-        rag: data.rag,
-        web: data.web,
+        content: clarificationOnly
+          ? (data.rag?.answer || followUp?.question || 'I need one clarification to answer accurately.')
+          : (data.rag?.answer || data.content || data.rag_content),
+        rag: clarificationOnly ? undefined : data.rag,
+        web: clarificationOnly ? undefined : data.web,
+        followUp,
         isFiltered: data.is_filtered || false,
         createdAt: new Date().toISOString(),
         ragContent: data.rag_content,
@@ -275,9 +296,9 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
     try {
       const supabase = createClient();
       const { data: { session } } = await supabase.auth.getSession();
-      
-      const userQuery = messages.find(m => m.id === msg.id)?.content || 
-                        messages.filter(m => m.role === 'user' && m.createdAt < msg.createdAt).pop()?.content || '';
+
+      const userQuery = messages.find(m => m.id === msg.id)?.content ||
+        messages.filter(m => m.role === 'user' && m.createdAt < msg.createdAt).pop()?.content || '';
 
       const res = await fetch('/api/assistant/compare', {
         method: 'POST',
@@ -413,11 +434,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 <div
                   key={conv.id}
                   onClick={() => selectConversation(conv.id)}
-                  className={`p-3 rounded-xl cursor-pointer text-xs transition-all flex items-center justify-between group ${
-                    activeConvId === conv.id
+                  className={`p-3 rounded-xl cursor-pointer text-xs transition-all flex items-center justify-between group ${activeConvId === conv.id
                       ? 'bg-blue-50 border border-blue-200 text-primary font-semibold'
                       : 'hover:bg-slate-200/50 text-slate-600'
-                  }`}
+                    }`}
                 >
                   <span className="truncate pr-2">{conv.title}</span>
                   <button
@@ -473,9 +493,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`max-w-3xl mx-auto flex gap-4 ${
-                    msg.role === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  className={`max-w-3xl mx-auto flex gap-4 ${msg.role === 'user' ? 'justify-end' : 'justify-start'
+                    }`}
                 >
                   {msg.role === 'assistant' && (
                     <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200 text-primary flex items-center justify-center shrink-0 mt-1">
@@ -485,93 +504,61 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
                   <div className="space-y-4 w-full">
                     {msg.role === 'assistant' ? (
-                      <div className="flex flex-col xl:flex-row gap-4 w-full">
-                        {/* RAG PANEL */}
-                        <div className="flex-1 min-w-[300px]">
-                          <div className="flex items-center gap-2 mb-2 px-1">
-                            <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-blue-50 border border-blue-200 text-blue-700">
-                              MARE-JURIS RAG
-                            </div>
-                            <span className="text-[10px] text-slate-500 uppercase">Controlled Corpus</span>
+                      msg.followUp?.required ? (
+                        <div className="bg-white rounded-2xl border border-blue-200 shadow-sm p-4 max-w-2xl space-y-2">
+                          <div className="text-[11px] font-bold uppercase text-primary">Clarification needed</div>
+                          <div className="prose max-w-none text-sm text-slate-800">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                              {msg.content || msg.followUp.question || ''}
+                            </ReactMarkdown>
                           </div>
-                          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-4">
-                            <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-primary prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-blue-600">
-                              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                {msg.rag?.answer || msg.ragContent || msg.content || ''}
-                              </ReactMarkdown>
-                            </div>
-                            
-                            {/* Evidence Used Panel */}
-                            {(msg.rag?.citations || msg.ragCitations || []).length > 0 && (
-                              <div className="border border-slate-200 rounded-xl p-3 bg-slate-50 mt-4">
-                                <div onClick={() => toggleCitations(`${msg.id}-rag`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-primary transition-colors">
-                                  <div className="flex items-center gap-2">
-                                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                                    <span>Verified Legal Evidence ({(msg.rag?.citations || msg.ragCitations || []).length})</span>
-                                  </div>
-                                  {expandedCitations[`${msg.id}-rag`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                                </div>
-                                {expandedCitations[`${msg.id}-rag`] && (
-                                  <div className="space-y-2 mt-2 pt-2 border-t border-slate-200">
-                                    {(msg.rag?.citations || msg.ragCitations || []).map((cit, idx) => (
-                                      <div key={idx} className="p-3 rounded-lg bg-white border border-slate-200 shadow-sm text-xs">
-                                        <div className="font-bold text-slate-800 mb-1">{cit.document_title || cit.statute}</div>
-                                        <div className="text-slate-600 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
-                                        <p className="text-slate-600 italic border-l-2 border-primary/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
-                                        <div className="mt-2 flex justify-between items-center text-[10px]">
-                                          <span className="text-slate-500">Authority: {cit.authority}</span>
-                                          {(cit.source_url || cit.url) && (
-                                            <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                              View Official Source ↗
-                                            </a>
-                                          )}
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          </div>
+                          {msg.followUp.reason && (
+                            <p className="text-xs text-slate-500">{msg.followUp.reason}</p>
+                          )}
                         </div>
-
-                        {/* WEB PANEL */}
-                        {(msg.web || msg.webContent) && !msg.isFiltered && (
+                      ) : (
+                        <div className="flex flex-col xl:flex-row gap-4 w-full">
+                          {/* RAG PANEL */}
                           <div className="flex-1 min-w-[300px]">
                             <div className="flex items-center gap-2 mb-2 px-1">
-                              <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">
-                                LIVE OFFICIAL RESEARCH
+                              <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-blue-50 border border-blue-200 text-blue-700">
+                                MARE-JURIS RAG
                               </div>
-                              <span className="text-[10px] text-slate-500 uppercase">Live APIs</span>
+                              <span className="text-[10px] text-slate-500 uppercase">Controlled Corpus</span>
                             </div>
                             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-4">
-                              <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-emerald-700 prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-emerald-600">
+                              {msg.rag?.coverage_status && (
+                                <div className={`inline-flex text-[10px] font-semibold px-2 py-1 rounded-lg border ${ragCoverageLabel(msg.rag.coverage_status).className}`}>
+                                  RAG Coverage: {ragCoverageLabel(msg.rag.coverage_status).text}
+                                </div>
+                              )}
+                              <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-primary prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-blue-600">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                  {msg.web?.answer || msg.webContent || ''}
+                                  {msg.rag?.answer || msg.ragContent || msg.content || ''}
                                 </ReactMarkdown>
                               </div>
-                              
+
                               {/* Evidence Used Panel */}
-                              {(msg.web?.citations || msg.webCitations || []).length > 0 && (
+                              {(msg.rag?.citations || msg.ragCitations || []).length > 0 && (
                                 <div className="border border-slate-200 rounded-xl p-3 bg-slate-50 mt-4">
-                                  <div onClick={() => toggleCitations(`${msg.id}-web`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-emerald-700 transition-colors">
+                                  <div onClick={() => toggleCitations(`${msg.id}-rag`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-primary transition-colors">
                                     <div className="flex items-center gap-2">
                                       <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                                      <span>Official Web Sources ({(msg.web?.citations || msg.webCitations || []).length})</span>
+                                      <span>Evidence Used ({(msg.rag?.citations || msg.ragCitations || []).length})</span>
                                     </div>
-                                    {expandedCitations[`${msg.id}-web`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                                    {expandedCitations[`${msg.id}-rag`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                   </div>
-                                  {expandedCitations[`${msg.id}-web`] && (
+                                  {expandedCitations[`${msg.id}-rag`] && (
                                     <div className="space-y-2 mt-2 pt-2 border-t border-slate-200">
-                                      {(msg.web?.citations || msg.webCitations || []).map((cit, idx) => (
+                                      {(msg.rag?.citations || msg.ragCitations || []).map((cit, idx) => (
                                         <div key={idx} className="p-3 rounded-lg bg-white border border-slate-200 shadow-sm text-xs">
-                                          <div className="font-bold text-slate-800 mb-1">{cit.title || cit.document_title || cit.statute}</div>
-                                          <div className="text-slate-600 mb-1">{cit.section}</div>
-                                          <p className="text-slate-600 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
+                                          <div className="font-bold text-slate-800 mb-1">{cit.document_title || cit.statute}</div>
+                                          <div className="text-slate-600 mb-1">{cit.section} {cit.subsection ? `(${cit.subsection})` : ''}</div>
+                                          <p className="text-slate-600 italic border-l-2 border-primary/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
                                           <div className="mt-2 flex justify-between items-center text-[10px]">
                                             <span className="text-slate-500">Authority: {cit.authority}</span>
                                             {(cit.source_url || cit.url) && (
-                                              <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">
+                                              <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                                 View Official Source ↗
                                               </a>
                                             )}
@@ -584,8 +571,59 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                               )}
                             </div>
                           </div>
-                        )}
-                      </div>
+
+                          {/* WEB PANEL */}
+                          {(msg.web || msg.webContent) && !msg.isFiltered && (
+                            <div className="flex-1 min-w-[300px]">
+                              <div className="flex items-center gap-2 mb-2 px-1">
+                                <div className="px-3 py-1 text-[11px] font-bold rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">
+                                  LIVE OFFICIAL RESEARCH
+                                </div>
+                                <span className="text-[10px] text-slate-500 uppercase">Live APIs</span>
+                              </div>
+                              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-4">
+                                <div className="prose max-w-none text-sm text-slate-800 leading-relaxed prose-headings:font-serif prose-headings:text-emerald-700 prose-headings:font-bold prose-strong:text-slate-900 prose-a:text-emerald-600">
+                                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    {msg.web?.answer || msg.webContent || ''}
+                                  </ReactMarkdown>
+                                </div>
+
+                                {/* Evidence Used Panel */}
+                                {(msg.web?.citations || msg.webCitations || []).length > 0 && (
+                                  <div className="border border-slate-200 rounded-xl p-3 bg-slate-50 mt-4">
+                                    <div onClick={() => toggleCitations(`${msg.id}-web`)} className="flex items-center justify-between cursor-pointer text-xs font-semibold text-slate-700 mb-2 hover:text-emerald-700 transition-colors">
+                                      <div className="flex items-center gap-2">
+                                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                                        <span>Evidence Used ({(msg.web?.citations || msg.webCitations || []).length})</span>
+                                      </div>
+                                      {expandedCitations[`${msg.id}-web`] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                                    </div>
+                                    {expandedCitations[`${msg.id}-web`] && (
+                                      <div className="space-y-2 mt-2 pt-2 border-t border-slate-200">
+                                        {(msg.web?.citations || msg.webCitations || []).map((cit, idx) => (
+                                          <div key={idx} className="p-3 rounded-lg bg-white border border-slate-200 shadow-sm text-xs">
+                                            <div className="font-bold text-slate-800 mb-1">{cit.title || cit.document_title || cit.statute}</div>
+                                            <div className="text-slate-600 mb-1">{cit.section}</div>
+                                            <p className="text-slate-600 italic border-l-2 border-emerald-500/40 pl-2 py-0.5">&quot;{cit.evidence_text || cit.snippet}&quot;</p>
+                                            <div className="mt-2 flex justify-between items-center text-[10px]">
+                                              <span className="text-slate-500">Authority: {cit.authority}</span>
+                                              {(cit.source_url || cit.url) && (
+                                                <a href={cit.source_url || cit.url} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">
+                                                  View Official Source ↗
+                                                </a>
+                                              )}
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )
                     ) : (
                       <div className="p-4 rounded-2xl text-sm leading-relaxed bg-primary text-white font-medium rounded-tr-none shadow-md w-fit ml-auto">
                         <span>{msg.content}</span>
@@ -599,7 +637,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                           <button onClick={() => copyContent(msg.id, msg.rag?.answer || msg.ragContent || msg.content || '')} className="hover:text-primary transition-colors flex items-center gap-1">
                             {copiedId === msg.id ? <><Check className="w-3.5 h-3.5 text-emerald-600" /><span className="text-emerald-600">Copied</span></> : <><Copy className="w-3.5 h-3.5" /><span>Copy RAG</span></>}
                           </button>
-                          
+
                           {(msg.rag?.answer || msg.ragContent || msg.content) && (msg.web?.answer || msg.webContent) && !msg.isFiltered && (
                             <button onClick={() => handleCompareSources(msg)} disabled={isComparing === msg.id} className="hover:bg-slate-100 text-slate-600 transition-colors flex items-center gap-1 disabled:opacity-50 border border-slate-300 px-3 py-1.5 rounded-lg bg-white shadow-sm">
                               {isComparing === msg.id ? <><div className="w-3 h-3 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" /><span>Comparing...</span></> : <><Scale className="w-3.5 h-3.5 text-primary" /><span>Run Source Comparison</span></>}
@@ -615,7 +653,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                               Source Comparison Analysis
                             </div>
                             <p className="text-sm text-slate-700">{comparisonData[msg.id].summary}</p>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                               {comparisonData[msg.id].agreements?.length > 0 && (
                                 <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
@@ -625,7 +663,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                                   </ul>
                                 </div>
                               )}
-                              
+
                               {comparisonData[msg.id].differences?.length > 0 && (
                                 <div className="p-3 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs">
                                   <div className="font-bold mb-1.5">Differences</div>
@@ -644,7 +682,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                                 </ul>
                               </div>
                             )}
-                            
+
                             {comparisonData[msg.id].potential_conflicts?.length > 0 && (
                               <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs mt-2">
                                 <div className="flex items-center gap-1.5 font-bold mb-1.5"><AlertTriangle className="w-4 h-4" /> Source Conflicts Detected</div>

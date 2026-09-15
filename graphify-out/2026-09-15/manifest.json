@@ -1,0 +1,650 @@
+{
+  "README.md": {
+    "mtime": 1787760103.6420636,
+    "seen": 1787760294.785073,
+    "ast_hash": "8fc56b80e3a1a4c617d978cdaa285a29",
+    "semantic_hash": "8fc56b80e3a1a4c617d978cdaa285a29"
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1787769918.2252412,
+    "seen": 1787770031.8650146,
+    "ast_hash": "6322f5f33a7e53656fa8105ce8beb41c",
+    "semantic_hash": ""
+  },
+  "docs/DECISIONS.md": {
+    "mtime": 1787847842.1829886,
+    "seen": 1787856815.5691733,
+    "ast_hash": "e36f4d511c902cc471fd2123d8f07bee",
+    "semantic_hash": ""
+  },
+  "docs/PROJECT_CONTEXT.md": {
+    "mtime": 1787760095.5475872,
+    "seen": 1787760294.785073,
+    "ast_hash": "86e5fc1e2f130ff334b1e317a920b345",
+    "semantic_hash": "86e5fc1e2f130ff334b1e317a920b345"
+  },
+  "docs/RESEARCH_GAP.md": {
+    "mtime": 1787760095.5479262,
+    "seen": 1787760294.785073,
+    "ast_hash": "e970519adfde484f1d49a0163b76d2d4",
+    "semantic_hash": "e970519adfde484f1d49a0163b76d2d4"
+  },
+  "docs/TECH_STACK.md": {
+    "mtime": 1787769922.6541827,
+    "seen": 1787770031.8650146,
+    "ast_hash": "4bd8223b00a627b686a8e7c4a9011aa1",
+    "semantic_hash": ""
+  },
+  "docs/TODO.md": {
+    "mtime": 1787769930.5950897,
+    "seen": 1787770031.8650146,
+    "ast_hash": "2f9654d1de060f610abb9b80da82a0bb",
+    "semantic_hash": ""
+  },
+  "backend/app/__init__.py": {
+    "mtime": 1787769981.2377708,
+    "seen": 1787770031.8650146,
+    "ast_hash": "2b5ae392aa90bf56711ad6afb83de6ab",
+    "semantic_hash": ""
+  },
+  "backend/app/api/health.py": {
+    "mtime": 1787770011.363242,
+    "seen": 1787770031.8650146,
+    "ast_hash": "217e76e14f07fa5958632b2207756a98",
+    "semantic_hash": ""
+  },
+  "backend/app/auth/deps.py": {
+    "mtime": 1789300454.6124725,
+    "seen": 1789302881.6308148,
+    "ast_hash": "01382946cc57ed807da11b46f026621d",
+    "semantic_hash": ""
+  },
+  "backend/app/core/config.py": {
+    "mtime": 1789302303.4486148,
+    "seen": 1789302881.6308148,
+    "ast_hash": "42a82a67f482ea63892981ee4abc803d",
+    "semantic_hash": ""
+  },
+  "backend/app/db/supabase.py": {
+    "mtime": 1787769995.5220306,
+    "seen": 1787770031.8650146,
+    "ast_hash": "96e9cc57f6f2b07d34f31d509643c113",
+    "semantic_hash": ""
+  },
+  "backend/app/main.py": {
+    "mtime": 1789148274.9240441,
+    "seen": 1789195413.2030084,
+    "ast_hash": "d5cba9f13a44a0efaf48abab523e7261",
+    "semantic_hash": ""
+  },
+  "backend/app/services/email_service.py": {
+    "mtime": 1787848185.8393173,
+    "seen": 1787856815.5691733,
+    "ast_hash": "c6024213b9bca54f533869ce31445673",
+    "semantic_hash": ""
+  },
+  "frontend/package.json": {
+    "mtime": 1789282990.559595,
+    "seen": 1789283308.4165206,
+    "ast_hash": "bb92533e9dfe6795c4f5e1967ebf68ae",
+    "semantic_hash": ""
+  },
+  "frontend/src/lib/supabase/admin.ts": {
+    "mtime": 1787769960.0069952,
+    "seen": 1787770031.8650146,
+    "ast_hash": "97cc2b3e7b24d1fa8bd106603a3f5b9c",
+    "semantic_hash": ""
+  },
+  "frontend/src/lib/supabase/client.ts": {
+    "mtime": 1787769950.2337365,
+    "seen": 1787770031.8650146,
+    "ast_hash": "0a8c4502e30d67b6db7fc1c936699e48",
+    "semantic_hash": ""
+  },
+  "frontend/src/lib/supabase/server.ts": {
+    "mtime": 1787850220.9585025,
+    "seen": 1787856815.5691733,
+    "ast_hash": "7b278916563b7a2cfc7fe63f508db4db",
+    "semantic_hash": ""
+  },
+  "frontend/src/middleware.ts": {
+    "mtime": 1789273226.1310487,
+    "seen": 1789283308.4165206,
+    "ast_hash": "2919b4f6b530ea86994d74a6988d9f9f",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20260827000000_initial_schema.sql": {
+    "mtime": 1787769939.7404015,
+    "seen": 1787770031.8650146,
+    "ast_hash": "27f838771470190a834c8c17a23606c6",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1787760190.1827989,
+    "seen": 1787770031.8650146,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1787760190.18372,
+    "seen": 1787770031.8650146,
+    "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "backend/requirements.txt": {
+    "mtime": 1789410804.783312,
+    "seen": 1789410878.0564213,
+    "ast_hash": "b548674f9889239f31890ee7de6f5259",
+    "semantic_hash": ""
+  },
+  "docs/SUPABASE_SETUP.md": {
+    "mtime": 1787848060.512946,
+    "seen": 1787856815.5691733,
+    "ast_hash": "589730904e14b543a5c140d5dca4a4d9",
+    "semantic_hash": ""
+  },
+  "frontend/.eslintrc.json": {
+    "mtime": 1787850291.1565409,
+    "seen": 1787856815.5691733,
+    "ast_hash": "9b8be5ef96ddd69ecd1ddc1554c61a88",
+    "semantic_hash": ""
+  },
+  "frontend/next.config.js": {
+    "mtime": 1787848797.1223989,
+    "seen": 1787856815.5691733,
+    "ast_hash": "cd55163ec773a3a70083f323c0f1cd58",
+    "semantic_hash": ""
+  },
+  "frontend/postcss.config.js": {
+    "mtime": 1787848791.4061372,
+    "seen": 1787856815.5691733,
+    "ast_hash": "854b38759e7a8b4b82306ae2d9a3a833",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/news/route.ts": {
+    "mtime": 1787858114.9285443,
+    "seen": 1789062804.8130233,
+    "ast_hash": "1cecb801a1908a9965660d4d52f54215",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/auth/callback/route.ts": {
+    "mtime": 1787858061.422487,
+    "seen": 1789062804.8130233,
+    "ast_hash": "cad5052ea1e4f6a0f3fb80226960a32f",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/forgot-password/page.tsx": {
+    "mtime": 1789405764.3058212,
+    "seen": 1789409022.131382,
+    "ast_hash": "9c8f376ab6729f640dc4cf2512795943",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/home/page.tsx": {
+    "mtime": 1789197778.1725583,
+    "seen": 1789283308.4165206,
+    "ast_hash": "4a54636befdba05a6a23e53439359fc8",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/layout.tsx": {
+    "mtime": 1789404866.3591588,
+    "seen": 1789409022.131382,
+    "ast_hash": "1018fefd3011bb1addf40bf133007f4c",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/login/page.tsx": {
+    "mtime": 1789405616.5445037,
+    "seen": 1789409022.131382,
+    "ast_hash": "8d06675b7e938fe7772cc7b13ebc6f15",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/otp/page.tsx": {
+    "mtime": 1789405729.6143339,
+    "seen": 1789409022.131382,
+    "ast_hash": "1c5507377afa7c49200f098984de00f0",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/page.tsx": {
+    "mtime": 1789197768.9307177,
+    "seen": 1789283308.4165206,
+    "ast_hash": "8d7fe32c2285c0c980b4faa26585758c",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/reset-password/page.tsx": {
+    "mtime": 1789405811.0558488,
+    "seen": 1789409022.131382,
+    "ast_hash": "3335759696cda6e6aa185f2a35883c2b",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/signup/page.tsx": {
+    "mtime": 1789405677.8339877,
+    "seen": 1789409022.131382,
+    "ast_hash": "f85bc4e9aaf6259a43985c9197d0f46c",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/verify-email/page.tsx": {
+    "mtime": 1789405881.8321908,
+    "seen": 1789409022.131382,
+    "ast_hash": "a9e4ebc0bfde3d8b49087eea4e1af130",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/auth/LoginForm.tsx": {
+    "mtime": 1789405540.8187983,
+    "seen": 1789409022.131382,
+    "ast_hash": "732081bc38f96fee2fb5c9b2a0c79c85",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/home/HomeContent.tsx": {
+    "mtime": 1789405009.4813788,
+    "seen": 1789409022.131382,
+    "ast_hash": "1d5189968eeddc679abc9649ad0bcea6",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/news/NewsCard.tsx": {
+    "mtime": 1789406048.358373,
+    "seen": 1789409022.131382,
+    "ast_hash": "e43fed4cd086a83dde157edac19264d8",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/news/NewsRail.tsx": {
+    "mtime": 1789405603.440077,
+    "seen": 1789409022.131382,
+    "ast_hash": "235ec28253e31fd4e832ffe4d5de1002",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/news/NewsSkeleton.tsx": {
+    "mtime": 1789406077.237156,
+    "seen": 1789409022.131382,
+    "ast_hash": "b216401da5631b3e0675bf9aa9e74e22",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/visual/ComplianceScene3D.tsx": {
+    "mtime": 1787848829.5381463,
+    "seen": 1787856815.5691733,
+    "ast_hash": "0e67ec7686dba8d383496af91b49ae83",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/visual/LegalPlaceholder.tsx": {
+    "mtime": 1789406097.302409,
+    "seen": 1789409022.131382,
+    "ast_hash": "caa2053ffaaee34ca7199711d3d27c3f",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/visual/ScalesOfJustice3D.tsx": {
+    "mtime": 1787848822.6820107,
+    "seen": 1787856815.5691733,
+    "ast_hash": "2cb4ab577296e1c9f26910e52bfcd9a4",
+    "semantic_hash": ""
+  },
+  "frontend/tailwind.config.js": {
+    "mtime": 1789404826.7899005,
+    "seen": 1789409022.131382,
+    "ast_hash": "fa890d2b35855f7a681faf242c220c18",
+    "semantic_hash": ""
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1787850132.3439422,
+    "seen": 1787856815.5691733,
+    "ast_hash": "492fe1df794fccc27c69bfa6dc017b80",
+    "semantic_hash": ""
+  },
+  "backend/app/api/v1/chat.py": {
+    "mtime": 1789410803.4766867,
+    "seen": 1789410878.0564213,
+    "ast_hash": "0efcde15f7d2a39b0ce94a66d4256a01",
+    "semantic_hash": ""
+  },
+  "backend/app/services/rag_service.py": {
+    "mtime": 1789410782.6147993,
+    "seen": 1789410878.0564213,
+    "ast_hash": "15fd244914851afb33facd3438fe856c",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/assistant/route.ts": {
+    "mtime": 1789410804.7198646,
+    "seen": 1789410878.0564213,
+    "ast_hash": "bc18746109250db849ffc0ce0b8a8a2e",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/chat/page.tsx": {
+    "mtime": 1789066726.6857526,
+    "seen": 1789146400.3648314,
+    "ast_hash": "acd95e8912b13f8e83874bdba3eb8837",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/assistant/FloatingAssistant.tsx": {
+    "mtime": 1789406011.9911964,
+    "seen": 1789409022.131382,
+    "ast_hash": "1326a784f77991369d47f6ff65329129",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/chat/ChatInterface.tsx": {
+    "mtime": 1789410822.7164898,
+    "seen": 1789410878.0564213,
+    "ast_hash": "a733f5876228b07a9d7edd7c01ea575d",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/navigation/Navbar.tsx": {
+    "mtime": 1789404909.3748946,
+    "seen": 1789409022.131382,
+    "ast_hash": "b44f7f603e9226c24a56cee6ded328a1",
+    "semantic_hash": ""
+  },
+  "frontend/vercel.json": {
+    "mtime": 1789064360.476094,
+    "seen": 1789064380.5807295,
+    "ast_hash": "358e55e820425d6f214526c6a92d1d14",
+    "semantic_hash": ""
+  },
+  "backend/app/services/legal_classifier.py": {
+    "mtime": 1789066692.3657188,
+    "seen": 1789146400.3648314,
+    "ast_hash": "5b3c19f77a394aea303a255a5e4930b2",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/website-assistant/route.ts": {
+    "mtime": 1789066712.0389836,
+    "seen": 1789146400.3648314,
+    "ast_hash": "bc764a5206dfaad4819d72602431bbf3",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/ask-juris/page.tsx": {
+    "mtime": 1789405950.362975,
+    "seen": 1789409022.131382,
+    "ast_hash": "5b05f7f51e08650c6a914b6dd8097708",
+    "semantic_hash": ""
+  },
+  "backend/app/api/v1/compliance.py": {
+    "mtime": 1789409873.2171028,
+    "seen": 1789410878.0564213,
+    "ast_hash": "e26d4cad0ff43818025268b66e361c2c",
+    "semantic_hash": ""
+  },
+  "backend/app/services/compliance_service.py": {
+    "mtime": 1789409939.8821478,
+    "seen": 1789410878.0564213,
+    "ast_hash": "6b9e06e315d0aeec6bc179aa53103151",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/compliance/pdf/route.ts": {
+    "mtime": 1789406200.9090393,
+    "seen": 1789409022.131382,
+    "ast_hash": "1ce5774905ab887a4f8d3f92fbf5ee0c",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/compliance/route.ts": {
+    "mtime": 1789409735.8257942,
+    "seen": 1789410878.0564213,
+    "ast_hash": "f03e5a5177deafecefdae489cd4ae229",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/compliance/page.tsx": {
+    "mtime": 1789405952.5331216,
+    "seen": 1789409022.131382,
+    "ast_hash": "35b159da7b53c48ff7d08c5a5ae304a7",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/literacy/page.tsx": {
+    "mtime": 1789405489.5944438,
+    "seen": 1789409022.131382,
+    "ast_hash": "c9bcf7a352209c9a7a18aa08e2727f57",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/compliance/ComplianceInterface.tsx": {
+    "mtime": 1789409889.6810873,
+    "seen": 1789410878.0564213,
+    "ast_hash": "6c2603582d75831ffaa2350b652e1e65",
+    "semantic_hash": ""
+  },
+  "frontend/src/data/legalLiteracyData.ts": {
+    "mtime": 1789203206.447109,
+    "seen": 1789283308.4165206,
+    "ast_hash": "a56f73bb1ba98432f0a0fe978d67c007",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20240101000000_compliance_assessments.sql": {
+    "mtime": 1789194438.2029166,
+    "seen": 1789195413.2030084,
+    "ast_hash": "fa53152b74172e6bdb1553869d9a711e",
+    "semantic_hash": ""
+  },
+  "docs/implementation.md": {
+    "mtime": 1789407357.476333,
+    "seen": 1789409022.131382,
+    "ast_hash": "6a13657c4f0f4b9d5d323f17987f0059",
+    "semantic_hash": ""
+  },
+  "backend/app/services/web_research_service.py": {
+    "mtime": 1789410788.5258214,
+    "seen": 1789410878.0564213,
+    "ast_hash": "1ad7132aefea53a17ea52cc1e5b4fd70",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/assistant/compare/route.ts": {
+    "mtime": 1789283272.1065483,
+    "seen": 1789283308.4165206,
+    "ast_hash": "47cd974a6ed589dc8d66e0e83e9be3e5",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/literacy/RightCard.tsx": {
+    "mtime": 1789405374.470365,
+    "seen": 1789409022.131382,
+    "ast_hash": "074be2c7e67f26631801503335072ea5",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/literacy/RightDetailPanel.tsx": {
+    "mtime": 1789405419.5265143,
+    "seen": 1789409022.131382,
+    "ast_hash": "dc93d9fd8135f726cf509a12c6164638",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/literacy/RightsHero.tsx": {
+    "mtime": 1789405452.706847,
+    "seen": 1789409022.131382,
+    "ast_hash": "d3dd5e5844e94a33cb81d97c324ef11e",
+    "semantic_hash": ""
+  },
+  "legal-documents/bharatiya-nagarik-suraksha-sanhita-2023/metadata.json": {
+    "mtime": 1789282952.9489856,
+    "seen": 1789283308.4165206,
+    "ast_hash": "89ee618e2dcbc91426c136ae80404bb5",
+    "semantic_hash": ""
+  },
+  "legal-documents/bharatiya-nyaya-sanhita-2023/metadata.json": {
+    "mtime": 1789282952.9479861,
+    "seen": 1789283308.4165206,
+    "ast_hash": "8aa33bc3ff7864ddcd83b61612508344",
+    "semantic_hash": ""
+  },
+  "legal-documents/constitution-of-india/metadata.json": {
+    "mtime": 1789282952.9419394,
+    "seen": 1789283308.4165206,
+    "ast_hash": "c52acad39864d22316698f660595de06",
+    "semantic_hash": ""
+  },
+  "legal-documents/consumer-protection-act-2019/metadata.json": {
+    "mtime": 1789282952.9429798,
+    "seen": 1789283308.4165206,
+    "ast_hash": "67fb70363830cef4fed2061d8f129322",
+    "semantic_hash": ""
+  },
+  "legal-documents/digital-personal-data-protection-act-2023/metadata.json": {
+    "mtime": 1789282952.943985,
+    "seen": 1789283308.4165206,
+    "ast_hash": "e0c5e15ba6c82b53cbc810180de4f405",
+    "semantic_hash": ""
+  },
+  "legal-documents/indian-contract-act-1872/metadata.json": {
+    "mtime": 1789282952.9469852,
+    "seen": 1789283308.4165206,
+    "ast_hash": "ac7b9385aab79e844fec852e4f85e57c",
+    "semantic_hash": ""
+  },
+  "legal-documents/information-technology-act-2000/metadata.json": {
+    "mtime": 1789282952.9449866,
+    "seen": 1789283308.4165206,
+    "ast_hash": "5e2d0524b6ad264ad576a40ad4858e08",
+    "semantic_hash": ""
+  },
+  "legal-documents/protection-of-women-from-domestic-violence-act-2005/metadata.json": {
+    "mtime": 1789282952.9499855,
+    "seen": 1789283308.4165206,
+    "ast_hash": "095ea32f6c6ab2311f8fa1f8ceddc4c9",
+    "semantic_hash": ""
+  },
+  "legal-documents/sexual-harassment-of-women-at-workplace-prevention-prohibition-and-redressal-act-2013/metadata.json": {
+    "mtime": 1789282952.9499855,
+    "seen": 1789283308.4165206,
+    "ast_hash": "c35d87a0c6a3fb305d65a95867aac6d0",
+    "semantic_hash": ""
+  },
+  "legal-documents/transfer-of-property-act-1882/metadata.json": {
+    "mtime": 1789282952.9459858,
+    "seen": 1789283308.4165206,
+    "ast_hash": "59ab8a640fc48892acc017337e3f19e8",
+    "semantic_hash": ""
+  },
+  "scripts/apply_migration.py": {
+    "mtime": 1789283006.110295,
+    "seen": 1789283308.4165206,
+    "ast_hash": "53164b35231cc99d2c9b2107c01da640",
+    "semantic_hash": ""
+  },
+  "scripts/corpus_status.py": {
+    "mtime": 1789282977.8070326,
+    "seen": 1789283308.4165206,
+    "ast_hash": "b5bc9b7313def0367fd969b82e9aa3a5",
+    "semantic_hash": ""
+  },
+  "scripts/ingest_legal_documents.py": {
+    "mtime": 1789283178.4099834,
+    "seen": 1789283308.4165206,
+    "ast_hash": "e64006c25344432888cf432518387777",
+    "semantic_hash": ""
+  },
+  "scripts/reload_schema.py": {
+    "mtime": 1789283053.91387,
+    "seen": 1789283308.4165206,
+    "ast_hash": "3639e12452a566e836635a9bc5f4d6ab",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20260913_legal_corpus.sql": {
+    "mtime": 1789282966.6181035,
+    "seen": 1789283308.4165206,
+    "ast_hash": "2daa51895fa185500ae5b971e895e0d7",
+    "semantic_hash": ""
+  },
+  "docs/MARE_JURIS_RAG.md": {
+    "mtime": 1789283326.2063384,
+    "seen": 1789302881.6308148,
+    "ast_hash": "88369692bd1c911dd41cbd0f727d8deb",
+    "semantic_hash": ""
+  },
+  "docs/ragimplementation.md": {
+    "mtime": 1789299281.801422,
+    "seen": 1789302881.6308148,
+    "ast_hash": "66be4a0d64d862a1614577315d867ca2",
+    "semantic_hash": ""
+  },
+  "legal-documents/README.md": {
+    "mtime": 1789234333.6604328,
+    "seen": 1789283308.4165206,
+    "ast_hash": "1aa9bae6667c77ad0e60afe075bd1c42",
+    "semantic_hash": ""
+  },
+  "legal-documents/The Bharatiya Sakshya Adhiniyam, 2023.pdf": {
+    "mtime": 1789272384.1118236,
+    "seen": 1789283308.4165206,
+    "ast_hash": "ce5cbac50c8a00d95f93888c9c6d75ea",
+    "semantic_hash": ""
+  },
+  "legal-documents/The Right to Information Act, 2005.pdf": {
+    "mtime": 1789272421.879861,
+    "seen": 1789283308.4165206,
+    "ast_hash": "7d6b6934a0c329ff4ef4b2c2f5f8f6da",
+    "semantic_hash": ""
+  },
+  "legal-documents/a202345.pdf": {
+    "mtime": 1789271885.3154216,
+    "seen": 1789283308.4165206,
+    "ast_hash": "3cf1b92932fdd8a3f2d5d07aee8df4ab",
+    "semantic_hash": ""
+  },
+  "legal-documents/bharatiya-nagarik-suraksha-sanhita-2023/source.pdf": {
+    "mtime": 1789282952.9489856,
+    "seen": 1789283308.4165206,
+    "ast_hash": "6eebd5b754a2a517a6733a7c5d51e25c",
+    "semantic_hash": ""
+  },
+  "legal-documents/bharatiya-nyaya-sanhita-2023/source.pdf": {
+    "mtime": 1789282952.9479861,
+    "seen": 1789283308.4165206,
+    "ast_hash": "a5a45d3ec0f7c339609045a2a40f79e5",
+    "semantic_hash": ""
+  },
+  "legal-documents/constitution-of-india/source.pdf": {
+    "mtime": 1789282952.9419394,
+    "seen": 1789283308.4165206,
+    "ast_hash": "316007b4bcc5165096707c5d6dd8fdc0",
+    "semantic_hash": ""
+  },
+  "legal-documents/consumer-protection-act-2019/source.pdf": {
+    "mtime": 1789282952.9429798,
+    "seen": 1789283308.4165206,
+    "ast_hash": "f75d9a0d3097bfe6378cd1d55402af2c",
+    "semantic_hash": ""
+  },
+  "legal-documents/digital-personal-data-protection-act-2023/source.pdf": {
+    "mtime": 1789282952.943985,
+    "seen": 1789283308.4165206,
+    "ast_hash": "d75f3f1b22d000ad8a8800fb3a9de442",
+    "semantic_hash": ""
+  },
+  "legal-documents/indian-contract-act-1872/source.pdf": {
+    "mtime": 1789282952.9469852,
+    "seen": 1789283308.4165206,
+    "ast_hash": "cef62be04b76f4678139a3c3b1e1db76",
+    "semantic_hash": ""
+  },
+  "legal-documents/information-technology-act-2000/source.pdf": {
+    "mtime": 1789282952.9449866,
+    "seen": 1789283308.4165206,
+    "ast_hash": "3c1ab1c1c77c98a2ea189b474055bc37",
+    "semantic_hash": ""
+  },
+  "legal-documents/protection-of-women-from-domestic-violence-act-2005/source.pdf": {
+    "mtime": 1789282952.9499855,
+    "seen": 1789283308.4165206,
+    "ast_hash": "ac20c24041ed6b38bcaf65df1a5f2df9",
+    "semantic_hash": ""
+  },
+  "legal-documents/sexual-harassment-of-women-at-workplace-prevention-prohibition-and-redressal-act-2013/source.pdf": {
+    "mtime": 1789282952.9509861,
+    "seen": 1789283308.4165206,
+    "ast_hash": "c6df59d5ba8d1734f1f614d5bedbfcb4",
+    "semantic_hash": ""
+  },
+  "legal-documents/transfer-of-property-act-1882/source.pdf": {
+    "mtime": 1789282952.9459858,
+    "seen": 1789283308.4165206,
+    "ast_hash": "fbe5a57ec2a9dc338c8536ebff874cd1",
+    "semantic_hash": ""
+  },
+  "backend/app/services/legal_query_analysis.py": {
+    "mtime": 1789410754.264045,
+    "seen": 1789410878.0564213,
+    "ast_hash": "234a5c901979f9adb3dd2dd59b5676ae",
+    "semantic_hash": ""
+  },
+  "backend/app/services/legal_retrieval_service.py": {
+    "mtime": 1789410751.6637392,
+    "seen": 1789410878.0564213,
+    "ast_hash": "673acf0b428b7cac1687229b51484fd9",
+    "semantic_hash": ""
+  },
+  "docs/ragupdate.md": {
+    "mtime": 1789409870.9319632,
+    "seen": 1789410878.0564213,
+    "ast_hash": "313e49eda0ac642bb773f00940480307",
+    "semantic_hash": ""
+  }
+}

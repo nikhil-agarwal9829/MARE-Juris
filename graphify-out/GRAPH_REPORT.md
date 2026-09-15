@@ -1,16 +1,16 @@
-# Graph Report - MARE-Juris  (2026-09-13)
+# Graph Report - MARE-Juris  (2026-09-15)
 
 ## Corpus Check
-- 91 files · ~149,149 words
+- 96 files · ~152,957 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 384 nodes · 485 edges · 49 communities (35 shown, 14 thin omitted)
+- 465 nodes · 649 edges · 54 communities (39 shown, 15 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `561b11f0`
+- Built from commit: `c93fce13`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - MARE-Juris Legal AI System
 - 20260827000000_initial_schema.sql
 - Supabase & Brevo Infrastructure Setup for MARE-Juris
-- get_supabase_admin_client
+- get_supabase_client
 - Project Context & Objectives
 - Research & Technical Gaps
 - dependencies
@@ -31,7 +31,7 @@
 - rules/graphify.md
 - workflows/graphify.md
 - createClient
-- ChatInterface.tsx
+- LegalRetrievalService
 - vercel.json
 - compilerOptions
 - NewsRail.tsx
@@ -43,24 +43,31 @@
 - compliance.py
 - ComplianceAgentService
 - compliance_assessments
-- get_supabase_client
+- Compliance Roadmap
+- LegalRAGService
 - WebResearchService
 - MARE-Juris RAG Pipeline & Two-Answer System
 - 20260913_legal_corpus.sql
 - MARE-Juris Initial Legal Corpus
 - ingest_legal_documents.py
+- ragimplementation.md
+- LegalQueryAnalysisService
+- ragupdate.md
+- get_supabase_admin_client
+- ChatInterface.tsx
+- rag_retrieval_config.py
 
 ## God Nodes (most connected - your core abstractions)
-1. `createClient()` - 17 edges
-2. `compilerOptions` - 16 edges
-3. `get_supabase_admin_client()` - 14 edges
-4. `createClient()` - 9 edges
-5. `WebResearchService` - 8 edges
-6. `Navbar()` - 8 edges
-7. `Supabase & Brevo Infrastructure Setup for MARE-Juris` - 8 edges
-8. `get_supabase_client()` - 7 edges
-9. `LegalRAGService` - 7 edges
-10. `scripts` - 7 edges
+1. `ComplianceAgentService` - 17 edges
+2. `createClient()` - 17 edges
+3. `get_supabase_admin_client()` - 16 edges
+4. `LegalRetrievalService` - 16 edges
+5. `compilerOptions` - 16 edges
+6. `WebResearchService` - 11 edges
+7. `LegalRAGService` - 10 edges
+8. `send_chat_message()` - 9 edges
+9. `Navbar()` - 9 edges
+10. `createClient()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Initial Repository Structure ADR` --DEFINES_STRUCTURE--> `MARE-Juris Legal AI System`  [EXTRACTED]
@@ -77,7 +84,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (49 total, 14 thin omitted)
+## Communities (54 total, 15 thin omitted)
 
 ### Community 0 - "MARE-Juris Legal AI System"
 Cohesion: 0.20
@@ -91,9 +98,9 @@ Nodes (21): public.handle_new_user, on_auth_user_created, public.agent_events, p
 Cohesion: 0.15
 Nodes (12): 1. Environment Variables, 2. Authentication & Brevo Custom SMTP Setup, 3. PostgreSQL Database Schema & Migration, 4. Row Level Security (RLS) Policies, 5. Private Storage Bucket Setup, 6. Security Audit Checklist, Architecture Overview, Brevo Custom SMTP Settings for Supabase Dashboard (+4 more)
 
-### Community 3 - "get_supabase_admin_client"
-Cohesion: 0.11
-Nodes (23): ChatMessageRequest, ChatMessageResponse, compare_sources(), CompareRequest, delete_conversation(), get_conversation_messages(), get_user_conversations(), BaseModel (+15 more)
+### Community 3 - "get_supabase_client"
+Cohesion: 0.15
+Nodes (11): health_check(), get, Infrastructure Health Check Endpoint. Verifies FastAPI server running state,…, get_current_user(), get_current_user_token(), Extracts Bearer Token from HTTP Authorization Header., Validates Supabase JWT token and retrieves authenticated user object., get_supabase_client() (+3 more)
 
 ### Community 6 - "dependencies"
 Cohesion: 0.07
@@ -113,11 +120,11 @@ Nodes (29): autoprefixer, eslint, eslint-config-next, devDependencies, autoprefi
 
 ### Community 16 - "createClient"
 Cohesion: 0.11
-Nodes (17): ForgotPasswordPage(), OtpPage(), ResetPasswordPage(), SignupPage(), VerificationState, VerifyEmailContent(), ChatMessage, FloatingAssistant() (+9 more)
+Nodes (18): ForgotPasswordPage(), OtpPage(), ResetPasswordPage(), SignupPage(), VerificationState, VerifyEmailContent(), ChatMessage, FloatingAssistant() (+10 more)
 
-### Community 17 - "ChatInterface.tsx"
-Cohesion: 0.15
-Nodes (14): generateDualResponse(), POST(), POST(), AskJurisPage(), HomePage(), ChatInterface(), ChatInterfaceProps, Citation (+6 more)
+### Community 17 - "LegalRetrievalService"
+Cohesion: 0.24
+Nodes (3): LegalRetrievalService, Any, Hybrid retrieval: Supabase pgvector + BM25 + query expansion + rerank.
 
 ### Community 19 - "vercel.json"
 Cohesion: 0.50
@@ -136,20 +143,24 @@ Cohesion: 0.40
 Nodes (3): LegalQueryClassifier, Any, Semantic Legal Query Relevance Classifier for MARE-Juris. Evaluates intent…
 
 ### Community 33 - "compliance.py"
-Cohesion: 0.28
-Nodes (12): analyze_compliance(), AnalyzeRequest, extract_intent(), generate_questions(), get_history(), IntentRequest, BaseModel, get (+4 more)
+Cohesion: 0.22
+Nodes (17): AnalyzeRequest, extract_intent(), generate_questions(), generate_roadmap(), get_history(), IntentRequest, BaseModel, Exception (+9 more)
 
 ### Community 34 - "ComplianceAgentService"
-Cohesion: 0.24
-Nodes (5): ComplianceAgentService, Any, Generate verified compliance roadmap matrix with official government sources., Extract structured business intent from natural language input., Generate 3-5 smart, non-repetitive adaptive questions based on intent.
+Cohesion: 0.17
+Nodes (10): ComplianceAgentService, Any, Exception, One LLM call for intent + first questions; heuristic fallback if API fails., Extract structured intent from natural language input using LLM., Assemble structured profile after questioning; unknowns stay explicit., Generate the next batch of adaptive questions (max 10 total across the session)., Generate compliance roadmap from final profile; optional web-research context. (+2 more)
 
-### Community 38 - "get_supabase_client"
-Cohesion: 0.15
-Nodes (11): health_check(), get, Infrastructure Health Check Endpoint. Verifies FastAPI server running state,…, get_current_user(), get_current_user_token(), Extracts Bearer Token from HTTP Authorization Header., Validates Supabase JWT token and retrieves authenticated user object., get_supabase_client() (+3 more)
+### Community 36 - "Compliance Roadmap"
+Cohesion: 0.25
+Nodes (7): Compliance Roadmap, Step 1 — Before starting, Step 2 — Registration/Application, Step 3 — Documents, Step 4 — Licences/Approvals, Step 5 — Ongoing compliance, Step 6 — Renewal/recurring obligations
+
+### Community 38 - "LegalRAGService"
+Cohesion: 0.29
+Nodes (4): LegalRAGService, Any, Lightweight check: cited RAG ids exist and some evidence terms appear., Evidence-grounded RAG for Ask MARE-Juris. Hybrid retrieval + query…
 
 ### Community 39 - "WebResearchService"
-Cohesion: 0.26
-Nodes (5): Any, Live Official Web Research Engine for MARE-Juris. Simulates fetching current…, Compares the MARE-Juris RAG output with the Live Web Research output and…, Executes Live Official Web Research pipeline. Currently uses a high-fidelity…, WebResearchService
+Cohesion: 0.32
+Nodes (3): Any, Live official-source research (independent from RAG corpus)., WebResearchService
 
 ### Community 40 - "MARE-Juris RAG Pipeline & Two-Answer System"
 Cohesion: 0.25
@@ -159,25 +170,45 @@ Nodes (7): 1. Document Corpus Management, 2. Supabase Integration, 3. Two-Answer
 Cohesion: 0.40
 Nodes (3): public, public.legal_chunks, public.legal_documents
 
+### Community 46 - "ragimplementation.md"
+Cohesion: 0.33
+Nodes (5): Important, Key Points, Short Answer, Sources, What this means for you
+
+### Community 49 - "LegalQueryAnalysisService"
+Cohesion: 0.33
+Nodes (4): LegalQueryAnalysisService, Any, LLM query understanding for Ask MARE-Juris (not Compliance Agent)., Merge clarification into a resolved legal research query.
+
+### Community 50 - "ragupdate.md"
+Cohesion: 0.25
+Nodes (7): Important, Official Sources, RAG Sources, Short Answer, Sources, What this means, What you can do
+
+### Community 51 - "get_supabase_admin_client"
+Cohesion: 0.16
+Nodes (23): ChatMessageRequest, ChatMessageResponse, compare_sources(), CompareRequest, delete_conversation(), get_conversation_messages(), get_user_conversations(), _history_for_analysis() (+15 more)
+
+### Community 52 - "ChatInterface.tsx"
+Cohesion: 0.15
+Nodes (14): POST(), POST(), AskJurisPage(), HomePage(), ChatInterface(), ChatInterfaceProps, Citation, Conversation (+6 more)
+
 ## Knowledge Gaps
-- **100 isolated node(s):** `extends`, `next/core-web-vitals`, `nextConfig`, `name`, `version` (+95 more)
+- **119 isolated node(s):** `extends`, `next/core-web-vitals`, `nextConfig`, `name`, `version` (+114 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_supabase_admin_client()` connect `get_supabase_admin_client` to `compliance.py`, `get_supabase_client`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `createClient()` connect `createClient` to `ChatInterface.tsx`?**
+- **Why does `get_supabase_admin_client()` connect `get_supabase_admin_client` to `LegalRAGService`, `compliance.py`, `get_supabase_client`, `LegalRetrievalService`?**
+  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+- **Why does `ComplianceAgentService` connect `ComplianceAgentService` to `compliance.py`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `WebResearchService` connect `WebResearchService` to `compliance.py`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `extends`, `next/core-web-vitals`, `nextConfig` to the rest of the system?**
-  _100 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `get_supabase_admin_client` be split into smaller, more focused modules?**
-  _Cohesion score 0.10574712643678161 - nodes in this community are weakly interconnected._
+  _119 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
+- **Should `createClient` be split into smaller, more focused modules?**
+  _Cohesion score 0.1126984126984127 - nodes in this community are weakly interconnected._
