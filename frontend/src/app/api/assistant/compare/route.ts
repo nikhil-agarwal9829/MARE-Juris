@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 
-const API_URL = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8000'); // FastAPI backend
+const getBackendUrl = (req: Request) => {
+  const host = req.headers.get('host') || process.env.VERCEL_URL;
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const fallbackUrl = host ? `${protocol}://${host}` : 'http://127.0.0.1:8000';
+  return process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || fallbackUrl;
+};
 
 export async function POST(req: Request) {
   try {
-    if (process.env.NODE_ENV === 'production' && !API_URL) {
-      return NextResponse.json({ error: 'BACKEND_API_URL is required in production.' }, { status: 500 });
-    }
+    const API_URL = getBackendUrl(req);
 
     const authHeader = req.headers.get('authorization');
     const body = await req.json();

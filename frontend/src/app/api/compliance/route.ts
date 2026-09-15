@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.BACKEND_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8000');
+const getBackendUrl = (req: NextRequest) => {
+  const host = req.headers.get('host') || process.env.VERCEL_URL;
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const fallbackUrl = host ? `${protocol}://${host}` : 'http://127.0.0.1:8000';
+  return process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || fallbackUrl;
+};
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,10 +24,6 @@ export async function POST(req: NextRequest) {
     } = body;
 
     const userQuery = query || prompt;
-
-    if (process.env.NODE_ENV === 'production' && !BACKEND_URL) {
-      return NextResponse.json({ error: 'BACKEND_API_URL or NEXT_PUBLIC_BACKEND_URL is required in production.' }, { status: 500 });
-    }
 
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -85,7 +86,8 @@ export async function POST(req: NextRequest) {
 
     if (action === 'start') {
       try {
-        const res = await fetch(`${BACKEND_URL}/api/v1/compliance/analyze`, {
+        const backendUrl = getBackendUrl(req);
+        const res = await fetch(`${backendUrl}/api/v1/compliance/analyze`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ query: userQuery }),
@@ -112,7 +114,8 @@ export async function POST(req: NextRequest) {
 
     if (action === 'intent') {
       try {
-        const res = await fetch(`${BACKEND_URL}/api/v1/compliance/intent`, {
+        const backendUrl = getBackendUrl(req);
+        const res = await fetch(`${backendUrl}/api/v1/compliance/intent`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: userQuery }),
@@ -132,7 +135,8 @@ export async function POST(req: NextRequest) {
 
     if (action === 'questions') {
       try {
-        const res = await fetch(`${BACKEND_URL}/api/v1/compliance/questions`, {
+        const backendUrl = getBackendUrl(req);
+        const res = await fetch(`${backendUrl}/api/v1/compliance/questions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -158,7 +162,8 @@ export async function POST(req: NextRequest) {
 
     if (action === 'analyze' || action === 'roadmap') {
       try {
-        const res = await fetch(`${BACKEND_URL}/api/v1/compliance/roadmap`, {
+        const backendUrl = getBackendUrl(req);
+        const res = await fetch(`${backendUrl}/api/v1/compliance/roadmap`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
