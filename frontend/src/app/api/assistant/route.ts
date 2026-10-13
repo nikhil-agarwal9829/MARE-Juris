@@ -63,9 +63,9 @@ export async function POST(request: Request) {
     
     const backendUrl = getBackendUrl(request);
 
-    // Bounded request deadline: 50s max (well within Vercel's 60s maxDuration limit)
+    // Bounded request deadline: 52s max (safely within Vercel's 60s maxDuration limit)
     const abortController = new AbortController();
-    const timeoutId = setTimeout(() => abortController.abort(), 50000);
+    const timeoutId = setTimeout(() => abortController.abort(), 52000);
 
     let backendRes: Response;
     try {
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
       });
     } catch (fetchErr: any) {
       if (fetchErr.name === 'AbortError') {
-        console.warn('[ASSISTANT_ROUTE] Upstream fetch aborted after 50s timeout');
+        console.warn('[ASSISTANT_ROUTE] Upstream fetch aborted after 52s timeout');
         return NextResponse.json(
           { error: 'The legal research consultation timed out while coordinating multiple agents. Please select fewer agents or try again.' },
           { status: 504 }

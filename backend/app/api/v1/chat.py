@@ -153,7 +153,7 @@ async def send_chat_message(
                 detail="Please select at least one agent to proceed with consultation.",
             )
 
-        # Run multi-agent orchestrator with bounded 28s execution deadline
+        # Run multi-agent orchestrator with bounded overall request deadline (45s)
         try:
             orch_res = await asyncio.wait_for(
                 multi_agent_orchestrator.execute_orchestration(
@@ -170,10 +170,10 @@ async def send_chat_message(
                     document_id=payload.document_id,
                     correlation_id=correlation_id,
                 ),
-                timeout=28.0,
+                timeout=45.0,
             )
         except asyncio.TimeoutError:
-            logger.error(f"[CHAT_ROUTER][{correlation_id}] execute_orchestration exceeded 28.0s deadline; triggering fallback.")
+            logger.error(f"[CHAT_ROUTER][{correlation_id}] execute_orchestration exceeded 45.0s deadline; triggering fallback.")
             orch_res = {
                 "success": True,
                 "selected_agents": validated_agents,
@@ -182,13 +182,13 @@ async def send_chat_message(
                         "agent_id": aid,
                         "agent_name": aid,
                         "status": "error",
-                        "answer": f"Agent '{aid}' timed out during execution.",
+                        "answer": f"Agent '{aid}' timed out before overall request deadline.",
                         "citations": [],
                         "evidence": [],
                         "sources": [],
                         "provenance": "TIMEOUT",
                         "retrieved_at": multi_agent_orchestrator._now_iso(),
-                        "errors": ["Request timeout limit reached (28s)."],
+                        "errors": ["Request timeout limit reached (45s)."],
                     }
                     for aid in validated_agents
                 },

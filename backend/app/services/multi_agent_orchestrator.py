@@ -455,13 +455,43 @@ class MultiAgentOrchestrator:
             "errors": None,
         }
 
+    async def _run_agent_task(
+        self,
+        aid: str,
+        coro,
+        correlation_id: str = "",
+    ) -> Dict[str, Any]:
+        """
+        Executes a single selected agent task concurrently to completion.
+        Healthy agents are never artificially aborted at an arbitrary deadline.
+        Captures genuine failures, component network timeouts, and unexpected exceptions.
+        """
+        t0 = time.perf_counter()
+        try:
+            res = await coro
+            elapsed = time.perf_counter() - t0
+            status = res.get("status", "unknown") if isinstance(res, dict) else "unknown"
+            logger.info(f"[LATENCY][{correlation_id}] Agent '{aid}' completed in {elapsed:.2f}s with status '{status}'")
+            return res
+        except Exception as e:
+            elapsed = time.perf_counter() - t0
+            logger.error(f"[LATENCY][{correlation_id}] Agent '{aid}' failed after {elapsed:.2f}s: {e}")
+            return self._make_error_response(aid, str(e))
+
     async def _run_agent_with_timeout(
         self,
         aid: str,
         coro,
-        timeout: float = 12.0,
+        timeout: Optional[float] = None,
         correlation_id: str = "",
     ) -> Dict[str, Any]:
+        """
+        Compatibility wrapper for executing an agent task. If timeout is None, runs until
+        natural completion without artificial cutoff.
+        """
+        if timeout is None:
+            return await self._run_agent_task(aid, coro, correlation_id=correlation_id)
+
         t0 = time.perf_counter()
         try:
             res = await asyncio.wait_for(coro, timeout=timeout)
@@ -470,19 +500,19 @@ class MultiAgentOrchestrator:
             return res
         except asyncio.TimeoutError:
             elapsed = time.perf_counter() - t0
-            logger.warning(f"[LATENCY][{correlation_id}] Agent '{aid}' TIMED OUT after {elapsed:.2f}s (timeout limit {timeout}s)")
+            logger.warning(f"[LATENCY][{correlation_id}] Agent '{aid}' reached overall timeout limit after {elapsed:.2f}s")
             meta = AGENT_METADATA.get(aid, {})
             return {
                 "agent_id": aid,
                 "agent_name": meta.get("name", aid),
                 "status": "error",
-                "answer": f"Agent '{meta.get('name', aid)}' exceeded its execution deadline ({timeout:.0f}s) and was safely halted.",
+                "answer": f"Agent '{meta.get('name', aid)}' was unable to complete within the request execution window.",
                 "citations": [],
                 "evidence": [],
                 "sources": [],
                 "provenance": meta.get("provenance", "UNKNOWN"),
                 "retrieved_at": self._now_iso(),
-                "errors": [f"Execution timed out after {timeout:.1f}s"],
+                "errors": [f"Execution reached deadline after {timeout:.1f}s"],
             }
         except Exception as e:
             elapsed = time.perf_counter() - t0
@@ -493,15 +523,19 @@ class MultiAgentOrchestrator:
         self,
         tasks_with_aids: List[tuple],
         correlation_id: str = "",
-        timeout: float = 12.0,
+        timeout: Optional[float] = None,
     ) -> Dict[str, Any]:
+        """
+        Stage A: Executes all selected agent tasks concurrently and waits for every
+        selected agent to settle (succeed or return its genuine component error).
+        """
         if not tasks_with_aids:
             return {}
-        wrapped = [
+        coros = [
             self._run_agent_with_timeout(aid, task, timeout=timeout, correlation_id=correlation_id)
             for aid, task in tasks_with_aids
         ]
-        results = await asyncio.gather(*wrapped, return_exceptions=True)
+        results = await asyncio.gather(*coros, return_exceptions=True)
         res_dict = {}
         for (aid, _), res in zip(tasks_with_aids, results):
             if isinstance(res, Exception):
@@ -596,7 +630,7 @@ class MultiAgentOrchestrator:
         try:
             res = await asyncio.wait_for(
                 self._synthesize_combined_answer(query, responses, history=history, correlation_id=correlation_id),
-                timeout=7.0,
+                timeout=12.0,
             )
             elapsed = time.perf_counter() - t0
             logger.info(f"[LATENCY][{correlation_id}] Combined Answer synthesis completed in {elapsed:.2f}s")
@@ -620,7 +654,7 @@ class MultiAgentOrchestrator:
         try:
             res = await asyncio.wait_for(
                 self._compare_agent_sources(query, responses, correlation_id=correlation_id),
-                timeout=6.0,
+                timeout=10.0,
             )
             elapsed = time.perf_counter() - t0
             logger.info(f"[LATENCY][{correlation_id}] Source comparison completed in {elapsed:.2f}s")
@@ -657,8 +691,8 @@ class MultiAgentOrchestrator:
         correlation_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Executes selected agents concurrently with strict timeouts, collects individual responses,
-        and concurrently synthesizes Combined Answer and Source Comparison.
+        Executes selected agents concurrently, collects individual responses,
+        and synthesizes Combined Answer and optional Source Comparison.
         """
         correlation_id = correlation_id or f"orch-{uuid.uuid4().hex[:8]}"
         t_orch_start = time.perf_counter()
@@ -692,7 +726,7 @@ class MultiAgentOrchestrator:
 
         # Rule 6: If only Document Agent is selected, run only Document Agent
         if validated_agents == ["document_agent"]:
-            doc_res = await self._run_agent_with_timeout(
+            doc_res = await self._run_agent_task(
                 "document_agent",
                 self.execute_document_agent(
                     query=effective_query,
@@ -700,7 +734,6 @@ class MultiAgentOrchestrator:
                     document_id=document_id,
                     document_data=doc_data,
                 ),
-                timeout=12.0,
                 correlation_id=correlation_id,
             )
             individual_responses["document_agent"] = doc_res
@@ -713,7 +746,7 @@ class MultiAgentOrchestrator:
                 # Primary intent is document analysis
                 doc_res = None
                 if "document_agent" in validated_agents:
-                    doc_res = await self._run_agent_with_timeout(
+                    doc_res = await self._run_agent_task(
                         "document_agent",
                         self.execute_document_agent(
                             query=effective_query,
@@ -721,7 +754,6 @@ class MultiAgentOrchestrator:
                             document_id=document_id,
                             document_data=doc_data,
                         ),
-                        timeout=12.0,
                         correlation_id=correlation_id,
                     )
                     individual_responses["document_agent"] = doc_res
@@ -747,8 +779,8 @@ class MultiAgentOrchestrator:
                         for aid in other_agents:
                             if aid == "statutory_rag":
                                 tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
-                                    query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
-                                    history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
+                                     query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
+                                     history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
                                 )))
                             elif aid == "official_web":
                                 tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q)))
@@ -757,7 +789,7 @@ class MultiAgentOrchestrator:
                             elif aid == "live_case_law":
                                 tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=enhanced_q)))
 
-                        sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                        sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id)
                         individual_responses.update(sub_res)
                     else:
                         # Factual document without external legal issues
@@ -787,7 +819,7 @@ class MultiAgentOrchestrator:
                     elif aid == "live_case_law":
                         tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=enhanced_q)))
 
-                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id)
                 individual_responses.update(sub_res)
 
             else:  # GENERAL_LEGAL
@@ -810,7 +842,7 @@ class MultiAgentOrchestrator:
                     elif aid == "live_case_law":
                         tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=effective_query)))
 
-                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id)
                 individual_responses.update(sub_res)
 
         else:
@@ -851,33 +883,27 @@ class MultiAgentOrchestrator:
                 elif aid == "live_case_law":
                     tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=effective_query)))
 
-            sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+            sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id)
             individual_responses.update(sub_res)
 
-        # Concurrent post-processing: Combined Answer Synthesis, Source Comparison, and Verification
+        # Stage C: Combined Answer Synthesis (after Stage A research settles)
         combined_answer = None
-        comparison = None
-        verification = None
-
-        post_tasks = []
         if generate_combined:
-            post_tasks.append(("combined", self._safe_synthesize(query, individual_responses, history=history, correlation_id=correlation_id)))
-        if compare_sources:
-            post_tasks.append(("comparison", self._safe_compare(query, individual_responses, correlation_id=correlation_id)))
-        if verify_sources:
-            post_tasks.append(("verification", self._safe_verify(individual_responses)))
+            combined_answer = await self._safe_synthesize(
+                query, individual_responses, history=history, correlation_id=correlation_id
+            )
 
-        if post_tasks:
-            post_keys = [pt[0] for pt in post_tasks]
-            post_coros = [pt[1] for pt in post_tasks]
-            post_res_list = await asyncio.gather(*post_coros, return_exceptions=True)
-            for p_key, p_res in zip(post_keys, post_res_list):
-                if p_key == "combined":
-                    combined_answer = p_res if not isinstance(p_res, Exception) else self._make_fallback_synthesis_package(query, individual_responses, correlation_id)
-                elif p_key == "comparison":
-                    comparison = p_res if not isinstance(p_res, Exception) else self._make_fallback_comparison_package(individual_responses)
-                elif p_key == "verification":
-                    verification = p_res if not isinstance(p_res, Exception) else None
+        # Stage D: Source Comparison Analysis (only after research settles, when requested)
+        comparison = None
+        if compare_sources:
+            comparison = await self._safe_compare(
+                query, individual_responses, correlation_id=correlation_id
+            )
+
+        # Stage E: Optional Source Verification
+        verification = None
+        if verify_sources:
+            verification = await self._safe_verify(individual_responses)
 
         t_orch_total = time.perf_counter() - t_orch_start
         logger.info(f"[LATENCY][{correlation_id}] MultiAgentOrchestrator total execution finished in {t_orch_total:.2f}s")

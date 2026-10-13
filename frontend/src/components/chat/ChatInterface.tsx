@@ -515,6 +515,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         return [...prev, assistantMessage];
       });
     } catch (err: any) {
+      if (!queryToSend) setInput(text.trim());
       const errorMessage: Message = {
         id: crypto.randomUUID(),
         role: 'assistant',
@@ -1191,8 +1192,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 </div>
                 <div className="bg-white p-4 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm flex items-center gap-3 text-xs text-primary">
                   <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                  <span>
-                    Executing selected agents ({selectedAgentIds.length}) & synthesizing legal answer...
+                  <span className="font-medium">
+                    Researching with {selectedAgentIds.length} selected {selectedAgentIds.length === 1 ? 'agent' : 'agents'}...
                   </span>
                 </div>
               </div>
@@ -1286,7 +1287,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                         ? `Ask a question about ${attachedDoc.name} or related legal provisions...`
                         : "Ask a legal query under Indian Law..."
                     }
-                    className="w-full pl-4 pr-12 py-3.5 bg-white border border-slate-300 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm shadow-sm"
+                    disabled={loading || uploadingDoc}
+                    className="w-full pl-4 pr-12 py-3.5 bg-white border border-slate-300 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm shadow-sm disabled:opacity-50 disabled:bg-slate-50"
                   />
                   <button
                     type="submit"
