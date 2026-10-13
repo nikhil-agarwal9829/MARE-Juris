@@ -1,16 +1,16 @@
 # Graph Report - MARE-Juris  (2026-10-13)
 
 ## Corpus Check
-- 136 files · ~7,475,752 words
+- 137 files · ~7,478,399 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 932 nodes · 1533 edges · 82 communities (65 shown, 17 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 42 edges (avg confidence: 0.81)
+- 962 nodes · 1604 edges · 93 communities (72 shown, 21 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7c2e97e0`
+- Built from commit: `69e8c940`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -67,27 +67,38 @@
 - run_full_ingestion.py
 - 20261012000000_case_law_isolated_schema.sql
 - vercel.json
-- WebResearchService
+- test_timeout_and_latency_hotfix.py
 - test_rpc_search.py
 - MultiAgentOrchestrator
 - generate_all_diagrams.py
+- createClient
+- ChatInterface.tsx
 - DocumentExtractionService
 - documents.py
 - generate_full_reports.py
 - chat.py
 - get_supabase_admin_client
 - CaseLawCorpusAgent
-- get_pending_follow_up
+- NewsRail.tsx
+- HomeContent.tsx
+- scripts
+- login/page.tsx
+- package.json
+- react
+- react-dom
+- react-markdown
+- remark-gfm
+- @supabase/ssr
 
 ## God Nodes (most connected - your core abstractions)
-1. `MultiAgentOrchestrator` - 55 edges
+1. `MultiAgentOrchestrator` - 69 edges
 2. `MARE-Juris — Complete Technical Metrics, Architecture & RAG Evaluation Report` - 38 edges
 3. `save_fig()` - 32 edges
 4. `draw_box()` - 32 edges
 5. `main()` - 32 edges
 6. `LiveCaseLawAgent` - 31 edges
 7. `draw_arrow()` - 29 edges
-8. `get_supabase_admin_client()` - 23 edges
+8. `get_supabase_admin_client()` - 22 edges
 9. `run_all_tests()` - 20 edges
 10. `ComplianceAgentService` - 19 edges
 
@@ -106,7 +117,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (82 total, 17 thin omitted)
+## Communities (93 total, 21 thin omitted)
 
 ### Community 0 - "MARE-Juris Legal AI System"
 Cohesion: 0.20
@@ -125,8 +136,8 @@ Cohesion: 0.04
 Nodes (46): 10. Query Understanding & Classification, 11. Query Expansion & Synonym Packs, 12. Reranking, 13. Evidence Normalization & Claim Planning, 14. LLM Answer Generation, 15. Citation Verification, 16. Dual-Answer Architecture, 17. Follow-Up Conversation Handling (+38 more)
 
 ### Community 6 - "dependencies"
-Cohesion: 0.07
-Nodes (27): clsx, dependencies, clsx, lucide-react, next, puppeteer, react, react-dom (+19 more)
+Cohesion: 0.12
+Nodes (17): clsx, dependencies, clsx, lucide-react, next, puppeteer, @supabase/supabase-js, tailwind-merge (+9 more)
 
 ### Community 7 - "EmailService"
 Cohesion: 0.24
@@ -137,12 +148,12 @@ Cohesion: 0.23
 Nodes (11): LiteracyPage(), RightCard(), RightCardProps, RightDetailPanel(), RightDetailPanelProps, RightsHero(), RightsHeroProps, getCategories() (+3 more)
 
 ### Community 9 - "devDependencies"
-Cohesion: 0.07
-Nodes (29): autoprefixer, eslint, eslint-config-next, devDependencies, autoprefixer, eslint, eslint-config-next, postcss (+21 more)
+Cohesion: 0.11
+Nodes (19): autoprefixer, eslint, eslint-config-next, devDependencies, autoprefixer, eslint, eslint-config-next, postcss (+11 more)
 
 ### Community 16 - "createClient"
-Cohesion: 0.05
-Nodes (42): POST(), getBackendUrl(), POST(), POST(), NewsArticle, AskJurisPage(), ForgotPasswordPage(), OtpPage() (+34 more)
+Cohesion: 0.25
+Nodes (9): ForgotPasswordPage(), OtpPage(), ResetPasswordPage(), SignupPage(), VerificationState, VerifyEmailContent(), Navbar(), NavbarProps (+1 more)
 
 ### Community 17 - "LegalRetrievalService"
 Cohesion: 0.24
@@ -165,8 +176,8 @@ Cohesion: 0.40
 Nodes (3): LegalQueryClassifier, Any, Semantic Legal Query Relevance Classifier for MARE-Juris. Evaluates intent…
 
 ### Community 33 - "compliance.py"
-Cohesion: 0.22
-Nodes (17): AnalyzeRequest, extract_intent(), generate_questions(), generate_roadmap(), get_history(), IntentRequest, BaseModel, Exception (+9 more)
+Cohesion: 0.13
+Nodes (20): AnalyzeRequest, extract_intent(), generate_questions(), generate_roadmap(), get_history(), IntentRequest, BaseModel, Exception (+12 more)
 
 ### Community 34 - "ComplianceAgentService"
 Cohesion: 0.17
@@ -177,7 +188,7 @@ Cohesion: 0.25
 Nodes (7): Compliance Roadmap, Step 1 — Before starting, Step 2 — Registration/Application, Step 3 — Documents, Step 4 — Licences/Approvals, Step 5 — Ongoing compliance, Step 6 — Renewal/recurring obligations
 
 ### Community 38 - "LegalRAGService"
-Cohesion: 0.29
+Cohesion: 0.33
 Nodes (4): LegalRAGService, Any, Lightweight check: cited RAG ids exist and some evidence terms appear., Evidence-grounded RAG for Ask MARE-Juris. Hybrid retrieval + query…
 
 ### Community 39 - "LiveCaseLawAgent"
@@ -191,6 +202,10 @@ Nodes (7): 1. Document Corpus Management, 2. Supabase Integration, 3. Two-Answer
 ### Community 41 - "20260913_legal_corpus.sql"
 Cohesion: 0.40
 Nodes (3): public.legal_chunks, public.legal_documents, public
+
+### Community 44 - "compare/route.ts"
+Cohesion: 0.67
+Nodes (3): getBackendUrl(), maxDuration, POST()
 
 ### Community 46 - "ragimplementation.md"
 Cohesion: 0.40
@@ -252,17 +267,25 @@ Nodes (3): public.case_law_chunks, public.case_law_documents, public
 Cohesion: 0.40
 Nodes (4): builds, env, PYTHONPATH, rewrites
 
-### Community 64 - "WebResearchService"
-Cohesion: 0.32
-Nodes (3): Any, Live official-source research (independent from RAG corpus)., WebResearchService
+### Community 64 - "test_timeout_and_latency_hotfix.py"
+Cohesion: 0.14
+Nodes (20): Production Hotfix Timeout & Latency Regression Test Suite for MARE-Juris.…, Verify that if Source Comparison hangs, it triggers fallback without failing…, Verify that 3 independent agents run concurrently rather than sequentially., Verify that when all selected agents fail, combined answer includes…, Verify empty search results are reported as 'No records found' rather than…, Verify accurate classification of document-centric, hybrid, and general legal…, Verify that chat endpoint handles orchestrator timeouts at 28s with graceful…, Ensure compliance files remain completely unmodified. (+12 more)
 
 ### Community 73 - "MultiAgentOrchestrator"
 Cohesion: 0.06
-Nodes (59): classify_document_query_intent(), MultiAgentOrchestrator, Any, Multi-Agent Orchestrator for MARE-Juris Legal Assistant. Orchestrates the 4…, Orchestrates multi-agent execution, synthesis, comparison, and verification., Returns any unrecognized agent IDs requested by the client., Executes selected agents concurrently, collects individual responses, and…, Synthesizes a single coherent, concise, human-readable legal answer from all… (+51 more)
+Nodes (59): classify_document_query_intent(), MultiAgentOrchestrator, Any, Multi-Agent Orchestrator for MARE-Juris Legal Assistant. Orchestrates the 4…, Executes Source Comparison Analysis across the executed agents. Preserves the…, Optional Citation and Source Verification flow. Audits citations, checks URLs,…, Orchestrates multi-agent execution, synthesis, comparison, and verification., Returns any unrecognized agent IDs requested by the client. (+51 more)
 
 ### Community 74 - "generate_all_diagrams.py"
 Cohesion: 0.23
 Nodes (37): draw_arrow(), draw_box(), draw_lifeline(), main(), make_fig_01(), make_fig_02(), make_fig_03(), make_fig_04() (+29 more)
+
+### Community 75 - "createClient"
+Cohesion: 0.22
+Nodes (10): maxDuration, POST(), getBackendUrl(), POST(), POST(), AskJurisPage(), HomePage(), ChatInterface() (+2 more)
+
+### Community 76 - "ChatInterface.tsx"
+Cohesion: 0.17
+Nodes (11): AgentResponseItem, AVAILABLE_AGENTS, ChatInterfaceProps, Citation, CombinedAnswerData, ComparisonData, Conversation, FollowUpInfo (+3 more)
 
 ### Community 77 - "DocumentExtractionService"
 Cohesion: 0.14
@@ -277,40 +300,56 @@ Cohesion: 0.38
 Nodes (13): add_bullet(), add_callout(), add_figure_image(), add_header_footer(), add_heading_styled(), add_p(), format_table(), build_complete_documentation.py Builds the complete MARE-Juris Project Report… (+5 more)
 
 ### Community 80 - "chat.py"
-Cohesion: 0.33
-Nodes (10): ChatMessageRequest, ChatMessageResponse, compare_sources(), CompareRequest, _history_for_analysis(), _load_conversation_messages(), Any, BaseModel (+2 more)
+Cohesion: 0.22
+Nodes (16): ChatMessageRequest, ChatMessageResponse, compare_sources(), CompareRequest, _history_for_analysis(), _load_conversation_messages(), Any, BaseModel (+8 more)
 
 ### Community 81 - "get_supabase_admin_client"
-Cohesion: 0.22
+Cohesion: 0.20
 Nodes (10): delete_conversation(), get_conversation_messages(), get_user_conversations(), delete, get, delete_document(), delete, Deletes an uploaded document and its chunks. (+2 more)
 
 ### Community 82 - "CaseLawCorpusAgent"
-Cohesion: 0.24
+Cohesion: 0.22
 Nodes (5): CaseLawCorpusAgent, Any, Agent 3: Case-Law Corpus Research Agent for MARE-Juris. Isolated service that…, Agent 3: Retrieves authoritative precedents from the curated Supabase case-law…, Executes vector search against public.match_case_law_chunks in Supabase.…
 
-### Community 85 - "get_pending_follow_up"
-Cohesion: 0.48
-Nodes (6): build_pending_state(), build_resolved_state(), get_pending_follow_up(), _infer_original_query(), Any, Pending follow-up exists when the latest user message is answering the…
+### Community 83 - "NewsRail.tsx"
+Cohesion: 0.29
+Nodes (5): NewsArticle, NewsCard(), NewsSkeleton(), LegalPlaceholder(), LegalPlaceholderProps
+
+### Community 84 - "HomeContent.tsx"
+Cohesion: 0.29
+Nodes (5): ChatMessage, FloatingAssistant(), ComplianceInterface(), HomeContentProps, ComplianceScene3D()
+
+### Community 85 - "scripts"
+Cohesion: 0.29
+Nodes (7): scripts, build, corpus:status, dev, ingest:legal, lint, start
+
+### Community 86 - "login/page.tsx"
+Cohesion: 0.38
+Nodes (3): LoginForm(), NewsRail(), ScalesOfJustice3D()
+
+### Community 87 - "package.json"
+Cohesion: 0.50
+Nodes (3): name, private, version
 
 ## Knowledge Gaps
-- **198 isolated node(s):** `extends`, `next/core-web-vitals`, `nextConfig`, `name`, `version` (+193 more)
+- **200 isolated node(s):** `extends`, `next/core-web-vitals`, `nextConfig`, `name`, `version` (+195 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `MultiAgentOrchestrator` connect `MultiAgentOrchestrator` to `test_timeout_and_latency_hotfix.py`, `test_document_agent.py`, `LiveCaseLawAgent`?**
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
 - **Why does `get_supabase_admin_client()` connect `get_supabase_admin_client` to `compliance.py`, `LegalRAGService`, `documents.py`, `chat.py`, `LegalRetrievalService`, `CaseLawCorpusAgent`, `get_supabase_client`, `main`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
-- **Why does `MultiAgentOrchestrator` connect `MultiAgentOrchestrator` to `test_document_agent.py`, `LiveCaseLawAgent`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Why does `get_document_data()` connect `documents.py` to `MultiAgentOrchestrator`, `get_supabase_admin_client`, `test_document_agent.py`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **What connects `extends`, `next/core-web-vitals`, `nextConfig` to the rest of the system?**
-  _198 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _200 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `MARE-Juris — Complete Technical Metrics, Architecture & RAG Evaluation Report` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

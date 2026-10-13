@@ -288,9 +288,9 @@
     "semantic_hash": ""
   },
   "backend/app/api/v1/chat.py": {
-    "mtime": 1791890785.6264615,
-    "seen": 1791892437.0624394,
-    "ast_hash": "349de88adc8d7dc26a2a0efa6a8101b3",
+    "mtime": 1791910895.7281578,
+    "seen": 1791913560.8134046,
+    "ast_hash": "b4030209f1fb45dd127673a6a73a0118",
     "semantic_hash": ""
   },
   "backend/app/services/rag_service.py": {
@@ -300,9 +300,9 @@
     "semantic_hash": ""
   },
   "frontend/src/app/api/assistant/route.ts": {
-    "mtime": 1791885310.7449734,
-    "seen": 1791885827.563065,
-    "ast_hash": "0c9f9b8101f8a4909eeafd5f7fe93962",
+    "mtime": 1791909816.104304,
+    "seen": 1791913560.8134046,
+    "ast_hash": "8aba35b36c34041c959a6e1e5dbb2f74",
     "semantic_hash": ""
   },
   "frontend/src/app/chat/page.tsx": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "frontend/src/components/chat/ChatInterface.tsx": {
-    "mtime": 1791891323.3798745,
-    "seen": 1791892437.0624394,
-    "ast_hash": "4f4cddb9c6bb54bd93b933d4cb732ee7",
+    "mtime": 1791909894.0421486,
+    "seen": 1791913560.8134046,
+    "ast_hash": "58aeff2ba64a51cd50b0d94f3176dbbe",
     "semantic_hash": ""
   },
   "frontend/src/components/navigation/Navbar.tsx": {
@@ -414,15 +414,15 @@
     "semantic_hash": ""
   },
   "backend/app/services/web_research_service.py": {
-    "mtime": 1789446235.642747,
-    "seen": 1789447119.2780375,
-    "ast_hash": "1ad7132aefea53a17ea52cc1e5b4fd70",
+    "mtime": 1791910529.8203225,
+    "seen": 1791913560.8134046,
+    "ast_hash": "46bf2e0596a8b92b8ea2ccec2aa0de63",
     "semantic_hash": ""
   },
   "frontend/src/app/api/assistant/compare/route.ts": {
-    "mtime": 1789463045.030265,
-    "seen": 1791813006.83778,
-    "ast_hash": "93dc82c34703f01b440003f07aa42996",
+    "mtime": 1791909858.3802314,
+    "seen": 1791913560.8134046,
+    "ast_hash": "8e2ddd1f9925aa8973e16c814572183e",
     "semantic_hash": ""
   },
   "frontend/src/components/literacy/RightCard.tsx": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "backend/app/services/live_case_law_agent.py": {
-    "mtime": 1791892066.936877,
-    "seen": 1791892437.0624394,
-    "ast_hash": "cf4caa325dde54b61dc2bd8a4e2b50d6",
+    "mtime": 1791909945.3983986,
+    "seen": 1791913560.8134046,
+    "ast_hash": "37110c5f3bfa5dbcfea3a04b45cdc08c",
     "semantic_hash": ""
   },
   "backend/tests/test_live_case_law_agent.py": {
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "vercel.json": {
-    "mtime": 1789465139.1729014,
-    "seen": 1791813006.83778,
-    "ast_hash": "e44775ca125d0ecbc5b074f827ee45b6",
+    "mtime": 1791912969.2624388,
+    "seen": 1791913560.8134046,
+    "ast_hash": "0f131645efb8c4ca8a868de0c75f945f",
     "semantic_hash": ""
   },
   "MARE_Juris_Case_Law_Setup/IDLE_IMPLEMENTATION_PROMPT.md": {
@@ -3174,9 +3174,9 @@
     "semantic_hash": ""
   },
   "backend/app/services/case_law_corpus_agent.py": {
-    "mtime": 1791813512.8861103,
-    "seen": 1791885827.5624695,
-    "ast_hash": "de1fcdbc0de9bdc0e5e1430b756b9fd7",
+    "mtime": 1791910201.3257113,
+    "seen": 1791913560.8134046,
+    "ast_hash": "3592326b3f0b76091273ba492b52be5d",
     "semantic_hash": ""
   },
   "backend/app/services/document_agent.py": {
@@ -3186,9 +3186,9 @@
     "semantic_hash": ""
   },
   "backend/app/services/document_context_service.py": {
-    "mtime": 1791885672.7879841,
-    "seen": 1791885827.5624695,
-    "ast_hash": "23b105fd94f195c7a5d0eb8223001e95",
+    "mtime": 1791910097.3543682,
+    "seen": 1791913560.8134046,
+    "ast_hash": "142e8cbb315b7ea594faa06e5abdaa4a",
     "semantic_hash": ""
   },
   "backend/app/services/document_extraction_service.py": {
@@ -3198,21 +3198,21 @@
     "semantic_hash": ""
   },
   "backend/app/services/multi_agent_orchestrator.py": {
-    "mtime": 1791891720.8568168,
-    "seen": 1791892437.0624394,
-    "ast_hash": "b486b9f8260d484756ae3a2e92005770",
+    "mtime": 1791912170.5957944,
+    "seen": 1791913560.8134046,
+    "ast_hash": "a6a442a11295ad1e0cb7263dcd37b2cb",
     "semantic_hash": ""
   },
   "backend/tests/test_document_agent.py": {
-    "mtime": 1791887182.657499,
-    "seen": 1791892437.0624394,
-    "ast_hash": "f191b8839d5dece6bc240ae3579a5578",
+    "mtime": 1791911657.9434936,
+    "seen": 1791913560.8134046,
+    "ast_hash": "3acb63b095d20cb8f3ac3be7fd2a8dea",
     "semantic_hash": ""
   },
   "backend/tests/test_multi_agent_orchestration.py": {
-    "mtime": 1791814630.1774616,
-    "seen": 1791885827.563065,
-    "ast_hash": "2254c9ebfd2ad6ded1560ec552bfd8ab",
+    "mtime": 1791911936.0338366,
+    "seen": 1791913560.8134046,
+    "ast_hash": "691c5f91d0c6a5adde81910bb405be28",
     "semantic_hash": ""
   },
   "data/case_law/ingestion_checkpoint.json": {
@@ -3690,9 +3690,15 @@
     "semantic_hash": ""
   },
   "backend/tests/test_production_fixes_and_five_agents.py": {
-    "mtime": 1791892361.2258582,
-    "seen": 1791892437.0624394,
-    "ast_hash": "4e93f9373bb7ccd9feb373c92996d67a",
+    "mtime": 1791911184.1769314,
+    "seen": 1791913560.8134046,
+    "ast_hash": "57af45d314a98f8308422dd699b91a02",
+    "semantic_hash": ""
+  },
+  "backend/tests/test_timeout_and_latency_hotfix.py": {
+    "mtime": 1791912085.130908,
+    "seen": 1791913560.8134046,
+    "ast_hash": "e69e3752058cffa50e93f193ddffb266",
     "semantic_hash": ""
   }
 }
