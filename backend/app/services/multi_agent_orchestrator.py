@@ -19,6 +19,9 @@ Workflow:
 import asyncio
 import json
 import logging
+import re
+import time
+import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Set
 
@@ -106,12 +109,15 @@ def classify_document_query_intent(query: str) -> str:
         return "GENERAL_LEGAL"
 
     external_legal_cues = [
-        "section", "act", "statute", "enforceability", "enforceable",
+        r"\bsection\b", r"\bact\b", r"\bstatute\b", "enforceability", "enforceable",
         "validity", "valid under", "precedent", "supreme court", "high court",
-        "case law", "bns", "ipc", "crpc", "stamp duty", "limitation act",
+        "case law", r"\bbns\b", r"\bipc\b", r"\bcrpc\b", "stamp duty", "limitation act",
         "arbitration act", "contract act", "companies act", "constitution"
     ]
-    is_hybrid = any(cue in q_lower for cue in external_legal_cues)
+    is_hybrid = any(
+        bool(re.search(cue, q_lower)) if "\\" in cue else (cue in q_lower)
+        for cue in external_legal_cues
+    )
     return "HYBRID" if is_hybrid else "DOCUMENT_CENTRIC"
 
 
@@ -163,8 +169,9 @@ class MultiAgentOrchestrator:
     ) -> Dict[str, Any]:
         retrieval_ts = self._now_iso()
         try:
-            # rag_service.process_query is synchronous
-            res = rag_service.process_query(
+            # rag_service.process_query is synchronous - run in thread pool to prevent blocking asyncio loop
+            res = await asyncio.to_thread(
+                rag_service.process_query,
                 user_id=user_id,
                 query_text=query,
                 conversation_id=conversation_id,
@@ -448,6 +455,192 @@ class MultiAgentOrchestrator:
             "errors": None,
         }
 
+    async def _run_agent_with_timeout(
+        self,
+        aid: str,
+        coro,
+        timeout: float = 12.0,
+        correlation_id: str = "",
+    ) -> Dict[str, Any]:
+        t0 = time.perf_counter()
+        try:
+            res = await asyncio.wait_for(coro, timeout=timeout)
+            elapsed = time.perf_counter() - t0
+            logger.info(f"[LATENCY][{correlation_id}] Agent '{aid}' completed in {elapsed:.2f}s with status '{res.get('status')}'")
+            return res
+        except asyncio.TimeoutError:
+            elapsed = time.perf_counter() - t0
+            logger.warning(f"[LATENCY][{correlation_id}] Agent '{aid}' TIMED OUT after {elapsed:.2f}s (timeout limit {timeout}s)")
+            meta = AGENT_METADATA.get(aid, {})
+            return {
+                "agent_id": aid,
+                "agent_name": meta.get("name", aid),
+                "status": "error",
+                "answer": f"Agent '{meta.get('name', aid)}' exceeded its execution deadline ({timeout:.0f}s) and was safely halted.",
+                "citations": [],
+                "evidence": [],
+                "sources": [],
+                "provenance": meta.get("provenance", "UNKNOWN"),
+                "retrieved_at": self._now_iso(),
+                "errors": [f"Execution timed out after {timeout:.1f}s"],
+            }
+        except Exception as e:
+            elapsed = time.perf_counter() - t0
+            logger.error(f"[LATENCY][{correlation_id}] Agent '{aid}' failed after {elapsed:.2f}s: {e}")
+            return self._make_error_response(aid, str(e))
+
+    async def _execute_agent_tasks(
+        self,
+        tasks_with_aids: List[tuple],
+        correlation_id: str = "",
+        timeout: float = 12.0,
+    ) -> Dict[str, Any]:
+        if not tasks_with_aids:
+            return {}
+        wrapped = [
+            self._run_agent_with_timeout(aid, task, timeout=timeout, correlation_id=correlation_id)
+            for aid, task in tasks_with_aids
+        ]
+        results = await asyncio.gather(*wrapped, return_exceptions=True)
+        res_dict = {}
+        for (aid, _), res in zip(tasks_with_aids, results):
+            if isinstance(res, Exception):
+                res_dict[aid] = self._make_error_response(aid, str(res))
+            else:
+                res_dict[aid] = res
+        return res_dict
+
+    def _make_fallback_synthesis_package(self, query: str, responses: Dict[str, Any], correlation_id: str = "") -> Dict[str, Any]:
+        successful_agents = [
+            (aid, resp) for aid, resp in responses.items()
+            if resp.get("status") == "success" and resp.get("answer")
+        ]
+        all_citations: List[Dict[str, Any]] = []
+        for aid, resp in responses.items():
+            for c in resp.get("citations", []):
+                all_citations.append(c)
+
+        if not successful_agents:
+            timeout_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if any("timed out" in str(e).lower() for e in resp.get("errors") or [])]
+            failed_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "error" and aid not in timeout_agents]
+            empty_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "empty"]
+
+            details = []
+            if timeout_agents:
+                details.append(f"Timed out: {', '.join(timeout_agents)}")
+            if failed_agents:
+                details.append(f"Errors encountered: {', '.join(failed_agents)}")
+            if empty_agents:
+                details.append(f"No records found: {', '.join(empty_agents)}")
+
+            details_str = f" ({'; '.join(details)})" if details else ""
+            return {
+                "available": True,
+                "answer": f"Unable to generate a synthesized legal answer because none of the selected agents returned successful evidence or actionable findings{details_str}. [Request ID: {correlation_id}]",
+                "citations": all_citations,
+                "synthesized_from": [],
+                "generated_at": self._now_iso(),
+            }
+
+        answer_text = self._fallback_synthesis(query, successful_agents)
+        failed_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "error"]
+        if failed_agents and successful_agents:
+            answer_text += f"\n\n*Note: {', '.join(failed_agents)} encountered an issue and was excluded from synthesis.*"
+
+        return {
+            "available": True,
+            "answer": answer_text,
+            "citations": all_citations,
+            "synthesized_from": [aid for aid, _ in successful_agents],
+            "generated_at": self._now_iso(),
+        }
+
+    def _make_fallback_comparison_package(self, responses: Dict[str, Any]) -> Dict[str, Any]:
+        successful_agents = [
+            (aid, resp) for aid, resp in responses.items()
+            if resp.get("status") == "success" and resp.get("answer")
+        ]
+        if len(successful_agents) <= 1:
+            agent_name = successful_agents[0][1].get("agent_name", "selected agent") if successful_agents else "no agent"
+            return {
+                "available": True,
+                "summary": f"Cross-agent source comparison is limited because only one agent ({agent_name}) returned successful results. Select multiple agents to compare statutory, judicial, and web authorities.",
+                "agreements": ["Internal consistency within the single executed source."],
+                "differences": [],
+                "potential_conflicts": [],
+                "freshness_flags": [],
+                "conflicts": [],
+            }
+        return {
+            "available": True,
+            "summary": f"Compared {len(successful_agents)} agent source outputs across statutory, judicial, and web records.",
+            "agreements": [
+                f"{successful_agents[0][1].get('agent_name')} and {successful_agents[1][1].get('agent_name')} address the legal query consistently."
+            ],
+            "differences": [
+                f"{successful_agents[0][1].get('agent_name')} focuses on {successful_agents[0][1].get('provenance')}, whereas other agents incorporate external/case authorities."
+            ],
+            "potential_conflicts": [],
+            "freshness_flags": [],
+            "conflicts": [],
+        }
+
+    async def _safe_synthesize(
+        self,
+        query: str,
+        responses: Dict[str, Any],
+        history: Optional[List[Dict[str, str]]] = None,
+        correlation_id: str = "",
+    ) -> Dict[str, Any]:
+        t0 = time.perf_counter()
+        try:
+            res = await asyncio.wait_for(
+                self._synthesize_combined_answer(query, responses, history=history, correlation_id=correlation_id),
+                timeout=7.0,
+            )
+            elapsed = time.perf_counter() - t0
+            logger.info(f"[LATENCY][{correlation_id}] Combined Answer synthesis completed in {elapsed:.2f}s")
+            return res
+        except asyncio.TimeoutError:
+            elapsed = time.perf_counter() - t0
+            logger.warning(f"[LATENCY][{correlation_id}] Combined Answer synthesis TIMED OUT after {elapsed:.2f}s; using fallback.")
+            return self._make_fallback_synthesis_package(query, responses, correlation_id)
+        except Exception as e:
+            elapsed = time.perf_counter() - t0
+            logger.warning(f"[LATENCY][{correlation_id}] Combined Answer synthesis failed after {elapsed:.2f}s ({e}); using fallback.")
+            return self._make_fallback_synthesis_package(query, responses, correlation_id)
+
+    async def _safe_compare(
+        self,
+        query: str,
+        responses: Dict[str, Any],
+        correlation_id: str = "",
+    ) -> Dict[str, Any]:
+        t0 = time.perf_counter()
+        try:
+            res = await asyncio.wait_for(
+                self._compare_agent_sources(query, responses, correlation_id=correlation_id),
+                timeout=6.0,
+            )
+            elapsed = time.perf_counter() - t0
+            logger.info(f"[LATENCY][{correlation_id}] Source comparison completed in {elapsed:.2f}s")
+            return res
+        except asyncio.TimeoutError:
+            elapsed = time.perf_counter() - t0
+            logger.warning(f"[LATENCY][{correlation_id}] Source comparison TIMED OUT after {elapsed:.2f}s; using fallback.")
+            return self._make_fallback_comparison_package(responses)
+        except Exception as e:
+            elapsed = time.perf_counter() - t0
+            logger.warning(f"[LATENCY][{correlation_id}] Source comparison failed after {elapsed:.2f}s ({e}); using fallback.")
+            return self._make_fallback_comparison_package(responses)
+
+    async def _safe_verify(self, responses: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        try:
+            return await self._verify_sources_flow(responses)
+        except Exception as e:
+            logger.warning(f"[VERIFY] Source verification failed: {e}")
+            return None
+
     async def execute_orchestration(
         self,
         query: str,
@@ -461,11 +654,15 @@ class MultiAgentOrchestrator:
         compare_sources: bool = True,
         verify_sources: bool = False,
         document_id: Optional[str] = None,
+        correlation_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Executes selected agents concurrently, collects individual responses,
-        and optionally synthesizes Combined Answer and Source Comparison.
+        Executes selected agents concurrently with strict timeouts, collects individual responses,
+        and concurrently synthesizes Combined Answer and Source Comparison.
         """
+        correlation_id = correlation_id or f"orch-{uuid.uuid4().hex[:8]}"
+        t_orch_start = time.perf_counter()
+
         validated_agents = self.validate_agent_ids(selected_agents)
         if not validated_agents:
             return {
@@ -490,16 +687,21 @@ class MultiAgentOrchestrator:
                 if not doc_data:
                     doc_lookup_failed = True
             except Exception as e:
-                logger.warning(f"[ORCHESTRATOR] Document lookup error: {e}")
+                logger.warning(f"[ORCHESTRATOR][{correlation_id}] Document lookup error: {e}")
                 doc_lookup_failed = True
 
         # Rule 6: If only Document Agent is selected, run only Document Agent
         if validated_agents == ["document_agent"]:
-            doc_res = await self.execute_document_agent(
-                query=effective_query,
-                user_id=user_id,
-                document_id=document_id,
-                document_data=doc_data,
+            doc_res = await self._run_agent_with_timeout(
+                "document_agent",
+                self.execute_document_agent(
+                    query=effective_query,
+                    user_id=user_id,
+                    document_id=document_id,
+                    document_data=doc_data,
+                ),
+                timeout=12.0,
+                correlation_id=correlation_id,
             )
             individual_responses["document_agent"] = doc_res
         elif doc_data:
@@ -511,18 +713,18 @@ class MultiAgentOrchestrator:
                 # Primary intent is document analysis
                 doc_res = None
                 if "document_agent" in validated_agents:
-                    try:
-                        doc_res = await self.execute_document_agent(
+                    doc_res = await self._run_agent_with_timeout(
+                        "document_agent",
+                        self.execute_document_agent(
                             query=effective_query,
                             user_id=user_id,
                             document_id=document_id,
                             document_data=doc_data,
-                        )
-                        individual_responses["document_agent"] = doc_res
-                    except Exception as e:
-                        logger.error(f"[ORCHESTRATOR] Agent 'document_agent' raised unhandled exception: {e}")
-                        doc_res = self._make_error_response("document_agent", str(e))
-                        individual_responses["document_agent"] = doc_res
+                        ),
+                        timeout=12.0,
+                        correlation_id=correlation_id,
+                    )
+                    individual_responses["document_agent"] = doc_res
 
                 other_agents = [aid for aid in validated_agents if aid != "document_agent"]
                 if other_agents:
@@ -541,32 +743,22 @@ class MultiAgentOrchestrator:
                         enhanced_q = None
 
                     if enhanced_q:
-                        tasks = []
-                        task_aids = []
+                        tasks_with_aids = []
                         for aid in other_agents:
                             if aid == "statutory_rag":
-                                tasks.append(self.execute_statutory_rag(
+                                tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
                                     query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
                                     history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
-                                ))
-                                task_aids.append("statutory_rag")
+                                )))
                             elif aid == "official_web":
-                                tasks.append(self.execute_official_web(query=enhanced_q))
-                                task_aids.append("official_web")
+                                tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q)))
                             elif aid == "case_law_corpus":
-                                tasks.append(self.execute_case_law_corpus(query=enhanced_q))
-                                task_aids.append("case_law_corpus")
+                                tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=enhanced_q)))
                             elif aid == "live_case_law":
-                                tasks.append(self.execute_live_case_law(query=enhanced_q))
-                                task_aids.append("live_case_law")
+                                tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=enhanced_q)))
 
-                        if tasks:
-                            results = await asyncio.gather(*tasks, return_exceptions=True)
-                            for aid, res in zip(task_aids, results):
-                                if isinstance(res, Exception):
-                                    individual_responses[aid] = self._make_error_response(aid, str(res))
-                                else:
-                                    individual_responses[aid] = res
+                        sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                        individual_responses.update(sub_res)
                     else:
                         # Factual document without external legal issues
                         for aid in other_agents:
@@ -574,73 +766,52 @@ class MultiAgentOrchestrator:
 
             elif doc_intent == "HYBRID":
                 # User asks an external statutory/precedent question about document terms
-                tasks = []
-                task_aids = []
+                tasks_with_aids = []
                 doc_tag = f"[Attached Document: {doc_name}]"
                 enhanced_q = f"{effective_query} {doc_tag}".strip()
 
                 for aid in validated_agents:
                     if aid == "document_agent":
-                        tasks.append(self.execute_document_agent(
+                        tasks_with_aids.append(("document_agent", self.execute_document_agent(
                             query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
-                        ))
-                        task_aids.append("document_agent")
+                        )))
                     elif aid == "statutory_rag":
-                        tasks.append(self.execute_statutory_rag(
+                        tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
                             query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
                             history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
-                        ))
-                        task_aids.append("statutory_rag")
+                        )))
                     elif aid == "official_web":
-                        tasks.append(self.execute_official_web(query=enhanced_q))
-                        task_aids.append("official_web")
+                        tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q)))
                     elif aid == "case_law_corpus":
-                        tasks.append(self.execute_case_law_corpus(query=enhanced_q))
-                        task_aids.append("case_law_corpus")
+                        tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=enhanced_q)))
                     elif aid == "live_case_law":
-                        tasks.append(self.execute_live_case_law(query=enhanced_q))
-                        task_aids.append("live_case_law")
+                        tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=enhanced_q)))
 
-                results = await asyncio.gather(*tasks, return_exceptions=True)
-                for aid, res in zip(task_aids, results):
-                    if isinstance(res, Exception):
-                        individual_responses[aid] = self._make_error_response(aid, str(res))
-                    else:
-                        individual_responses[aid] = res
+                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                individual_responses.update(sub_res)
 
             else:  # GENERAL_LEGAL
                 # Rule 9: Do not force the document into independent general legal queries
-                tasks = []
-                task_aids = []
+                tasks_with_aids = []
                 for aid in validated_agents:
                     if aid == "document_agent":
-                        tasks.append(self.execute_document_agent(
+                        tasks_with_aids.append(("document_agent", self.execute_document_agent(
                             query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
-                        ))
-                        task_aids.append("document_agent")
+                        )))
                     elif aid == "statutory_rag":
-                        tasks.append(self.execute_statutory_rag(
+                        tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
                             query=query, user_id=user_id, conversation_id=conversation_id,
                             history=history, resolved_query=resolved_query, conversation_state=conversation_state,
-                        ))
-                        task_aids.append("statutory_rag")
+                        )))
                     elif aid == "official_web":
-                        tasks.append(self.execute_official_web(query=effective_query))
-                        task_aids.append("official_web")
+                        tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query)))
                     elif aid == "case_law_corpus":
-                        tasks.append(self.execute_case_law_corpus(query=effective_query))
-                        task_aids.append("case_law_corpus")
+                        tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=effective_query)))
                     elif aid == "live_case_law":
-                        tasks.append(self.execute_live_case_law(query=effective_query))
-                        task_aids.append("live_case_law")
+                        tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=effective_query)))
 
-                if tasks:
-                    results = await asyncio.gather(*tasks, return_exceptions=True)
-                    for aid, res in zip(task_aids, results):
-                        if isinstance(res, Exception):
-                            individual_responses[aid] = self._make_error_response(aid, str(res))
-                        else:
-                            individual_responses[aid] = res
+                sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+                individual_responses.update(sub_res)
 
         else:
             # doc_data is None: either no document provided or document lookup failed
@@ -660,54 +831,56 @@ class MultiAgentOrchestrator:
                     "errors": ["Document not found or ownership verification failed."],
                 }
 
-            tasks = []
-            task_aids = []
+            tasks_with_aids = []
             for aid in validated_agents:
                 if aid == "document_agent":
                     if "document_agent" in individual_responses:
                         continue
-                    tasks.append(self.execute_document_agent(
+                    tasks_with_aids.append(("document_agent", self.execute_document_agent(
                         query=query, user_id=user_id, document_id=None, document_data=None,
-                    ))
-                    task_aids.append("document_agent")
+                    )))
                 elif aid == "statutory_rag":
-                    tasks.append(self.execute_statutory_rag(
+                    tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
                         query=query, user_id=user_id, conversation_id=conversation_id,
                         history=history, resolved_query=resolved_query, conversation_state=conversation_state,
-                    ))
-                    task_aids.append("statutory_rag")
+                    )))
                 elif aid == "official_web":
-                    tasks.append(self.execute_official_web(query=effective_query))
-                    task_aids.append("official_web")
+                    tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query)))
                 elif aid == "case_law_corpus":
-                    tasks.append(self.execute_case_law_corpus(query=effective_query))
-                    task_aids.append("case_law_corpus")
+                    tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=effective_query)))
                 elif aid == "live_case_law":
-                    tasks.append(self.execute_live_case_law(query=effective_query))
-                    task_aids.append("live_case_law")
+                    tasks_with_aids.append(("live_case_law", self.execute_live_case_law(query=effective_query)))
 
-            if tasks:
-                results = await asyncio.gather(*tasks, return_exceptions=True)
-                for aid, res in zip(task_aids, results):
-                    if isinstance(res, Exception):
-                        individual_responses[aid] = self._make_error_response(aid, str(res))
-                    else:
-                        individual_responses[aid] = res
+            sub_res = await self._execute_agent_tasks(tasks_with_aids, correlation_id=correlation_id, timeout=12.0)
+            individual_responses.update(sub_res)
 
-        # 4. Synthesize Combined Answer (if enabled)
+        # Concurrent post-processing: Combined Answer Synthesis, Source Comparison, and Verification
         combined_answer = None
-        if generate_combined:
-            combined_answer = await self._synthesize_combined_answer(query, individual_responses, history=history)
-
-        # 5. Execute Source Comparison Analysis (if enabled)
         comparison = None
-        if compare_sources:
-            comparison = await self._compare_agent_sources(query, individual_responses)
-
-        # 6. Execute Citation and Source Verification (if enabled)
         verification = None
+
+        post_tasks = []
+        if generate_combined:
+            post_tasks.append(("combined", self._safe_synthesize(query, individual_responses, history=history, correlation_id=correlation_id)))
+        if compare_sources:
+            post_tasks.append(("comparison", self._safe_compare(query, individual_responses, correlation_id=correlation_id)))
         if verify_sources:
-            verification = await self._verify_sources_flow(individual_responses)
+            post_tasks.append(("verification", self._safe_verify(individual_responses)))
+
+        if post_tasks:
+            post_keys = [pt[0] for pt in post_tasks]
+            post_coros = [pt[1] for pt in post_tasks]
+            post_res_list = await asyncio.gather(*post_coros, return_exceptions=True)
+            for p_key, p_res in zip(post_keys, post_res_list):
+                if p_key == "combined":
+                    combined_answer = p_res if not isinstance(p_res, Exception) else self._make_fallback_synthesis_package(query, individual_responses, correlation_id)
+                elif p_key == "comparison":
+                    comparison = p_res if not isinstance(p_res, Exception) else self._make_fallback_comparison_package(individual_responses)
+                elif p_key == "verification":
+                    verification = p_res if not isinstance(p_res, Exception) else None
+
+        t_orch_total = time.perf_counter() - t_orch_start
+        logger.info(f"[LATENCY][{correlation_id}] MultiAgentOrchestrator total execution finished in {t_orch_total:.2f}s")
 
         return {
             "success": True,
@@ -723,6 +896,7 @@ class MultiAgentOrchestrator:
         query: str,
         responses: Dict[str, Any],
         history: Optional[List[Dict[str, str]]] = None,
+        correlation_id: str = "",
     ) -> Dict[str, Any]:
         """
         Synthesizes a single coherent, concise, human-readable legal answer from all successful agent responses.
@@ -750,11 +924,22 @@ class MultiAgentOrchestrator:
                     all_citations.append(c)
 
         if not successful_agents:
-            failed_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "error"]
-            failed_note = f" (Agents failed: {', '.join(failed_agents)})" if failed_agents else ""
+            timeout_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if any("timed out" in str(e).lower() for e in resp.get("errors") or [])]
+            failed_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "error" and aid not in timeout_agents]
+            empty_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "empty"]
+
+            details = []
+            if timeout_agents:
+                details.append(f"Timed out: {', '.join(timeout_agents)}")
+            if failed_agents:
+                details.append(f"Errors encountered: {', '.join(failed_agents)}")
+            if empty_agents:
+                details.append(f"No records found: {', '.join(empty_agents)}")
+
+            details_str = f" ({'; '.join(details)})" if details else ""
             return {
                 "available": True,
-                "answer": f"Unable to generate a synthesized answer because none of the selected agents returned successful evidence.{failed_note}",
+                "answer": f"Unable to generate a synthesized legal answer because none of the selected agents returned successful evidence or actionable findings{details_str}. [Request ID: {correlation_id}]",
                 "citations": all_citations,
                 "synthesized_from": [],
                 "generated_at": self._now_iso(),
@@ -801,12 +986,12 @@ INSTRUCTIONS:
 
         try:
             if self.model:
-                res = self.model.generate_content(prompt)
+                res = await asyncio.to_thread(self.model.generate_content, prompt)
                 answer_text = res.text.strip()
             else:
                 answer_text = self._fallback_synthesis(query, successful_agents)
         except Exception as e:
-            logger.warning(f"[SYNTHESIS] LLM generation failed: {e}")
+            logger.warning(f"[SYNTHESIS][{correlation_id}] LLM generation failed: {e}")
             answer_text = self._fallback_synthesis(query, successful_agents)
 
         # Note any partial agent failures
@@ -844,6 +1029,7 @@ INSTRUCTIONS:
         self,
         query: str,
         responses: Dict[str, Any],
+        correlation_id: str = "",
     ) -> Dict[str, Any]:
         """
         Executes Source Comparison Analysis across the executed agents.
@@ -907,7 +1093,7 @@ Return ONLY JSON with this EXACT schema:
 
         try:
             if self.model:
-                res = self.model.generate_content(prompt)
+                res = await asyncio.to_thread(self.model.generate_content, prompt)
                 raw_text = res.text
                 if "```json" in raw_text:
                     json_str = raw_text.split("```json")[1].split("```")[0].strip()
@@ -920,22 +1106,10 @@ Return ONLY JSON with this EXACT schema:
                     result["conflicts"] = result.get("potential_conflicts", [])
                 return result
         except Exception as e:
-            logger.warning(f"[SOURCE_COMPARISON] Multi-agent comparison error: {e}")
+            logger.warning(f"[SOURCE_COMPARISON][{correlation_id}] Multi-agent comparison error: {e}")
 
         # Deterministic fallback comparison
-        return {
-            "available": True,
-            "summary": f"Compared {len(successful_agents)} agent source outputs across statutory, judicial, and web records.",
-            "agreements": [
-                f"{successful_agents[0][1].get('agent_name')} and {successful_agents[1][1].get('agent_name')} address the legal query consistently."
-            ],
-            "differences": [
-                f"{successful_agents[0][1].get('agent_name')} focuses on {successful_agents[0][1].get('provenance')}, whereas other agents incorporate external/case authorities."
-            ],
-            "potential_conflicts": [],
-            "freshness_flags": [],
-            "conflicts": [],
-        }
+        return self._make_fallback_comparison_package(responses)
 
     async def _verify_sources_flow(self, responses: Dict[str, Any]) -> Dict[str, Any]:
         """

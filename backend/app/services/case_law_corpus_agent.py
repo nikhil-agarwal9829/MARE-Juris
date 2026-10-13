@@ -11,6 +11,7 @@ Strict Isolation:
 - Handles quota limits or missing embeddings gracefully.
 """
 
+import asyncio
 import json
 import logging
 from datetime import datetime, timezone
@@ -72,18 +73,20 @@ class CaseLawCorpusAgent:
         citations: List[Dict[str, Any]] = []
         errors: List[str] = []
 
-        q_emb = self.generate_query_embedding(query)
+        q_emb = await asyncio.to_thread(self.generate_query_embedding, query)
         if q_emb is None:
             # When embedding quota is exhausted or unavailable, attempt text fallback on case-law documents
             try:
-                admin = get_supabase_admin_client()
-                text_res = (
-                    admin.table("case_law_documents")
-                    .select("id, case_id, title, court, decision_year, decision_date, citation, official_source_url, source_url")
-                    .or_(f"title.ilike.%{query}%,citation.ilike.%{query}%")
-                    .limit(match_count)
-                    .execute()
-                )
+                def _do_text_search():
+                    admin = get_supabase_admin_client()
+                    return (
+                        admin.table("case_law_documents")
+                        .select("id, case_id, title, court, decision_year, decision_date, citation, official_source_url, source_url")
+                        .or_(f"title.ilike.%{query}%,citation.ilike.%{query}%")
+                        .limit(match_count)
+                        .execute()
+                    )
+                text_res = await asyncio.to_thread(_do_text_search)
                 docs = text_res.data or []
                 for idx, doc in enumerate(docs):
                     citations.append({
@@ -109,14 +112,16 @@ class CaseLawCorpusAgent:
                 errors.append(f"Case-law search error: {str(db_err)}")
         else:
             try:
-                admin = get_supabase_admin_client()
-                rpc_params = {
-                    "query_embedding": q_emb,
-                    "match_count": match_count,
-                    "filter_court": filter_court,
-                    "filter_year": filter_year,
-                }
-                rpc_res = admin.rpc("match_case_law_chunks", rpc_params).execute()
+                def _do_rpc():
+                    admin = get_supabase_admin_client()
+                    rpc_params = {
+                        "query_embedding": q_emb,
+                        "match_count": match_count,
+                        "filter_court": filter_court,
+                        "filter_year": filter_year,
+                    }
+                    return admin.rpc("match_case_law_chunks", rpc_params).execute()
+                rpc_res = await asyncio.to_thread(_do_rpc)
                 chunks = rpc_res.data or []
 
                 for idx, c in enumerate(chunks):

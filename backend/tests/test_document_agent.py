@@ -37,6 +37,7 @@ import fitz  # PyMuPDF
 import docx
 from PIL import Image
 
+from app.core.config import settings
 from app.services.document_extraction_service import (
     DocumentExtractionService,
     document_extraction_service,
@@ -50,7 +51,7 @@ from app.services.document_context_service import (
     ClauseExcerpt,
 )
 from app.services.document_agent import DocumentAgent, document_agent
-from app.services.multi_agent_orchestrator import MultiAgentOrchestrator, VALID_AGENT_IDS
+from app.services.multi_agent_orchestrator import MultiAgentOrchestrator, multi_agent_orchestrator, VALID_AGENT_IDS
 from app.api.v1.documents import get_document_data, _IN_MEMORY_DOCS_STORE
 
 
@@ -519,6 +520,8 @@ def run_all_tests():
 
     # Ensure zero network calls / rate-limiting during test runs
     document_context_service.model = None
+    multi_agent_orchestrator.model = None
+    settings.GEMINI_API_KEY = ""
 
     sync_tests = [
         ("1. Text-based PDF extraction", test_01_text_based_pdf_extraction),

@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 import logging
 from typing import Optional, List, Dict, Any
@@ -84,6 +85,7 @@ async def send_chat_message(
     user_id = current_user["id"]
     user_message = payload.message.strip()
 
+    correlation_id = str(uuid.uuid4())
     try:
         prior_messages = _load_conversation_messages(user_id, payload.conversation_id)
         pending = get_pending_follow_up(prior_messages + [{"role": "user", "content": user_message}])
@@ -93,15 +95,24 @@ async def send_chat_message(
         history = _history_for_analysis(prior_messages)
 
         if pending:
-            resolution = legal_query_analysis_service.resolve_follow_up(
-                pending["originalQuery"],
-                pending.get("followUpQuestion") or "",
-                user_message,
-            )
+            try:
+                resolution = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        legal_query_analysis_service.resolve_follow_up,
+                        pending["originalQuery"],
+                        pending.get("followUpQuestion") or "",
+                        user_message,
+                    ),
+                    timeout=4.0,
+                )
+            except Exception as e:
+                logger.warning(f"[CHAT_ROUTER][{correlation_id}] Follow-up resolution timed out or failed: {e}; treating as new query.")
+                resolution = {"resolved_query": user_message, "topic_switched": False}
+
             if resolution.get("topic_switched"):
                 resolved_query = None
                 conversation_state = None
-                logger.info("[CHAT_ROUTER] Topic switch detected; treating as new query.")
+                logger.info(f"[CHAT_ROUTER][{correlation_id}] Topic switch detected; treating as new query.")
             else:
                 resolved_query = resolution["resolved_query"]
                 conversation_state = build_resolved_state(
@@ -110,7 +121,7 @@ async def send_chat_message(
                     user_message,
                     resolved_query,
                 )
-                logger.info(f"[CHAT_ROUTER] Resolved follow-up query: {resolved_query}")
+                logger.info(f"[CHAT_ROUTER][{correlation_id}] Resolved follow-up query: {resolved_query}")
 
         # Multi-Agent Workflow Handling
         # If payload.selected_agents is explicitly passed:
@@ -142,20 +153,63 @@ async def send_chat_message(
                 detail="Please select at least one agent to proceed with consultation.",
             )
 
-        # Run multi-agent orchestrator
-        orch_res = await multi_agent_orchestrator.execute_orchestration(
-            query=user_message,
-            user_id=user_id,
-            selected_agents=validated_agents,
-            conversation_id=payload.conversation_id,
-            history=history,
-            resolved_query=resolved_query,
-            conversation_state=conversation_state,
-            generate_combined=bool(payload.generate_combined),
-            compare_sources=bool(payload.compare_sources),
-            verify_sources=bool(payload.verify_sources),
-            document_id=payload.document_id,
-        )
+        # Run multi-agent orchestrator with bounded 28s execution deadline
+        try:
+            orch_res = await asyncio.wait_for(
+                multi_agent_orchestrator.execute_orchestration(
+                    query=user_message,
+                    user_id=user_id,
+                    selected_agents=validated_agents,
+                    conversation_id=payload.conversation_id,
+                    history=history,
+                    resolved_query=resolved_query,
+                    conversation_state=conversation_state,
+                    generate_combined=bool(payload.generate_combined),
+                    compare_sources=bool(payload.compare_sources),
+                    verify_sources=bool(payload.verify_sources),
+                    document_id=payload.document_id,
+                    correlation_id=correlation_id,
+                ),
+                timeout=28.0,
+            )
+        except asyncio.TimeoutError:
+            logger.error(f"[CHAT_ROUTER][{correlation_id}] execute_orchestration exceeded 28.0s deadline; triggering fallback.")
+            orch_res = {
+                "success": True,
+                "selected_agents": validated_agents,
+                "individual_responses": {
+                    aid: {
+                        "agent_id": aid,
+                        "agent_name": aid,
+                        "status": "error",
+                        "answer": f"Agent '{aid}' timed out during execution.",
+                        "citations": [],
+                        "evidence": [],
+                        "sources": [],
+                        "provenance": "TIMEOUT",
+                        "retrieved_at": multi_agent_orchestrator._now_iso(),
+                        "errors": ["Request timeout limit reached (28s)."],
+                    }
+                    for aid in validated_agents
+                },
+                "combined_answer": {
+                    "available": True,
+                    "answer": f"The legal research consultation timed out coordinating active agents. Please select fewer agents or re-submit your query. [Request ID: {correlation_id}]",
+                    "citations": [],
+                    "synthesized_from": [],
+                    "generated_at": multi_agent_orchestrator._now_iso(),
+                },
+                "comparison": {
+                    "available": False,
+                    "summary": "Source comparison unavailable due to request timeout.",
+                    "agreements": [],
+                    "differences": [],
+                    "potential_conflicts": [],
+                    "freshness_flags": [],
+                    "conflicts": [],
+                },
+                "verification": None,
+            }
 
         indiv_responses = orch_res.get("individual_responses", {})
         rag_result = indiv_responses.get("statutory_rag")
@@ -171,50 +225,54 @@ async def send_chat_message(
         verification_res = orch_res.get("verification")
 
         conversation_id = payload.conversation_id or str(uuid.uuid4())
-        message_id = str(uuid.uuid4())
+        message_id = correlation_id
 
-        admin_supabase = get_supabase_admin_client()
-        conv_check = admin_supabase.table("conversations").select("id").eq("id", conversation_id).eq("user_id", user_id).execute()
-        if not conv_check.data:
-            title = user_message[:40] + "..." if len(user_message) > 40 else user_message
-            admin_supabase.table("conversations").insert({
-                "id": conversation_id,
+        # Persist conversation & messages safely (wrapped to prevent DB glitches from crashing chat response)
+        try:
+            admin_supabase = get_supabase_admin_client()
+            conv_check = admin_supabase.table("conversations").select("id").eq("id", conversation_id).eq("user_id", user_id).execute()
+            if not conv_check.data:
+                title = user_message[:40] + "..." if len(user_message) > 40 else user_message
+                admin_supabase.table("conversations").insert({
+                    "id": conversation_id,
+                    "user_id": user_id,
+                    "title": title,
+                }).execute()
+
+            user_msg_id = str(uuid.uuid4())
+            admin_supabase.table("messages").insert({
+                "id": user_msg_id,
+                "conversation_id": conversation_id,
                 "user_id": user_id,
-                "title": title,
+                "role": "user",
+                "content": user_message,
             }).execute()
 
-        user_msg_id = str(uuid.uuid4())
-        admin_supabase.table("messages").insert({
-            "id": user_msg_id,
-            "conversation_id": conversation_id,
-            "user_id": user_id,
-            "role": "user",
-            "content": user_message,
-        }).execute()
+            assistant_content = combined_answer.get("answer") if (combined_answer and combined_answer.get("answer")) else "Multi-Agent Consultation Response"
+            follow_up = rag_result.get("follow_up") if rag_result else {"required": False, "question": None, "reason": None}
+            if not follow_up:
+                follow_up = {"required": False, "question": None, "reason": None}
 
-        assistant_content = combined_answer.get("answer") if (combined_answer and combined_answer.get("answer")) else "Multi-Agent Consultation Response"
-        follow_up = rag_result.get("follow_up") if rag_result else {"required": False, "question": None, "reason": None}
-        if not follow_up:
-            follow_up = {"required": False, "question": None, "reason": None}
-
-        admin_supabase.table("messages").insert({
-            "id": message_id,
-            "conversation_id": conversation_id,
-            "user_id": user_id,
-            "role": "assistant",
-            "content": assistant_content,
-            "metadata": {
-                "follow_up": follow_up,
-                "conversation_state": conversation_state,
-                "selected_agents": validated_agents,
-                "individual_responses": indiv_responses,
-                "combined_answer": combined_answer,
-                "comparison": comparison_res,
-                "verification": verification_res,
-                "rag": rag_result,
-                "web": web_result,
-            },
-        }).execute()
+            admin_supabase.table("messages").insert({
+                "id": message_id,
+                "conversation_id": conversation_id,
+                "user_id": user_id,
+                "role": "assistant",
+                "content": assistant_content,
+                "metadata": {
+                    "follow_up": follow_up,
+                    "conversation_state": conversation_state,
+                    "selected_agents": validated_agents,
+                    "individual_responses": indiv_responses,
+                    "combined_answer": combined_answer,
+                    "comparison": comparison_res,
+                    "verification": verification_res,
+                    "rag": rag_result,
+                    "web": web_result,
+                },
+            }).execute()
+        except Exception as db_err:
+            logger.warning(f"[CHAT_ROUTER][{correlation_id}] Supabase persistence warning: {db_err}")
 
         return {
             "query": user_message,

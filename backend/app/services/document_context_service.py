@@ -10,6 +10,7 @@ Synthesizes query-relevant context from extracted legal documents:
 6. Verifies cited excerpts against the source text to prevent hallucinated citations.
 """
 
+import asyncio
 import json
 import logging
 from typing import Dict, List, Any, Optional, Tuple
@@ -220,7 +221,8 @@ INSTRUCTIONS:
         raw_json = None
         if self.model:
             try:
-                response = self.model.generate_content(
+                response = await asyncio.to_thread(
+                    self.model.generate_content,
                     prompt,
                     generation_config={"response_mime_type": "application/json"}
                 )

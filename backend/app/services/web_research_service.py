@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 import json
 import logging
@@ -49,7 +50,7 @@ If evidence is insufficient, say live research is inconclusive and why."""
     async def _fetch_india_code_results(self, query: str) -> List[Dict[str, Any]]:
         url = f"{INDIA_CODE_SEARCH}?q={quote(query)}"
         try:
-            async with httpx.AsyncClient(timeout=20.0) as client:
+            async with httpx.AsyncClient(timeout=httpx.Timeout(6.0, connect=2.5)) as client:
                 res = await client.get(url, headers={"Accept": "application/json"})
                 if res.status_code != 200:
                     return []
@@ -153,7 +154,7 @@ If evidence is insufficient, say live research is inconclusive and why."""
             for model_name in MODELS:
                 try:
                     model = genai.GenerativeModel(model_name)
-                    response = model.generate_content(full_prompt)
+                    response = await asyncio.to_thread(model.generate_content, full_prompt)
                     assistant_content = response.text.strip()
                     verification["verified"] = True
                     break
@@ -214,7 +215,7 @@ Return ONLY JSON:
   "conflicts": []
 }}"""
         try:
-            response = self.model.generate_content(prompt)
+            response = await asyncio.to_thread(self.model.generate_content, prompt)
             raw_text = response.text
             if "```json" in raw_text:
                 json_str = raw_text.split("```json")[1].split("```")[0].strip()

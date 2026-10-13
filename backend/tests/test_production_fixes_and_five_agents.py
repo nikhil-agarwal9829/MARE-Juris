@@ -223,6 +223,7 @@ async def test_document_agent_alone_execution():
 async def test_attached_doc_without_document_agent_selected():
     """Rule 7: If Document Agent is not selected, do not invoke it merely because doc is attached."""
     orch = MultiAgentOrchestrator()
+    orch.model = None
     mock_doc = {
         "document_id": "doc-test-1",
         "file_name": "Agreement.pdf",
@@ -257,6 +258,7 @@ async def test_attached_doc_without_document_agent_selected():
 async def test_general_legal_query_with_doc_attached_does_not_pollute_research():
     """Rule 9: If user asks an unrelated general legal question, do not force the document into research query."""
     orch = MultiAgentOrchestrator()
+    orch.model = None
     mock_doc = {
         "document_id": "doc-test-1",
         "file_name": "Cover_Letter.docx",

@@ -73,7 +73,7 @@ _DEFAULT_TOKEN = object()
 class LiveCaseLawAgent:
     """Agent 4: Live Case-Law API Research Agent."""
 
-    def __init__(self, token: Any = _DEFAULT_TOKEN, timeout: float = 20.0, api_token: Any = None):
+    def __init__(self, token: Any = _DEFAULT_TOKEN, timeout: float = 7.0, api_token: Any = None):
         if api_token is not None:
             self.token = api_token
         elif token is _DEFAULT_TOKEN:
@@ -234,13 +234,13 @@ class LiveCaseLawAgent:
             f"page={max(0, page)}, query_terms={len(formatted_query.split())}"
         )
 
-        max_retries = 2
+        max_retries = 1
         last_error = None
         data = None
 
         for attempt in range(max_retries + 1):
             try:
-                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                async with httpx.AsyncClient(timeout=httpx.Timeout(self.timeout, connect=3.0)) as client:
                     res = await client.post(url, headers=headers, params=params)
 
                     if res.status_code == 401:
@@ -361,13 +361,13 @@ class LiveCaseLawAgent:
             "Accept": "application/json"
         }
 
-        max_retries = 2
+        max_retries = 1
         last_error = None
         data = None
 
         for attempt in range(max_retries + 1):
             try:
-                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                async with httpx.AsyncClient(timeout=httpx.Timeout(self.timeout, connect=3.0)) as client:
                     res = await client.post(url, headers=headers)
 
                     if res.status_code == 401:

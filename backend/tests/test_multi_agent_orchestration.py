@@ -31,6 +31,7 @@ backend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
+from app.core.config import settings
 from app.services.multi_agent_orchestrator import (
     MultiAgentOrchestrator,
     VALID_AGENT_IDS,
@@ -404,6 +405,8 @@ async def test_18_compliance_agent_untouched():
 
 async def run_all_18_tests():
     print("Running all 18 Multi-Agent Orchestration unit tests...")
+    settings.GEMINI_API_KEY = None
+    web_research_service.model = None
     await test_01_one_selected_agent()
     await test_02_two_selected_agents()
     await test_03_three_selected_agents()

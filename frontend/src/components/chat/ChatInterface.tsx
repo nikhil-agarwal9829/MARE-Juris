@@ -450,9 +450,31 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         }),
       });
 
-      const data = await res.json();
+      let data: any = null;
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        try {
+          data = await res.json();
+        } catch {
+          data = null;
+        }
+      } else {
+        const rawText = await res.text().catch(() => '');
+        if (res.status === 504) {
+          throw new Error('The legal research request timed out on the gateway (HTTP 504). Please try again or select fewer agents (e.g., Statutory RAG + Case-Law Corpus).');
+        }
+        throw new Error(rawText.slice(0, 300) || `Request failed with HTTP status ${res.status}.`);
+      }
+
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to fetch multi-agent legal response');
+        if (res.status === 504) {
+          throw new Error(data?.error || 'The legal research request timed out on the gateway (HTTP 504). Please try again or select fewer agents.');
+        }
+        throw new Error(data?.error || `Failed to fetch multi-agent legal response (${res.status})`);
+      }
+
+      if (!data) {
+        throw new Error('Received an empty response from the server. Please try again.');
       }
 
       if (!activeConvId && data.conversation_id) {

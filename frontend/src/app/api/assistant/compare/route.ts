@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 60;
+
 const getBackendUrl = (req: Request) => {
   if (process.env.BACKEND_INTERNAL_URL) {
     return process.env.BACKEND_INTERNAL_URL.replace(/\/+$/, '');
