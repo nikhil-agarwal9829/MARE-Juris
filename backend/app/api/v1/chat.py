@@ -24,6 +24,11 @@ router = APIRouter(prefix="/chat", tags=["AI Legal Assistant & Chat"])
 class ChatMessageRequest(BaseModel):
     message: str
     conversation_id: Optional[str] = None
+    selected_agents: Optional[List[str]] = None
+    generate_combined: Optional[bool] = True
+    compare_sources: Optional[bool] = True
+    verify_sources: Optional[bool] = False
+    document_id: Optional[str] = None
 
 
 class ChatMessageResponse(BaseModel):
@@ -34,9 +39,15 @@ class ChatMessageResponse(BaseModel):
     role: str
     follow_up: Dict[str, Any]
     conversation_state: Optional[Dict[str, Any]] = None
+    # Backward compatibility
     rag: Optional[Dict[str, Any]] = None
     web: Optional[Dict[str, Any]] = None
-    comparison: Dict[str, Any]
+    comparison: Optional[Dict[str, Any]] = None
+    # Multi-Agent additions
+    selected_agents: Optional[List[str]] = None
+    individual_responses: Optional[Dict[str, Any]] = None
+    combined_answer: Optional[Dict[str, Any]] = None
+    verification: Optional[Dict[str, Any]] = None
 
 
 def _load_conversation_messages(user_id: str, conversation_id: Optional[str]) -> List[Dict[str, Any]]:
@@ -101,69 +112,57 @@ async def send_chat_message(
                 )
                 logger.info(f"[CHAT_ROUTER] Resolved follow-up query: {resolved_query}")
 
-        try:
-            rag_result = rag_service.process_query(
-                user_id=user_id,
-                query_text=user_message,
-                conversation_id=payload.conversation_id,
-                persist=False,
-                history=history,
-                skip_followup=bool(resolved_query),
-                resolved_query=resolved_query,
-                bypass_classifier=bool(resolved_query),
-                conversation_state=conversation_state,
-            )
-        except Exception as rag_err:
-            logger.error(f"[CHAT_ROUTER] RAG pipeline failed: {rag_err}")
-            rag_result = {
-                "status": "error",
-                "answer": "Controlled-corpus retrieval is currently unavailable.",
-                "citations": [],
-                "evidence": [],
-                "sources": [],
-                "verification": {"verified": False, "issues": [str(rag_err)]},
-                "follow_up": {"required": False, "question": None, "reason": None},
-                "is_filtered": False,
-                "effective_query": resolved_query or user_message,
-                "resolved_query": resolved_query,
-                "conversation_state": conversation_state,
-            }
-
-        is_filtered = rag_result.get("is_filtered", False)
-        follow_up = rag_result.get("follow_up") or {
-            "required": rag_result.get("status") == "follow_up",
-            "question": None,
-            "reason": None,
-        }
-        needs_clarification = follow_up.get("required") or rag_result.get("status") == "follow_up"
-
-        if is_filtered:
-            web_result = {
-                "status": "unverified",
-                "answer": "Web research skipped because the query is not legally relevant or is filtered.",
-                "citations": [],
-                "evidence": [],
-                "sources": [],
-                "verification": {"verified": False, "issues": ["Query is filtered"]},
-            }
-        elif needs_clarification:
-            web_result = None
+        # Multi-Agent Workflow Handling
+        # If payload.selected_agents is explicitly passed:
+        if payload.selected_agents is not None:
+            if not payload.selected_agents:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Please select at least one agent to proceed with consultation.",
+                )
+            selected_agents = payload.selected_agents
         else:
-            effective = rag_result.get("effective_query") or resolved_query or user_message
-            try:
-                web_result = await web_research_service.process_query(effective)
-            except Exception as web_err:
-                logger.error(f"[CHAT_ROUTER] Web pipeline failed: {web_err}")
-                web_result = {
-                    "status": "error",
-                    "answer": "LIVE OFFICIAL WEB RESEARCH is currently unavailable.",
-                    "citations": [],
-                    "evidence": [],
-                    "sources": [],
-                    "verification": {"verified": False, "issues": [str(web_err)]},
-                }
+            # Default backward-compatible agents: statutory_rag + official_web
+            selected_agents = ["statutory_rag", "official_web"]
 
-        conversation_id = rag_result.get("conversation_id", payload.conversation_id) or str(uuid.uuid4())
+        # Validate agent IDs
+        from app.services.multi_agent_orchestrator import multi_agent_orchestrator
+        validated_agents = multi_agent_orchestrator.validate_agent_ids(selected_agents)
+        if not validated_agents:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="None of the selected agents are valid. Supported agents: statutory_rag, official_web, case_law_corpus, live_case_law, document_agent.",
+            )
+
+        # Run multi-agent orchestrator
+        orch_res = await multi_agent_orchestrator.execute_orchestration(
+            query=user_message,
+            user_id=user_id,
+            selected_agents=validated_agents,
+            conversation_id=payload.conversation_id,
+            history=history,
+            resolved_query=resolved_query,
+            conversation_state=conversation_state,
+            generate_combined=bool(payload.generate_combined),
+            compare_sources=bool(payload.compare_sources),
+            verify_sources=bool(payload.verify_sources),
+            document_id=payload.document_id,
+        )
+
+        indiv_responses = orch_res.get("individual_responses", {})
+        rag_result = indiv_responses.get("statutory_rag")
+        web_result = indiv_responses.get("official_web")
+        combined_answer = orch_res.get("combined_answer")
+        comparison_res = orch_res.get("comparison") or {
+            "available": False,
+            "agreements": [],
+            "differences": [],
+            "freshness_flags": [],
+            "conflicts": [],
+        }
+        verification_res = orch_res.get("verification")
+
+        conversation_id = payload.conversation_id or str(uuid.uuid4())
         message_id = str(uuid.uuid4())
 
         admin_supabase = get_supabase_admin_client()
@@ -185,17 +184,10 @@ async def send_chat_message(
             "content": user_message,
         }).execute()
 
-        assistant_content = "Dual-Answer Response"
-        meta_state = rag_result.get("conversation_state")
-        if needs_clarification:
-            assistant_content = rag_result.get("answer") or follow_up.get("question") or "Clarification needed."
-            meta_state = build_pending_state(
-                user_message if not pending else pending.get("originalQuery", user_message),
-                follow_up.get("question") or "",
-                follow_up.get("reason"),
-            )
-            if pending:
-                meta_state["originalQuery"] = pending.get("originalQuery", user_message)
+        assistant_content = combined_answer.get("answer") if (combined_answer and combined_answer.get("answer")) else "Multi-Agent Consultation Response"
+        follow_up = rag_result.get("follow_up") if rag_result else {"required": False, "question": None, "reason": None}
+        if not follow_up:
+            follow_up = {"required": False, "question": None, "reason": None}
 
         admin_supabase.table("messages").insert({
             "id": message_id,
@@ -205,37 +197,37 @@ async def send_chat_message(
             "content": assistant_content,
             "metadata": {
                 "follow_up": follow_up,
-                "conversation_state": meta_state,
-                "rag": None if needs_clarification else rag_result,
+                "conversation_state": conversation_state,
+                "selected_agents": validated_agents,
+                "individual_responses": indiv_responses,
+                "combined_answer": combined_answer,
+                "comparison": comparison_res,
+                "verification": verification_res,
+                "rag": rag_result,
                 "web": web_result,
-                "is_filtered": is_filtered,
-                "query_analysis": rag_result.get("query_analysis"),
-                "resolved_query": rag_result.get("resolved_query") or resolved_query,
             },
         }).execute()
 
-        effective_out = rag_result.get("effective_query") or resolved_query
-
         return {
             "query": user_message,
-            "resolved_query": effective_out,
+            "resolved_query": resolved_query,
             "conversation_id": conversation_id,
             "message_id": message_id,
             "role": "assistant",
             "follow_up": follow_up,
-            "conversation_state": meta_state,
-            "rag": None if needs_clarification else rag_result,
+            "conversation_state": conversation_state,
+            "rag": rag_result,
             "web": web_result,
-            "comparison": {
-                "available": False,
-                "agreements": [],
-                "differences": [],
-                "freshness_flags": [],
-                "conflicts": [],
-            },
+            "comparison": comparison_res,
+            "selected_agents": validated_agents,
+            "individual_responses": indiv_responses,
+            "combined_answer": combined_answer,
+            "verification": verification_res,
         }
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"[CHAT_ROUTER] Error executing dual pipelines: {str(e)}")
+        logger.error(f"[CHAT_ROUTER] Error executing multi-agent pipelines: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error executing legal RAG engine: {str(e)}",

@@ -29,7 +29,15 @@ export async function POST(request: Request) {
     const token = session?.access_token || '';
 
     const body = await request.json();
-    const { message, conversation_id } = body;
+    const {
+      message,
+      conversation_id,
+      selected_agents,
+      generate_combined,
+      compare_sources,
+      verify_sources,
+      document_id,
+    } = body;
 
     if (!message || typeof message !== 'string' || !message.trim()) {
       return NextResponse.json({ error: 'Message payload cannot be empty.' }, { status: 400 });
@@ -62,6 +70,11 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         message: message.trim(),
         conversation_id: conversation_id || null,
+        selected_agents: selected_agents || undefined,
+        generate_combined: generate_combined !== undefined ? generate_combined : true,
+        compare_sources: compare_sources !== undefined ? compare_sources : true,
+        verify_sources: verify_sources !== undefined ? verify_sources : false,
+        document_id: document_id || null,
       }),
     });
 

@@ -30,6 +30,14 @@ class Settings(BaseSettings):
     # Gemini LLM Configuration
     GEMINI_API_KEY: Optional[str] = None
 
+    # Indian Kanoon API Configuration
+    INDIANKANOON_API_TOKEN: Optional[str] = None
+
+    # Document Agent & OCR Configuration
+    TESSERACT_CMD: Optional[str] = None
+    MAX_DOCUMENT_SIZE_MB: int = 50
+    MAX_DOCUMENT_PAGES: int = 200
+
     model_config = SettingsConfigDict(
         env_file=(".env", "../.env"),
         env_file_encoding="utf-8",

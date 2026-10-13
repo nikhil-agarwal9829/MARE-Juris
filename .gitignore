@@ -48,3 +48,9 @@ Thumbs.db
 # Scratch & Temporary Logs
 scratch/
 *.log
+reportfin.txt
+
+# Graphify cache & backups
+graphify-out/cache/
+graphify-out/20*/
+graphify-out/converted/
