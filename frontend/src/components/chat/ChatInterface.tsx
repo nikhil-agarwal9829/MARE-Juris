@@ -373,6 +373,16 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Vercel serverless functions enforce a 4.5 MB request body limit
+    const MAX_VERCEL_BYTES = 4.5 * 1024 * 1024;
+    if (file.size > MAX_VERCEL_BYTES) {
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      setDocUploadError(`File size (${sizeMb} MB) exceeds the 4.5 MB serverless upload limit. Please select a document smaller than 4.5 MB.`);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
     setUploadingDoc(true);
     setDocUploadError(null);
     try {
@@ -645,7 +655,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 <div className="flex items-center gap-2">
                   <SlidersHorizontal className="w-4 h-4 text-primary" />
                   <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                    Select Active Legal Agents ({selectedAgentIds.length}/4)
+                    Select Active Legal Agents ({selectedAgentIds.length}/{AVAILABLE_AGENTS.length})
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
@@ -676,7 +686,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               {showAgentConfig && (
                 <>
                   {/* Agent Selection Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 pt-1">
                     {AVAILABLE_AGENTS.map((agent) => {
                       const isSelected = selectedAgentIds.includes(agent.id);
                       const Icon = agent.icon;

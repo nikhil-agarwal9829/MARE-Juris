@@ -32,6 +32,16 @@ class Settings(BaseSettings):
 
     # Indian Kanoon API Configuration
     INDIANKANOON_API_TOKEN: Optional[str] = None
+    INDIAN_KANOON_API_TOKEN: Optional[str] = None
+
+    def get_indiankanoon_token(self) -> Optional[str]:
+        token = os.getenv("INDIAN_KANOON_API_TOKEN") or os.getenv("INDIANKANOON_API_TOKEN")
+        if token and str(token).strip():
+            return str(token).strip()
+        val = self.INDIAN_KANOON_API_TOKEN or self.INDIANKANOON_API_TOKEN
+        if val and str(val).strip():
+            return str(val).strip()
+        return None
 
     # Document Agent & OCR Configuration
     TESSERACT_CMD: Optional[str] = None

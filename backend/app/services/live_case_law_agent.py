@@ -19,6 +19,7 @@ Features:
 - Handles rate-limits, timeouts, missing fields, pagination, malformed JSON, and empty results.
 """
 
+import asyncio
 import re
 import logging
 from datetime import datetime, timezone
@@ -72,12 +73,23 @@ _DEFAULT_TOKEN = object()
 class LiveCaseLawAgent:
     """Agent 4: Live Case-Law API Research Agent."""
 
-    def __init__(self, token: Any = _DEFAULT_TOKEN, timeout: float = 20.0):
-        if token is _DEFAULT_TOKEN:
-            self.token = settings.INDIANKANOON_API_TOKEN
+    def __init__(self, token: Any = _DEFAULT_TOKEN, timeout: float = 20.0, api_token: Any = None):
+        if api_token is not None:
+            self.token = api_token
+        elif token is _DEFAULT_TOKEN:
+            self.token = _DEFAULT_TOKEN
         else:
             self.token = token
         self.timeout = timeout
+
+    def _resolve_token(self) -> Optional[str]:
+        """Resolves token dynamically from instance, settings, or environment."""
+        if self.token is not _DEFAULT_TOKEN:
+            if self.token is None:
+                return None
+            val = str(self.token).strip()
+            return val if val else None
+        return settings.get_indiankanoon_token()
 
     def _now_iso(self) -> str:
         return datetime.now(timezone.utc).isoformat()
@@ -129,7 +141,8 @@ class LiveCaseLawAgent:
         sources_queried = []
 
         # 1. Primary Source: Indian Kanoon API
-        if not self.token:
+        token = self._resolve_token()
+        if not token:
             errors.append("INDIANKANOON_API_TOKEN is not configured in backend environment.")
         else:
             sources_queried.append("Indian Kanoon API")
@@ -140,7 +153,8 @@ class LiveCaseLawAgent:
                 to_date=to_date,
                 page=page,
                 max_results=max_results,
-                retrieval_ts=retrieval_ts
+                retrieval_ts=retrieval_ts,
+                token=token,
             )
             if ik_err:
                 errors.append(f"Indian Kanoon: {ik_err}")
@@ -196,12 +210,17 @@ class LiveCaseLawAgent:
         to_date: Optional[str],
         page: int,
         max_results: int,
-        retrieval_ts: str
+        retrieval_ts: str,
+        token: Optional[str] = None,
     ) -> tuple[List[Dict[str, Any]], Optional[str]]:
+        resolved_token = token or self._resolve_token()
+        if not resolved_token:
+            return [], "INDIANKANOON_API_TOKEN is not configured in backend environment."
+
         formatted_query = self._build_search_query(query, court=court, from_date=from_date, to_date=to_date)
         url = f"{IK_API_BASE}/search/"
         headers = {
-            "Authorization": f"Token {self.token}",
+            "Authorization": f"Token {resolved_token}",
             "Accept": "application/json"
         }
         params = {
@@ -209,27 +228,57 @@ class LiveCaseLawAgent:
             "pagenum": max(0, page)
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                res = await client.post(url, headers=headers, params=params)
+        # Safe diagnostic log without credentials
+        logger.info(
+            f"[AGENT4] Dispatching Indian Kanoon search: token_configured=True, "
+            f"page={max(0, page)}, query_terms={len(formatted_query.split())}"
+        )
 
-                if res.status_code == 403:
-                    return [], "HTTP 403 Forbidden: Invalid or unauthorized API token."
-                elif res.status_code == 429:
-                    return [], "HTTP 429: Rate limit exceeded on Indian Kanoon API."
-                elif res.status_code != 200:
-                    return [], f"HTTP {res.status_code} error from API."
+        max_retries = 2
+        last_error = None
+        data = None
 
-                try:
-                    data = res.json()
-                except Exception:
-                    return [], "Malformed JSON response received from Indian Kanoon API."
+        for attempt in range(max_retries + 1):
+            try:
+                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                    res = await client.post(url, headers=headers, params=params)
 
-        except httpx.TimeoutException:
-            return [], "Request timed out connecting to Indian Kanoon."
-        except Exception as e:
-            logger.warning(f"[AGENT4] Indian Kanoon search error: {e}")
-            return [], f"Request error: {str(e)}"
+                    if res.status_code == 401:
+                        return [], "HTTP 401 Unauthorized: Invalid or missing API token."
+                    elif res.status_code == 403:
+                        return [], "HTTP 403 Forbidden: Invalid or unauthorized API token."
+                    elif res.status_code == 429:
+                        return [], "HTTP 429: Rate limit exceeded on Indian Kanoon API."
+                    elif res.status_code in (502, 503, 504):
+                        if attempt < max_retries:
+                            await asyncio.sleep(0.5 * (attempt + 1))
+                            continue
+                        return [], f"HTTP {res.status_code} error: Indian Kanoon server temporarily unavailable."
+                    elif res.status_code != 200:
+                        return [], f"HTTP {res.status_code} error from API."
+
+                    try:
+                        data = res.json()
+                        break  # Successful response parsed
+                    except Exception:
+                        return [], "Malformed JSON response received from Indian Kanoon API."
+
+            except (httpx.TimeoutException, httpx.ConnectError) as net_err:
+                last_error = net_err
+                if attempt < max_retries:
+                    await asyncio.sleep(0.5 * (attempt + 1))
+                    continue
+                if isinstance(net_err, httpx.TimeoutException):
+                    return [], "Request timed out connecting to Indian Kanoon."
+                return [], f"Connection error connecting to Indian Kanoon: {str(net_err)}"
+            except Exception as e:
+                logger.warning(f"[AGENT4] Indian Kanoon search unexpected error: {e}")
+                return [], f"Request error: {str(e)}"
+
+        if data is None:
+            if isinstance(last_error, httpx.TimeoutException):
+                return [], "Request timed out connecting to Indian Kanoon."
+            return [], f"Request error: {str(last_error)}" if last_error else "Empty response received."
 
         if not isinstance(data, dict):
             return [], "Unexpected response format from Indian Kanoon API."
@@ -256,10 +305,8 @@ class LiveCaseLawAgent:
             citation = item.get("citation") or None
             item_court = item.get("docsource") or item.get("court") or None
             
-            # The search API provides publishdate (the date the document was uploaded/published to IK)
-            # It does NOT guarantee the date of judgment delivery.
             publication_date = item.get("publishdate") or item.get("date") or None
-            decision_date = None  # Unavailable from search results; kept null per instructions
+            decision_date = None
 
             source_url = f"https://indiankanoon.org/doc/{doc_id}/" if doc_id else None
 
@@ -287,8 +334,9 @@ class LiveCaseLawAgent:
         as specified in the official documentation.
         """
         retrieval_ts = self._now_iso()
+        resolved_token = self._resolve_token()
 
-        if not self.token:
+        if not resolved_token:
             return {
                 "doc_id": doc_id,
                 "case_title": None,
@@ -309,36 +357,57 @@ class LiveCaseLawAgent:
 
         url = f"{IK_API_BASE}/doc/{quote(str(doc_id).strip())}/"
         headers = {
-            "Authorization": f"Token {self.token}",
+            "Authorization": f"Token {resolved_token}",
             "Accept": "application/json"
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                res = await client.post(url, headers=headers)
+        max_retries = 2
+        last_error = None
+        data = None
 
-                if res.status_code == 403:
-                    return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 403 Forbidden: Invalid or unauthorized API token.")
-                elif res.status_code == 404:
-                    return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 404: Document not found on Indian Kanoon.")
-                elif res.status_code == 429:
-                    return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 429: Rate limit exceeded on Indian Kanoon API.")
-                elif res.status_code != 200:
-                    return self._build_doc_error_response(doc_id, retrieval_ts, f"HTTP {res.status_code} error from API.")
+        for attempt in range(max_retries + 1):
+            try:
+                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                    res = await client.post(url, headers=headers)
 
-                try:
-                    data = res.json()
-                except Exception:
-                    return self._build_doc_error_response(doc_id, retrieval_ts, "Malformed JSON response received from Indian Kanoon API.")
+                    if res.status_code == 401:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 401 Unauthorized: Invalid or missing API token.")
+                    elif res.status_code == 403:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 403 Forbidden: Invalid or unauthorized API token.")
+                    elif res.status_code == 404:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 404: Document not found on Indian Kanoon.")
+                    elif res.status_code == 429:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, "HTTP 429: Rate limit exceeded on Indian Kanoon API.")
+                    elif res.status_code in (502, 503, 504):
+                        if attempt < max_retries:
+                            await asyncio.sleep(0.5 * (attempt + 1))
+                            continue
+                        return self._build_doc_error_response(doc_id, retrieval_ts, f"HTTP {res.status_code} error: Indian Kanoon server temporarily unavailable.")
+                    elif res.status_code != 200:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, f"HTTP {res.status_code} error from API.")
 
-        except httpx.TimeoutException:
-            return self._build_doc_error_response(doc_id, retrieval_ts, "Request timed out connecting to Indian Kanoon.")
-        except Exception as e:
-            logger.warning(f"[AGENT4] Full document retrieval error: {e}")
-            return self._build_doc_error_response(doc_id, retrieval_ts, f"Request error: {str(e)}")
+                    try:
+                        data = res.json()
+                        break
+                    except Exception:
+                        return self._build_doc_error_response(doc_id, retrieval_ts, "Malformed JSON response received from Indian Kanoon API.")
 
-        if not isinstance(data, dict):
-            return self._build_doc_error_response(doc_id, retrieval_ts, "Unexpected response format from Indian Kanoon API.")
+            except (httpx.TimeoutException, httpx.ConnectError) as net_err:
+                last_error = net_err
+                if attempt < max_retries:
+                    await asyncio.sleep(0.5 * (attempt + 1))
+                    continue
+                if isinstance(net_err, httpx.TimeoutException):
+                    return self._build_doc_error_response(doc_id, retrieval_ts, "Request timed out connecting to Indian Kanoon.")
+                return self._build_doc_error_response(doc_id, retrieval_ts, f"Connection error: {str(net_err)}")
+            except Exception as e:
+                logger.warning(f"[AGENT4] Full document retrieval error: {e}")
+                return self._build_doc_error_response(doc_id, retrieval_ts, f"Request error: {str(e)}")
+
+        if data is None:
+            if isinstance(last_error, httpx.TimeoutException):
+                return self._build_doc_error_response(doc_id, retrieval_ts, "Request timed out connecting to Indian Kanoon.")
+            return self._build_doc_error_response(doc_id, retrieval_ts, f"Request error: {str(last_error)}" if last_error else "Empty response received.")
 
         raw_doc_html = data.get("doc", "")
         clean_text = _clean_html_snippet(raw_doc_html) if raw_doc_html else None

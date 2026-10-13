@@ -1,9 +1,9 @@
 {
   "README.md": {
-    "mtime": 1787760103.6420636,
-    "seen": 1787760294.785073,
-    "ast_hash": "8fc56b80e3a1a4c617d978cdaa285a29",
-    "semantic_hash": "8fc56b80e3a1a4c617d978cdaa285a29"
+    "mtime": 1791887339.888319,
+    "seen": 1791892437.0624394,
+    "ast_hash": "8f0468cc577b2e4a2e5b33c8c41b6815",
+    "semantic_hash": ""
   },
   "docs/ARCHITECTURE.md": {
     "mtime": 1787769918.2252412,
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "backend/app/core/config.py": {
-    "mtime": 1789302303.4486148,
-    "seen": 1789302881.6308148,
-    "ast_hash": "42a82a67f482ea63892981ee4abc803d",
+    "mtime": 1791892088.365768,
+    "seen": 1791892437.0624394,
+    "ast_hash": "5f88143a2f7ea35f49b03f74deb10280",
     "semantic_hash": ""
   },
   "backend/app/db/supabase.py": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "backend/app/main.py": {
-    "mtime": 1789148274.9240441,
-    "seen": 1789195413.2030084,
-    "ast_hash": "d5cba9f13a44a0efaf48abab523e7261",
+    "mtime": 1791885157.2285662,
+    "seen": 1791885827.5624695,
+    "ast_hash": "91907cec9ef09cd4acf56756c7f942d6",
     "semantic_hash": ""
   },
   "backend/app/services/email_service.py": {
@@ -132,9 +132,9 @@
     "semantic_hash": ""
   },
   "backend/requirements.txt": {
-    "mtime": 1789446235.6349945,
-    "seen": 1789447119.2780375,
-    "ast_hash": "b548674f9889239f31890ee7de6f5259",
+    "mtime": 1791886986.121957,
+    "seen": 1791892437.0624394,
+    "ast_hash": "4058a7a121bd5ead87373ee682733467",
     "semantic_hash": ""
   },
   "docs/SUPABASE_SETUP.md": {
@@ -288,9 +288,9 @@
     "semantic_hash": ""
   },
   "backend/app/api/v1/chat.py": {
-    "mtime": 1789446971.320088,
-    "seen": 1789447119.2780375,
-    "ast_hash": "b12b9f3edabd388b60f59146df901cad",
+    "mtime": 1791890785.6264615,
+    "seen": 1791892437.0624394,
+    "ast_hash": "349de88adc8d7dc26a2a0efa6a8101b3",
     "semantic_hash": ""
   },
   "backend/app/services/rag_service.py": {
@@ -300,9 +300,9 @@
     "semantic_hash": ""
   },
   "frontend/src/app/api/assistant/route.ts": {
-    "mtime": 1789446235.6417413,
-    "seen": 1789447119.2780375,
-    "ast_hash": "bc18746109250db849ffc0ce0b8a8a2e",
+    "mtime": 1791885310.7449734,
+    "seen": 1791885827.563065,
+    "ast_hash": "0c9f9b8101f8a4909eeafd5f7fe93962",
     "semantic_hash": ""
   },
   "frontend/src/app/chat/page.tsx": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "frontend/src/components/chat/ChatInterface.tsx": {
-    "mtime": 1789446972.198102,
-    "seen": 1789447119.2780375,
-    "ast_hash": "e9e792f349989288da9cadf82268812c",
+    "mtime": 1791891323.3798745,
+    "seen": 1791892437.0624394,
+    "ast_hash": "4f4cddb9c6bb54bd93b933d4cb732ee7",
     "semantic_hash": ""
   },
   "frontend/src/components/navigation/Navbar.tsx": {
@@ -336,8 +336,8 @@
     "semantic_hash": ""
   },
   "backend/app/services/legal_classifier.py": {
-    "mtime": 1789066692.3657188,
-    "seen": 1789146400.3648314,
+    "mtime": 1789449495.688393,
+    "seen": 1791813006.83778,
     "ast_hash": "5b3c19f77a394aea303a255a5e4930b2",
     "semantic_hash": ""
   },
@@ -372,9 +372,9 @@
     "semantic_hash": ""
   },
   "frontend/src/app/api/compliance/route.ts": {
-    "mtime": 1789409735.8257942,
-    "seen": 1789410878.0564213,
-    "ast_hash": "f03e5a5177deafecefdae489cd4ae229",
+    "mtime": 1789463032.4255235,
+    "seen": 1791813006.83778,
+    "ast_hash": "f1958c571e180d1c407fc9aebe111ac3",
     "semantic_hash": ""
   },
   "frontend/src/app/compliance/page.tsx": {
@@ -420,9 +420,9 @@
     "semantic_hash": ""
   },
   "frontend/src/app/api/assistant/compare/route.ts": {
-    "mtime": 1789283272.1065483,
-    "seen": 1789283308.4165206,
-    "ast_hash": "47cd974a6ed589dc8d66e0e83e9be3e5",
+    "mtime": 1789463045.030265,
+    "seen": 1791813006.83778,
+    "ast_hash": "93dc82c34703f01b440003f07aa42996",
     "semantic_hash": ""
   },
   "frontend/src/components/literacy/RightCard.tsx": {
@@ -534,15 +534,15 @@
     "semantic_hash": ""
   },
   "docs/MARE_JURIS_RAG.md": {
-    "mtime": 1789283326.2063384,
-    "seen": 1789302881.6308148,
-    "ast_hash": "88369692bd1c911dd41cbd0f727d8deb",
+    "mtime": 1790418453.4687712,
+    "seen": 1791813006.83778,
+    "ast_hash": "b40d27887fd694b3ad87c4032f664023",
     "semantic_hash": ""
   },
   "docs/ragimplementation.md": {
-    "mtime": 1789446756.378375,
-    "seen": 1789447119.2780375,
-    "ast_hash": "2ebb9e2b742c87a94b6953bf84d31d2a",
+    "mtime": 1789447451.55819,
+    "seen": 1791813006.83778,
+    "ast_hash": "0101c5284f61d50918dc8f66db97b76c",
     "semantic_hash": ""
   },
   "legal-documents/README.md": {
@@ -551,64 +551,46 @@
     "ast_hash": "1aa9bae6667c77ad0e60afe075bd1c42",
     "semantic_hash": ""
   },
-  "legal-documents/The Bharatiya Sakshya Adhiniyam, 2023.pdf": {
-    "mtime": 1789272384.1118236,
-    "seen": 1789283308.4165206,
-    "ast_hash": "ce5cbac50c8a00d95f93888c9c6d75ea",
-    "semantic_hash": ""
-  },
-  "legal-documents/The Right to Information Act, 2005.pdf": {
-    "mtime": 1789272421.879861,
-    "seen": 1789283308.4165206,
-    "ast_hash": "7d6b6934a0c329ff4ef4b2c2f5f8f6da",
-    "semantic_hash": ""
-  },
-  "legal-documents/a202345.pdf": {
-    "mtime": 1789271885.3154216,
-    "seen": 1789283308.4165206,
-    "ast_hash": "3cf1b92932fdd8a3f2d5d07aee8df4ab",
-    "semantic_hash": ""
-  },
   "legal-documents/bharatiya-nagarik-suraksha-sanhita-2023/source.pdf": {
-    "mtime": 1789282952.9489856,
-    "seen": 1789283308.4165206,
-    "ast_hash": "6eebd5b754a2a517a6733a7c5d51e25c",
+    "mtime": 1789451772.7170317,
+    "seen": 1791813006.8387783,
+    "ast_hash": "6415d422e09f914cde3379a2cf6ab98a",
     "semantic_hash": ""
   },
   "legal-documents/bharatiya-nyaya-sanhita-2023/source.pdf": {
-    "mtime": 1789282952.9479861,
-    "seen": 1789283308.4165206,
-    "ast_hash": "a5a45d3ec0f7c339609045a2a40f79e5",
+    "mtime": 1789271885.3154216,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3cf1b92932fdd8a3f2d5d07aee8df4ab",
     "semantic_hash": ""
   },
   "legal-documents/constitution-of-india/source.pdf": {
-    "mtime": 1789282952.9419394,
-    "seen": 1789283308.4165206,
-    "ast_hash": "316007b4bcc5165096707c5d6dd8fdc0",
+    "mtime": 1789451314.4187033,
+    "seen": 1791813006.8387783,
+    "ast_hash": "53b05ea1fbdbcb373278f02258b9f900",
     "semantic_hash": ""
   },
   "legal-documents/consumer-protection-act-2019/source.pdf": {
-    "mtime": 1789282952.9429798,
-    "seen": 1789283308.4165206,
-    "ast_hash": "f75d9a0d3097bfe6378cd1d55402af2c",
+    "mtime": 1789451583.9141645,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ba2febac2bd18436d4152ca5157e6cb3",
     "semantic_hash": ""
   },
   "legal-documents/digital-personal-data-protection-act-2023/source.pdf": {
-    "mtime": 1789282952.943985,
-    "seen": 1789283308.4165206,
-    "ast_hash": "d75f3f1b22d000ad8a8800fb3a9de442",
+    "mtime": 1789451635.1531987,
+    "seen": 1791813006.8387783,
+    "ast_hash": "cf08dd3279553320b8a4f875317352f6",
     "semantic_hash": ""
   },
   "legal-documents/indian-contract-act-1872/source.pdf": {
-    "mtime": 1789282952.9469852,
-    "seen": 1789283308.4165206,
-    "ast_hash": "cef62be04b76f4678139a3c3b1e1db76",
+    "mtime": 1789451764.5429056,
+    "seen": 1791813006.8387783,
+    "ast_hash": "26b2f5cb7e4173ea513ee3309c5e6911",
     "semantic_hash": ""
   },
   "legal-documents/information-technology-act-2000/source.pdf": {
-    "mtime": 1789282952.9449866,
-    "seen": 1789283308.4165206,
-    "ast_hash": "3c1ab1c1c77c98a2ea189b474055bc37",
+    "mtime": 1789451654.53253,
+    "seen": 1791813006.8387783,
+    "ast_hash": "6467ab3668fdb2e943eedbe922c5c1ea",
     "semantic_hash": ""
   },
   "legal-documents/protection-of-women-from-domestic-violence-act-2005/source.pdf": {
@@ -618,27 +600,27 @@
     "semantic_hash": ""
   },
   "legal-documents/sexual-harassment-of-women-at-workplace-prevention-prohibition-and-redressal-act-2013/source.pdf": {
-    "mtime": 1789282952.9509861,
-    "seen": 1789283308.4165206,
-    "ast_hash": "c6df59d5ba8d1734f1f614d5bedbfcb4",
+    "mtime": 1789451879.2799952,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3db669c71cd94a832208e01cf2dee276",
     "semantic_hash": ""
   },
   "legal-documents/transfer-of-property-act-1882/source.pdf": {
-    "mtime": 1789282952.9459858,
-    "seen": 1789283308.4165206,
-    "ast_hash": "fbe5a57ec2a9dc338c8536ebff874cd1",
+    "mtime": 1789451677.5207167,
+    "seen": 1791813006.8387783,
+    "ast_hash": "765e702a927c908ae119f5d9f88380fb",
     "semantic_hash": ""
   },
   "backend/app/services/legal_query_analysis.py": {
-    "mtime": 1789446971.319091,
-    "seen": 1789447119.2780375,
+    "mtime": 1789449495.688393,
+    "seen": 1791813006.83778,
     "ast_hash": "1c2142554dc2e9aa6bd46e3bb32ad2f4",
     "semantic_hash": ""
   },
   "backend/app/services/legal_retrieval_service.py": {
-    "mtime": 1789446925.6830776,
-    "seen": 1789447119.2780375,
-    "ast_hash": "d436e295050cdca5a6943aa81557a765",
+    "mtime": 1789449495.688393,
+    "seen": 1791813006.83778,
+    "ast_hash": "b7c098efc22443091bb91fc49cb827cb",
     "semantic_hash": ""
   },
   "docs/ragupdate.md": {
@@ -654,9 +636,3063 @@
     "semantic_hash": ""
   },
   "backend/app/services/rag_retrieval_config.py": {
-    "mtime": 1789446887.2681727,
-    "seen": 1789447119.2780375,
+    "mtime": 1789449495.6873913,
+    "seen": 1791813006.83778,
     "ast_hash": "677f721638437c89ab50933985273d7a",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/collect_and_chunk_judgments.py": {
+    "mtime": 1791793363.3673446,
+    "seen": 1791813006.83778,
+    "ast_hash": "b2252060ab4bc4757ef7933c0a839bff",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/ingest_case_law.py": {
+    "mtime": 1791807622.0109565,
+    "seen": 1791813006.83778,
+    "ast_hash": "8b219559c9c5c2b2323df2ba48291dbb",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/run_controlled_ingestion.py": {
+    "mtime": 1791808324.9227054,
+    "seen": 1791813006.83778,
+    "ast_hash": "1453948a384184e0e02846e668bdbe52",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/run_full_ingestion.py": {
+    "mtime": 1791863730.456324,
+    "seen": 1791885827.5624695,
+    "ast_hash": "e93fef57fd693f8857a028ec44acd3b0",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/test_collection_pipeline.py": {
+    "mtime": 1791793395.5465398,
+    "seen": 1791813006.83778,
+    "ast_hash": "4c9812d151606285ebd76c58b0b4c291",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/test_embedding_freshness.py": {
+    "mtime": 1791807637.6705828,
+    "seen": 1791813006.83778,
+    "ast_hash": "bc480a3b2bce794fea71325d328adcff",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/test_rpc_search.py": {
+    "mtime": 1791808630.705792,
+    "seen": 1791813006.83778,
+    "ast_hash": "ec3f3a767b25c18b12a8f5cdc65b8389",
+    "semantic_hash": ""
+  },
+  "backend/app/services/live_case_law_agent.py": {
+    "mtime": 1791892066.936877,
+    "seen": 1791892437.0624394,
+    "ast_hash": "cf4caa325dde54b61dc2bd8a4e2b50d6",
+    "semantic_hash": ""
+  },
+  "backend/tests/test_live_case_law_agent.py": {
+    "mtime": 1791812746.9395888,
+    "seen": 1791813006.83778,
+    "ast_hash": "d30a1dde626795b3d0aa4561bda5c77a",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/dataset.json": {
+    "mtime": 1789491622.4426157,
+    "seen": 1791813006.83778,
+    "ast_hash": "169e5b401c4ce9a7531c47ccab2bd9f3",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/generate_charts.py": {
+    "mtime": 1789491835.3419325,
+    "seen": 1791813006.83778,
+    "ast_hash": "eb1bca378f19b7989904ab0c8a7db75b",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/generate_dataset.py": {
+    "mtime": 1789491586.0671759,
+    "seen": 1791813006.83778,
+    "ast_hash": "d2a4554a439d6d39354c321e1a3f12d0",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/generate_markdown_report.py": {
+    "mtime": 1789491922.2769165,
+    "seen": 1791813006.83778,
+    "ast_hash": "043244c43aebeadec97376a7f61f5200",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/rag_evaluation_report.json": {
+    "mtime": 1789492062.444758,
+    "seen": 1791813006.83778,
+    "ast_hash": "31e90c4fca94a57a8081d7723431418c",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/run_evaluation.py": {
+    "mtime": 1789491656.4672325,
+    "seen": 1791813006.83778,
+    "ast_hash": "1f26f313dc67d01981327ccf2235f307",
+    "semantic_hash": ""
+  },
+  "scripts/corpus_measure.py": {
+    "mtime": 1789449602.3066795,
+    "seen": 1791813006.83778,
+    "ast_hash": "4807e3133113e905e991b85e88d08a88",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261012000000_case_law_isolated_schema.sql": {
+    "mtime": 1791807439.0790374,
+    "seen": 1791813006.83778,
+    "ast_hash": "d0bd1a250fcbb34acb5ff19d0f35b7c5",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261012000000_case_law_isolated_schema_rollback.sql": {
+    "mtime": 1791807655.905121,
+    "seen": 1791813006.83778,
+    "ast_hash": "968bdd58928669fec05e9bc0da8f5836",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/validate_case_law_schema.sql": {
+    "mtime": 1791807456.6115642,
+    "seen": 1791813006.83778,
+    "ast_hash": "248c3fcfa638e63391ac06d92ac6f5df",
+    "semantic_hash": ""
+  },
+  "vercel.json": {
+    "mtime": 1789465139.1729014,
+    "seen": 1791813006.83778,
+    "ast_hash": "e44775ca125d0ecbc5b074f827ee45b6",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/IDLE_IMPLEMENTATION_PROMPT.md": {
+    "mtime": 1791792390.1877477,
+    "seen": 1791813006.83778,
+    "ast_hash": "e1d4adb92df36bb10332e01fd4d7c17c",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Case_Law_Setup/README.md": {
+    "mtime": 1791792390.1625173,
+    "seen": 1791813006.83778,
+    "ast_hash": "432b53e1ec1d866a8f0c91f1529c5a4b",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-001_307021_Bachan_Singh_v_State_of_Punjab.txt": {
+    "mtime": 1791794963.9395196,
+    "seen": 1791813006.83778,
+    "ast_hash": "b7ad335a43841a5050dc05121b20d61c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-002_545301_Machhi_Singh_v_State_of_Punjab.txt": {
+    "mtime": 1791794968.8044336,
+    "seen": 1791813006.83778,
+    "ast_hash": "64270f6c72f0e0c64e884f95c9479641",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-003_160205361_Girish_Ramchandra_Deshpande_v_Central_Information_Commissioner.txt": {
+    "mtime": 1791794973.378955,
+    "seen": 1791813006.83778,
+    "ast_hash": "b5a8592ee628eb88d2fb617d3a1cdca4",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-004_172105947_Arjun_Panditrao_Khotkar_v_Kailash_Kushanrao_Gorantyal.txt": {
+    "mtime": 1791794978.5952826,
+    "seen": 1791813006.83778,
+    "ast_hash": "21a029962c40c193658d4d9c48a72e72",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-005_187283766_Anvar_P_V_v_P_K_Basheer.txt": {
+    "mtime": 1791794983.1398857,
+    "seen": 1791813006.83778,
+    "ast_hash": "449f1f94ccfc4e3114fbdedc22ca83c3",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-006_1519371_CBSE_v_Aditya_Bandopadhyay.txt": {
+    "mtime": 1791795057.571036,
+    "seen": 1791813006.83778,
+    "ast_hash": "a475adb0974a91876225eed5191913fe",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-007_101637927_CPIO_Supreme_Court_of_India_v_Subhash_Chandra_Agarwal.txt": {
+    "mtime": 1791795068.99467,
+    "seen": 1791813006.83778,
+    "ast_hash": "f9183e7e9c138de3d4d3b82fcb2ba496",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-008_29226127_Tomaso_Bruno_v_State_of_Uttar_Pradesh.txt": {
+    "mtime": 1791795079.3076837,
+    "seen": 1791813006.83778,
+    "ast_hash": "e082729ef8b4cbc8025b8dce6ac14044",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-009_71260002_Kesavananda_Bharati_v_State_of_Kerala.txt": {
+    "mtime": 1791795094.6869018,
+    "seen": 1791813006.83778,
+    "ast_hash": "a2e5a591b395a25839280e51a9a45fab",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-010_1766147_Maneka_Gandhi_v_Union_of_India.txt": {
+    "mtime": 1791797260.646168,
+    "seen": 1791813006.83778,
+    "ast_hash": "8d392a445e88cd89b560c95657a5b0c8",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-011_137753759_Justice_K_S_Puttaswamy_v_Union_of_India.txt": {
+    "mtime": 1791795123.6220696,
+    "seen": 1791813006.83778,
+    "ast_hash": "7966d1628830b57fd63ae27513f73d43",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-012_105540497_Minerva_Mills_Ltd_v_Union_of_India.txt": {
+    "mtime": 1791795136.5528011,
+    "seen": 1791813006.83778,
+    "ast_hash": "3e6489737ad48641fd14ebd4a62bac55",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-013_25187996_S_R_Bommai_v_Union_of_India.txt": {
+    "mtime": 1791795148.6308837,
+    "seen": 1791813006.83778,
+    "ast_hash": "e0404aac8ba1408bfbfebd5cb8a7152e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-014_1451338_I_R_Coelho_v_State_of_Tamil_Nadu.txt": {
+    "mtime": 1791795161.7119448,
+    "seen": 1791813006.83778,
+    "ast_hash": "32d8d3e858b05e4edab7aa4d5dcb01b1",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-015_1363234_Indra_Sawhney_v_Union_of_India.txt": {
+    "mtime": 1791797261.9282763,
+    "seen": 1791813006.83778,
+    "ast_hash": "ee00f1d9ee5752e7166862574823b513",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-016_51244779_Navtej_Singh_Johar_v_Union_of_India.txt": {
+    "mtime": 1791795187.0774546,
+    "seen": 1791813006.83778,
+    "ast_hash": "ae6ada47b409dfa9bcd1b9dbc6936950",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-017_109624343_Joseph_Shine_v_Union_of_India.txt": {
+    "mtime": 1791795200.443092,
+    "seen": 1791813006.83778,
+    "ast_hash": "95edef57b9b08e5cb8e24de4a631566a",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-018_110813550_Shreya_Singhal_v_Union_of_India.txt": {
+    "mtime": 1791797262.9470458,
+    "seen": 1791813006.83778,
+    "ast_hash": "edafb57bba5a72076a6f8606389e2dd0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-019_72221982_Vishaka_v_State_of_Rajasthan.txt": {
+    "mtime": 1791795226.1953776,
+    "seen": 1791813006.83778,
+    "ast_hash": "cdbf5dd1e60a1499cd3d77af2c46eb6d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-020_36567208_National_Legal_Services_Authority_v_Union_of_India.txt": {
+    "mtime": 1791797263.6394782,
+    "seen": 1791813006.83778,
+    "ast_hash": "65c31d9663a8f666ef298ddae2b6bf93",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-021_116933340_Common_Cause_v_Union_of_India.txt": {
+    "mtime": 1791795269.6966188,
+    "seen": 1791813006.83778,
+    "ast_hash": "b5f21ee4d08cd193110559188e501394",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-022_709776_Olga_Tellis_v_Bombay_Municipal_Corporation.txt": {
+    "mtime": 1791797264.439914,
+    "seen": 1791813006.83778,
+    "ast_hash": "51ebdd892820e110c67d248b51d7be07",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-023_146514672_D_K_Basu_v_State_of_West_Bengal.txt": {
+    "mtime": 1791795295.9912562,
+    "seen": 1791813006.83778,
+    "ast_hash": "8db82fb3448c8c1a5b569139c4c01a7e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-024_12477038_Arnesh_Kumar_v_State_of_Bihar.txt": {
+    "mtime": 1791795309.5466392,
+    "seen": 1791813006.83778,
+    "ast_hash": "8d63cdd612d0014a374f134a59930c67",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-025_194969006_Lalita_Kumari_v_Government_of_Uttar_Pradesh.txt": {
+    "mtime": 1791795324.9102063,
+    "seen": 1791813006.83778,
+    "ast_hash": "bd9ed4363afa0d7067dd9c5d5d6c7ffe",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-026_140535828_State_of_Haryana_v_Bhajan_Lal.txt": {
+    "mtime": 1791795336.009762,
+    "seen": 1791813006.83778,
+    "ast_hash": "ae20a6227d547f3f86f145c7ee2fd839",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-027_1353689_A_R_Antulay_v_R_S_Nayak.txt": {
+    "mtime": 1791797265.4773302,
+    "seen": 1791813006.83778,
+    "ast_hash": "9c8f62566295d4330a2da6cebe6fab91",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-028_1555922_Hussainara_Khatoon_v_State_of_Bihar.txt": {
+    "mtime": 1791795359.9807568,
+    "seen": 1791813006.83778,
+    "ast_hash": "4104f8aa41e84944458931557f847bf2",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-029_39889139_Joginder_Kumar_v_State_of_U_P.txt": {
+    "mtime": 1791795373.3974085,
+    "seen": 1791813006.83778,
+    "ast_hash": "c5ae44c274b3f074d53fa6db0ec8b8c7",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-030_193074716_Selvi_v_State_of_Karnataka.txt": {
+    "mtime": 1791795387.5506573,
+    "seen": 1791813006.83778,
+    "ast_hash": "39f6c8761f2506c3fc3833e742412e15",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-031_72882221_Nandini_Satpathy_v_P_L_Dani.txt": {
+    "mtime": 1791795404.9872384,
+    "seen": 1791813006.83778,
+    "ast_hash": "cd21be9b12e5364a482e6d9199f2b776",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-032_74155803_Kartar_Singh_v_State_of_Punjab.txt": {
+    "mtime": 1791795420.8645802,
+    "seen": 1791813006.83778,
+    "ast_hash": "6507d99326b0ff2944b91c65fd4df079",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-033_120994372_Zahira_Habibulla_H_Sheikh_v_State_of_Gujarat.txt": {
+    "mtime": 1791795434.6941485,
+    "seen": 1791813006.83778,
+    "ast_hash": "e89c43cd2ecbbce1b134d1c5766e54af",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-034_16293221_State_of_Punjab_v_Gurmit_Singh.txt": {
+    "mtime": 1791795449.2706969,
+    "seen": 1791813006.83778,
+    "ast_hash": "5ee4394d589d29a74b034700820dc53d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-035_118954113_Bodhisattwa_Gautam_v_Subhra_Chakraborty.txt": {
+    "mtime": 1791795461.1925232,
+    "seen": 1791813006.83778,
+    "ast_hash": "d6d820d92461a5af44cd25ca50063246",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-036_136530193_K_M_Nanavati_v_State_of_Maharashtra.txt": {
+    "mtime": 1791795475.4603295,
+    "seen": 1791813006.83778,
+    "ast_hash": "a11b72d4cef1dfc22e15a858b56390f0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-037_1723088_Virsa_Singh_v_State_of_Punjab.txt": {
+    "mtime": 1791795488.3564568,
+    "seen": 1791813006.83778,
+    "ast_hash": "b16acff3b9a197007b0a2d5da4219cae",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-038_181299461_State_of_Andhra_Pradesh_v_Rayavarapu_Punnayya.txt": {
+    "mtime": 1791795502.6363688,
+    "seen": 1791813006.83778,
+    "ast_hash": "eb6d1a1ffc1c5bbbfcf10aaeef965208",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-039_80478198_Pulukuri_Kottaya_v_Emperor.txt": {
+    "mtime": 1791795514.2704465,
+    "seen": 1791813006.83778,
+    "ast_hash": "86f2b256245a070e7e50400ca7beec8b",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-040_49912367_Sharad_Birdhichand_Sarda_v_State_of_Maharashtra.txt": {
+    "mtime": 1791795529.091884,
+    "seen": 1791813006.83778,
+    "ast_hash": "96ae0a01496b937dd5eaf5c222ff5dee",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-041_149068217_Hanumant_Govind_Nargundkar_v_State_of_M_P.txt": {
+    "mtime": 1791795543.0544057,
+    "seen": 1791813006.83778,
+    "ast_hash": "ecf56be735bb47a095a6de96a802c5f7",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-042_265292_Kali_Ram_v_State_of_Himachal_Pradesh.txt": {
+    "mtime": 1791795555.6277683,
+    "seen": 1791813006.83778,
+    "ast_hash": "e067b234e718153acc909522d0a99ffd",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-043_154876621_State_of_U_P_v_Krishna_Gopal.txt": {
+    "mtime": 1791795575.7805097,
+    "seen": 1791813006.83778,
+    "ast_hash": "8f6296c7bdec68f0602b3d976acaaee1",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-044_1579559_Pakala_Narayana_Swami_v_Emperor.txt": {
+    "mtime": 1791795588.705897,
+    "seen": 1791813006.83778,
+    "ast_hash": "71f3c5e1bc62351f35b5d6249b857e85",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-045_167390783_Khushal_Rao_v_State_of_Bombay.txt": {
+    "mtime": 1791795602.4500053,
+    "seen": 1791813006.83778,
+    "ast_hash": "16f3a3225f4791cb99a502e8875ecf2e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-046_24608107_Laxman_v_State_of_Maharashtra.txt": {
+    "mtime": 1791795618.6171234,
+    "seen": 1791813006.83778,
+    "ast_hash": "d1323f3a5a6564f7630b8a3da0e24022",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-047_198846064_State_of_Rajasthan_v_Kashi_Ram.txt": {
+    "mtime": 1791795632.5569785,
+    "seen": 1791813006.83778,
+    "ast_hash": "51000b316c6c8b8715996b747778dbc6",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-048_70906189_Selvaraj_v_State_of_Karnataka.txt": {
+    "mtime": 1791795646.9781437,
+    "seen": 1791813006.83778,
+    "ast_hash": "2901390ecf01acf0182b4b8eb6aaa91c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-049_104491635_State_of_Maharashtra_v_Damu.txt": {
+    "mtime": 1791795662.1008427,
+    "seen": 1791813006.83778,
+    "ast_hash": "1f85319e7bc58d861899efe7e6278390",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-050_66762951_Anil_Sharma_v_State_of_Jharkhand.txt": {
+    "mtime": 1791795677.2187922,
+    "seen": 1791813006.83778,
+    "ast_hash": "6f902b46fe0e6a6c2cd1c9b4123f3d23",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-051_5514381_P_Chidambaram_v_Directorate_of_Enforcement.txt": {
+    "mtime": 1791795693.3825374,
+    "seen": 1791813006.83778,
+    "ast_hash": "57999e4ad460863c06e67f5de1b19526",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-052_139087134_Sanjay_Chandra_v_CBI.txt": {
+    "mtime": 1791795708.3774292,
+    "seen": 1791813006.83778,
+    "ast_hash": "32afe698356720e95ada0392fcfa18ac",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-053_137305634_Satender_Kumar_Antil_v_CBI.txt": {
+    "mtime": 1791795722.1292267,
+    "seen": 1791813006.83778,
+    "ast_hash": "ddeb013555434cb960f749affcbe468b",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-054_5390586_Gudikanti_Narasimhulu_v_Public_Prosecutor.txt": {
+    "mtime": 1791795736.4928012,
+    "seen": 1791813006.83778,
+    "ast_hash": "58fd7079b4d7ce54285f45524917787c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-055_35898644_Moti_Ram_v_State_of_Madhya_Pradesh.txt": {
+    "mtime": 1791795751.9746244,
+    "seen": 1791813006.83778,
+    "ast_hash": "3da6514b067f97244effccd10dc11ebb",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-056_149969440_R_Rajagopal_v_State_of_Tamil_Nadu.txt": {
+    "mtime": 1791795765.6588507,
+    "seen": 1791813006.83778,
+    "ast_hash": "b0c416e30ef7c778f904222234144274",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-057_172125272_PUCL_v_Union_of_India.txt": {
+    "mtime": 1791795779.4301448,
+    "seen": 1791813006.83778,
+    "ast_hash": "c8fa157d74ce180eb230cf549ffc8b18",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-058_408446_People_s_Union_for_Civil_Liberties_v_Union_of_India.txt": {
+    "mtime": 1791795796.5938144,
+    "seen": 1791813006.83778,
+    "ast_hash": "1d7c7b9c0c801d42efc8a20a4998ae48",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-059_172038686_Bandhua_Mukti_Morcha_v_Union_of_India.txt": {
+    "mtime": 1791795810.9213977,
+    "seen": 1791813006.83778,
+    "ast_hash": "ab9f3a6aad43c09af006f4e7dc96485c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-060_1818014_M_C_Mehta_v_Union_of_India_Oleum_Gas_Leak.txt": {
+    "mtime": 1791795827.0167332,
+    "seen": 1791813006.83778,
+    "ast_hash": "fe7c6aea90c8d2443d70f3ce25c3f445",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-061_78380249_Indian_Council_for_Enviro_Legal_Action_v_Union_of_India.txt": {
+    "mtime": 1791795846.114336,
+    "seen": 1791813006.83778,
+    "ast_hash": "3fba5d9d1f67a14cd1a650992650a07d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-062_173037002_Vellore_Citizens_Welfare_Forum_v_Union_of_India.txt": {
+    "mtime": 1791795862.718426,
+    "seen": 1791813006.83778,
+    "ast_hash": "01e19158d8a6f82d16eab57a8fb0d586",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-063_174258561_T_N_Godavarman_Thirumulpad_v_Union_of_India.txt": {
+    "mtime": 1791795876.5102873,
+    "seen": 1791813006.83778,
+    "ast_hash": "860fcff7b4871eccfd87d7a73f8756e9",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-064_124732858_M_C_Mehta_v_Kamal_Nath.txt": {
+    "mtime": 1791795891.341447,
+    "seen": 1791813006.83778,
+    "ast_hash": "948e1f3aeb64c8b7c21aafadbe1dd1b4",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-065_116362443_Vineet_Narain_v_Union_of_India.txt": {
+    "mtime": 1791795903.1779387,
+    "seen": 1791813006.83778,
+    "ast_hash": "3e9bb36dda86fbd9247ca5f5a7658e11",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-066_9587206_Prakash_Singh_v_Union_of_India.txt": {
+    "mtime": 1791795924.5475793,
+    "seen": 1791813006.83778,
+    "ast_hash": "4d43f8b5334e167df3c9a49e31c4a7f7",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-067_194969006_Lalita_Kumari_v_Govt_of_U_P.txt": {
+    "mtime": 1791795940.5202675,
+    "seen": 1791813006.83778,
+    "ast_hash": "bd9ed4363afa0d7067dd9c5d5d6c7ffe",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-068_74014727_Independent_Thought_v_Union_of_India.txt": {
+    "mtime": 1791795955.8237703,
+    "seen": 1791813006.83778,
+    "ast_hash": "55862e8eb0b3b49c336666637211812c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-069_28127083_State_of_Maharashtra_v_Madhukar_Narayan_Mardikar.txt": {
+    "mtime": 1791795970.0905418,
+    "seen": 1791813006.83778,
+    "ast_hash": "9d6eb6190c4e1a5ec069d5df60e4bd7d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-070_21652_Brij_Lal_v_Prem_Chand.txt": {
+    "mtime": 1791795982.2357342,
+    "seen": 1791813006.83778,
+    "ast_hash": "d738f5a49a8cedf1e25e8f675ed1f346",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-071_16293221_Rameshwar_v_State_of_Rajasthan.txt": {
+    "mtime": 1791795998.0569427,
+    "seen": 1791813006.83778,
+    "ast_hash": "5ee4394d589d29a74b034700820dc53d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-072_155561996_Tukaram_v_State_of_Maharashtra_Mathura_case.txt": {
+    "mtime": 1791796015.104154,
+    "seen": 1791813006.83778,
+    "ast_hash": "75cc4a02bc487f1bcf0a78bae191efe2",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-073_98161134_Mukesh_v_State_NCT_of_Delhi.txt": {
+    "mtime": 1791796031.4380143,
+    "seen": 1791813006.83778,
+    "ast_hash": "cfb4044ea79a9f9457899e4539315570",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-074_155869274_Navneet_Kaur_v_State_of_NCT_of_Delhi.txt": {
+    "mtime": 1791796046.386975,
+    "seen": 1791813006.83778,
+    "ast_hash": "85933b6b9c673ca246e309f63caafec5",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-075_35654105_Shatrughan_Chauhan_v_Union_of_India.txt": {
+    "mtime": 1791796066.6985276,
+    "seen": 1791813006.83778,
+    "ast_hash": "fb47a81cd5c16811c3a8df45d3a13ed0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-076_590378_Mithu_v_State_of_Punjab.txt": {
+    "mtime": 1791797266.241543,
+    "seen": 1791813006.83778,
+    "ast_hash": "ea048f188987ab0b00dde30c5936a5d7",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-077_90167432_Swamy_Shraddananda_v_State_of_Karnataka.txt": {
+    "mtime": 1791796095.7804277,
+    "seen": 1791813006.83778,
+    "ast_hash": "78cc4206628766bbd4883d149d0b7625",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-078_119671055_Santosh_Kumar_Satishbhushan_Bariyar_v_State_of_Maharashtra.txt": {
+    "mtime": 1791796114.1034372,
+    "seen": 1791813006.83778,
+    "ast_hash": "afbdfec90d1db49a1476b4792fa36cdb",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-079_129734802_Union_of_India_v_Association_for_Democratic_Reforms.txt": {
+    "mtime": 1791796131.870293,
+    "seen": 1791813006.83778,
+    "ast_hash": "e849ea90705b2eb14a7f86975badafab",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-080_147909974_Lily_Thomas_v_Union_of_India.txt": {
+    "mtime": 1791796146.285619,
+    "seen": 1791813006.83778,
+    "ast_hash": "12daaae0d6cca4f5e8dfcaffe8a9e162",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-081_85215452_Kihoto_Hollohan_v_Zachillhu.txt": {
+    "mtime": 1791796163.2696753,
+    "seen": 1791813006.83778,
+    "ast_hash": "d86e952b25f01076be199ea809687ed3",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-082_38086329_Raja_Ram_Pal_v_Hon_ble_Speaker_Lok_Sabha.txt": {
+    "mtime": 1791796174.7592728,
+    "seen": 1791813006.83778,
+    "ast_hash": "1e3f90f3aee4279c2d013f9176d98b78",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-083_180250529_RBI_v_Jayantilal_N_Mistry.txt": {
+    "mtime": 1791796186.1761422,
+    "seen": 1791813006.83778,
+    "ast_hash": "0cc879d24a1adc67c22dfb6066b1449e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-084_180907243_Institute_of_Chartered_Accountants_of_India_v_Shaunak_H_Satya.txt": {
+    "mtime": 1791796201.2510345,
+    "seen": 1791813006.83778,
+    "ast_hash": "43dd2b950c2d81030cf33c4901cc6142",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-085_157793609_CIC_v_State_of_Manipur.txt": {
+    "mtime": 1791796213.5047243,
+    "seen": 1791813006.83778,
+    "ast_hash": "366a5f51969d4e8403d57b9f710f59b8",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-086_2313958_Thalappalam_Service_Cooperative_Bank_Ltd_v_State_of_Kerala.txt": {
+    "mtime": 1791796227.2816231,
+    "seen": 1791813006.83778,
+    "ast_hash": "34f9a0f5b4c1bf2b4686dc1b7d17123d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-087_157269326_Bihar_Public_Service_Commission_v_Saiyed_Hussain_Abbas_Rizwi.txt": {
+    "mtime": 1791796242.5616717,
+    "seen": 1791813006.83778,
+    "ast_hash": "5024bfa9db23f41e2c3ffa15d88089f4",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-088_104275334_Namita_Sharma_v_Union_of_India.txt": {
+    "mtime": 1791796257.1024194,
+    "seen": 1791813006.83778,
+    "ast_hash": "08e41f3e55a2af4626a2a9a37f76a8b4",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-089_34171618_R_K_Jain_v_Union_of_India.txt": {
+    "mtime": 1791796276.3260412,
+    "seen": 1791813006.83778,
+    "ast_hash": "4368bd0b5917b22f251eca62c83bfc1c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-090_117004739_Canara_Bank_v_C_S_Shyam.txt": {
+    "mtime": 1791796291.274829,
+    "seen": 1791813006.83778,
+    "ast_hash": "9a64bbb83d778d02920f9846323dc46e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-091_160867293_Union_Public_Service_Commission_v_Gourhari_Kamila.txt": {
+    "mtime": 1791796305.2331002,
+    "seen": 1791813006.83778,
+    "ast_hash": "d14e2606802a1e1150ec4e4199dd44ee",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-092_145996282_Bihar_School_Examination_Board_v_Suresh_Prasad_Sinha.txt": {
+    "mtime": 1791796320.1395316,
+    "seen": 1791813006.83778,
+    "ast_hash": "d3ee9ad5ed029b07812f7e276aaf52c5",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-093_194007684_Chief_Information_Commissioner_v_State_of_Manipur.txt": {
+    "mtime": 1791796337.785571,
+    "seen": 1791813006.83778,
+    "ast_hash": "41d1a8fdfb8edf939ff03e7f7546b8ef",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-094_165033093_Prabhu_Dayal_v_Union_of_India.txt": {
+    "mtime": 1791796352.4308684,
+    "seen": 1791813006.83778,
+    "ast_hash": "2209b2967ac7df435c2007857ce210ea",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-095_1481272_Delhi_Development_Authority_v_Skipper_Construction.txt": {
+    "mtime": 1791796367.0838263,
+    "seen": 1791813006.83778,
+    "ast_hash": "c444d18780e928ca7d2908db19a26283",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-096_108118646_S_P_Chengalvaraya_Naidu_v_Jagannath.txt": {
+    "mtime": 1791796378.7783167,
+    "seen": 1791813006.83778,
+    "ast_hash": "ad981fed45d6ce71a92f4d54b1cd7d90",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-097_1154981_A_V_Papayya_Sastry_v_Government_of_A_P.txt": {
+    "mtime": 1791796395.0494452,
+    "seen": 1791813006.83778,
+    "ast_hash": "d8bdc1f80a354570de376d74fbe5842a",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-098_76786731_Salem_Advocate_Bar_Association_v_Union_of_India.txt": {
+    "mtime": 1791796409.8214047,
+    "seen": 1791813006.83778,
+    "ast_hash": "ae318b8a79409d810b906a08998372aa",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-099_157288746_K_K_Velusamy_v_N_Palanisamy.txt": {
+    "mtime": 1791796424.1085315,
+    "seen": 1791813006.83778,
+    "ast_hash": "112fd912232a7cc9a0472072447487a5",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-100_153311915_K_S_Vidyanadam_v_Vairavan.txt": {
+    "mtime": 1791796437.1593857,
+    "seen": 1791813006.83778,
+    "ast_hash": "0b39908ead7fc49c6af58eaa4013504a",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-101_40683932_Chand_Rani_v_Kamal_Rani.txt": {
+    "mtime": 1791796450.4067383,
+    "seen": 1791813006.83778,
+    "ast_hash": "c8c1dbfa099f89ab56544ee84b2fc82f",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-102_157012934_N_P_Thirugnanam_v_Dr_R_Jagan_Mohan_Rao.txt": {
+    "mtime": 1791796462.183443,
+    "seen": 1791813006.83778,
+    "ast_hash": "b4f3efa28b824d96bce0b5c169ccda5d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-103_919241_Fateh_Chand_v_Balkishan_Das.txt": {
+    "mtime": 1791796474.6852796,
+    "seen": 1791813006.83778,
+    "ast_hash": "e2a030bd0f7fa6f22d890a45dc47dcbb",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-104_132096171_Kailash_Nath_Associates_v_DDA.txt": {
+    "mtime": 1791796485.3967388,
+    "seen": 1791813006.83778,
+    "ast_hash": "ac78cdf3781272980a37368d9007ddf0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-105_72030650_Bharat_Sanchar_Nigam_Ltd_v_Motorola_India.txt": {
+    "mtime": 1791796498.259889,
+    "seen": 1791813006.83778,
+    "ast_hash": "e17e29b24ccd731a9dd2836f75e2731d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-106_1068549_Central_Inland_Water_Transport_Corporation_v_Brojo_Nath_Ganguly.txt": {
+    "mtime": 1791796514.023064,
+    "seen": 1791813006.83778,
+    "ast_hash": "7a35d0019325529e221331ffcb86ee83",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-107_988818_LIC_of_India_v_Consumer_Education_Research_Centre.txt": {
+    "mtime": 1791796526.0731556,
+    "seen": 1791813006.83778,
+    "ast_hash": "b754d5915ecf2b81c831cf6e3d8e234e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-108_162444548_Lucknow_Development_Authority_v_M_K_Gupta.txt": {
+    "mtime": 1791796541.4017694,
+    "seen": 1791813006.83778,
+    "ast_hash": "abaf5fee8651bbfbcfa3880e7e5e14a0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-109_71134463_Indian_Medical_Association_v_V_P_Shantha.txt": {
+    "mtime": 1791796555.2857573,
+    "seen": 1791813006.83778,
+    "ast_hash": "0d3131dcb18c229e086de5a51e6cb1cb",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-110_180680303_National_Seeds_Corporation_Ltd_v_M_Madhusudhan_Reddy.txt": {
+    "mtime": 1791796569.4814885,
+    "seen": 1791813006.83778,
+    "ast_hash": "2d7782ae79f9d699573ed4d75b5b3cdc",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-111_144653350_Emaar_MGF_Land_Ltd_v_Aftab_Singh.txt": {
+    "mtime": 1791796580.648368,
+    "seen": 1791813006.83778,
+    "ast_hash": "aed238c689675e990676d87e5cb6358e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-112_44116196_Pioneer_Urban_Land_v_Union_of_India.txt": {
+    "mtime": 1791796593.3687623,
+    "seen": 1791813006.83778,
+    "ast_hash": "6092b3508e7bb99de600ca50830a812c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-113_162444548_Spring_Meadows_Hospital_v_Harjol_Ahluwalia.txt": {
+    "mtime": 1791796605.619517,
+    "seen": 1791813006.83778,
+    "ast_hash": "abaf5fee8651bbfbcfa3880e7e5e14a0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-114_25085235_Jacob_Mathew_v_State_of_Punjab.txt": {
+    "mtime": 1791796619.8083465,
+    "seen": 1791813006.83778,
+    "ast_hash": "aa16c5f9b14b3e11c2e5e36fdb9be084",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-115_40363877_Kusum_Sharma_v_Batra_Hospital.txt": {
+    "mtime": 1791796633.3626719,
+    "seen": 1791813006.83778,
+    "ast_hash": "8ad8d4f3bb89a174371fb3feae8a393c",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-116_97180843_M_s_Emaar_MGF_Land_Ltd_v_Aftab_Singh.txt": {
+    "mtime": 1791796645.8493743,
+    "seen": 1791813006.83778,
+    "ast_hash": "a79838ef2a2c786c7aafbae830d51d60",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-117_163236007_Bangalore_Water_Supply_v_A_Rajappa.txt": {
+    "mtime": 1791796659.2103548,
+    "seen": 1791813006.83778,
+    "ast_hash": "5923b25f2b1a2232c7dbcc7ad08db681",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-118_1264266_Workmen_of_Firestone_Tyre_v_Management.txt": {
+    "mtime": 1791796670.0649304,
+    "seen": 1791813006.83778,
+    "ast_hash": "6b57ee9670283af46aeb36333455b44b",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-119_1603201_D_K_Yadav_v_J_M_A_Industries.txt": {
+    "mtime": 1791796683.9622953,
+    "seen": 1791813006.83778,
+    "ast_hash": "d9b17eece76ff92c436c13afee4a79a8",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-120_175676756_Air_India_v_Nergesh_Meerza.txt": {
+    "mtime": 1791796694.8932188,
+    "seen": 1791813006.83778,
+    "ast_hash": "dcd01e28ec8c569ce125a1d8e0b34e8f",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-121_107219475_Randhir_Singh_v_Union_of_India.txt": {
+    "mtime": 1791796711.848373,
+    "seen": 1791813006.83778,
+    "ast_hash": "2f691293bd4493db2687a2d181648da9",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-122_48414193_Secretary_State_of_Karnataka_v_Umadevi.txt": {
+    "mtime": 1791796726.983316,
+    "seen": 1791813006.83778,
+    "ast_hash": "cb92b7f5b411bb4808c6922ceb6e3599",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-123_93304857_State_of_Punjab_v_Jagjit_Singh.txt": {
+    "mtime": 1791796741.7560604,
+    "seen": 1791813006.83778,
+    "ast_hash": "0ae6c6e2a7548e6d4725daefcb0ebc57",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-124_170176053_M_s_Gujarat_Bottling_Co_Ltd_v_Coca_Cola_Co.txt": {
+    "mtime": 1791796753.802896,
+    "seen": 1791813006.83778,
+    "ast_hash": "514641606046e31d58b7cee3efaaf559",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-125_47826431_Nabha_Power_Ltd_v_Punjab_State_Power_Corporation.txt": {
+    "mtime": 1791796771.6942203,
+    "seen": 1791813006.83778,
+    "ast_hash": "65a741c952c63ff5a487d558c64fbe2e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-126_155780652_Enercon_India_Ltd_v_Enercon_GmbH.txt": {
+    "mtime": 1791796785.9822862,
+    "seen": 1791813006.83778,
+    "ast_hash": "f46994a7190ddf9e49489c9ec2ae2861",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-127_176968596_Booz_Allen_Hamilton_Inc_v_SBI_Home_Finance_Ltd.txt": {
+    "mtime": 1791796799.3498175,
+    "seen": 1791813006.83778,
+    "ast_hash": "15f21aa156211ce6a8f3f0042840c218",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-128_164830984_Vidya_Drolia_v_Durga_Trading_Corporation.txt": {
+    "mtime": 1791796813.6024122,
+    "seen": 1791813006.83778,
+    "ast_hash": "b5b973269b15f8bbbb1cfd377e1a3a17",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-129_13979441_BALCO_v_Kaiser_Aluminium_Technical_Services.txt": {
+    "mtime": 1791796826.1935768,
+    "seen": 1791813006.83778,
+    "ast_hash": "b6aeecbfa9c5996414a60057a688d0b3",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-130_26504538_ONGC_v_Saw_Pipes_Ltd.txt": {
+    "mtime": 1791796838.1664677,
+    "seen": 1791813006.83778,
+    "ast_hash": "9a823155452d53d9e874a72b7a9ea716",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-131_7627665_Associate_Builders_v_DDA.txt": {
+    "mtime": 1791796849.673278,
+    "seen": 1791813006.83778,
+    "ast_hash": "f10a0d1c147e7fa7b07b452dd855bf17",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-132_30476196_Ssangyong_Engineering_v_NHAI.txt": {
+    "mtime": 1791796862.6509364,
+    "seen": 1791813006.83778,
+    "ast_hash": "74aa8e99ac5a4776f1297d18a3b21198",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-133_79928496_Bharat_Aluminium_Co_v_Kaiser_Aluminium.txt": {
+    "mtime": 1791796875.9730024,
+    "seen": 1791813006.83778,
+    "ast_hash": "85aaa86fa7bdfe10c5a5dcf6f16bd33b",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-134_115701246_Shayara_Bano_v_Union_of_India.txt": {
+    "mtime": 1791797267.5192022,
+    "seen": 1791813006.83778,
+    "ast_hash": "cff8d2e98739b081c2e943d12fccbc66",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-135_106393931_Mohd_Ahmed_Khan_v_Shah_Bano_Begum.txt": {
+    "mtime": 1791796901.4267046,
+    "seen": 1791813006.83778,
+    "ast_hash": "cd20a2ca32229460b7c4976764999c3f",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-136_1860216_Danial_Latifi_v_Union_of_India.txt": {
+    "mtime": 1791796913.8664856,
+    "seen": 1791813006.83778,
+    "ast_hash": "01d217d692d8169648f00e4ffb7088cc",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-137_63198920_Vineeta_Sharma_v_Rakesh_Sharma.txt": {
+    "mtime": 1791796926.072899,
+    "seen": 1791813006.83778,
+    "ast_hash": "d13712fe8c712bad7dfcfa511412b081",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-138_1629974_Githa_Hariharan_v_Reserve_Bank_of_India.txt": {
+    "mtime": 1791796938.3452775,
+    "seen": 1791813006.83778,
+    "ast_hash": "b12894b5ffab843dc9cbc8dae8e4f5fd",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-139_106393931_Sarla_Mudgal_v_Union_of_India.txt": {
+    "mtime": 1791796951.0141726,
+    "seen": 1791813006.83778,
+    "ast_hash": "cd20a2ca32229460b7c4976764999c3f",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-140_137813641_ABC_v_State_NCT_of_Delhi.txt": {
+    "mtime": 1791796965.3215394,
+    "seen": 1791813006.83778,
+    "ast_hash": "ecdf6ae80e38e23b93518283ca0c28d4",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-141_48424234_Shilpa_Sailesh_v_Varun_Sreenivasan.txt": {
+    "mtime": 1791796977.419288,
+    "seen": 1791813006.83778,
+    "ast_hash": "afc387637d945fcd137ea6d39fb967c0",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-142_43933133_Amardeep_Singh_v_Harveen_Kaur.txt": {
+    "mtime": 1791796991.6185687,
+    "seen": 1791813006.83778,
+    "ast_hash": "8593b0d175337fc04babfa91c29d016e",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-143_115833707_K_S_Puttaswamy_v_Union_of_India_Aadhaar.txt": {
+    "mtime": 1791797006.5230353,
+    "seen": 1791813006.83778,
+    "ast_hash": "534c3c2569e11aa4e933db0162b111ac",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-144_38043687_Internet_and_Mobile_Association_of_India_v_RBI.txt": {
+    "mtime": 1791797019.1105769,
+    "seen": 1791813006.83778,
+    "ast_hash": "93fe064e20e0260793a69c5fe507ab2d",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-145_74638836_Anuradha_Bhasin_v_Union_of_India.txt": {
+    "mtime": 1791797034.9496982,
+    "seen": 1791813006.83778,
+    "ast_hash": "dcf9b39ccbd08db0890b078134ed80bf",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-146_188439981_Faheema_Shirin_R_K_v_State_of_Kerala.txt": {
+    "mtime": 1791797048.1030605,
+    "seen": 1791813006.83778,
+    "ast_hash": "52d7180fa5dd047fab77ff9212910303",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-147_21429162_Avnish_Bajaj_v_State_NCT_of_Delhi.txt": {
+    "mtime": 1791797063.330277,
+    "seen": 1791813006.83778,
+    "ast_hash": "d20ad62b7fa5fb26312f87f7d26df9ca",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-148_43335747_Christian_Louboutin_SAS_v_Nakul_Bajaj.txt": {
+    "mtime": 1791797075.7047575,
+    "seen": 1791813006.83778,
+    "ast_hash": "0a0ae5890901930fd02d9f9fe4f8de82",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-149_117407633_Tata_Sons_Ltd_v_Greenpeace_International.txt": {
+    "mtime": 1791797085.684943,
+    "seen": 1791813006.83778,
+    "ast_hash": "0c4fe620d59e47de5cbe5ab86dcb9dd2",
+    "semantic_hash": ""
+  },
+  "data/case_law/extracted_text/MARE-CASE-150_1271015_R_G_Anand_v_Deluxe_Films.txt": {
+    "mtime": 1791797098.1467226,
+    "seen": 1791813006.83778,
+    "ast_hash": "f69177d8f594a2ce21f2933afb364995",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-001_307021_Bachan_Singh_v_State_of_Punjab.html": {
+    "mtime": 1791794961.0320172,
+    "seen": 1791813006.83778,
+    "ast_hash": "873e478f5bd9f836c84a7c4e3e60cd82",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-002_545301_Machhi_Singh_v_State_of_Punjab.html": {
+    "mtime": 1791794965.9506173,
+    "seen": 1791813006.83778,
+    "ast_hash": "64f1f3cadf5700b0d2c180936bd3d822",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-003_160205361_Girish_Ramchandra_Deshpande_v_Central_Information_Commissioner.html": {
+    "mtime": 1791794970.666733,
+    "seen": 1791813006.83778,
+    "ast_hash": "9661f3961a45e1e81447946472d6ee16",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-004_172105947_Arjun_Panditrao_Khotkar_v_Kailash_Kushanrao_Gorantyal.html": {
+    "mtime": 1791794975.2385893,
+    "seen": 1791813006.83778,
+    "ast_hash": "4e2e38763b1b66e831d4957063f128b2",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-005_187283766_Anvar_P_V_v_P_K_Basheer.html": {
+    "mtime": 1791794980.2988796,
+    "seen": 1791813006.83778,
+    "ast_hash": "b35df1be9ef238d790318d6534107e50",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-006_1519371_CBSE_v_Aditya_Bandopadhyay.html": {
+    "mtime": 1791795054.7446356,
+    "seen": 1791813006.83778,
+    "ast_hash": "6adfc127096729143def912852177abd",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-007_101637927_CPIO_Supreme_Court_of_India_v_Subhash_Chandra_Agarwal.html": {
+    "mtime": 1791795064.8099263,
+    "seen": 1791813006.83778,
+    "ast_hash": "0792584cf66b4a8656692dc300f3566e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-008_29226127_Tomaso_Bruno_v_State_of_Uttar_Pradesh.html": {
+    "mtime": 1791795076.2815347,
+    "seen": 1791813006.83778,
+    "ast_hash": "239b8c955e3980370738c969d3e10140",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-009_71260002_Kesavananda_Bharati_v_State_of_Kerala.html": {
+    "mtime": 1791795090.4574106,
+    "seen": 1791813006.83778,
+    "ast_hash": "d84950a2a7e86e019720c9deb5f21e4c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-010_1766147_Maneka_Gandhi_v_Union_of_India.html": {
+    "mtime": 1791797260.4719784,
+    "seen": 1791813006.83778,
+    "ast_hash": "1421d75e749a711ad41c656dbba35b4b",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-011_137753759_Justice_K_S_Puttaswamy_v_Union_of_India.html": {
+    "mtime": 1791795120.1327858,
+    "seen": 1791813006.83778,
+    "ast_hash": "f4155d9641c6d5730853418a9e9c408f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-012_105540497_Minerva_Mills_Ltd_v_Union_of_India.html": {
+    "mtime": 1791795133.5342662,
+    "seen": 1791813006.83778,
+    "ast_hash": "dbab67866837dac24ab925d8c54a52c8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-013_25187996_S_R_Bommai_v_Union_of_India.html": {
+    "mtime": 1791795145.7315385,
+    "seen": 1791813006.83778,
+    "ast_hash": "5a55d22cc77f0beab80775b6885d69a4",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-014_1451338_I_R_Coelho_v_State_of_Tamil_Nadu.html": {
+    "mtime": 1791795158.926509,
+    "seen": 1791813006.83778,
+    "ast_hash": "ab8ba1c414fd88fc3dc3b4fe9ae64e0c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-015_1363234_Indra_Sawhney_v_Union_of_India.html": {
+    "mtime": 1791797261.7650502,
+    "seen": 1791813006.83778,
+    "ast_hash": "6bfc9fd90d7f09385da08dd2e81dc0e1",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-016_51244779_Navtej_Singh_Johar_v_Union_of_India.html": {
+    "mtime": 1791795183.6084034,
+    "seen": 1791813006.83778,
+    "ast_hash": "4b1fb0d82541226c71c27eb37f008eab",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-017_109624343_Joseph_Shine_v_Union_of_India.html": {
+    "mtime": 1791795196.417919,
+    "seen": 1791813006.83778,
+    "ast_hash": "71cda0d19407b672932adf1c9ef0487b",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-018_110813550_Shreya_Singhal_v_Union_of_India.html": {
+    "mtime": 1791797262.9048965,
+    "seen": 1791813006.83778,
+    "ast_hash": "3ed67cad8aae805e463176d3f9e07a8e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-019_72221982_Vishaka_v_State_of_Rajasthan.html": {
+    "mtime": 1791795221.8917055,
+    "seen": 1791813006.83778,
+    "ast_hash": "5cf77454aa7de823413928e073fb08cb",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-020_36567208_National_Legal_Services_Authority_v_Union_of_India.html": {
+    "mtime": 1791797263.6304772,
+    "seen": 1791813006.83778,
+    "ast_hash": "dc0c5c7d81ac3141f7e97f14bd602c7a",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-021_116933340_Common_Cause_v_Union_of_India.html": {
+    "mtime": 1791795266.564177,
+    "seen": 1791813006.83778,
+    "ast_hash": "bb1d6b09f6b0f4bfb138c71ce9569d56",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-022_709776_Olga_Tellis_v_Bombay_Municipal_Corporation.html": {
+    "mtime": 1791797264.4218328,
+    "seen": 1791813006.83778,
+    "ast_hash": "33c9003e033327de71ed0be03f34400f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-023_146514672_D_K_Basu_v_State_of_West_Bengal.html": {
+    "mtime": 1791795292.6568625,
+    "seen": 1791813006.83778,
+    "ast_hash": "7398f7daca9352525fa442dcad6dbbf7",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-024_12477038_Arnesh_Kumar_v_State_of_Bihar.html": {
+    "mtime": 1791795306.3033137,
+    "seen": 1791813006.83778,
+    "ast_hash": "8761cfd2e49548371cad92165f212448",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-025_194969006_Lalita_Kumari_v_Government_of_Uttar_Pradesh.html": {
+    "mtime": 1791795321.6386535,
+    "seen": 1791813006.83778,
+    "ast_hash": "6e279eb8e1ccc53f5750f29ab1620d71",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-026_140535828_State_of_Haryana_v_Bhajan_Lal.html": {
+    "mtime": 1791795333.0105908,
+    "seen": 1791813006.83778,
+    "ast_hash": "4de7cbc11f6bde38e349369262d240db",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-027_1353689_A_R_Antulay_v_R_S_Nayak.html": {
+    "mtime": 1791797265.365333,
+    "seen": 1791813006.83778,
+    "ast_hash": "fb732f07b2bd82eeceabb1a418fb5816",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-028_1555922_Hussainara_Khatoon_v_State_of_Bihar.html": {
+    "mtime": 1791795357.2927072,
+    "seen": 1791813006.83778,
+    "ast_hash": "c95436a08d8901b06ddca390e35ee87c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-029_39889139_Joginder_Kumar_v_State_of_U_P.html": {
+    "mtime": 1791795370.4865718,
+    "seen": 1791813006.83778,
+    "ast_hash": "f1020200084452d32ea5ed60323dcb60",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-030_193074716_Selvi_v_State_of_Karnataka.html": {
+    "mtime": 1791795384.127338,
+    "seen": 1791813006.83778,
+    "ast_hash": "3a4fe9f5159f78cf3cf00a8d617b69e2",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-031_72882221_Nandini_Satpathy_v_P_L_Dani.html": {
+    "mtime": 1791795401.2923124,
+    "seen": 1791813006.83778,
+    "ast_hash": "ff7e094867a62709044db5a572d96a7f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-032_74155803_Kartar_Singh_v_State_of_Punjab.html": {
+    "mtime": 1791795418.1896274,
+    "seen": 1791813006.83778,
+    "ast_hash": "5deb70409f60802f5506289d6faad42a",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-033_120994372_Zahira_Habibulla_H_Sheikh_v_State_of_Gujarat.html": {
+    "mtime": 1791795431.6405785,
+    "seen": 1791813006.83778,
+    "ast_hash": "375e7f8733e3a39e2533d5e6d04d393f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-034_16293221_State_of_Punjab_v_Gurmit_Singh.html": {
+    "mtime": 1791795446.077143,
+    "seen": 1791813006.83778,
+    "ast_hash": "67f35f6a10ead2cf6c97c3b00cf3d273",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-035_118954113_Bodhisattwa_Gautam_v_Subhra_Chakraborty.html": {
+    "mtime": 1791795458.1184835,
+    "seen": 1791813006.83778,
+    "ast_hash": "bd914795074d4dfbb5443ecf2d29becb",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-036_136530193_K_M_Nanavati_v_State_of_Maharashtra.html": {
+    "mtime": 1791795472.3774583,
+    "seen": 1791813006.83778,
+    "ast_hash": "637347eaac093e29baa03f613981b6e9",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-037_1723088_Virsa_Singh_v_State_of_Punjab.html": {
+    "mtime": 1791795485.6723123,
+    "seen": 1791813006.83778,
+    "ast_hash": "ccd2dbaf060bb90c16ba15b18ae790ab",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-038_181299461_State_of_Andhra_Pradesh_v_Rayavarapu_Punnayya.html": {
+    "mtime": 1791795499.3038642,
+    "seen": 1791813006.83778,
+    "ast_hash": "a7925c9b8bde32fd62f6bb92e04e86e0",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-039_80478198_Pulukuri_Kottaya_v_Emperor.html": {
+    "mtime": 1791795511.196882,
+    "seen": 1791813006.83778,
+    "ast_hash": "34fe65eb5e628e298bcb347f5bc062d6",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-040_49912367_Sharad_Birdhichand_Sarda_v_State_of_Maharashtra.html": {
+    "mtime": 1791795525.1049097,
+    "seen": 1791813006.83778,
+    "ast_hash": "65cd7355539a0eb6f18bc16f11430d8e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-041_149068217_Hanumant_Govind_Nargundkar_v_State_of_M_P.html": {
+    "mtime": 1791795540.1693785,
+    "seen": 1791813006.83778,
+    "ast_hash": "354455eaf8eeb5461f260f38f81943a6",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-042_265292_Kali_Ram_v_State_of_Himachal_Pradesh.html": {
+    "mtime": 1791795552.9750638,
+    "seen": 1791813006.83778,
+    "ast_hash": "df564de5f5788758a9b939de32d17f75",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-043_154876621_State_of_U_P_v_Krishna_Gopal.html": {
+    "mtime": 1791795572.625538,
+    "seen": 1791813006.83778,
+    "ast_hash": "6de79034f0761ee9f1552b3aded57911",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-044_1579559_Pakala_Narayana_Swami_v_Emperor.html": {
+    "mtime": 1791795586.0703232,
+    "seen": 1791813006.83778,
+    "ast_hash": "59f4ab1f95f22534ebb4c4e7aba81124",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-045_167390783_Khushal_Rao_v_State_of_Bombay.html": {
+    "mtime": 1791795598.966825,
+    "seen": 1791813006.83778,
+    "ast_hash": "47e93d44783a050ddcd77c561e6dd63b",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-046_24608107_Laxman_v_State_of_Maharashtra.html": {
+    "mtime": 1791795615.325328,
+    "seen": 1791813006.83778,
+    "ast_hash": "a254860b95dbcb2ae45e0bef1bb5c1da",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-047_198846064_State_of_Rajasthan_v_Kashi_Ram.html": {
+    "mtime": 1791795629.4842913,
+    "seen": 1791813006.83778,
+    "ast_hash": "9827b5e0cbf1af462639004f824fc564",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-048_70906189_Selvaraj_v_State_of_Karnataka.html": {
+    "mtime": 1791795643.499196,
+    "seen": 1791813006.83778,
+    "ast_hash": "b0b723781a61c8205e0b63359b2a8176",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-049_104491635_State_of_Maharashtra_v_Damu.html": {
+    "mtime": 1791795657.7739956,
+    "seen": 1791813006.83778,
+    "ast_hash": "1a0cbe7e5348671a7a127e303b1efa02",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-050_66762951_Anil_Sharma_v_State_of_Jharkhand.html": {
+    "mtime": 1791795673.743323,
+    "seen": 1791813006.83778,
+    "ast_hash": "20c0771a10c88f64fb6a75b7bce75d6d",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-051_5514381_P_Chidambaram_v_Directorate_of_Enforcement.html": {
+    "mtime": 1791795688.9641733,
+    "seen": 1791813006.83778,
+    "ast_hash": "f44c758f9f7fd37bf70f997bf2415148",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-052_139087134_Sanjay_Chandra_v_CBI.html": {
+    "mtime": 1791795704.5201356,
+    "seen": 1791813006.83778,
+    "ast_hash": "75dd03a60b5b1b4ed7cca0a6f77a84e8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-053_137305634_Satender_Kumar_Antil_v_CBI.html": {
+    "mtime": 1791795717.5255961,
+    "seen": 1791813006.83778,
+    "ast_hash": "a7e95731492148a3c6551781fd6babd3",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-054_5390586_Gudikanti_Narasimhulu_v_Public_Prosecutor.html": {
+    "mtime": 1791795732.6557121,
+    "seen": 1791813006.83778,
+    "ast_hash": "412a8c1707deed8e9b41cd66ad04dcf3",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-055_35898644_Moti_Ram_v_State_of_Madhya_Pradesh.html": {
+    "mtime": 1791795748.3234594,
+    "seen": 1791813006.83778,
+    "ast_hash": "3da6b38652ac5413ba56c7dc05bbed14",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-056_149969440_R_Rajagopal_v_State_of_Tamil_Nadu.html": {
+    "mtime": 1791795762.555837,
+    "seen": 1791813006.83778,
+    "ast_hash": "45bbda9a9d43ee64b1a86ff3358722d4",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-057_172125272_PUCL_v_Union_of_India.html": {
+    "mtime": 1791795775.482341,
+    "seen": 1791813006.83778,
+    "ast_hash": "1cf83a2e2ade4b502d0f87c2e810fd7d",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-058_408446_People_s_Union_for_Civil_Liberties_v_Union_of_India.html": {
+    "mtime": 1791795793.318829,
+    "seen": 1791813006.83778,
+    "ast_hash": "4f3a6d9fedce60cb8757657f92965801",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-059_172038686_Bandhua_Mukti_Morcha_v_Union_of_India.html": {
+    "mtime": 1791795807.0253434,
+    "seen": 1791813006.83778,
+    "ast_hash": "26042d8635b873bee8857d951d3c7eed",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-060_1818014_M_C_Mehta_v_Union_of_India_Oleum_Gas_Leak.html": {
+    "mtime": 1791795823.5244174,
+    "seen": 1791813006.83778,
+    "ast_hash": "a327fe9c0e67b1b0eaffa9383624ce70",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-061_78380249_Indian_Council_for_Enviro_Legal_Action_v_Union_of_India.html": {
+    "mtime": 1791795842.4636447,
+    "seen": 1791813006.83778,
+    "ast_hash": "24fa2eea807e9f21ecb4858c1ded7820",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-062_173037002_Vellore_Citizens_Welfare_Forum_v_Union_of_India.html": {
+    "mtime": 1791795859.264064,
+    "seen": 1791813006.83778,
+    "ast_hash": "7ed3849dcdf0ace603224a20b78bb2e7",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-063_174258561_T_N_Godavarman_Thirumulpad_v_Union_of_India.html": {
+    "mtime": 1791795873.0669186,
+    "seen": 1791813006.83778,
+    "ast_hash": "48eb2293c617fb249aa30862ad3b175b",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-064_124732858_M_C_Mehta_v_Kamal_Nath.html": {
+    "mtime": 1791795888.0478427,
+    "seen": 1791813006.83778,
+    "ast_hash": "71b67b123d985ca0e748ae6a9b870618",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-065_116362443_Vineet_Narain_v_Union_of_India.html": {
+    "mtime": 1791795900.1191347,
+    "seen": 1791813006.83778,
+    "ast_hash": "10ee2892ab7bb3cde9887d30b472352c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-066_9587206_Prakash_Singh_v_Union_of_India.html": {
+    "mtime": 1791795919.5715897,
+    "seen": 1791813006.83778,
+    "ast_hash": "6b442ddacac63e436ad8e43d9771a4bc",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-067_194969006_Lalita_Kumari_v_Govt_of_U_P.html": {
+    "mtime": 1791795937.104782,
+    "seen": 1791813006.83778,
+    "ast_hash": "6e279eb8e1ccc53f5750f29ab1620d71",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-068_74014727_Independent_Thought_v_Union_of_India.html": {
+    "mtime": 1791795952.5298424,
+    "seen": 1791813006.83778,
+    "ast_hash": "6cc353f396ffb07b023879ceb1b6deb3",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-069_28127083_State_of_Maharashtra_v_Madhukar_Narayan_Mardikar.html": {
+    "mtime": 1791795966.8683712,
+    "seen": 1791813006.83778,
+    "ast_hash": "bd552ccb57636c734bea5190872d8a0f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-070_21652_Brij_Lal_v_Prem_Chand.html": {
+    "mtime": 1791795979.2659314,
+    "seen": 1791813006.83778,
+    "ast_hash": "ef164af70352b6a182e9b58e88e6b94c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-071_16293221_Rameshwar_v_State_of_Rajasthan.html": {
+    "mtime": 1791795994.5602744,
+    "seen": 1791813006.83778,
+    "ast_hash": "67f35f6a10ead2cf6c97c3b00cf3d273",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-072_155561996_Tukaram_v_State_of_Maharashtra_Mathura_case.html": {
+    "mtime": 1791796011.7232406,
+    "seen": 1791813006.83778,
+    "ast_hash": "6fc3bf0f6689644b1cc1cf29e3ebd775",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-073_98161134_Mukesh_v_State_NCT_of_Delhi.html": {
+    "mtime": 1791796027.3219447,
+    "seen": 1791813006.83778,
+    "ast_hash": "63e45714d5b5801bd56ef3ae3b8ffccf",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-074_155869274_Navneet_Kaur_v_State_of_NCT_of_Delhi.html": {
+    "mtime": 1791796042.930151,
+    "seen": 1791813006.83778,
+    "ast_hash": "f4ab618560aafe99496a1e98066a43b5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-075_35654105_Shatrughan_Chauhan_v_Union_of_India.html": {
+    "mtime": 1791796056.9821353,
+    "seen": 1791813006.83778,
+    "ast_hash": "63a739915dc3c5c3c57ea46e884b5bd4",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-076_590378_Mithu_v_State_of_Punjab.html": {
+    "mtime": 1791797266.2264605,
+    "seen": 1791813006.83778,
+    "ast_hash": "df6f8091afcd64ff2091f108067b2f64",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-077_90167432_Swamy_Shraddananda_v_State_of_Karnataka.html": {
+    "mtime": 1791796092.4267006,
+    "seen": 1791813006.83778,
+    "ast_hash": "0f07485f90e0cf72fe0dc058548ab68f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-078_119671055_Santosh_Kumar_Satishbhushan_Bariyar_v_State_of_Maharashtra.html": {
+    "mtime": 1791796107.8710904,
+    "seen": 1791813006.83778,
+    "ast_hash": "875b50d41b0f0239523806ba2aa19e60",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-079_129734802_Union_of_India_v_Association_for_Democratic_Reforms.html": {
+    "mtime": 1791796125.5322094,
+    "seen": 1791813006.83778,
+    "ast_hash": "574bc2691862bf9d73e0091d369b5bdd",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-080_147909974_Lily_Thomas_v_Union_of_India.html": {
+    "mtime": 1791796142.366481,
+    "seen": 1791813006.83778,
+    "ast_hash": "d8f5e6f85f85bf844d50019cd792f1f3",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-081_85215452_Kihoto_Hollohan_v_Zachillhu.html": {
+    "mtime": 1791796159.3839877,
+    "seen": 1791813006.83778,
+    "ast_hash": "b6262a2e9f235f626cddba4b35e30dd8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-082_38086329_Raja_Ram_Pal_v_Hon_ble_Speaker_Lok_Sabha.html": {
+    "mtime": 1791796171.6901643,
+    "seen": 1791813006.83778,
+    "ast_hash": "f707c9e8bcd6ec6783737664e51ae13a",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-083_180250529_RBI_v_Jayantilal_N_Mistry.html": {
+    "mtime": 1791796182.9464839,
+    "seen": 1791813006.83778,
+    "ast_hash": "a0f1a1c89526c569eb2165fedd2c05df",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-084_180907243_Institute_of_Chartered_Accountants_of_India_v_Shaunak_H_Satya.html": {
+    "mtime": 1791796197.8040588,
+    "seen": 1791813006.83778,
+    "ast_hash": "4f2e833faca525503050baa83111e022",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-085_157793609_CIC_v_State_of_Manipur.html": {
+    "mtime": 1791796209.7692094,
+    "seen": 1791813006.83778,
+    "ast_hash": "af9c125f5da98a0838647b01afab7021",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-086_2313958_Thalappalam_Service_Cooperative_Bank_Ltd_v_State_of_Kerala.html": {
+    "mtime": 1791796222.8468413,
+    "seen": 1791813006.83778,
+    "ast_hash": "4e52e5104ed177c55d5a2027f9cb07b6",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-087_157269326_Bihar_Public_Service_Commission_v_Saiyed_Hussain_Abbas_Rizwi.html": {
+    "mtime": 1791796239.0015652,
+    "seen": 1791813006.83778,
+    "ast_hash": "458ce95833012bd10567c1491be262a1",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-088_104275334_Namita_Sharma_v_Union_of_India.html": {
+    "mtime": 1791796253.7977366,
+    "seen": 1791813006.83778,
+    "ast_hash": "f5a146b75f92ac61752ec17dea918aab",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-089_34171618_R_K_Jain_v_Union_of_India.html": {
+    "mtime": 1791796272.8349974,
+    "seen": 1791813006.83778,
+    "ast_hash": "18448c660b92e5b8f99e5ed1cfca4f58",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-090_117004739_Canara_Bank_v_C_S_Shyam.html": {
+    "mtime": 1791796287.580262,
+    "seen": 1791813006.83778,
+    "ast_hash": "ca869bca1c1010b3c6229df1547041ca",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-091_160867293_Union_Public_Service_Commission_v_Gourhari_Kamila.html": {
+    "mtime": 1791796301.8117697,
+    "seen": 1791813006.83778,
+    "ast_hash": "7f00d910ff1c9d1345238840ec7df7f3",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-092_145996282_Bihar_School_Examination_Board_v_Suresh_Prasad_Sinha.html": {
+    "mtime": 1791796316.9701068,
+    "seen": 1791813006.83778,
+    "ast_hash": "c0311b82475e70268e156eee8cf71f50",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-093_194007684_Chief_Information_Commissioner_v_State_of_Manipur.html": {
+    "mtime": 1791796334.2230124,
+    "seen": 1791813006.83778,
+    "ast_hash": "bef31110f02fa10566f197bdaeb6dca8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-094_165033093_Prabhu_Dayal_v_Union_of_India.html": {
+    "mtime": 1791796349.3405013,
+    "seen": 1791813006.83778,
+    "ast_hash": "6c1069c4bfe5ade4d759459d2e194ad5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-095_1481272_Delhi_Development_Authority_v_Skipper_Construction.html": {
+    "mtime": 1791796364.2793925,
+    "seen": 1791813006.83778,
+    "ast_hash": "c0365662dba8d1e0747e23468f1c9011",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-096_108118646_S_P_Chengalvaraya_Naidu_v_Jagannath.html": {
+    "mtime": 1791796375.445663,
+    "seen": 1791813006.83778,
+    "ast_hash": "3af543484bd8b456380878eb59ce4453",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-097_1154981_A_V_Papayya_Sastry_v_Government_of_A_P.html": {
+    "mtime": 1791796391.4153168,
+    "seen": 1791813006.83778,
+    "ast_hash": "cc7f29a18ed566fddd22cc9e623fb579",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-098_76786731_Salem_Advocate_Bar_Association_v_Union_of_India.html": {
+    "mtime": 1791796406.1315422,
+    "seen": 1791813006.83778,
+    "ast_hash": "c6e7768ca722105f0287050cbc7d5690",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-099_157288746_K_K_Velusamy_v_N_Palanisamy.html": {
+    "mtime": 1791796420.8134413,
+    "seen": 1791813006.83778,
+    "ast_hash": "c5e5665692142b0e8d673d899791b1e8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-100_153311915_K_S_Vidyanadam_v_Vairavan.html": {
+    "mtime": 1791796433.7059596,
+    "seen": 1791813006.83778,
+    "ast_hash": "edebe2de0cefd2d5980ece2f8bbdb98e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-101_40683932_Chand_Rani_v_Kamal_Rani.html": {
+    "mtime": 1791796447.171692,
+    "seen": 1791813006.83778,
+    "ast_hash": "9f074456601a0bf7b5d5919bd84086a5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-102_157012934_N_P_Thirugnanam_v_Dr_R_Jagan_Mohan_Rao.html": {
+    "mtime": 1791796459.2055285,
+    "seen": 1791813006.83778,
+    "ast_hash": "0c633ff5cbbc2ebf9928aa8fd6228e11",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-103_919241_Fateh_Chand_v_Balkishan_Das.html": {
+    "mtime": 1791796471.604466,
+    "seen": 1791813006.83778,
+    "ast_hash": "2f7f14c9387dbf2987fbefe9fb06238a",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-104_132096171_Kailash_Nath_Associates_v_DDA.html": {
+    "mtime": 1791796482.2448335,
+    "seen": 1791813006.83778,
+    "ast_hash": "830d8054db608306071dcae1bfdcec12",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-105_72030650_Bharat_Sanchar_Nigam_Ltd_v_Motorola_India.html": {
+    "mtime": 1791796495.1547353,
+    "seen": 1791813006.83778,
+    "ast_hash": "731515b810c30853bca3bb32d599d214",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-106_1068549_Central_Inland_Water_Transport_Corporation_v_Brojo_Nath_Ganguly.html": {
+    "mtime": 1791796510.5120976,
+    "seen": 1791813006.83778,
+    "ast_hash": "e73e07c3e0a0391a7dd5d8f5a698b6a9",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-107_988818_LIC_of_India_v_Consumer_Education_Research_Centre.html": {
+    "mtime": 1791796523.2595274,
+    "seen": 1791813006.83778,
+    "ast_hash": "5d66340b0d628f7910fbcdae9be96da9",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-108_162444548_Lucknow_Development_Authority_v_M_K_Gupta.html": {
+    "mtime": 1791796538.3250866,
+    "seen": 1791813006.83778,
+    "ast_hash": "84f87dd17acd40a3160bcc4da13a68b5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-109_71134463_Indian_Medical_Association_v_V_P_Shantha.html": {
+    "mtime": 1791796552.183062,
+    "seen": 1791813006.83778,
+    "ast_hash": "4aac120b60e9d1b2c755991073bbc675",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-110_180680303_National_Seeds_Corporation_Ltd_v_M_Madhusudhan_Reddy.html": {
+    "mtime": 1791796566.3243942,
+    "seen": 1791813006.83778,
+    "ast_hash": "da815778822a390a03015502267bc3e6",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-111_144653350_Emaar_MGF_Land_Ltd_v_Aftab_Singh.html": {
+    "mtime": 1791796577.5813675,
+    "seen": 1791813006.83778,
+    "ast_hash": "3167518eebd836d328a3611b21687ec1",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-112_44116196_Pioneer_Urban_Land_v_Union_of_India.html": {
+    "mtime": 1791796589.559074,
+    "seen": 1791813006.83778,
+    "ast_hash": "6e13f2ce2f64d368e87657795c3102cc",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-113_162444548_Spring_Meadows_Hospital_v_Harjol_Ahluwalia.html": {
+    "mtime": 1791796602.660541,
+    "seen": 1791813006.83778,
+    "ast_hash": "84f87dd17acd40a3160bcc4da13a68b5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-114_25085235_Jacob_Mathew_v_State_of_Punjab.html": {
+    "mtime": 1791796616.5868535,
+    "seen": 1791813006.83778,
+    "ast_hash": "10ccc8f8fc88bb8b79ae0159d4c19418",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-115_40363877_Kusum_Sharma_v_Batra_Hospital.html": {
+    "mtime": 1791796629.4545004,
+    "seen": 1791813006.83778,
+    "ast_hash": "c8d991d475518b3262a040d7cf8362a2",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-116_97180843_M_s_Emaar_MGF_Land_Ltd_v_Aftab_Singh.html": {
+    "mtime": 1791796642.6051762,
+    "seen": 1791813006.83778,
+    "ast_hash": "bd091ee53028e6fdf203f58130965101",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-117_163236007_Bangalore_Water_Supply_v_A_Rajappa.html": {
+    "mtime": 1791796655.7455802,
+    "seen": 1791813006.83778,
+    "ast_hash": "890e0d48163bed6fe64f02a310ed59e4",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-118_1264266_Workmen_of_Firestone_Tyre_v_Management.html": {
+    "mtime": 1791796667.3758595,
+    "seen": 1791813006.83778,
+    "ast_hash": "c7d7d1047726dd2e0b80bba482c709b5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-119_1603201_D_K_Yadav_v_J_M_A_Industries.html": {
+    "mtime": 1791796681.186056,
+    "seen": 1791813006.83778,
+    "ast_hash": "fa87ab04d6362435bc0bf13890f5da75",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-120_175676756_Air_India_v_Nergesh_Meerza.html": {
+    "mtime": 1791796691.4397428,
+    "seen": 1791813006.83778,
+    "ast_hash": "9994e30fc3ccd530494b6121288e9c34",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-121_107219475_Randhir_Singh_v_Union_of_India.html": {
+    "mtime": 1791796708.1098404,
+    "seen": 1791813006.83778,
+    "ast_hash": "72ef26488422cb23e5b28385f72bd62f",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-122_48414193_Secretary_State_of_Karnataka_v_Umadevi.html": {
+    "mtime": 1791796723.2014663,
+    "seen": 1791813006.83778,
+    "ast_hash": "7e5402caa9a33bc621042f330cb7acdd",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-123_93304857_State_of_Punjab_v_Jagjit_Singh.html": {
+    "mtime": 1791796738.3740847,
+    "seen": 1791813006.83778,
+    "ast_hash": "e6d2dabae959341fda564372d0429976",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-124_170176053_M_s_Gujarat_Bottling_Co_Ltd_v_Coca_Cola_Co.html": {
+    "mtime": 1791796750.4458878,
+    "seen": 1791813006.83778,
+    "ast_hash": "9dc87f95ad2ccd97dfb4846a2abccbf5",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-125_47826431_Nabha_Power_Ltd_v_Punjab_State_Power_Corporation.html": {
+    "mtime": 1791796768.4262483,
+    "seen": 1791813006.83778,
+    "ast_hash": "8fcc6bb2396fbff4e2e6c1a20f8f56b2",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-126_155780652_Enercon_India_Ltd_v_Enercon_GmbH.html": {
+    "mtime": 1791796781.8810968,
+    "seen": 1791813006.83778,
+    "ast_hash": "2d58fdbc0b4ee17d23d9f2f800eb751c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-127_176968596_Booz_Allen_Hamilton_Inc_v_SBI_Home_Finance_Ltd.html": {
+    "mtime": 1791796794.2658522,
+    "seen": 1791813006.83778,
+    "ast_hash": "a36b92e560b1c724c4c0d8de813af7bf",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-128_164830984_Vidya_Drolia_v_Durga_Trading_Corporation.html": {
+    "mtime": 1791796810.1299067,
+    "seen": 1791813006.83778,
+    "ast_hash": "ba2725e7b67659177cfc985547f436ff",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-129_13979441_BALCO_v_Kaiser_Aluminium_Technical_Services.html": {
+    "mtime": 1791796823.0679996,
+    "seen": 1791813006.83778,
+    "ast_hash": "74a4a05e8a6c3b5e19ddd2da3d51599e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-130_26504538_ONGC_v_Saw_Pipes_Ltd.html": {
+    "mtime": 1791796834.0329373,
+    "seen": 1791813006.83778,
+    "ast_hash": "b0e80878d65487603025ace80a2b7c16",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-131_7627665_Associate_Builders_v_DDA.html": {
+    "mtime": 1791796846.3830843,
+    "seen": 1791813006.83778,
+    "ast_hash": "7cc72a62b1a0d88a59543cddc12a5471",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-132_30476196_Ssangyong_Engineering_v_NHAI.html": {
+    "mtime": 1791796858.7877126,
+    "seen": 1791813006.83778,
+    "ast_hash": "0457b4ce48e7292a4438cf496e38c61c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-133_79928496_Bharat_Aluminium_Co_v_Kaiser_Aluminium.html": {
+    "mtime": 1791796871.2732868,
+    "seen": 1791813006.83778,
+    "ast_hash": "20636529f004f9c54ebbf3c366650154",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-134_115701246_Shayara_Bano_v_Union_of_India.html": {
+    "mtime": 1791797267.422692,
+    "seen": 1791813006.83778,
+    "ast_hash": "3bca251245900e16ef4768b33cf92670",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-135_106393931_Mohd_Ahmed_Khan_v_Shah_Bano_Begum.html": {
+    "mtime": 1791796897.0486374,
+    "seen": 1791813006.83778,
+    "ast_hash": "c8cdca767e9f205be22dedc0a006b55e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-136_1860216_Danial_Latifi_v_Union_of_India.html": {
+    "mtime": 1791796910.0735817,
+    "seen": 1791813006.83778,
+    "ast_hash": "b3dbe7a810b4ba8134d76fbda4e79319",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-137_63198920_Vineeta_Sharma_v_Rakesh_Sharma.html": {
+    "mtime": 1791796922.671049,
+    "seen": 1791813006.83778,
+    "ast_hash": "9310bc081e4c7e6a45debd39419fac26",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-138_1629974_Githa_Hariharan_v_Reserve_Bank_of_India.html": {
+    "mtime": 1791796935.3717515,
+    "seen": 1791813006.83778,
+    "ast_hash": "04ee7f27684267dc354d6ad4e6704155",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-139_106393931_Sarla_Mudgal_v_Union_of_India.html": {
+    "mtime": 1791796947.0652833,
+    "seen": 1791813006.83778,
+    "ast_hash": "c8cdca767e9f205be22dedc0a006b55e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-140_137813641_ABC_v_State_NCT_of_Delhi.html": {
+    "mtime": 1791796961.7542987,
+    "seen": 1791813006.83778,
+    "ast_hash": "4814148b4b3eaf18d8cb8ddd96d55941",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-141_48424234_Shilpa_Sailesh_v_Varun_Sreenivasan.html": {
+    "mtime": 1791796974.2806938,
+    "seen": 1791813006.83778,
+    "ast_hash": "b63b2330eda5bf65b3b9207d6051791a",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-142_43933133_Amardeep_Singh_v_Harveen_Kaur.html": {
+    "mtime": 1791796987.5927575,
+    "seen": 1791813006.83778,
+    "ast_hash": "14f9ee6ae36400828b70acc96676b1fa",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-143_115833707_K_S_Puttaswamy_v_Union_of_India_Aadhaar.html": {
+    "mtime": 1791797003.1559472,
+    "seen": 1791813006.83778,
+    "ast_hash": "5bffc7c39cdf671fe95f33d15dc54693",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-144_38043687_Internet_and_Mobile_Association_of_India_v_RBI.html": {
+    "mtime": 1791797015.5572069,
+    "seen": 1791813006.83778,
+    "ast_hash": "4862436beaf03d405a953bd8a3e7b07e",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-145_74638836_Anuradha_Bhasin_v_Union_of_India.html": {
+    "mtime": 1791797028.8713224,
+    "seen": 1791813006.83778,
+    "ast_hash": "302901cb19fed684ab1cfc2fe9eefba8",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-146_188439981_Faheema_Shirin_R_K_v_State_of_Kerala.html": {
+    "mtime": 1791797045.2197275,
+    "seen": 1791813006.83778,
+    "ast_hash": "603607dcaa89643a7a6973bb78dc005c",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-147_21429162_Avnish_Bajaj_v_State_NCT_of_Delhi.html": {
+    "mtime": 1791797058.6817038,
+    "seen": 1791813006.83778,
+    "ast_hash": "5931d36abb8c69d43c77de1ec3cfd3f2",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-148_43335747_Christian_Louboutin_SAS_v_Nakul_Bajaj.html": {
+    "mtime": 1791797072.1767893,
+    "seen": 1791813006.83778,
+    "ast_hash": "4ca09f70355b60e210f148e9dde746ed",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-149_117407633_Tata_Sons_Ltd_v_Greenpeace_International.html": {
+    "mtime": 1791797082.629935,
+    "seen": 1791813006.83778,
+    "ast_hash": "2cc64fbb0476e718bb1e829f88fd7e78",
+    "semantic_hash": ""
+  },
+  "data/case_law/raw/MARE-CASE-150_1271015_R_G_Anand_v_Deluxe_Films.html": {
+    "mtime": 1791797095.5347085,
+    "seen": 1791813006.83778,
+    "ast_hash": "9f44413b0247a047924b6bfcb9b5f58d",
+    "semantic_hash": ""
+  },
+  "docs/MARE_JURIS_TECHNICAL_METRICS_REPORT.md": {
+    "mtime": 1789450305.7829132,
+    "seen": 1791813006.83778,
+    "ast_hash": "867cab9b182a16cda264b6f10ac7a656",
+    "semantic_hash": ""
+  },
+  "docs/reportimp.md": {
+    "mtime": 1789449504.8944452,
+    "seen": 1791813006.8387783,
+    "ast_hash": "907c972969a55c10438dd03b860c91d2",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/RAG_EVALUATION_SUMMARY.md": {
+    "mtime": 1789492080.5881999,
+    "seen": 1791813006.8387783,
+    "ast_hash": "4517390a7de950bc35ae3d250ec9bb8b",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/rag_evaluation_report.md": {
+    "mtime": 1789492080.589192,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0b47c681b283a2f7aa4c8cac3ecfa0c9",
+    "semantic_hash": ""
+  },
+  "render.yaml": {
+    "mtime": 1789454969.629129,
+    "seen": 1791813006.8387783,
+    "ast_hash": "a9310a97a53f9c887dd794ed11bbced7",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-004_172105947_Arjun_Panditrao_Khotkar_v_Kailash_Kushanrao_Gorantyal.pdf": {
+    "mtime": 1791794978.565213,
+    "seen": 1791813006.8387783,
+    "ast_hash": "4347211d9bc7b825ff084b2f01d10420",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-007_101637927_CPIO_Supreme_Court_of_India_v_Subhash_Chandra_Agarwal.pdf": {
+    "mtime": 1791795068.9186442,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ddc21695e0f04067789ade86b0ea0806",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-009_71260002_Kesavananda_Bharati_v_State_of_Kerala.pdf": {
+    "mtime": 1791795094.6414711,
+    "seen": 1791813006.8387783,
+    "ast_hash": "68e4bb06b8e66fb6936eda4a5cd0e021",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-011_137753759_Justice_K_S_Puttaswamy_v_Union_of_India.pdf": {
+    "mtime": 1791795123.5877998,
+    "seen": 1791813006.8387783,
+    "ast_hash": "117324c199d142665b709e3d3b557a46",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-012_105540497_Minerva_Mills_Ltd_v_Union_of_India.pdf": {
+    "mtime": 1791795136.539303,
+    "seen": 1791813006.8387783,
+    "ast_hash": "fddd21a46ee12bd07f09db8cdce17201",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-017_109624343_Joseph_Shine_v_Union_of_India.pdf": {
+    "mtime": 1791795200.405614,
+    "seen": 1791813006.8387783,
+    "ast_hash": "59b0ea7b6b66466b2ff51a15446162d5",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-019_72221982_Vishaka_v_State_of_Rajasthan.pdf": {
+    "mtime": 1791795226.1813862,
+    "seen": 1791813006.8387783,
+    "ast_hash": "73f6505c06c2472cab0d3b19d246205d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-021_116933340_Common_Cause_v_Union_of_India.pdf": {
+    "mtime": 1791795269.684628,
+    "seen": 1791813006.8387783,
+    "ast_hash": "2360459c04739530639df6e937adb582",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-025_194969006_Lalita_Kumari_v_Government_of_Uttar_Pradesh.pdf": {
+    "mtime": 1791795324.82003,
+    "seen": 1791813006.8387783,
+    "ast_hash": "6abd12fb71b9ed4ec5b07df1afe7f4e1",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-029_39889139_Joginder_Kumar_v_State_of_U_P.pdf": {
+    "mtime": 1791795373.3818073,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0afda2eac3489265614fe6608cb9d68d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-030_193074716_Selvi_v_State_of_Karnataka.pdf": {
+    "mtime": 1791795387.5386424,
+    "seen": 1791813006.8387783,
+    "ast_hash": "8202319964dcd3b46776bceebd6b98ff",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-035_118954113_Bodhisattwa_Gautam_v_Subhra_Chakraborty.pdf": {
+    "mtime": 1791795461.1825285,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0be54a42c43b8b608a2904727f4f6578",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-036_136530193_K_M_Nanavati_v_State_of_Maharashtra.pdf": {
+    "mtime": 1791795475.447136,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1e5df5bc9e8c94b92e32f11e4a3368f7",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-040_49912367_Sharad_Birdhichand_Sarda_v_State_of_Maharashtra.pdf": {
+    "mtime": 1791795529.050131,
+    "seen": 1791813006.8387783,
+    "ast_hash": "a71b7b62ee6452a7820378fe480a6465",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-041_149068217_Hanumant_Govind_Nargundkar_v_State_of_M_P.pdf": {
+    "mtime": 1791795543.0418518,
+    "seen": 1791813006.8387783,
+    "ast_hash": "b5a6fd058dc028d556b7e031edf75b2e",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-047_198846064_State_of_Rajasthan_v_Kashi_Ram.pdf": {
+    "mtime": 1791795632.5462122,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0654892c72e429b281c7c540bde99f16",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-048_70906189_Selvaraj_v_State_of_Karnataka.pdf": {
+    "mtime": 1791795646.9600694,
+    "seen": 1791813006.8387783,
+    "ast_hash": "c69bafb98f7c223f9f204bff04758aee",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-049_104491635_State_of_Maharashtra_v_Damu.pdf": {
+    "mtime": 1791795662.0707028,
+    "seen": 1791813006.8387783,
+    "ast_hash": "36052ea93ec6a5044ec59786dab90eec",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-050_66762951_Anil_Sharma_v_State_of_Jharkhand.pdf": {
+    "mtime": 1791795677.187873,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3e71a48cf65fab9ecb958e0e7618b1c2",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-051_5514381_P_Chidambaram_v_Directorate_of_Enforcement.pdf": {
+    "mtime": 1791795693.3680205,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ad37c94b7e4cfc2a9fd7ce6dd1b34e62",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-052_139087134_Sanjay_Chandra_v_CBI.pdf": {
+    "mtime": 1791795708.354708,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0dbfa4b095b9d7552d06b834fd241a06",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-054_5390586_Gudikanti_Narasimhulu_v_Public_Prosecutor.pdf": {
+    "mtime": 1791795736.4827304,
+    "seen": 1791813006.8387783,
+    "ast_hash": "2a32f71da7110c941ad5181c7b8f13d1",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-055_35898644_Moti_Ram_v_State_of_Madhya_Pradesh.pdf": {
+    "mtime": 1791795751.9610562,
+    "seen": 1791813006.8387783,
+    "ast_hash": "f84835d1e11f01ef68467340f1b757e4",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-057_172125272_PUCL_v_Union_of_India.pdf": {
+    "mtime": 1791795779.410474,
+    "seen": 1791813006.8387783,
+    "ast_hash": "c5d092f5e33fc544857f84daa8a2e660",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-059_172038686_Bandhua_Mukti_Morcha_v_Union_of_India.pdf": {
+    "mtime": 1791795810.9091146,
+    "seen": 1791813006.8387783,
+    "ast_hash": "e6d97db80a26942018672426bd28e567",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-061_78380249_Indian_Council_for_Enviro_Legal_Action_v_Union_of_India.pdf": {
+    "mtime": 1791795846.0963373,
+    "seen": 1791813006.8387783,
+    "ast_hash": "165af2523f14e67565c9c1f186963387",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-063_174258561_T_N_Godavarman_Thirumulpad_v_Union_of_India.pdf": {
+    "mtime": 1791795876.4922967,
+    "seen": 1791813006.8387783,
+    "ast_hash": "aa83aa595f2b22dafa5401f8e83c3c42",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-064_124732858_M_C_Mehta_v_Kamal_Nath.pdf": {
+    "mtime": 1791795891.3211138,
+    "seen": 1791813006.8387783,
+    "ast_hash": "133723481e7b1ad1ba70bcbe19b88673",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-066_9587206_Prakash_Singh_v_Union_of_India.pdf": {
+    "mtime": 1791795924.5225089,
+    "seen": 1791813006.8387783,
+    "ast_hash": "008732fb19f58a3d713082b0b3ab81e0",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-067_194969006_Lalita_Kumari_v_Govt_of_U_P.pdf": {
+    "mtime": 1791795940.5009053,
+    "seen": 1791813006.8387783,
+    "ast_hash": "6abd12fb71b9ed4ec5b07df1afe7f4e1",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-068_74014727_Independent_Thought_v_Union_of_India.pdf": {
+    "mtime": 1791795955.8157783,
+    "seen": 1791813006.8387783,
+    "ast_hash": "8abf275684b79173e79247f68b684ab8",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-069_28127083_State_of_Maharashtra_v_Madhukar_Narayan_Mardikar.pdf": {
+    "mtime": 1791795970.0854063,
+    "seen": 1791813006.8387783,
+    "ast_hash": "578ddc751daab9b2e984afefb98397c8",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-072_155561996_Tukaram_v_State_of_Maharashtra_Mathura_case.pdf": {
+    "mtime": 1791796015.096147,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1a39d2231cbfce62da0273c5e701a177",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-073_98161134_Mukesh_v_State_NCT_of_Delhi.pdf": {
+    "mtime": 1791796031.4269295,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ae33556084cfb1efd7c3d4d2ddcfee4f",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-074_155869274_Navneet_Kaur_v_State_of_NCT_of_Delhi.pdf": {
+    "mtime": 1791796046.3764677,
+    "seen": 1791813006.8387783,
+    "ast_hash": "c42dab09851fbfad753737b45e22644d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-075_35654105_Shatrughan_Chauhan_v_Union_of_India.pdf": {
+    "mtime": 1791796066.6745205,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1ed8c1b012fa97fba7ae331a0be77046",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-077_90167432_Swamy_Shraddananda_v_State_of_Karnataka.pdf": {
+    "mtime": 1791796095.7674239,
+    "seen": 1791813006.8387783,
+    "ast_hash": "c5f3d5c74b56f40af588c6e2c88f2df3",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-079_129734802_Union_of_India_v_Association_for_Democratic_Reforms.pdf": {
+    "mtime": 1791796131.8307035,
+    "seen": 1791813006.8387783,
+    "ast_hash": "427203cfe88593d151de78f4652e0100",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-080_147909974_Lily_Thomas_v_Union_of_India.pdf": {
+    "mtime": 1791796146.2586179,
+    "seen": 1791813006.8387783,
+    "ast_hash": "c1ffb4c01f5049ecaa39dad40264a56a",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-081_85215452_Kihoto_Hollohan_v_Zachillhu.pdf": {
+    "mtime": 1791796163.2526815,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1921272b72f775f5c1b8316a66a3448e",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-083_180250529_RBI_v_Jayantilal_N_Mistry.pdf": {
+    "mtime": 1791796186.1337185,
+    "seen": 1791813006.8387783,
+    "ast_hash": "807fc7fa78b814ed0011efd26628dc24",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-084_180907243_Institute_of_Chartered_Accountants_of_India_v_Shaunak_H_Satya.pdf": {
+    "mtime": 1791796201.2450418,
+    "seen": 1791813006.8387783,
+    "ast_hash": "fd1b5d4be9ada1f7339348d364209b25",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-085_157793609_CIC_v_State_of_Manipur.pdf": {
+    "mtime": 1791796213.500724,
+    "seen": 1791813006.8387783,
+    "ast_hash": "adb4f8a754f67283df98b94fb50a79ab",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-088_104275334_Namita_Sharma_v_Union_of_India.pdf": {
+    "mtime": 1791796257.1003065,
+    "seen": 1791813006.8387783,
+    "ast_hash": "946249e48cc498d6bbda1d3ebb85e06d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-089_34171618_R_K_Jain_v_Union_of_India.pdf": {
+    "mtime": 1791796276.309037,
+    "seen": 1791813006.8387783,
+    "ast_hash": "e359411ce5fad3d1446c5847bb331fb4",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-090_117004739_Canara_Bank_v_C_S_Shyam.pdf": {
+    "mtime": 1791796291.2678316,
+    "seen": 1791813006.8387783,
+    "ast_hash": "d8c9405b59a81d79a50c74a1076f5a07",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-091_160867293_Union_Public_Service_Commission_v_Gourhari_Kamila.pdf": {
+    "mtime": 1791796305.2290993,
+    "seen": 1791813006.8387783,
+    "ast_hash": "fd1039c58ebcf894bd24b72bfd1b7a90",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-092_145996282_Bihar_School_Examination_Board_v_Suresh_Prasad_Sinha.pdf": {
+    "mtime": 1791796320.1355336,
+    "seen": 1791813006.8387783,
+    "ast_hash": "55ddc502bfee3e5976b0146862863af2",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-096_108118646_S_P_Chengalvaraya_Naidu_v_Jagannath.pdf": {
+    "mtime": 1791796378.7663226,
+    "seen": 1791813006.8387783,
+    "ast_hash": "595e43809658a309b95606c43ef2d2d8",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-098_76786731_Salem_Advocate_Bar_Association_v_Union_of_India.pdf": {
+    "mtime": 1791796409.8071427,
+    "seen": 1791813006.8387783,
+    "ast_hash": "220d2b165b16230b282de9a26b13eadc",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-099_157288746_K_K_Velusamy_v_N_Palanisamy.pdf": {
+    "mtime": 1791796424.1055295,
+    "seen": 1791813006.8387783,
+    "ast_hash": "456a72567db96876da8bfb3602f83443",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-101_40683932_Chand_Rani_v_Kamal_Rani.pdf": {
+    "mtime": 1791796450.399781,
+    "seen": 1791813006.8387783,
+    "ast_hash": "be1c85bd2e90c048a28572cbbb8c46dd",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-105_72030650_Bharat_Sanchar_Nigam_Ltd_v_Motorola_India.pdf": {
+    "mtime": 1791796498.2528577,
+    "seen": 1791813006.8387783,
+    "ast_hash": "5b59a51f364a6f9a9336d30ac32d258a",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-112_44116196_Pioneer_Urban_Land_v_Union_of_India.pdf": {
+    "mtime": 1791796593.3567631,
+    "seen": 1791813006.8387783,
+    "ast_hash": "4ec0d5785f6d02c1ed18f81807437e64",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-114_25085235_Jacob_Mathew_v_State_of_Punjab.pdf": {
+    "mtime": 1791796619.8002987,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1a46497525ce1d036b7b13b61f7c7b8f",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-116_97180843_M_s_Emaar_MGF_Land_Ltd_v_Aftab_Singh.pdf": {
+    "mtime": 1791796645.843375,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ca7230b1f5a6856560f07ea24a42eacd",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-117_163236007_Bangalore_Water_Supply_v_A_Rajappa.pdf": {
+    "mtime": 1791796659.2021298,
+    "seen": 1791813006.8387783,
+    "ast_hash": "f1a18c8efb86d37ff27ebb4cabcaaf6d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-120_175676756_Air_India_v_Nergesh_Meerza.pdf": {
+    "mtime": 1791796694.8701124,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ad799cb92218cb0b6b2d5a0304f9f297",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-121_107219475_Randhir_Singh_v_Union_of_India.pdf": {
+    "mtime": 1791796711.8360727,
+    "seen": 1791813006.8387783,
+    "ast_hash": "71031fb7700e73b434747d05ea425617",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-122_48414193_Secretary_State_of_Karnataka_v_Umadevi.pdf": {
+    "mtime": 1791796726.9632316,
+    "seen": 1791813006.8387783,
+    "ast_hash": "99dfdad60ead858ec3e56e4b76fe00cf",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-124_170176053_M_s_Gujarat_Bottling_Co_Ltd_v_Coca_Cola_Co.pdf": {
+    "mtime": 1791796753.7829785,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1a15abea28526b65aa6042ecbff526ae",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-125_47826431_Nabha_Power_Ltd_v_Punjab_State_Power_Corporation.pdf": {
+    "mtime": 1791796771.6832156,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3765745bc74cd1408852e827d263f57a",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-126_155780652_Enercon_India_Ltd_v_Enercon_GmbH.pdf": {
+    "mtime": 1791796785.9655092,
+    "seen": 1791813006.8387783,
+    "ast_hash": "48ce661a8fcdd55fecac43ebb786d9d7",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-127_176968596_Booz_Allen_Hamilton_Inc_v_SBI_Home_Finance_Ltd.pdf": {
+    "mtime": 1791796799.3381705,
+    "seen": 1791813006.8387783,
+    "ast_hash": "5b11d2f49f7fb4e137d13128d29049ea",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-128_164830984_Vidya_Drolia_v_Durga_Trading_Corporation.pdf": {
+    "mtime": 1791796813.5585113,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3ecc7df970345377269a5b05a6952245",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-131_7627665_Associate_Builders_v_DDA.pdf": {
+    "mtime": 1791796849.6602871,
+    "seen": 1791813006.8387783,
+    "ast_hash": "1f6c204c383088bef81bef942382c783",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-132_30476196_Ssangyong_Engineering_v_NHAI.pdf": {
+    "mtime": 1791796862.6199417,
+    "seen": 1791813006.8387783,
+    "ast_hash": "fa3b98e9b824964a8765dedc45c5409d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-133_79928496_Bharat_Aluminium_Co_v_Kaiser_Aluminium.pdf": {
+    "mtime": 1791796875.9429104,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ec7bb5cc25b809488127afece7ffd99b",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-135_106393931_Mohd_Ahmed_Khan_v_Shah_Bano_Begum.pdf": {
+    "mtime": 1791796901.4140499,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ac8f55ed818a566fa03c07b1c667341d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-137_63198920_Vineeta_Sharma_v_Rakesh_Sharma.pdf": {
+    "mtime": 1791796926.062735,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0438366f3409a1e26206cd384a6f0b75",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-139_106393931_Sarla_Mudgal_v_Union_of_India.pdf": {
+    "mtime": 1791796950.999403,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ac8f55ed818a566fa03c07b1c667341d",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-141_48424234_Shilpa_Sailesh_v_Varun_Sreenivasan.pdf": {
+    "mtime": 1791796977.4088423,
+    "seen": 1791813006.8387783,
+    "ast_hash": "f9c67c91eec0731ad3cdbe82bfedc7f6",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-142_43933133_Amardeep_Singh_v_Harveen_Kaur.pdf": {
+    "mtime": 1791796991.6015623,
+    "seen": 1791813006.8387783,
+    "ast_hash": "2aa43f7bf5f2a77d0ef85c7776b3682c",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-143_115833707_K_S_Puttaswamy_v_Union_of_India_Aadhaar.pdf": {
+    "mtime": 1791797006.5112002,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ada96909b1e6bfd3f809d0a4294403ee",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-144_38043687_Internet_and_Mobile_Association_of_India_v_RBI.pdf": {
+    "mtime": 1791797019.0815904,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0818e108876aa068a4df51b51aaf5468",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-147_21429162_Avnish_Bajaj_v_State_NCT_of_Delhi.pdf": {
+    "mtime": 1791797063.3110063,
+    "seen": 1791813006.8387783,
+    "ast_hash": "71992f493ccc11a10dd3930040d4ac82",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-148_43335747_Christian_Louboutin_SAS_v_Nakul_Bajaj.pdf": {
+    "mtime": 1791797075.6827579,
+    "seen": 1791813006.8387783,
+    "ast_hash": "97e1ae89ec75aa0f422b440f43eeb217",
+    "semantic_hash": ""
+  },
+  "data/case_law/pdf/MARE-CASE-149_117407633_Tata_Sons_Ltd_v_Greenpeace_International.pdf": {
+    "mtime": 1791797085.680944,
+    "seen": 1791813006.8387783,
+    "ast_hash": "0d6acf2555b9476d23f643102e65b92f",
+    "semantic_hash": ""
+  },
+  "legal-documents/The Bharatiya Sakshya Adhiniyam, 2023/source.pdf": {
+    "mtime": 1789272384.1118236,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ce5cbac50c8a00d95f93888c9c6d75ea",
+    "semantic_hash": ""
+  },
+  "legal-documents/The Right to Information Act, 2005/source.pdf": {
+    "mtime": 1789272421.879861,
+    "seen": 1791813006.8387783,
+    "ast_hash": "7d6b6934a0c329ff4ef4b2c2f5f8f6da",
+    "semantic_hash": ""
+  },
+  "legal-documents/protection-of-women-from-domestic-violence-act-2005/source.PDF": {
+    "mtime": 1789451832.187081,
+    "seen": 1791813006.8387783,
+    "ast_hash": "655f3d44de310424682a729566d0abbb",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/citation_coverage.png": {
+    "mtime": 1789492074.4583411,
+    "seen": 1791813006.8387783,
+    "ast_hash": "e773bfe84dd870b90dd8c174dd39b1d3",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/grounding_results.png": {
+    "mtime": 1789492074.5860693,
+    "seen": 1791813006.8387783,
+    "ast_hash": "46a2f2b66907e48881a26ed6d23d5e17",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/hallucination_by_document.png": {
+    "mtime": 1789488434.2023988,
+    "seen": 1791813006.8387783,
+    "ast_hash": "16751906452edf70da10f60073620a29",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/latency_breakdown.png": {
+    "mtime": 1789488434.3115578,
+    "seen": 1791813006.8387783,
+    "ast_hash": "7bba72a9556615769d33ea71b9089e6d",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/latency_distribution.png": {
+    "mtime": 1789492074.734268,
+    "seen": 1791813006.8387783,
+    "ast_hash": "91587eca1c6b6ea84e9c6e88f9cdaa9d",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/mrr_by_document.png": {
+    "mtime": 1789492074.217072,
+    "seen": 1791813006.8387783,
+    "ast_hash": "3755bbb0551b656148269a5d942a33f7",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/mrr_ndcg_by_document.png": {
+    "mtime": 1789488434.0978162,
+    "seen": 1791813006.8387783,
+    "ast_hash": "95c58d0df50a82e84a05166426423ffc",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/ndcg_by_document.png": {
+    "mtime": 1789492074.3321614,
+    "seen": 1791813006.8387783,
+    "ast_hash": "2112e0bcd40a51bc915ad6f6fa9f72b3",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/precision_at_k.png": {
+    "mtime": 1789492073.8293598,
+    "seen": 1791813006.8387783,
+    "ast_hash": "d2ebd8e3a196cc5cc93fa9659f361520",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/precision_recall_curve.png": {
+    "mtime": 1789488433.884204,
+    "seen": 1791813006.8387783,
+    "ast_hash": "490528245bfa9f6f2d927a2a53abd670",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/recall_at_k.png": {
+    "mtime": 1789492073.9683425,
+    "seen": 1791813006.8387783,
+    "ast_hash": "ea1779298929231913540301ba6c867b",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/retrieval_comparison.png": {
+    "mtime": 1789488433.9918835,
+    "seen": 1791813006.8387783,
+    "ast_hash": "4f8d15e0f378babfecb4a91896fcd571",
+    "semantic_hash": ""
+  },
+  "evaluation/rag_eval_harness/vector_bm25_hybrid_comparison.png": {
+    "mtime": 1789492074.0785272,
+    "seen": 1791813006.8387783,
+    "ast_hash": "4f8d15e0f378babfecb4a91896fcd571",
+    "semantic_hash": ""
+  },
+  "backend/app/api/v1/documents.py": {
+    "mtime": 1791885094.2551227,
+    "seen": 1791885827.5624695,
+    "ast_hash": "76b5c2b61683257ddb7d3d35c524c6a2",
+    "semantic_hash": ""
+  },
+  "backend/app/services/case_law_corpus_agent.py": {
+    "mtime": 1791813512.8861103,
+    "seen": 1791885827.5624695,
+    "ast_hash": "de1fcdbc0de9bdc0e5e1430b756b9fd7",
+    "semantic_hash": ""
+  },
+  "backend/app/services/document_agent.py": {
+    "mtime": 1791885064.30194,
+    "seen": 1791885827.5624695,
+    "ast_hash": "53814c131c6e96967a084be34c387dd0",
+    "semantic_hash": ""
+  },
+  "backend/app/services/document_context_service.py": {
+    "mtime": 1791885672.7879841,
+    "seen": 1791885827.5624695,
+    "ast_hash": "23b105fd94f195c7a5d0eb8223001e95",
+    "semantic_hash": ""
+  },
+  "backend/app/services/document_extraction_service.py": {
+    "mtime": 1791891263.748017,
+    "seen": 1791892437.0624394,
+    "ast_hash": "9a1d23569541a6ba26c726ef1ef722d2",
+    "semantic_hash": ""
+  },
+  "backend/app/services/multi_agent_orchestrator.py": {
+    "mtime": 1791891720.8568168,
+    "seen": 1791892437.0624394,
+    "ast_hash": "b486b9f8260d484756ae3a2e92005770",
+    "semantic_hash": ""
+  },
+  "backend/tests/test_document_agent.py": {
+    "mtime": 1791887182.657499,
+    "seen": 1791892437.0624394,
+    "ast_hash": "f191b8839d5dece6bc240ae3579a5578",
+    "semantic_hash": ""
+  },
+  "backend/tests/test_multi_agent_orchestration.py": {
+    "mtime": 1791814630.1774616,
+    "seen": 1791885827.563065,
+    "ast_hash": "2254c9ebfd2ad6ded1560ec552bfd8ab",
+    "semantic_hash": ""
+  },
+  "data/case_law/ingestion_checkpoint.json": {
+    "mtime": 1791864000.119903,
+    "seen": 1791885827.563065,
+    "ast_hash": "7e8562dcaf4a22635e2c7d1978666334",
+    "semantic_hash": ""
+  },
+  "frontend/src/app/api/documents/upload/route.ts": {
+    "mtime": 1791891289.1580563,
+    "seen": 1791892437.0624394,
+    "ast_hash": "9622f2c490b58f4338d70af1dd9f66eb",
+    "semantic_hash": ""
+  },
+  "scripts/build_complete_documentation.py": {
+    "mtime": 1791823010.3119507,
+    "seen": 1791885827.563065,
+    "ast_hash": "9cb99812fb81ff483b39444c915e66d5",
+    "semantic_hash": ""
+  },
+  "scripts/generate_all_diagrams.py": {
+    "mtime": 1791822949.9076657,
+    "seen": 1791885827.563065,
+    "ast_hash": "1db9d7f5070933f68c7366425c1a72e0",
+    "semantic_hash": ""
+  },
+  "scripts/generate_full_reports.py": {
+    "mtime": 1791823131.90987,
+    "seen": 1791885827.563065,
+    "ast_hash": "79ee5ce2739612995c0b9545e313d71f",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/MARE_Juris_Complete_Project_Report.pdf": {
+    "mtime": 1791823150.9737127,
+    "seen": 1791885827.5636075,
+    "ast_hash": "47af556f8227a83b2d8a9619778ec4ea",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/MARE_Juris_IEEE_Research_Paper.pdf": {
+    "mtime": 1791823155.3139312,
+    "seen": 1791885827.5636075,
+    "ast_hash": "29e2b59e90d8ac88de52ea281268aca2",
+    "semantic_hash": ""
+  },
+  "docs/MARE_Juris_Full_Report.pdf": {
+    "mtime": 1791821683.0691764,
+    "seen": 1791885827.5636075,
+    "ast_hash": "60acfdf3f4f55d964cce52cc594a38b7",
+    "semantic_hash": ""
+  },
+  "research/MARE_Juris_Complete_Project_Report.pdf": {
+    "mtime": 1791823148.2633915,
+    "seen": 1791885827.5636075,
+    "ast_hash": "47af556f8227a83b2d8a9619778ec4ea",
+    "semantic_hash": ""
+  },
+  "research/MARE_Juris_IEEE_Research_Paper.pdf": {
+    "mtime": 1791823152.905396,
+    "seen": 1791885827.5636075,
+    "ast_hash": "29e2b59e90d8ac88de52ea281268aca2",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/architecture/01_overall_system_architecture.png": {
+    "mtime": 1791822960.2628603,
+    "seen": 1791885827.5636075,
+    "ast_hash": "60cdce80f6b87ad25a748a6aacb4cac1",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/architecture/02_five_agent_architecture.png": {
+    "mtime": 1791822960.6760848,
+    "seen": 1791885827.5636075,
+    "ast_hash": "056dbaea335811b662ecb61677a668d6",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/architecture/03_compliance_agent_architecture.png": {
+    "mtime": 1791822961.0162625,
+    "seen": 1791885827.5636075,
+    "ast_hash": "41ad2f3d0e3167cd33f619cfb530df34",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/architecture/04_deployment_architecture.png": {
+    "mtime": 1791822961.3249362,
+    "seen": 1791885827.5636075,
+    "ast_hash": "fd51cf371ba159ff5647c88183370177",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/architecture/05_trust_boundary_architecture.png": {
+    "mtime": 1791822962.054696,
+    "seen": 1791885827.5636075,
+    "ast_hash": "ba1811a3c970d6aa4bbc12b618d83e42",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/database/26_database_er_diagram.png": {
+    "mtime": 1791822975.3324282,
+    "seen": 1791885827.5636075,
+    "ast_hash": "5c4eb2835879895ee2dc84f042b234dc",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/database/27_corpus_isolation_architecture.png": {
+    "mtime": 1791822976.115757,
+    "seen": 1791885827.5636075,
+    "ast_hash": "474d67d67219ab259df8b16e7a7fb85b",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/06_overall_query_lifecycle.png": {
+    "mtime": 1791822962.9137537,
+    "seen": 1791885827.5636075,
+    "ast_hash": "92a225d5011d4b188df6695065e9db8f",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/07_auth_validation_workflow.png": {
+    "mtime": 1791822963.5943813,
+    "seen": 1791885827.5636075,
+    "ast_hash": "41e6e10bee7b643492cccfedd0813a55",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/08_agent_selection_routing.png": {
+    "mtime": 1791822964.1606781,
+    "seen": 1791885827.5636075,
+    "ast_hash": "1fb6e383e6562414f33791c7c93454fb",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/09_statutory_rag_workflow.png": {
+    "mtime": 1791822964.805954,
+    "seen": 1791885827.5636075,
+    "ast_hash": "d3feac50abcc5b71dfea7f806c88e66f",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/10_hybrid_vector_bm25_fusion.png": {
+    "mtime": 1791822965.3379867,
+    "seen": 1791885827.5636075,
+    "ast_hash": "6863b4d3bac3650295238dc02f886d34",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/11_official_web_workflow.png": {
+    "mtime": 1791822965.881063,
+    "seen": 1791885827.5636075,
+    "ast_hash": "7b9c15d65d4fb4a85756670da4357f22",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/12_case_law_corpus_workflow.png": {
+    "mtime": 1791822966.4669356,
+    "seen": 1791885827.5636075,
+    "ast_hash": "896aae32c9e2f2e89f548c588148e2d3",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/13_live_case_law_api_workflow.png": {
+    "mtime": 1791822966.995515,
+    "seen": 1791885827.5636075,
+    "ast_hash": "f72573784d44ed9a0ca085a2396eaed2",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/14_document_agent_workflow.png": {
+    "mtime": 1791822967.5156057,
+    "seen": 1791885827.5636075,
+    "ast_hash": "478978e89303d67904ecbf8e64cff425",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/15_combined_answer_source_comparison.png": {
+    "mtime": 1791822968.1204202,
+    "seen": 1791885827.5636075,
+    "ast_hash": "a06031658150e41eb91b19c35ebaff41",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/16_citation_verification_workflow.png": {
+    "mtime": 1791822968.6471355,
+    "seen": 1791885827.5636075,
+    "ast_hash": "79071dd3b8b1ef82a1637679a6c6c510",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/17_follow_up_context_resolution.png": {
+    "mtime": 1791822969.2421365,
+    "seen": 1791885827.5636075,
+    "ast_hash": "3ae32e407c24c77110f64e2a2b6974d9",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/18_error_handling_fallbacks.png": {
+    "mtime": 1791822969.8381357,
+    "seen": 1791885827.5636075,
+    "ast_hash": "87a3d838f0569dc78e720046091f7dab",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/flowcharts/19_compliance_questionnaire_workflow.png": {
+    "mtime": 1791822970.405246,
+    "seen": 1791885827.5636075,
+    "ast_hash": "70cb887acaa20aebb419e430b752c772",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/research_paper_figures/fig1_system_architecture.png": {
+    "mtime": 1791822979.0749314,
+    "seen": 1791885827.5636075,
+    "ast_hash": "fd4c1c9e37cf33b9150e8ed071e36fa1",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/research_paper_figures/fig2_hybrid_fusion.png": {
+    "mtime": 1791822979.3857195,
+    "seen": 1791885827.5636075,
+    "ast_hash": "05b562c9d9048672c0b8bb0c61e6b795",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/research_paper_figures/fig3_verification_hierarchy.png": {
+    "mtime": 1791822979.6415868,
+    "seen": 1791885827.5636075,
+    "ast_hash": "ed9b55e3714c2cfac2285dae37c96927",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/research_paper_figures/fig4_isolated_schema.png": {
+    "mtime": 1791822979.939831,
+    "seen": 1791885827.5636075,
+    "ast_hash": "f1e7a75ddee3412bee18d38bae9a947f",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/security/28_auth_authorization_storage.png": {
+    "mtime": 1791822976.9010046,
+    "seen": 1791885827.5636075,
+    "ast_hash": "135b4735813b652c6a148c9a5dc29b64",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/security/29_evidence_provenance_citation.png": {
+    "mtime": 1791822977.6076403,
+    "seen": 1791885827.5636075,
+    "ast_hash": "6a10eea6349f24c7a929c0d487f5270d",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/security/30_audit_event_agent_execution.png": {
+    "mtime": 1791822978.6511102,
+    "seen": 1791885827.5636075,
+    "ast_hash": "774ce2826309d4484dfff1bd52c7768d",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/20_user_query_sequence.png": {
+    "mtime": 1791822971.0353138,
+    "seen": 1791885827.5636075,
+    "ast_hash": "453ac4d0a141006012bf4e9300252edb",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/21_parallel_agent_execution.png": {
+    "mtime": 1791822971.7251658,
+    "seen": 1791885827.5636075,
+    "ast_hash": "33f554c4ca814c1d56fe456bc376a154",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/22_individual_to_combined_comparison.png": {
+    "mtime": 1791822972.2642806,
+    "seen": 1791885827.5636075,
+    "ast_hash": "cc3c5892b39fc420d8dc01a1f971c43f",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/23_live_case_law_api_sequence.png": {
+    "mtime": 1791822972.7807353,
+    "seen": 1791885827.5636075,
+    "ast_hash": "375f0401b5a57336f4b271506bf48cb0",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/24_document_agent_sequence.png": {
+    "mtime": 1791822973.391954,
+    "seen": 1791885827.5636075,
+    "ast_hash": "121ad710cf8202fe4bc2fccdbb5d72c5",
+    "semantic_hash": ""
+  },
+  "MARE_Juris_Complete_Documentation/images/sequences/25_auth_jwt_rls_sequence.png": {
+    "mtime": 1791822974.266557,
+    "seen": 1791885827.5636075,
+    "ast_hash": "162d74e86678744d1777c5e260de8fc0",
+    "semantic_hash": ""
+  },
+  "docs/images/overall_architecture_1791820908948.jpg": {
+    "mtime": 1791820908.9508195,
+    "seen": 1791885827.5636075,
+    "ast_hash": "bee533ff7517facb60f361d4c8412fc0",
+    "semantic_hash": ""
+  },
+  "research/images/architecture/01_overall_system_architecture.png": {
+    "mtime": 1791822959.955182,
+    "seen": 1791885827.5636075,
+    "ast_hash": "60cdce80f6b87ad25a748a6aacb4cac1",
+    "semantic_hash": ""
+  },
+  "research/images/architecture/02_five_agent_architecture.png": {
+    "mtime": 1791822960.4850652,
+    "seen": 1791885827.5636075,
+    "ast_hash": "056dbaea335811b662ecb61677a668d6",
+    "semantic_hash": ""
+  },
+  "research/images/architecture/03_compliance_agent_architecture.png": {
+    "mtime": 1791822960.8730772,
+    "seen": 1791885827.5636075,
+    "ast_hash": "41ad2f3d0e3167cd33f619cfb530df34",
+    "semantic_hash": ""
+  },
+  "research/images/architecture/04_deployment_architecture.png": {
+    "mtime": 1791822961.181424,
+    "seen": 1791885827.5636075,
+    "ast_hash": "fd51cf371ba159ff5647c88183370177",
+    "semantic_hash": ""
+  },
+  "research/images/architecture/05_trust_boundary_architecture.png": {
+    "mtime": 1791822961.6392386,
+    "seen": 1791885827.5636075,
+    "ast_hash": "ba1811a3c970d6aa4bbc12b618d83e42",
+    "semantic_hash": ""
+  },
+  "research/images/database/26_database_er_diagram.png": {
+    "mtime": 1791822974.7647946,
+    "seen": 1791885827.5636075,
+    "ast_hash": "5c4eb2835879895ee2dc84f042b234dc",
+    "semantic_hash": ""
+  },
+  "research/images/database/27_corpus_isolation_architecture.png": {
+    "mtime": 1791822975.7600782,
+    "seen": 1791885827.5636075,
+    "ast_hash": "474d67d67219ab259df8b16e7a7fb85b",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/06_overall_query_lifecycle.png": {
+    "mtime": 1791822962.5161347,
+    "seen": 1791885827.5636075,
+    "ast_hash": "92a225d5011d4b188df6695065e9db8f",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/07_auth_validation_workflow.png": {
+    "mtime": 1791822963.365274,
+    "seen": 1791885827.5636075,
+    "ast_hash": "41e6e10bee7b643492cccfedd0813a55",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/08_agent_selection_routing.png": {
+    "mtime": 1791822963.8900793,
+    "seen": 1791885827.5636075,
+    "ast_hash": "1fb6e383e6562414f33791c7c93454fb",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/09_statutory_rag_workflow.png": {
+    "mtime": 1791822964.4989493,
+    "seen": 1791885827.5636075,
+    "ast_hash": "d3feac50abcc5b71dfea7f806c88e66f",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/10_hybrid_vector_bm25_fusion.png": {
+    "mtime": 1791822965.0829494,
+    "seen": 1791885827.5636075,
+    "ast_hash": "6863b4d3bac3650295238dc02f886d34",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/11_official_web_workflow.png": {
+    "mtime": 1791822965.6261244,
+    "seen": 1791885827.5636075,
+    "ast_hash": "7b9c15d65d4fb4a85756670da4357f22",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/12_case_law_corpus_workflow.png": {
+    "mtime": 1791822966.1857054,
+    "seen": 1791885827.5636075,
+    "ast_hash": "896aae32c9e2f2e89f548c588148e2d3",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/13_live_case_law_api_workflow.png": {
+    "mtime": 1791822966.7595856,
+    "seen": 1791885827.5636075,
+    "ast_hash": "f72573784d44ed9a0ca085a2396eaed2",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/14_document_agent_workflow.png": {
+    "mtime": 1791822967.2702212,
+    "seen": 1791885827.5636075,
+    "ast_hash": "478978e89303d67904ecbf8e64cff425",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/15_combined_answer_source_comparison.png": {
+    "mtime": 1791822967.8275027,
+    "seen": 1791885827.5636075,
+    "ast_hash": "a06031658150e41eb91b19c35ebaff41",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/16_citation_verification_workflow.png": {
+    "mtime": 1791822968.3917887,
+    "seen": 1791885827.5636075,
+    "ast_hash": "79071dd3b8b1ef82a1637679a6c6c510",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/17_follow_up_context_resolution.png": {
+    "mtime": 1791822968.9553077,
+    "seen": 1791885827.5636075,
+    "ast_hash": "3ae32e407c24c77110f64e2a2b6974d9",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/18_error_handling_fallbacks.png": {
+    "mtime": 1791822969.5439153,
+    "seen": 1791885827.5636075,
+    "ast_hash": "87a3d838f0569dc78e720046091f7dab",
+    "semantic_hash": ""
+  },
+  "research/images/flowcharts/19_compliance_questionnaire_workflow.png": {
+    "mtime": 1791822970.1564593,
+    "seen": 1791885827.5636075,
+    "ast_hash": "70cb887acaa20aebb419e430b752c772",
+    "semantic_hash": ""
+  },
+  "research/images/research_paper_figures/fig1_system_architecture.png": {
+    "mtime": 1791822978.8776693,
+    "seen": 1791885827.5636075,
+    "ast_hash": "fd4c1c9e37cf33b9150e8ed071e36fa1",
+    "semantic_hash": ""
+  },
+  "research/images/research_paper_figures/fig2_hybrid_fusion.png": {
+    "mtime": 1791822979.2471664,
+    "seen": 1791885827.5636075,
+    "ast_hash": "05b562c9d9048672c0b8bb0c61e6b795",
+    "semantic_hash": ""
+  },
+  "research/images/research_paper_figures/fig3_verification_hierarchy.png": {
+    "mtime": 1791822979.485166,
+    "seen": 1791885827.5636075,
+    "ast_hash": "ed9b55e3714c2cfac2285dae37c96927",
+    "semantic_hash": ""
+  },
+  "research/images/research_paper_figures/fig4_isolated_schema.png": {
+    "mtime": 1791822979.8025117,
+    "seen": 1791885827.5636075,
+    "ast_hash": "f1e7a75ddee3412bee18d38bae9a947f",
+    "semantic_hash": ""
+  },
+  "research/images/security/28_auth_authorization_storage.png": {
+    "mtime": 1791822976.6026874,
+    "seen": 1791885827.5636075,
+    "ast_hash": "135b4735813b652c6a148c9a5dc29b64",
+    "semantic_hash": ""
+  },
+  "research/images/security/29_evidence_provenance_citation.png": {
+    "mtime": 1791822977.2992747,
+    "seen": 1791885827.5636075,
+    "ast_hash": "6a10eea6349f24c7a929c0d487f5270d",
+    "semantic_hash": ""
+  },
+  "research/images/security/30_audit_event_agent_execution.png": {
+    "mtime": 1791822978.226769,
+    "seen": 1791885827.5636075,
+    "ast_hash": "774ce2826309d4484dfff1bd52c7768d",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/20_user_query_sequence.png": {
+    "mtime": 1791822970.7410862,
+    "seen": 1791885827.5636075,
+    "ast_hash": "453ac4d0a141006012bf4e9300252edb",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/21_parallel_agent_execution.png": {
+    "mtime": 1791822971.392651,
+    "seen": 1791885827.5636075,
+    "ast_hash": "33f554c4ca814c1d56fe456bc376a154",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/22_individual_to_combined_comparison.png": {
+    "mtime": 1791822972.006921,
+    "seen": 1791885827.5636075,
+    "ast_hash": "cc3c5892b39fc420d8dc01a1f971c43f",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/23_live_case_law_api_sequence.png": {
+    "mtime": 1791822972.5313385,
+    "seen": 1791885827.5636075,
+    "ast_hash": "375f0401b5a57336f4b271506bf48cb0",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/24_document_agent_sequence.png": {
+    "mtime": 1791822973.1161685,
+    "seen": 1791885827.5636075,
+    "ast_hash": "121ad710cf8202fe4bc2fccdbb5d72c5",
+    "semantic_hash": ""
+  },
+  "research/images/sequences/25_auth_jwt_rls_sequence.png": {
+    "mtime": 1791822973.917519,
+    "seen": 1791885827.5636075,
+    "ast_hash": "162d74e86678744d1777c5e260de8fc0",
+    "semantic_hash": ""
+  },
+  "backend/tests/test_production_fixes_and_five_agents.py": {
+    "mtime": 1791892361.2258582,
+    "seen": 1791892437.0624394,
+    "ast_hash": "4e93f9373bb7ccd9feb373c92996d67a",
     "semantic_hash": ""
   }
 }

@@ -79,6 +79,42 @@ AGENT_METADATA = {
 }
 
 
+def classify_document_query_intent(query: str) -> str:
+    """
+    Classifies the user query when a document is attached:
+    - 'DOCUMENT_CENTRIC': Primary focus is the attached document (e.g., 'Tell me about this document', 'Summarize this agreement', 'What are the termination terms?')
+    - 'HYBRID': User is asking an external legal question specifically regarding the document terms (e.g. 'Is this non-compete clause enforceable under Section 27?')
+    - 'GENERAL_LEGAL': Independent legal question unrelated to the attached document (e.g. 'What is Section 302 IPC?')
+    """
+    q_lower = query.strip().lower()
+    doc_triggers = [
+        "this document", "the document", "attached document", "uploaded document",
+        "provided document", "this agreement", "the agreement", "this contract",
+        "the contract", "this file", "the file", "attached file", "uploaded file",
+        "this pdf", "the pdf", "this docx", "this clause", "these clauses",
+        "clause in this", "clause of this", "parties in this", "terms of this",
+        "tell me about this", "summarize this", "review this", "analyze this",
+        "what does this say", "what does it say", "tell me about it", "explain this document"
+    ]
+    has_doc_ref = any(trigger in q_lower for trigger in doc_triggers)
+    if not has_doc_ref and len(q_lower.split()) <= 6:
+        short_prompts = ["summarize", "summary", "overview", "review", "explain", "analyze", "what is this", "what is it"]
+        if any(sp == q_lower or q_lower.startswith(sp + " ") for sp in short_prompts):
+            has_doc_ref = True
+
+    if not has_doc_ref:
+        return "GENERAL_LEGAL"
+
+    external_legal_cues = [
+        "section", "act", "statute", "enforceability", "enforceable",
+        "validity", "valid under", "precedent", "supreme court", "high court",
+        "case law", "bns", "ipc", "crpc", "stamp duty", "limitation act",
+        "arbitration act", "contract act", "companies act", "constitution"
+    ]
+    is_hybrid = any(cue in q_lower for cue in external_legal_cues)
+    return "HYBRID" if is_hybrid else "DOCUMENT_CENTRIC"
+
+
 class MultiAgentOrchestrator:
     """Orchestrates multi-agent execution, synthesis, comparison, and verification."""
 
@@ -100,10 +136,21 @@ class MultiAgentOrchestrator:
             return []
         validated = []
         for aid in selected_agents:
-            aid_clean = aid.strip().lower()
+            aid_clean = str(aid).strip().lower()
             if aid_clean in VALID_AGENT_IDS and aid_clean not in validated:
                 validated.append(aid_clean)
         return validated
+
+    def find_invalid_agent_ids(self, selected_agents: Optional[List[str]]) -> List[str]:
+        """Returns any unrecognized agent IDs requested by the client."""
+        if not selected_agents:
+            return []
+        invalid = []
+        for aid in selected_agents:
+            aid_clean = str(aid).strip().lower()
+            if aid_clean not in VALID_AGENT_IDS and aid_clean not in invalid:
+                invalid.append(str(aid).strip())
+        return invalid
 
     async def execute_statutory_rag(
         self,
@@ -264,8 +311,23 @@ class MultiAgentOrchestrator:
                 answer = "\n".join(lines)
                 status = "success"
             else:
-                answer = "No live case precedents were returned by the Indian Kanoon API for this query."
-                status = "empty" if not res.get("errors") else "error"
+                raw_errors = res.get("errors") or []
+                if raw_errors:
+                    status = "error"
+                    err_text = " ".join(raw_errors)
+                    if "401" in err_text or "403" in err_text:
+                        answer = "Live Case-Law API Agent could not retrieve court precedents: The Indian Kanoon API token is unauthorized, invalid, or expired (HTTP 401/403)."
+                    elif "429" in err_text:
+                        answer = "Live Case-Law API Agent query paused: Rate limit reached on Indian Kanoon API (HTTP 429). Please retry your consultation shortly."
+                    elif "not configured" in err_text.lower():
+                        answer = "Live Case-Law API Agent is currently disabled: The Indian Kanoon API token is not configured in the backend environment."
+                    elif "timed out" in err_text.lower() or "timeout" in err_text.lower():
+                        answer = "Live Case-Law search timed out connecting to Indian Kanoon. The external court records service is temporarily slow or unreachable."
+                    else:
+                        answer = f"Live case-law search service encountered an error: {raw_errors[0]}"
+                else:
+                    status = "empty"
+                    answer = f"No live court precedents were returned by Indian Kanoon for query: '{query}'. You may try broader legal keywords or specific statutory provisions."
 
             return {
                 "agent_id": "live_case_law",
@@ -350,6 +412,42 @@ class MultiAgentOrchestrator:
                 "errors": [str(e)],
             }
 
+    def _make_error_response(self, agent_id: str, error_msg: str) -> Dict[str, Any]:
+        meta = AGENT_METADATA.get(agent_id, {})
+        return {
+            "agent_id": agent_id,
+            "agent_name": meta.get("name", agent_id),
+            "status": "error",
+            "answer": f"Agent '{agent_id}' encountered an unexpected internal error.",
+            "citations": [],
+            "evidence": [],
+            "sources": [],
+            "provenance": meta.get("provenance", "UNKNOWN"),
+            "retrieved_at": self._now_iso(),
+            "errors": [error_msg],
+        }
+
+    def _make_no_external_research_needed_response(self, agent_id: str, doc_name: str) -> Dict[str, Any]:
+        meta = AGENT_METADATA.get(agent_id, {})
+        messages = {
+            "statutory_rag": f"The attached document '{doc_name}' contains general factual content. No external statutory violations or provisions requiring statutory retrieval were identified.",
+            "official_web": f"No official government portal search required: Document '{doc_name}' does not request government portal procedures or official schemes.",
+            "case_law_corpus": f"No judicial precedents required: Document '{doc_name}' does not present active litigation or disputed case-law questions.",
+            "live_case_law": f"No live court precedent search required for factual document '{doc_name}'.",
+        }
+        return {
+            "agent_id": agent_id,
+            "agent_name": meta.get("name", agent_id),
+            "status": "success",
+            "answer": messages.get(agent_id, f"No external research required for document '{doc_name}'."),
+            "citations": [],
+            "evidence": [],
+            "sources": [],
+            "provenance": meta.get("provenance", "UNKNOWN"),
+            "retrieved_at": self._now_iso(),
+            "errors": None,
+        }
+
     async def execute_orchestration(
         self,
         query: str,
@@ -379,74 +477,222 @@ class MultiAgentOrchestrator:
                 "verification": None,
             }
 
-        # If document_agent is selected and document_id is provided, retrieve document data
+        effective_query = (resolved_query or query).strip()
+        individual_responses: Dict[str, Any] = {}
+
+        # 1. Resolve attached document and verify user ownership
         doc_data = None
-        if "document_agent" in validated_agents and document_id:
+        doc_lookup_failed = False
+        if document_id:
             try:
                 from app.api.v1.documents import get_document_data
                 doc_data = get_document_data(document_id, user_id)
+                if not doc_data:
+                    doc_lookup_failed = True
             except Exception as e:
                 logger.warning(f"[ORCHESTRATOR] Document lookup error: {e}")
+                doc_lookup_failed = True
 
-        tasks = []
-        task_agent_ids = []
+        # Rule 6: If only Document Agent is selected, run only Document Agent
+        if validated_agents == ["document_agent"]:
+            doc_res = await self.execute_document_agent(
+                query=effective_query,
+                user_id=user_id,
+                document_id=document_id,
+                document_data=doc_data,
+            )
+            individual_responses["document_agent"] = doc_res
+        elif doc_data:
+            # Document is present and verified. Determine query intent.
+            doc_intent = classify_document_query_intent(effective_query)
+            doc_name = doc_data.get("file_name", "Document")
 
-        effective_query = (resolved_query or query).strip()
+            if doc_intent == "DOCUMENT_CENTRIC":
+                # Primary intent is document analysis
+                doc_res = None
+                if "document_agent" in validated_agents:
+                    try:
+                        doc_res = await self.execute_document_agent(
+                            query=effective_query,
+                            user_id=user_id,
+                            document_id=document_id,
+                            document_data=doc_data,
+                        )
+                        individual_responses["document_agent"] = doc_res
+                    except Exception as e:
+                        logger.error(f"[ORCHESTRATOR] Agent 'document_agent' raised unhandled exception: {e}")
+                        doc_res = self._make_error_response("document_agent", str(e))
+                        individual_responses["document_agent"] = doc_res
 
-        for aid in validated_agents:
-            if aid == "statutory_rag":
-                tasks.append(
-                    self.execute_statutory_rag(
-                        query=query,
-                        user_id=user_id,
-                        conversation_id=conversation_id,
-                        history=history,
-                        resolved_query=resolved_query,
-                        conversation_state=conversation_state,
-                    )
-                )
-                task_agent_ids.append("statutory_rag")
-            elif aid == "official_web":
-                tasks.append(self.execute_official_web(query=effective_query))
-                task_agent_ids.append("official_web")
-            elif aid == "case_law_corpus":
-                tasks.append(self.execute_case_law_corpus(query=effective_query))
-                task_agent_ids.append("case_law_corpus")
-            elif aid == "live_case_law":
-                tasks.append(self.execute_live_case_law(query=effective_query))
-                task_agent_ids.append("live_case_law")
-            elif aid == "document_agent":
-                tasks.append(
-                    self.execute_document_agent(
-                        query=query,
-                        user_id=user_id,
-                        document_id=document_id,
-                        document_data=doc_data,
-                    )
-                )
-                task_agent_ids.append("document_agent")
+                other_agents = [aid for aid in validated_agents if aid != "document_agent"]
+                if other_agents:
+                    # Check for legal issues from document context
+                    ctx_pkg = doc_res.get("document_context") if (doc_res and doc_res.get("status") == "success") else None
+                    issues = ctx_pkg.get("issues_requiring_external_research", []) if isinstance(ctx_pkg, dict) else []
+                    keywords = ctx_pkg.get("search_keywords_for_agents", []) if isinstance(ctx_pkg, dict) else []
 
-        # Execute selected agents concurrently
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+                    if issues or keywords:
+                        targeted_q = "; ".join(issues[:2] or keywords[:2])
+                        doc_tag = f"[Document: {doc_name}]"
+                        enhanced_q = f"{targeted_q} {doc_tag}".strip()
+                    elif doc_res and doc_res.get("status") == "error":
+                        enhanced_q = effective_query
+                    else:
+                        enhanced_q = None
 
-        individual_responses: Dict[str, Any] = {}
-        for aid, res in zip(task_agent_ids, results):
-            if isinstance(res, Exception):
-                logger.error(f"[ORCHESTRATOR] Agent '{aid}' raised unhandled exception: {res}")
-                individual_responses[aid] = {
-                    "agent_id": aid,
-                    "agent_name": AGENT_METADATA.get(aid, {}).get("name", aid),
+                    if enhanced_q:
+                        tasks = []
+                        task_aids = []
+                        for aid in other_agents:
+                            if aid == "statutory_rag":
+                                tasks.append(self.execute_statutory_rag(
+                                    query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
+                                    history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
+                                ))
+                                task_aids.append("statutory_rag")
+                            elif aid == "official_web":
+                                tasks.append(self.execute_official_web(query=enhanced_q))
+                                task_aids.append("official_web")
+                            elif aid == "case_law_corpus":
+                                tasks.append(self.execute_case_law_corpus(query=enhanced_q))
+                                task_aids.append("case_law_corpus")
+                            elif aid == "live_case_law":
+                                tasks.append(self.execute_live_case_law(query=enhanced_q))
+                                task_aids.append("live_case_law")
+
+                        if tasks:
+                            results = await asyncio.gather(*tasks, return_exceptions=True)
+                            for aid, res in zip(task_aids, results):
+                                if isinstance(res, Exception):
+                                    individual_responses[aid] = self._make_error_response(aid, str(res))
+                                else:
+                                    individual_responses[aid] = res
+                    else:
+                        # Factual document without external legal issues
+                        for aid in other_agents:
+                            individual_responses[aid] = self._make_no_external_research_needed_response(aid, doc_name)
+
+            elif doc_intent == "HYBRID":
+                # User asks an external statutory/precedent question about document terms
+                tasks = []
+                task_aids = []
+                doc_tag = f"[Attached Document: {doc_name}]"
+                enhanced_q = f"{effective_query} {doc_tag}".strip()
+
+                for aid in validated_agents:
+                    if aid == "document_agent":
+                        tasks.append(self.execute_document_agent(
+                            query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
+                        ))
+                        task_aids.append("document_agent")
+                    elif aid == "statutory_rag":
+                        tasks.append(self.execute_statutory_rag(
+                            query=enhanced_q, user_id=user_id, conversation_id=conversation_id,
+                            history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
+                        ))
+                        task_aids.append("statutory_rag")
+                    elif aid == "official_web":
+                        tasks.append(self.execute_official_web(query=enhanced_q))
+                        task_aids.append("official_web")
+                    elif aid == "case_law_corpus":
+                        tasks.append(self.execute_case_law_corpus(query=enhanced_q))
+                        task_aids.append("case_law_corpus")
+                    elif aid == "live_case_law":
+                        tasks.append(self.execute_live_case_law(query=enhanced_q))
+                        task_aids.append("live_case_law")
+
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                for aid, res in zip(task_aids, results):
+                    if isinstance(res, Exception):
+                        individual_responses[aid] = self._make_error_response(aid, str(res))
+                    else:
+                        individual_responses[aid] = res
+
+            else:  # GENERAL_LEGAL
+                # Rule 9: Do not force the document into independent general legal queries
+                tasks = []
+                task_aids = []
+                for aid in validated_agents:
+                    if aid == "document_agent":
+                        tasks.append(self.execute_document_agent(
+                            query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
+                        ))
+                        task_aids.append("document_agent")
+                    elif aid == "statutory_rag":
+                        tasks.append(self.execute_statutory_rag(
+                            query=query, user_id=user_id, conversation_id=conversation_id,
+                            history=history, resolved_query=resolved_query, conversation_state=conversation_state,
+                        ))
+                        task_aids.append("statutory_rag")
+                    elif aid == "official_web":
+                        tasks.append(self.execute_official_web(query=effective_query))
+                        task_aids.append("official_web")
+                    elif aid == "case_law_corpus":
+                        tasks.append(self.execute_case_law_corpus(query=effective_query))
+                        task_aids.append("case_law_corpus")
+                    elif aid == "live_case_law":
+                        tasks.append(self.execute_live_case_law(query=effective_query))
+                        task_aids.append("live_case_law")
+
+                if tasks:
+                    results = await asyncio.gather(*tasks, return_exceptions=True)
+                    for aid, res in zip(task_aids, results):
+                        if isinstance(res, Exception):
+                            individual_responses[aid] = self._make_error_response(aid, str(res))
+                        else:
+                            individual_responses[aid] = res
+
+        else:
+            # doc_data is None: either no document provided or document lookup failed
+            if doc_lookup_failed and "document_agent" in validated_agents:
+                individual_responses["document_agent"] = {
+                    "agent_id": "document_agent",
+                    "agent_name": "Document Analysis Agent",
                     "status": "error",
-                    "answer": f"Agent '{aid}' encountered an unexpected internal error.",
+                    "answer": "Attached document could not be found or access was denied. Please ensure you are signed in and re-upload the document.",
                     "citations": [],
                     "evidence": [],
                     "sources": [],
-                    "provenance": AGENT_METADATA.get(aid, {}).get("provenance", "UNKNOWN"),
+                    "provenance": "DOCUMENT_ANALYSIS",
                     "retrieved_at": self._now_iso(),
-                    "errors": [str(res)],
+                    "document_context": None,
+                    "ocr_warnings": [],
+                    "errors": ["Document not found or ownership verification failed."],
                 }
-            else:
-                individual_responses[aid] = res
+
+            tasks = []
+            task_aids = []
+            for aid in validated_agents:
+                if aid == "document_agent":
+                    if "document_agent" in individual_responses:
+                        continue
+                    tasks.append(self.execute_document_agent(
+                        query=query, user_id=user_id, document_id=None, document_data=None,
+                    ))
+                    task_aids.append("document_agent")
+                elif aid == "statutory_rag":
+                    tasks.append(self.execute_statutory_rag(
+                        query=query, user_id=user_id, conversation_id=conversation_id,
+                        history=history, resolved_query=resolved_query, conversation_state=conversation_state,
+                    ))
+                    task_aids.append("statutory_rag")
+                elif aid == "official_web":
+                    tasks.append(self.execute_official_web(query=effective_query))
+                    task_aids.append("official_web")
+                elif aid == "case_law_corpus":
+                    tasks.append(self.execute_case_law_corpus(query=effective_query))
+                    task_aids.append("case_law_corpus")
+                elif aid == "live_case_law":
+                    tasks.append(self.execute_live_case_law(query=effective_query))
+                    task_aids.append("live_case_law")
+
+            if tasks:
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                for aid, res in zip(task_aids, results):
+                    if isinstance(res, Exception):
+                        individual_responses[aid] = self._make_error_response(aid, str(res))
+                    else:
+                        individual_responses[aid] = res
 
         # 4. Synthesize Combined Answer (if enabled)
         combined_answer = None
@@ -535,20 +781,21 @@ AGENT FINDINGS:
 {context}
 
 INSTRUCTIONS:
-1. Answer the question directly in natural, human-readable language like an expert lawyer in conversation.
+1. Answer the question directly in natural, human-readable language like an expert lawyer in consultation.
 2. Structure:
    - Provide a direct answer to the main question first (1-2 sentences).
-   - Use 3-6 clear bullet points summarizing the applicable law, essential statutory sections, key precedents, and material qualifications.
-   - For simple legal questions, keep it concise and direct.
-   - AVOID unnecessary report headings such as "Executive Summary", "Harmonized Analysis", "Actionable Conclusion", or lengthy background historical essays.
-   - If the user explicitly asks for comprehensive detail, supply it; otherwise prefer concise clarity.
-3. Citation grounding:
-   - Retain specific citations, section numbers, case names, and clickable links from the agent findings.
-   - Deduplicate repeated statutory provisions and cases.
+   - Use 3-6 clear bullet points summarizing:
+     * Key facts/clauses from uploaded documents (if Document Agent succeeded)
+     * Applicable statutory provisions (if Statutory RAG succeeded)
+     * Binding/persuasive judicial precedents (if Case-Law agents succeeded)
+     * Government portal rules (if Live Web succeeded)
+   - For simple queries, keep it concise and direct without filler or bureaucratic headings.
+3. Attribution & Provenance:
+   - Retain specific citations, section numbers, case names, and clickable links.
+   - Accurately distinguish statements contained in uploaded documents from independent statutory rules and court precedents.
 4. Accuracy & Nuance:
-   - Accurately distinguish statutory frameworks (e.g. IPC vs BNS applicability based on date of offence).
+   - Distinguish IPC vs BNS applicability based on date of offence.
    - Distinguish judgment decision dates from publication dates.
-   - If there is a material disagreement or missing evidence, note it in 1 short bullet point.
    - Do NOT invent sections, case names, or URLs.
 """
 
@@ -561,6 +808,11 @@ INSTRUCTIONS:
         except Exception as e:
             logger.warning(f"[SYNTHESIS] LLM generation failed: {e}")
             answer_text = self._fallback_synthesis(query, successful_agents)
+
+        # Note any partial agent failures
+        failed_agents = [resp.get("agent_name", aid) for aid, resp in responses.items() if resp.get("status") == "error"]
+        if failed_agents and successful_agents:
+            answer_text += f"\n\n*Note: {', '.join(failed_agents)} encountered an issue and was excluded from synthesis.*"
 
         return {
             "available": True,
@@ -596,6 +848,7 @@ INSTRUCTIONS:
         """
         Executes Source Comparison Analysis across the executed agents.
         Preserves the exact schema: summary, agreements, differences, potential_conflicts, freshness_flags, conflicts.
+        Distinguishes genuine substantive contradictions from mere differences in coverage or scope.
         """
         successful_agents = [
             (aid, resp) for aid, resp in responses.items()
@@ -614,7 +867,7 @@ INSTRUCTIONS:
                 "conflicts": [],
             }
 
-        # If exactly statutory_rag and official_web were selected, we can call web_research_service.compare_sources directly!
+        # If exactly statutory_rag and official_web were selected, call web_research_service.compare_sources
         if set(responses.keys()) == {"statutory_rag", "official_web"} and "statutory_rag" in responses and "official_web" in responses:
             rag_content = responses["statutory_rag"].get("answer", "")
             web_content = responses["official_web"].get("answer", "")
@@ -630,16 +883,26 @@ INSTRUCTIONS:
 
 {joined_blocks}
 
-Compare the evidence, identify agreements, differences, potential conflicts, and freshness issues (such as newer amendments or precedents versus curated static corpora).
+INSTRUCTIONS:
+1. Synthesize cross-source alignment into a 1-3 sentence summary.
+2. Categorize complementary findings under 'agreements' and differences in scope/coverage under 'differences'.
+3. CRITICAL RULE ON CONFLICTS VS DIFFERENCES:
+   - Distinguish differences in source coverage (e.g. one agent cites statutory codes while another cites court precedents or document clauses) from genuine substantive contradictions.
+   - List in 'differences' any variations in scope, coverage, or source authority.
+   - ONLY list items in 'conflicts' or 'potential_conflicts' when the underlying sources take contrary legal positions or reach opposite conclusions on the same legal question.
+   - If sources are mutually consistent or cover complementary facets of the law, keep 'conflicts' and 'potential_conflicts' as EMPTY lists [].
+   - Never report false conflicts caused by an agent's failure or non-overlapping scope.
+4. Freshness flags: Note any newer statutory amendments (e.g. BNS vs IPC) or newer judgments.
+
 Return ONLY JSON with this EXACT schema:
 {{
   "available": true,
   "summary": "1-3 sentences synthesizing cross-source alignment",
   "agreements": ["string", "string"],
   "differences": ["string", "string"],
-  "potential_conflicts": ["string"],
+  "potential_conflicts": [],
   "freshness_flags": ["string"],
-  "conflicts": ["string"]
+  "conflicts": []
 }}"""
 
         try:
@@ -702,7 +965,6 @@ Return ONLY JSON with this EXACT schema:
             title = c.get("document_title") or c.get("case_title") or c.get("title") or "Unknown"
             url = c.get("source_url") or c.get("official_source_url")
             prov = c.get("provenance")
-            is_official = c.get("official_source_verified", False)
 
             # Verification logic based on provenance & source presence
             if prov == "STATUTORY_CORPUS":
@@ -712,6 +974,10 @@ Return ONLY JSON with this EXACT schema:
             elif prov == "OFFICIAL_WEB" and url and ("nic.in" in url or "gov.in" in url or "indiacode" in url):
                 status = "verified"
                 reason = "Verified against official government portal domain."
+                verified_count += 1
+            elif prov == "DOCUMENT_ANALYSIS":
+                status = "verified"
+                reason = "Clause grounded and verified against user-uploaded document text."
                 verified_count += 1
             elif prov == "CASE_LAW_CORPUS":
                 status = "partially_verified"

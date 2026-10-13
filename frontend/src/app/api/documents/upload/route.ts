@@ -23,6 +23,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'No valid file provided.' }, { status: 400 });
     }
 
+    // Vercel serverless function request body limit is 4.5 MB
+    const MAX_VERCEL_BYTES = 4.5 * 1024 * 1024;
+    if (file.size > MAX_VERCEL_BYTES) {
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      return NextResponse.json(
+        {
+          error: `File size (${sizeMb} MB) exceeds Vercel's 4.5 MB upload proxy limit. Please upload a document under 4.5 MB or compress your PDF before uploading.`,
+        },
+        { status: 413 }
+      );
+    }
+
     const getBackendUrl = () => {
       if (process.env.BACKEND_INTERNAL_URL) {
         return process.env.BACKEND_INTERNAL_URL.replace(/\/+$/, '');

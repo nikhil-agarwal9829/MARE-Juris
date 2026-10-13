@@ -126,12 +126,20 @@ async def send_chat_message(
             selected_agents = ["statutory_rag", "official_web"]
 
         # Validate agent IDs
-        from app.services.multi_agent_orchestrator import multi_agent_orchestrator
+        from app.services.multi_agent_orchestrator import multi_agent_orchestrator, VALID_AGENT_IDS
+        invalid_agents = multi_agent_orchestrator.find_invalid_agent_ids(selected_agents)
+        if invalid_agents:
+            supported = ", ".join(sorted(VALID_AGENT_IDS))
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Unknown agent ID(s): {', '.join(invalid_agents)}. Supported agents: {supported}.",
+            )
+
         validated_agents = multi_agent_orchestrator.validate_agent_ids(selected_agents)
         if not validated_agents:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="None of the selected agents are valid. Supported agents: statutory_rag, official_web, case_law_corpus, live_case_law, document_agent.",
+                detail="Please select at least one agent to proceed with consultation.",
             )
 
         # Run multi-agent orchestrator

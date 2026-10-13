@@ -308,11 +308,12 @@ class DocumentExtractionService:
 
             # Rule 2: Detect pages with missing, very short, or unusable extracted text
             if char_count < MIN_TEXT_CHARS_PER_PAGE:
-                # Rule 3: Apply OCR to this page only
-                has_ocr = True
-                ocr_count += 1
+                # Page has insufficient native text; evaluate OCR
+                ocr_ran = False
+                ocr_text = ""
+                ocr_conf = None
+
                 try:
-                    # Render page to high-res pixmap (150 DPI)
                     pix = page.get_pixmap(dpi=150)
                     img = Image.open(io.BytesIO(pix.tobytes("png")))
                     ocr_text, ocr_conf, ocr_warns = self._ocr_image(img)
@@ -321,19 +322,27 @@ class DocumentExtractionService:
                     if ocr_text:
                         text = ocr_text
                         char_count = len(text)
+                        ocr_ran = True
+                    elif not self.is_ocr_available():
+                        page_warnings.append(
+                            "Optical Character Recognition (OCR) is unavailable in this serverless runtime (Tesseract binary not installed). Scanned image text could not be extracted."
+                        )
                     else:
                         page_warnings.append("No text could be recognized from scanned image.")
 
-                    if ocr_conf is not None and ocr_conf < 60.0:
-                        low_conf_pages.append(page_num)
+                    if ocr_ran:
+                        has_ocr = True
+                        ocr_count += 1
+                        if ocr_conf is not None and ocr_conf < 60.0:
+                            low_conf_pages.append(page_num)
 
                     pages.append(
                         ExtractedPage(
                             page_number=page_num,
                             text=text,
                             char_count=char_count,
-                            is_ocr=True,
-                            ocr_confidence=ocr_conf,
+                            is_ocr=ocr_ran,
+                            ocr_confidence=ocr_conf if ocr_ran else None,
                             warnings=page_warnings,
                         )
                     )
@@ -345,7 +354,7 @@ class DocumentExtractionService:
                             page_number=page_num,
                             text=text,
                             char_count=char_count,
-                            is_ocr=True,
+                            is_ocr=False,
                             ocr_confidence=None,
                             warnings=page_warnings,
                         )
@@ -539,19 +548,30 @@ class DocumentExtractionService:
         ocr_text, ocr_conf, ocr_warns = self._ocr_image(img)
         warnings.extend(ocr_warns)
 
-        low_conf = [1] if (ocr_conf is not None and ocr_conf < 60.0) else []
+        ocr_ran = bool(ocr_text) or self.is_ocr_available()
+        if not self.is_ocr_available() and not ocr_text:
+            ocr_ran = False
+            ocr_unavailable_msg = (
+                "Optical Character Recognition (OCR) is unavailable in this serverless runtime environment "
+                "because the Tesseract engine binary is not installed on Vercel. Text could not be extracted "
+                "from this image. Please upload a text-based PDF or DOCX file."
+            )
+            warnings.append(ocr_unavailable_msg)
+            ocr_warns.append(ocr_unavailable_msg)
+
+        low_conf = [1] if (ocr_ran and ocr_conf is not None and ocr_conf < 60.0) else []
 
         page = ExtractedPage(
             page_number=1,
             text=ocr_text,
             char_count=len(ocr_text),
-            is_ocr=True,
-            ocr_confidence=ocr_conf,
+            is_ocr=ocr_ran,
+            ocr_confidence=ocr_conf if ocr_ran else None,
             warnings=ocr_warns,
         )
 
         full_text = f"--- PAGE 1 ---\n{ocr_text}" if ocr_text else ""
-        if not ocr_text:
+        if not ocr_text and ocr_ran:
             warnings.append("No text could be extracted from this image.")
 
         return DocumentExtractionResult(
@@ -562,8 +582,8 @@ class DocumentExtractionService:
             total_pages=1,
             pages=[page],
             full_text=full_text,
-            has_ocr_pages=True,
-            ocr_pages_count=1,
+            has_ocr_pages=ocr_ran,
+            ocr_pages_count=1 if ocr_ran else 0,
             low_confidence_pages=low_conf,
             warnings=warnings,
         )
