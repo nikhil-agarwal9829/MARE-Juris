@@ -145,11 +145,16 @@ async def upload_document(
             detail=f"Failed to read uploaded file: {str(e)}",
         )
 
+    document_id = str(uuid.uuid4())
+    correlation_id = f"upload-{document_id[:8]}"
+
     # 1. Extract content and validate
     extraction: DocumentExtractionResult = document_extraction_service.extract_document(
         file_bytes=file_bytes,
         file_name=file.filename or "uploaded_file",
         content_type=file.content_type,
+        correlation_id=correlation_id,
+        document_id=document_id,
     )
 
     if not extraction.success:
@@ -158,7 +163,6 @@ async def upload_document(
             detail=extraction.error or "Failed to extract text from document.",
         )
 
-    document_id = str(uuid.uuid4())
     created_at = "now"
 
     # Convert pages to serializable dicts

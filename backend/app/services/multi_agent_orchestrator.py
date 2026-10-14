@@ -369,6 +369,7 @@ class MultiAgentOrchestrator:
         user_id: str,
         document_id: Optional[str] = None,
         document_data: Optional[Dict[str, Any]] = None,
+        correlation_id: str = "",
     ) -> Dict[str, Any]:
         retrieval_ts = self._now_iso()
         try:
@@ -394,6 +395,28 @@ class MultiAgentOrchestrator:
                     "errors": ["No active document found or provided document_id is invalid."],
                 }
 
+            # Rule 4: If the question is unrelated to the attached document, do not process the document
+            doc_intent = classify_document_query_intent(query)
+            if doc_intent == "GENERAL_LEGAL":
+                doc_title = document_data.get("file_name", "Document")
+                logger.info(
+                    f"[TIMING][{correlation_id}] Document-context synthesis invoked=False (query intent is GENERAL_LEGAL)"
+                )
+                return {
+                    "agent_id": "document_agent",
+                    "agent_name": "Document Analysis Agent",
+                    "status": "success",
+                    "answer": f"The query '{query}' is an independent legal question unrelated to the attached document '{doc_title}'. Document context synthesis was not performed to focus on statutory and judicial authorities.",
+                    "citations": [],
+                    "evidence": [],
+                    "sources": [doc_title],
+                    "provenance": "DOCUMENT_ANALYSIS",
+                    "retrieved_at": retrieval_ts,
+                    "document_context": None,
+                    "ocr_warnings": [],
+                    "errors": None,
+                }
+
             return await document_agent.analyze_document(
                 query=query,
                 document_id=document_data.get("document_id", "doc"),
@@ -401,9 +424,10 @@ class MultiAgentOrchestrator:
                 pages=document_data.get("pages", []),
                 full_text=document_data.get("full_text", ""),
                 ocr_warnings=document_data.get("warnings", []),
+                correlation_id=correlation_id,
             )
         except Exception as e:
-            logger.error(f"[ORCHESTRATOR] Document Agent failed: {e}")
+            logger.error(f"[ORCHESTRATOR][{correlation_id}] Document Agent failed: {e}")
             return {
                 "agent_id": "document_agent",
                 "agent_name": "Document Analysis Agent",
@@ -471,10 +495,12 @@ class MultiAgentOrchestrator:
             res = await coro
             elapsed = time.perf_counter() - t0
             status = res.get("status", "unknown") if isinstance(res, dict) else "unknown"
+            logger.info(f"[TIMING][{correlation_id}] Agent '{aid}' execution duration={elapsed:.2f}s status='{status}'")
             logger.info(f"[LATENCY][{correlation_id}] Agent '{aid}' completed in {elapsed:.2f}s with status '{status}'")
             return res
         except Exception as e:
             elapsed = time.perf_counter() - t0
+            logger.error(f"[TIMING][{correlation_id}] Agent '{aid}' execution duration={elapsed:.2f}s error='{e}'")
             logger.error(f"[LATENCY][{correlation_id}] Agent '{aid}' failed after {elapsed:.2f}s: {e}")
             return self._make_error_response(aid, str(e))
 
@@ -714,6 +740,9 @@ class MultiAgentOrchestrator:
         # 1. Resolve attached document and verify user ownership
         doc_data = None
         doc_lookup_failed = False
+        masked_doc_id = f"{document_id[:4]}***{document_id[-4:]}" if (document_id and len(document_id) >= 8) else ("present" if document_id else "none")
+
+        t_doc_start = time.perf_counter()
         if document_id:
             try:
                 from app.api.v1.documents import get_document_data
@@ -723,6 +752,22 @@ class MultiAgentOrchestrator:
             except Exception as e:
                 logger.warning(f"[ORCHESTRATOR][{correlation_id}] Document lookup error: {e}")
                 doc_lookup_failed = True
+        t_doc_elapsed = time.perf_counter() - t_doc_start
+        logger.info(
+            f"[TIMING][{correlation_id}] Document resolution duration={t_doc_elapsed:.3f}s "
+            f"doc_present={bool(document_id)} doc_id={masked_doc_id} found={bool(doc_data)}"
+        )
+
+        t_class_start = time.perf_counter()
+        doc_intent = classify_document_query_intent(effective_query) if doc_data else "NO_DOCUMENT"
+        t_class_elapsed = time.perf_counter() - t_class_start
+        logger.info(
+            f"[TIMING][{correlation_id}] Query classification duration={t_class_elapsed:.3f}s intent={doc_intent}"
+        )
+        logger.info(
+            f"[DOC_EXTRACTION][{correlation_id}] op=CHAT_MESSAGE_INSPECTION doc_present={bool(document_id)} "
+            f"doc_id={masked_doc_id} invoked=False intent={doc_intent}"
+        )
 
         # Rule 6: If only Document Agent is selected, run only Document Agent
         if validated_agents == ["document_agent"]:
@@ -733,13 +778,12 @@ class MultiAgentOrchestrator:
                     user_id=user_id,
                     document_id=document_id,
                     document_data=doc_data,
+                    correlation_id=correlation_id,
                 ),
                 correlation_id=correlation_id,
             )
             individual_responses["document_agent"] = doc_res
         elif doc_data:
-            # Document is present and verified. Determine query intent.
-            doc_intent = classify_document_query_intent(effective_query)
             doc_name = doc_data.get("file_name", "Document")
 
             if doc_intent == "DOCUMENT_CENTRIC":
@@ -753,6 +797,7 @@ class MultiAgentOrchestrator:
                             user_id=user_id,
                             document_id=document_id,
                             document_data=doc_data,
+                            correlation_id=correlation_id,
                         ),
                         correlation_id=correlation_id,
                     )
@@ -806,6 +851,7 @@ class MultiAgentOrchestrator:
                     if aid == "document_agent":
                         tasks_with_aids.append(("document_agent", self.execute_document_agent(
                             query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
+                            correlation_id=correlation_id,
                         )))
                     elif aid == "statutory_rag":
                         tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
@@ -823,12 +869,15 @@ class MultiAgentOrchestrator:
                 individual_responses.update(sub_res)
 
             else:  # GENERAL_LEGAL
-                # Rule 9: Do not force the document into independent general legal queries
+                # Rule 9 / Rule 4: If user asks an independent legal query, do not process the document unnecessarily.
+                # Document extraction and document-context synthesis are NOT invoked.
+                logger.info(f"[TIMING][{correlation_id}] Document-context synthesis invoked=False (query intent is GENERAL_LEGAL)")
                 tasks_with_aids = []
                 for aid in validated_agents:
                     if aid == "document_agent":
                         tasks_with_aids.append(("document_agent", self.execute_document_agent(
                             query=effective_query, user_id=user_id, document_id=document_id, document_data=doc_data,
+                            correlation_id=correlation_id,
                         )))
                     elif aid == "statutory_rag":
                         tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(
@@ -847,6 +896,7 @@ class MultiAgentOrchestrator:
 
         else:
             # doc_data is None: either no document provided or document lookup failed
+            logger.info(f"[TIMING][{correlation_id}] Document-context synthesis invoked=False (no document attached)")
             if doc_lookup_failed and "document_agent" in validated_agents:
                 individual_responses["document_agent"] = {
                     "agent_id": "document_agent",
@@ -869,7 +919,7 @@ class MultiAgentOrchestrator:
                     if "document_agent" in individual_responses:
                         continue
                     tasks_with_aids.append(("document_agent", self.execute_document_agent(
-                        query=query, user_id=user_id, document_id=None, document_data=None,
+                        query=query, user_id=user_id, document_id=None, document_data=None, correlation_id=correlation_id,
                     )))
                 elif aid == "statutory_rag":
                     tasks_with_aids.append(("statutory_rag", self.execute_statutory_rag(

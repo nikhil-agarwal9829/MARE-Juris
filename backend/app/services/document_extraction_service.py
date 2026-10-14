@@ -20,6 +20,7 @@ import os
 import io
 import re
 import shutil
+import time
 import logging
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, field
@@ -593,12 +594,24 @@ class DocumentExtractionService:
         file_bytes: bytes,
         file_name: str,
         content_type: Optional[str] = None,
+        correlation_id: Optional[str] = None,
+        document_id: Optional[str] = None,
     ) -> DocumentExtractionResult:
         """
-        Unified extraction entry point. Validates file and dispatches to appropriate extractor.
+        Unified extraction entry point with safe structured logging.
+        Validates file and dispatches to appropriate extractor.
         """
+        t_start = time.perf_counter()
+        cid = correlation_id or "ext-unspecified"
+        masked_doc = f"{document_id[:4]}***{document_id[-4:]}" if (document_id and len(document_id) >= 8) else ("present" if document_id else "none")
+
         is_valid, err_msg, ext = self.validate_file(file_bytes, file_name, content_type)
         if not is_valid:
+            elapsed = time.perf_counter() - t_start
+            logger.warning(
+                f"[DOC_EXTRACTION][{cid}] op=DOCUMENT_EXTRACTION doc_present={bool(document_id)} doc_id={masked_doc} "
+                f"invoked=False file_type={ext or 'unknown'} pages=0 duration={elapsed:.3f}s status=validation_error error='{err_msg}'"
+            )
             return DocumentExtractionResult(
                 success=False,
                 file_name=file_name,
@@ -615,14 +628,20 @@ class DocumentExtractionService:
             )
 
         ext_clean = ext.lower()
+        logger.info(
+            f"[DOC_EXTRACTION][{cid}] op=DOCUMENT_EXTRACTION_START doc_present={bool(document_id)} doc_id={masked_doc} "
+            f"invoked=True file_type={ext_clean} size_bytes={len(file_bytes)}"
+        )
+
+        res: DocumentExtractionResult
         if ext_clean == ".pdf":
-            return self.extract_from_pdf(file_bytes, file_name)
+            res = self.extract_from_pdf(file_bytes, file_name)
         elif ext_clean == ".docx":
-            return self.extract_from_docx(file_bytes, file_name)
+            res = self.extract_from_docx(file_bytes, file_name)
         elif ext_clean in {".png", ".jpg", ".jpeg"}:
-            return self.extract_from_image(file_bytes, file_name, ext_clean)
+            res = self.extract_from_image(file_bytes, file_name, ext_clean)
         else:
-            return DocumentExtractionResult(
+            res = DocumentExtractionResult(
                 success=False,
                 file_name=file_name,
                 file_type=ext_clean.replace(".", ""),
@@ -636,6 +655,15 @@ class DocumentExtractionService:
                 warnings=[],
                 error=f"Unsupported file format '{ext_clean}'.",
             )
+
+        elapsed = time.perf_counter() - t_start
+        status_str = "success" if res.success else "error"
+        logger.info(
+            f"[DOC_EXTRACTION][{cid}] op=DOCUMENT_EXTRACTION_COMPLETE doc_present={bool(document_id)} doc_id={masked_doc} "
+            f"invoked=True file_type={ext_clean} pages={res.total_pages} duration={elapsed:.3f}s "
+            f"status={status_str} error={res.error or 'none'}"
+        )
+        return res
 
 
 document_extraction_service = DocumentExtractionService()

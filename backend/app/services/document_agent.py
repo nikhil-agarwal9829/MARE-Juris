@@ -9,6 +9,7 @@ Implements the standard agent interface for document-derived evidence:
 5. Returns provenance: "DOCUMENT_ANALYSIS".
 """
 
+import time
 import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime, timezone
@@ -35,6 +36,7 @@ class DocumentAgent:
         pages: List[Dict[str, Any]],
         full_text: str,
         ocr_warnings: Optional[List[str]] = None,
+        correlation_id: str = "",
     ) -> Dict[str, Any]:
         """
         Executes document analysis and returns standard agent response contract.
@@ -58,13 +60,19 @@ class DocumentAgent:
             }
 
         try:
-            # 1. Synthesize structured context
+            # 1. Synthesize structured context with precise timing
+            t_synth_start = time.perf_counter()
             ctx_pkg: DocumentContextPackage = await document_context_service.synthesize_document_context(
                 query=query,
                 document_name=document_title,
                 pages=pages,
                 full_text=full_text,
                 ocr_warnings=ocr_warnings,
+            )
+            t_synth_elapsed = time.perf_counter() - t_synth_start
+            logger.info(
+                f"[TIMING][{correlation_id}] Document-context synthesis duration={t_synth_elapsed:.2f}s "
+                f"clauses={len(ctx_pkg.relevant_clauses)} facts={len(ctx_pkg.relevant_facts)}"
             )
 
             # 2. Build standardized citations list

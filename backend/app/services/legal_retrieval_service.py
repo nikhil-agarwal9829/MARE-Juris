@@ -2,6 +2,7 @@ import json
 import logging
 import math
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -81,6 +82,20 @@ class LegalRetrievalService:
         if not CORPUS_DIR.exists():
             self._chunk_cache = chunks
             return chunks
+
+        # 1. Fast path: Load precomputed corpus chunks from JSON cache (avoids 45s runtime PDF parsing and font warnings)
+        cache_file = CORPUS_DIR / "corpus_chunks.json"
+        if cache_file.exists():
+            try:
+                t0 = time.perf_counter()
+                with open(cache_file, "r", encoding="utf-8") as f:
+                    chunks = json.load(f)
+                self._chunk_cache = chunks
+                elapsed = time.perf_counter() - t0
+                logger.info(f"[RETRIEVAL] Loaded {len(chunks)} local corpus chunks from precomputed cache in {elapsed:.3f}s.")
+                return chunks
+            except Exception as e:
+                logger.warning(f"[RETRIEVAL] Failed reading precomputed corpus cache ({e}); falling back to disk scan.")
 
         try:
             from pypdf import PdfReader

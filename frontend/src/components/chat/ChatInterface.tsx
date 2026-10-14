@@ -533,10 +533,16 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
     setActiveConvId(null);
     setMessages([]);
     setInput('');
+    setAttachedDoc(null);
+    setSelectedAgentIds((prev) => prev.filter((id) => id !== 'document_agent'));
     window.history.replaceState(null, '', '/ask-juris');
   };
 
   const selectConversation = (id: string) => {
+    if (activeConvId !== id) {
+      setAttachedDoc(null);
+      setSelectedAgentIds((prev) => prev.filter((id) => id !== 'document_agent'));
+    }
     setActiveConvId(id);
     window.history.replaceState(null, '', `/ask-juris?chat=${id}`);
   };
@@ -1226,7 +1232,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   )}
                   <button
                     type="button"
-                    onClick={() => setAttachedDoc(null)}
+                    onClick={() => {
+                      setAttachedDoc(null);
+                      setSelectedAgentIds((prev) => prev.filter((id) => id !== 'document_agent'));
+                    }}
                     className="ml-auto p-1 text-purple-600 hover:text-purple-900 rounded-lg hover:bg-purple-100 cursor-pointer"
                     title="Remove document"
                   >

@@ -1,4 +1,5 @@
 import asyncio
+import time
 import uuid
 import logging
 from typing import Optional, List, Dict, Any
@@ -79,6 +80,7 @@ async def send_chat_message(
     payload: ChatMessageRequest,
     current_user: dict = Depends(get_current_user),
 ):
+    t_req_start = time.perf_counter()
     if not payload.message.strip():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Message content cannot be empty.")
 
@@ -86,6 +88,8 @@ async def send_chat_message(
     user_message = payload.message.strip()
 
     correlation_id = str(uuid.uuid4())
+    t_parse_auth = time.perf_counter() - t_req_start
+    logger.info(f"[TIMING][{correlation_id}] Request parsing & auth took {t_parse_auth:.3f}s")
     try:
         prior_messages = _load_conversation_messages(user_id, payload.conversation_id)
         pending = get_pending_follow_up(prior_messages + [{"role": "user", "content": user_message}])
@@ -274,7 +278,8 @@ async def send_chat_message(
         except Exception as db_err:
             logger.warning(f"[CHAT_ROUTER][{correlation_id}] Supabase persistence warning: {db_err}")
 
-        return {
+        t_serialize_start = time.perf_counter()
+        resp_data = {
             "query": user_message,
             "resolved_query": resolved_query,
             "conversation_id": conversation_id,
@@ -290,6 +295,13 @@ async def send_chat_message(
             "combined_answer": combined_answer,
             "verification": verification_res,
         }
+        t_serialize_elapsed = time.perf_counter() - t_serialize_start
+        t_total_elapsed = time.perf_counter() - t_req_start
+        logger.info(
+            f"[TIMING][{correlation_id}] Response serialization took {t_serialize_elapsed:.4f}s. "
+            f"Total chat request duration={t_total_elapsed:.2f}s"
+        )
+        return resp_data
     except HTTPException:
         raise
     except Exception as e:
