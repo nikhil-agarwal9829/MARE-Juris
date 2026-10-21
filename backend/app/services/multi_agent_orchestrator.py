@@ -213,25 +213,44 @@ class MultiAgentOrchestrator:
                 "errors": [str(e)],
             }
 
-    async def execute_official_web(self, query: str) -> Dict[str, Any]:
+    async def execute_official_web(
+        self, query: str, correlation_id: str = ""
+    ) -> Dict[str, Any]:
         retrieval_ts = self._now_iso()
+        cid = correlation_id or "official_web"
+        logger.info(
+            f"[ORCHESTRATOR][{cid}] execute_official_web started "
+            f"query='{query[:80]}'"
+        )
         try:
-            res = await web_research_service.process_query(query)
+            res = await web_research_service.process_query(
+                query, correlation_id=cid
+            )
             citations = res.get("citations", []) or []
+            status = "success" if res.get("status") != "error" else "error"
+            logger.info(
+                f"[ORCHESTRATOR][{cid}] execute_official_web completed "
+                f"status='{status}' citations={len(citations)} "
+                f"sources={len(res.get('sources', []))} "
+                f"answer_len={len(res.get('answer', ''))}"
+            )
             return {
                 "agent_id": "official_web",
                 "agent_name": "Live Official Web Research Agent",
-                "status": "success" if res.get("status") != "error" else "error",
+                "status": status,
                 "answer": res.get("answer", ""),
                 "citations": citations,
                 "evidence": res.get("evidence", citations),
                 "sources": res.get("sources", []),
                 "provenance": "OFFICIAL_WEB",
                 "retrieved_at": retrieval_ts,
-                "errors": None if res.get("status") != "error" else ["Live web research returned an error."],
+                "errors": None if status != "error" else ["Live web research returned an error."],
             }
         except Exception as e:
-            logger.error(f"[ORCHESTRATOR] Official Web agent failed: {e}")
+            logger.error(
+                f"[ORCHESTRATOR][{cid}] execute_official_web failed: "
+                f"{type(e).__name__}: {e}"
+            )
             return {
                 "agent_id": "official_web",
                 "agent_name": "Live Official Web Research Agent",
@@ -828,7 +847,7 @@ class MultiAgentOrchestrator:
                                      history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
                                 )))
                             elif aid == "official_web":
-                                tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q)))
+                                tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q, correlation_id=correlation_id)))
                             elif aid == "case_law_corpus":
                                 tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=enhanced_q)))
                             elif aid == "live_case_law":
@@ -859,7 +878,7 @@ class MultiAgentOrchestrator:
                             history=history, resolved_query=enhanced_q, conversation_state=conversation_state,
                         )))
                     elif aid == "official_web":
-                        tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q)))
+                        tasks_with_aids.append(("official_web", self.execute_official_web(query=enhanced_q, correlation_id=correlation_id)))
                     elif aid == "case_law_corpus":
                         tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=enhanced_q)))
                     elif aid == "live_case_law":
@@ -885,7 +904,7 @@ class MultiAgentOrchestrator:
                             history=history, resolved_query=resolved_query, conversation_state=conversation_state,
                         )))
                     elif aid == "official_web":
-                        tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query)))
+                        tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query, correlation_id=correlation_id)))
                     elif aid == "case_law_corpus":
                         tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=effective_query)))
                     elif aid == "live_case_law":
@@ -927,7 +946,7 @@ class MultiAgentOrchestrator:
                         history=history, resolved_query=resolved_query, conversation_state=conversation_state,
                     )))
                 elif aid == "official_web":
-                    tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query)))
+                    tasks_with_aids.append(("official_web", self.execute_official_web(query=effective_query, correlation_id=correlation_id)))
                 elif aid == "case_law_corpus":
                     tasks_with_aids.append(("case_law_corpus", self.execute_case_law_corpus(query=effective_query)))
                 elif aid == "live_case_law":
